@@ -55,7 +55,10 @@
     <Reference Include="DevExpress.Printing.v19.2.Core, Version=19.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
     <Reference Include="DevExpress.Sparkline.v19.2.Core, Version=19.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
     <Reference Include="DevExpress.Utils.v19.2, Version=19.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.XtraBars.v19.2, Version=19.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="DevExpress.XtraEditors.v19.2, Version=19.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraLayout.v19.2, Version=19.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.XtraTreeList.v19.2, Version=19.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="System">
       <Private>True</Private>
     </Reference>
@@ -98,6 +101,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Classes\clsConnection.cs" />
+    <Compile Include="Classes\clsTabActivated.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="WinForms\frLogin.cs">
@@ -105,6 +109,24 @@
     </Compile>
     <Compile Include="WinForms\frLogin.Designer.cs">
       <DependentUpon>frLogin.cs</DependentUpon>
+    </Compile>
+    <Compile Include="WinForms\frMainForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="WinForms\frMainForm.Designer.cs">
+      <DependentUpon>frMainForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="WinForms\XtraForm2.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="WinForms\XtraForm2.Designer.cs">
+      <DependentUpon>XtraForm2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="WinForms\XtraForm3.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="WinForms\XtraForm3.Designer.cs">
+      <DependentUpon>XtraForm3.cs</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>
@@ -117,6 +139,15 @@
     <EmbeddedResource Include="Properties\licenses.licx" />
     <EmbeddedResource Include="WinForms\frLogin.resx">
       <DependentUpon>frLogin.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="WinForms\frMainForm.resx">
+      <DependentUpon>frMainForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="WinForms\XtraForm2.resx">
+      <DependentUpon>XtraForm2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="WinForms\XtraForm3.resx">
+      <DependentUpon>XtraForm3.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

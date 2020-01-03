@@ -121,7 +121,7 @@
   <data name="pictureEdit1.EditValue" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAA4QAAAKACAYAAADEqLaZAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
-        YQUAAAAJcEhZcwAACw8AAAsPAZL5A6UAAAAZdEVYdFNvZnR3YXJlAHBhaW50Lm5ldCA0LjAuMjHxIGmV
+        YQUAAAAJcEhZcwAACw4AAAsOAUC+4UEAAAAZdEVYdFNvZnR3YXJlAHBhaW50Lm5ldCA0LjAuMjHxIGmV
         AAD/gElEQVR4XuxdBYAWxfveLy/pblQkBLEQLBQDCxNRwu7uQkG6u0FAuq7vyOs7ukP6KOm+7uL5zzPf
         zbl+vz1CKf3vwHM7O7X77ezuvM++77yjATBhwoQJEyZMmLjsWLBgAQICAjB9+nSMGzcOQ4YMQZ8+fdCj
         Rw/88ssv6Ny5M77++mt89tln+OCDD/DWW2/h1VdfRadOnfDcc8/h+eefR5s2bfDoo4/ioYcekrjvvvtw
@@ -10722,7 +10722,7 @@
         CBEi/NSB4P8BxhcpGoaLK8MAAAAASUVORK5CYII=
 </value>
   </data>
-  <data name="simpleButton1.ImageOptions.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+  <data name="simpleButton_Connect.ImageOptions.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
         YQUAAAAVdEVYdFRpdGxlAFB1Ymxpc2g7VXBsb2FkO70aPsEAAANMSURBVDhPjZJrUIxRGMdfJZdEJt1c
