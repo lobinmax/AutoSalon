@@ -1,7 +1,4 @@
 ﻿using System;
-using System.Data;
-using System.Data.SqlClient;
-using System.Data.Sql;
 
 public partial class frLogin : DevExpress.XtraEditors.XtraForm
 {
@@ -11,12 +8,11 @@ public partial class frLogin : DevExpress.XtraEditors.XtraForm
 
     private void simpleButton1_Click(object sender, EventArgs e)
     {
-        if (clsSql.ConnectionDase(
+        if (clsSql.ConnectionToDase(
                 TextEdit_server.EditValue.ToString(),
                 TextEdit_db.EditValue.ToString(),
                 TextEdit_Login.EditValue.ToString(),
                 TextEdit_Pass.EditValue.ToString()))
-
         {
             frMainForm MainForm = new frMainForm();
             MainForm.Show();
