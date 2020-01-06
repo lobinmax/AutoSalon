@@ -121,7 +121,7 @@
             // 
             // TextEdit_Login
             // 
-            this.TextEdit_Login.EditValue = "Compic\\IamUser";
+            this.TextEdit_Login.EditValue = "NETBOOK\\Гость";
             this.TextEdit_Login.Location = new System.Drawing.Point(319, 31);
             this.TextEdit_Login.Name = "TextEdit_Login";
             this.TextEdit_Login.Properties.ContextImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("TextEdit_Login.Properties.ContextImageOptions.Image")));

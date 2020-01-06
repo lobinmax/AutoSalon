@@ -1,17 +1,10 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Text;
-using System.Linq;
-using System.Threading.Tasks;
-using System.Windows.Forms;
-using DevExpress.XtraEditors;
-
 public partial class frСотрудники : DevExpress.XtraEditors.XtraForm
 {
     public frСотрудники() { InitializeComponent(); }
-    
 
+    private void frСотрудники_Load(object sender, EventArgs e)
+    {
+        gridControlСотрудники.DataSource = clsSql.ExecuteSP("");
+    }
 }
