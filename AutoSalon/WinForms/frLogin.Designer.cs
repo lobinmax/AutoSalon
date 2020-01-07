@@ -122,7 +122,7 @@
             // TextEdit_Login
             // 
             this.TextEdit_Login.EditValue = "NETBOOK\\Гость";
-            this.TextEdit_Login.Location = new System.Drawing.Point(319, 31);
+            this.TextEdit_Login.Location = new System.Drawing.Point(319, 44);
             this.TextEdit_Login.Name = "TextEdit_Login";
             this.TextEdit_Login.Properties.ContextImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("TextEdit_Login.Properties.ContextImageOptions.Image")));
             this.TextEdit_Login.Size = new System.Drawing.Size(231, 20);
@@ -130,7 +130,7 @@
             // 
             // labelControl3
             // 
-            this.labelControl3.Location = new System.Drawing.Point(319, 12);
+            this.labelControl3.Location = new System.Drawing.Point(319, 25);
             this.labelControl3.Name = "labelControl3";
             this.labelControl3.Size = new System.Drawing.Size(97, 13);
             this.labelControl3.TabIndex = 7;
@@ -138,7 +138,7 @@
             // 
             // labelControl4
             // 
-            this.labelControl4.Location = new System.Drawing.Point(319, 75);
+            this.labelControl4.Location = new System.Drawing.Point(319, 88);
             this.labelControl4.Name = "labelControl4";
             this.labelControl4.Size = new System.Drawing.Size(41, 13);
             this.labelControl4.TabIndex = 9;
@@ -147,7 +147,7 @@
             // TextEdit_Pass
             // 
             this.TextEdit_Pass.EditValue = "123";
-            this.TextEdit_Pass.Location = new System.Drawing.Point(319, 94);
+            this.TextEdit_Pass.Location = new System.Drawing.Point(319, 107);
             this.TextEdit_Pass.Name = "TextEdit_Pass";
             this.TextEdit_Pass.Properties.ContextImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("TextEdit_Pass.Properties.ContextImageOptions.Image")));
             this.TextEdit_Pass.Properties.PasswordChar = '•';
@@ -156,7 +156,7 @@
             // 
             // checkEdit1
             // 
-            this.checkEdit1.Location = new System.Drawing.Point(319, 120);
+            this.checkEdit1.Location = new System.Drawing.Point(319, 133);
             this.checkEdit1.Name = "checkEdit1";
             this.checkEdit1.Properties.Caption = "Показать пароль";
             this.checkEdit1.Size = new System.Drawing.Size(231, 19);

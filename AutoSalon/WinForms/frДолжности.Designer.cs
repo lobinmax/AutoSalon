@@ -1,5 +1,5 @@
-﻿    partial class XtraForm3
-    {
+﻿    partial class frДолжности
+{
         /// <summary>
         /// Required designer variable.
         /// </summary>
@@ -26,7 +26,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(XtraForm3));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frДолжности));
             this.treeList1 = new DevExpress.XtraTreeList.TreeList();
             ((System.ComponentModel.ISupportInitialize)(this.treeList1)).BeginInit();
             this.SuspendLayout();
@@ -39,15 +39,15 @@
             this.treeList1.Size = new System.Drawing.Size(505, 200);
             this.treeList1.TabIndex = 0;
             // 
-            // XtraForm3
+            // frДолжности
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(505, 288);
             this.Controls.Add(this.treeList1);
-            this.IconOptions.Image = ((System.Drawing.Image)(resources.GetObject("XtraForm3.IconOptions.Image")));
-            this.Name = "XtraForm3";
-            this.Text = "Форма номер 3";
+            this.IconOptions.Image = ((System.Drawing.Image)(resources.GetObject("frДолжности.IconOptions.Image")));
+            this.Name = "frДолжности";
+            this.Text = "Должности";
             ((System.ComponentModel.ISupportInitialize)(this.treeList1)).EndInit();
             this.ResumeLayout(false);
 

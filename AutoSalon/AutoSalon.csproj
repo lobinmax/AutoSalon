@@ -54,6 +54,7 @@
   <ItemGroup>
     <Compile Include="Classes\clsConnection.cs" />
     <Compile Include="Classes\clsExtensions.cs" />
+    <Compile Include="Classes\clsMisc.cs" />
     <Compile Include="Classes\clsTabActivated.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -75,11 +76,11 @@
     <Compile Include="WinForms\frСотрудники.Designer.cs">
       <DependentUpon>frСотрудники.cs</DependentUpon>
     </Compile>
-    <Compile Include="WinForms\XtraForm3.cs">
+    <Compile Include="WinForms\frДолжности.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="WinForms\XtraForm3.Designer.cs">
-      <DependentUpon>XtraForm3.cs</DependentUpon>
+    <Compile Include="WinForms\frДолжности.Designer.cs">
+      <DependentUpon>frДолжности.cs</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>
@@ -89,6 +90,7 @@
     <Folder Include="ImagesIcons\" />
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="Properties\licenses.licx" />
     <EmbeddedResource Include="WinForms\frLogin.resx">
       <DependentUpon>frLogin.cs</DependentUpon>
     </EmbeddedResource>
@@ -98,8 +100,8 @@
     <EmbeddedResource Include="WinForms\frСотрудники.resx">
       <DependentUpon>frСотрудники.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="WinForms\XtraForm3.resx">
-      <DependentUpon>XtraForm3.cs</DependentUpon>
+    <EmbeddedResource Include="WinForms\frДолжности.resx">
+      <DependentUpon>frДолжности.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

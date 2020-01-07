@@ -40,6 +40,8 @@
             this.barButtonItemЗаказы = new DevExpress.XtraBars.BarButtonItem();
             this.barButtonItemДанныеКлиентов = new DevExpress.XtraBars.BarButtonItem();
             this.barStaticItemВремяТекущее = new DevExpress.XtraBars.BarStaticItem();
+            this.barStaticItemDB = new DevExpress.XtraBars.BarStaticItem();
+            this.barStaticItemServer = new DevExpress.XtraBars.BarStaticItem();
             this.ribbonPageАдминистрирование = new DevExpress.XtraBars.Ribbon.RibbonPage();
             this.ribbonPageGroupШтат = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.ribbonPageGroup2 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
@@ -52,8 +54,6 @@
             this.ribbonStatusBar1 = new DevExpress.XtraBars.Ribbon.RibbonStatusBar();
             this.ribbonPage2 = new DevExpress.XtraBars.Ribbon.RibbonPage();
             this.timer = new System.Windows.Forms.Timer(this.components);
-            this.barStaticItemDB = new DevExpress.XtraBars.BarStaticItem();
-            this.barStaticItemServer = new DevExpress.XtraBars.BarStaticItem();
             ((System.ComponentModel.ISupportInitialize)(this.xtraTabbedMdiManager)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ribbonControl1)).BeginInit();
             this.SuspendLayout();
@@ -104,6 +104,7 @@
             this.barButtonItemСотрудники.Name = "barButtonItemСотрудники";
             this.barButtonItemСотрудники.RibbonStyle = ((DevExpress.XtraBars.Ribbon.RibbonItemStyles)(((DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large | DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithText) 
             | DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithoutText)));
+            this.barButtonItemСотрудники.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItemСотрудники_ItemClick);
             // 
             // barButtonItemДолжности
             // 
@@ -112,6 +113,7 @@
             this.barButtonItemДолжности.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("barButtonItemДолжности.ImageOptions.Image")));
             this.barButtonItemДолжности.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("barButtonItemДолжности.ImageOptions.LargeImage")));
             this.barButtonItemДолжности.Name = "barButtonItemДолжности";
+            this.barButtonItemДолжности.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItemДолжности_ItemClick);
             // 
             // skinDropDownButtonItem1
             // 
@@ -174,6 +176,22 @@
             this.barStaticItemВремяТекущее.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("barStaticItemВремяТекущее.ImageOptions.LargeImage")));
             this.barStaticItemВремяТекущее.Name = "barStaticItemВремяТекущее";
             this.barStaticItemВремяТекущее.PaintStyle = DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph;
+            // 
+            // barStaticItemDB
+            // 
+            this.barStaticItemDB.Id = 11;
+            this.barStaticItemDB.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("barStaticItemDB.ImageOptions.Image")));
+            this.barStaticItemDB.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("barStaticItemDB.ImageOptions.LargeImage")));
+            this.barStaticItemDB.Name = "barStaticItemDB";
+            this.barStaticItemDB.PaintStyle = DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph;
+            // 
+            // barStaticItemServer
+            // 
+            this.barStaticItemServer.Id = 12;
+            this.barStaticItemServer.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("barStaticItemServer.ImageOptions.Image")));
+            this.barStaticItemServer.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("barStaticItemServer.ImageOptions.LargeImage")));
+            this.barStaticItemServer.Name = "barStaticItemServer";
+            this.barStaticItemServer.PaintStyle = DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph;
             // 
             // ribbonPageАдминистрирование
             // 
@@ -257,22 +275,6 @@
             // timer
             // 
             this.timer.Tick += new System.EventHandler(this.timer_Tick);
-            // 
-            // barStaticItemDB
-            // 
-            this.barStaticItemDB.Id = 11;
-            this.barStaticItemDB.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("barStaticItem1.ImageOptions.Image1")));
-            this.barStaticItemDB.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("barStaticItem1.ImageOptions.LargeImage1")));
-            this.barStaticItemDB.Name = "barStaticItemDB";
-            this.barStaticItemDB.PaintStyle = DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph;
-            // 
-            // barStaticItemServer
-            // 
-            this.barStaticItemServer.Id = 12;
-            this.barStaticItemServer.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("barStaticItem1.ImageOptions.Image")));
-            this.barStaticItemServer.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("barStaticItem1.ImageOptions.LargeImage")));
-            this.barStaticItemServer.Name = "barStaticItemServer";
-            this.barStaticItemServer.PaintStyle = DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph;
             // 
             // frMainForm
             // 

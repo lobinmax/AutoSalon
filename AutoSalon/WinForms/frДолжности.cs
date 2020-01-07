@@ -9,9 +9,9 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using DevExpress.XtraEditors;
 
-    public partial class XtraForm3 : DevExpress.XtraEditors.XtraForm
+    public partial class frДолжности : DevExpress.XtraEditors.XtraForm
     {
-        public XtraForm3()
+        public frДолжности()
         {
             InitializeComponent();
         }

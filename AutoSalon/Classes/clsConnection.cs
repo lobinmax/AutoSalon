@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
 using System.Windows.Forms;
+using static clsMisc;
 
 public class clsSql
 {
@@ -65,10 +66,10 @@ public class clsSql
         {
             SqlCommand command = new SqlCommand(procedureName, conn);
             SqlDataAdapter sqlDataAdapter = new SqlDataAdapter();
-            DataTable dataTable = new DataTable();
 
             try
             {
+                if (conn.State != ConnectionState.Open) { conn.Open(); }
                 command.CommandType = CommandType.StoredProcedure;
                 command.ExecuteNonQuery();
             }
@@ -143,8 +144,50 @@ public class clsSql
                 // добавляем параметры
                 for (int i = 0; i < (parameters.Length / 2); i++)
                 {
-                    command.Parameters.AddWithValue(parameters[i].ToString(), InOutValue.IsNumOrString(parameters[i + 1]));
+                    command.Parameters.AddWithValue(parameters[i].ToString(), parameters[i + 1]);
                 }
+
+                sqlDataAdapter.SelectCommand = command;
+                sqlDataAdapter.Fill(dataTable);
+                return dataTable;
+            }
+
+            catch (Exception ex)
+            {
+                XtraMessageBox.Show($"{ex.Message}\nОшибка вызова: '{procedureName}'",
+                                    Program.ProductName,
+                                    MessageBoxButtons.OK,
+                                    MessageBoxIcon.Error);
+                return null;
+            }
+        }
+    }
+
+
+    public static DataTable ExecuteSP(string procedureName, ASSqlFunction sqlFunction, params object[] parameters)
+    {
+        using (conn = GetSqlConnection())
+        {
+            SqlCommand command = new SqlCommand(procedureName, conn);
+            SqlDataAdapter sqlDataAdapter = new SqlDataAdapter();
+            DataTable dataTable = new DataTable();
+
+            try
+            {
+                if (conn.State != ConnectionState.Open) { conn.Open(); }
+                command.CommandType = CommandType.StoredProcedure;
+
+                if ((parameters.Length % 2) != 0)
+                {
+                    throw new Exception("Ошибка программиста. Нехватка параметров в хранимой процедуре.");
+                }
+                // добавляем параметры
+                for (int i = 0; i < (parameters.Length / 2); i++)
+                {
+                    command.Parameters.AddWithValue(parameters[i].ToString(), parameters[i + 1]);
+                }
+                command.Parameters.AddWithValue("@Function", sqlFunction);
+
 
                 sqlDataAdapter.SelectCommand = command;
                 sqlDataAdapter.Fill(dataTable);
@@ -181,7 +224,12 @@ public class clsSql
                 command.CommandType = CommandType.Text;
                 command.CommandText = $"SELECT {functionName}()";
 
-                return command.ExecuteScalar();
+                var result = command.ExecuteScalar();
+                if (result == DBNull.Value)
+                    { return null; }
+                else
+                    { return result; }
+
             }
 
             catch (Exception ex)
@@ -210,9 +258,10 @@ public class clsSql
             DataTable dataTable = new DataTable();
             string parametersString = "";
             string spliter = "";
+
             for (int i = 0; i < parameters.Length; i++)
             {
-                parametersString += (spliter + InOutValue.IsNumOrString(parameters[i].ToString()));
+                parametersString += (spliter + InOutValue.IsNumOrStringForDB(parameters[i].ToString()));
                 spliter = ", ";
             }
 
@@ -222,7 +271,11 @@ public class clsSql
                 command.CommandType = CommandType.Text;
                 command.CommandText = $"SELECT {functionName}({parametersString})";
 
-                return command.ExecuteScalar();
+                var result = command.ExecuteScalar();
+                if (result == DBNull.Value)
+                    { return null; }
+                else
+                    { return result; }
             }
 
             catch (Exception ex)
@@ -241,7 +294,7 @@ public class clsSql
     /// </summary>
     private class InOutValue
     {
-        public static object IsNumOrString(object obj)
+        public static object IsNumOrStringForDB(object obj)
         {
             int num;
             bool isNum = int.TryParse((string)obj, out num);
