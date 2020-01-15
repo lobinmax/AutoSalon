@@ -31,17 +31,15 @@
             this.xtraTabbedMdiManager = new DevExpress.XtraTabbedMdi.XtraTabbedMdiManager(this.components);
             this.ribbonControl1 = new DevExpress.XtraBars.Ribbon.RibbonControl();
             this.barButtonItemСотрудники = new DevExpress.XtraBars.BarButtonItem();
-            this.barButtonItemДолжности = new DevExpress.XtraBars.BarButtonItem();
             this.skinDropDownButtonItem1 = new DevExpress.XtraBars.SkinDropDownButtonItem();
-            this.barButtonItemАвтомобили = new DevExpress.XtraBars.BarButtonItem();
-            this.barButtonItemУзлы = new DevExpress.XtraBars.BarButtonItem();
-            this.barButtonItemПлоскиеСправочники = new DevExpress.XtraBars.BarButtonItem();
+            this.barButtonItemСправочники = new DevExpress.XtraBars.BarButtonItem();
             this.barButtonItemАвтоВПродаже = new DevExpress.XtraBars.BarButtonItem();
             this.barButtonItemЗаказы = new DevExpress.XtraBars.BarButtonItem();
             this.barButtonItemДанныеКлиентов = new DevExpress.XtraBars.BarButtonItem();
             this.barStaticItemВремяТекущее = new DevExpress.XtraBars.BarStaticItem();
             this.barStaticItemDB = new DevExpress.XtraBars.BarStaticItem();
             this.barStaticItemServer = new DevExpress.XtraBars.BarStaticItem();
+            this.barButtonItemМаркиАвто = new DevExpress.XtraBars.BarButtonItem();
             this.ribbonPageАдминистрирование = new DevExpress.XtraBars.Ribbon.RibbonPage();
             this.ribbonPageGroupШтат = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.ribbonPageGroup2 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
@@ -71,19 +69,17 @@
             this.ribbonControl1.ExpandCollapseItem,
             this.ribbonControl1.SearchEditItem,
             this.barButtonItemСотрудники,
-            this.barButtonItemДолжности,
             this.skinDropDownButtonItem1,
-            this.barButtonItemАвтомобили,
-            this.barButtonItemУзлы,
-            this.barButtonItemПлоскиеСправочники,
+            this.barButtonItemСправочники,
             this.barButtonItemАвтоВПродаже,
             this.barButtonItemЗаказы,
             this.barButtonItemДанныеКлиентов,
             this.barStaticItemВремяТекущее,
             this.barStaticItemDB,
-            this.barStaticItemServer});
+            this.barStaticItemServer,
+            this.barButtonItemМаркиАвто});
             this.ribbonControl1.Location = new System.Drawing.Point(0, 0);
-            this.ribbonControl1.MaxItemId = 13;
+            this.ribbonControl1.MaxItemId = 14;
             this.ribbonControl1.Name = "ribbonControl1";
             this.ribbonControl1.PageHeaderItemLinks.Add(this.skinDropDownButtonItem1);
             this.ribbonControl1.Pages.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPage[] {
@@ -106,43 +102,19 @@
             | DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithoutText)));
             this.barButtonItemСотрудники.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItemСотрудники_ItemClick);
             // 
-            // barButtonItemДолжности
-            // 
-            this.barButtonItemДолжности.Caption = "Должности";
-            this.barButtonItemДолжности.Id = 2;
-            this.barButtonItemДолжности.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("barButtonItemДолжности.ImageOptions.Image")));
-            this.barButtonItemДолжности.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("barButtonItemДолжности.ImageOptions.LargeImage")));
-            this.barButtonItemДолжности.Name = "barButtonItemДолжности";
-            this.barButtonItemДолжности.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItemДолжности_ItemClick);
-            // 
             // skinDropDownButtonItem1
             // 
             this.skinDropDownButtonItem1.Id = 3;
             this.skinDropDownButtonItem1.Name = "skinDropDownButtonItem1";
             // 
-            // barButtonItemАвтомобили
+            // barButtonItemСправочники
             // 
-            this.barButtonItemАвтомобили.Caption = "Автомобили";
-            this.barButtonItemАвтомобили.Id = 4;
-            this.barButtonItemАвтомобили.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("barButtonItemАвтомобили.ImageOptions.Image")));
-            this.barButtonItemАвтомобили.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("barButtonItemАвтомобили.ImageOptions.LargeImage")));
-            this.barButtonItemАвтомобили.Name = "barButtonItemАвтомобили";
-            // 
-            // barButtonItemУзлы
-            // 
-            this.barButtonItemУзлы.Caption = "Узлы автомобиля";
-            this.barButtonItemУзлы.Id = 5;
-            this.barButtonItemУзлы.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("barButtonItemУзлы.ImageOptions.Image")));
-            this.barButtonItemУзлы.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("barButtonItemУзлы.ImageOptions.LargeImage")));
-            this.barButtonItemУзлы.Name = "barButtonItemУзлы";
-            // 
-            // barButtonItemПлоскиеСправочники
-            // 
-            this.barButtonItemПлоскиеСправочники.Caption = "Плоские справочники";
-            this.barButtonItemПлоскиеСправочники.Id = 6;
-            this.barButtonItemПлоскиеСправочники.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("barButtonItemПлоскиеСправочники.ImageOptions.Image")));
-            this.barButtonItemПлоскиеСправочники.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("barButtonItemПлоскиеСправочники.ImageOptions.LargeImage")));
-            this.barButtonItemПлоскиеСправочники.Name = "barButtonItemПлоскиеСправочники";
+            this.barButtonItemСправочники.Caption = "Справочники";
+            this.barButtonItemСправочники.Id = 6;
+            this.barButtonItemСправочники.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("barButtonItemСправочники.ImageOptions.Image")));
+            this.barButtonItemСправочники.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("barButtonItemСправочники.ImageOptions.LargeImage")));
+            this.barButtonItemСправочники.Name = "barButtonItemСправочники";
+            this.barButtonItemСправочники.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItemСправочники_ItemClick);
             // 
             // barButtonItemАвтоВПродаже
             // 
@@ -193,6 +165,14 @@
             this.barStaticItemServer.Name = "barStaticItemServer";
             this.barStaticItemServer.PaintStyle = DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph;
             // 
+            // barButtonItemМаркиАвто
+            // 
+            this.barButtonItemМаркиАвто.Caption = "Марки автомобилей";
+            this.barButtonItemМаркиАвто.Id = 13;
+            this.barButtonItemМаркиАвто.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("barButtonItemМаркиАвто.ImageOptions.Image")));
+            this.barButtonItemМаркиАвто.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("barButtonItemМаркиАвто.ImageOptions.LargeImage")));
+            this.barButtonItemМаркиАвто.Name = "barButtonItemМаркиАвто";
+            // 
             // ribbonPageАдминистрирование
             // 
             this.ribbonPageАдминистрирование.Groups.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPageGroup[] {
@@ -205,15 +185,13 @@
             // ribbonPageGroupШтат
             // 
             this.ribbonPageGroupШтат.ItemLinks.Add(this.barButtonItemСотрудники);
-            this.ribbonPageGroupШтат.ItemLinks.Add(this.barButtonItemДолжности);
             this.ribbonPageGroupШтат.Name = "ribbonPageGroupШтат";
             this.ribbonPageGroupШтат.Text = "Штат";
             // 
             // ribbonPageGroup2
             // 
-            this.ribbonPageGroup2.ItemLinks.Add(this.barButtonItemАвтомобили);
-            this.ribbonPageGroup2.ItemLinks.Add(this.barButtonItemУзлы);
-            this.ribbonPageGroup2.ItemLinks.Add(this.barButtonItemПлоскиеСправочники);
+            this.ribbonPageGroup2.ItemLinks.Add(this.barButtonItemСправочники);
+            this.ribbonPageGroup2.ItemLinks.Add(this.barButtonItemМаркиАвто);
             this.ribbonPageGroup2.Name = "ribbonPageGroup2";
             this.ribbonPageGroup2.Text = "Справочники";
             // 
@@ -278,6 +256,7 @@
             // 
             // frMainForm
             // 
+            this.AllowFormGlass = DevExpress.Utils.DefaultBoolean.False;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(980, 449);
@@ -309,11 +288,8 @@
         private DevExpress.XtraBars.Ribbon.RibbonStatusBar ribbonStatusBar1;
         private DevExpress.XtraBars.Ribbon.RibbonPage ribbonPage2;
         private DevExpress.XtraBars.BarButtonItem barButtonItemСотрудники;
-        private DevExpress.XtraBars.BarButtonItem barButtonItemДолжности;
     private DevExpress.XtraBars.SkinDropDownButtonItem skinDropDownButtonItem1;
-    private DevExpress.XtraBars.BarButtonItem barButtonItemАвтомобили;
-    private DevExpress.XtraBars.BarButtonItem barButtonItemУзлы;
-    private DevExpress.XtraBars.BarButtonItem barButtonItemПлоскиеСправочники;
+    private DevExpress.XtraBars.BarButtonItem barButtonItemСправочники;
     private DevExpress.XtraBars.Ribbon.RibbonPage ribbonPageГараж;
     private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroupНаПродаже;
     private DevExpress.XtraBars.BarButtonItem barButtonItemАвтоВПродаже;
@@ -327,4 +303,5 @@
     private System.Windows.Forms.Timer timer;
     private DevExpress.XtraBars.BarStaticItem barStaticItemServer;
     private DevExpress.XtraBars.BarStaticItem barStaticItemDB;
+    private DevExpress.XtraBars.BarButtonItem barButtonItemМаркиАвто;
 }

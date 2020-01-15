@@ -16,59 +16,15 @@ public class clsTabActivated
     // конструктор
     public clsTabActivated(/*BarButtonItem barButton,*/ XtraForm form, RibbonForm ribbonform, Dictionary<RibbonPageCategory, bool> PageCategorys = null)
     {
-        //this._barButton = barButton;
         this._form = form;
         this._ribbonform = ribbonform;
         this._pageCategorys = PageCategorys;
 
         _xtraTabbedMdiManager = XtraTabbedMdiManager.GetXtraTabbedMdiManager(_ribbonform);
-
-        //_barButton.ItemClick += new ItemClickEventHandler(barButtonItem_ItemClick);
         _xtraTabbedMdiManager.SelectedPageChanged += xtraTabbedMdiManager_SelectedPageChanged;
-        //_form.FormClosing += _Form_FormClosing;
-
-        //if (_ribbonform.MDIConstrain(_form))
-        //{
-        //    _form.MdiParent = _ribbonform;
-        //    _form.Focus();
-        //    return;
-        //}
         _form.MdiParent = _ribbonform;
         _form.Show();
     }
-
-    //private void ОбработчикКнопки()
-    //{
-    //    foreach (Form MDIchild in _ribbonform.MdiChildren)
-    //    {
-    //        if (MDIchild.Equals(_form))
-    //        {
-    //            MDIchild.MdiParent = _ribbonform;
-    //            MDIchild.Focus();
-    //            return;
-    //        }
-    //    }
-
-    //    _form.MdiParent = _ribbonform;
-    //    _form.Show();
-    //}
-
-    // обработчик кнопки для вызова формы
-    //private void barButtonItem_ItemClick(object sender, ItemClickEventArgs e)
-    //{       
-    //    foreach (Form MDIchild in _ribbonform.MdiChildren)
-    //    {
-    //        if (MDIchild.Equals(_form))
-    //        {
-    //            MDIchild.MdiParent = _ribbonform;
-    //            MDIchild.Focus();
-    //            return;
-    //        }
-    //    }
-
-    //    _form.MdiParent = _ribbonform;
-    //    _form.Show();
-    //}
 
     // событие переключения вкладок
     private void xtraTabbedMdiManager_SelectedPageChanged(object sender, EventArgs e)

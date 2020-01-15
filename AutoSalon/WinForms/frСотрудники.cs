@@ -1,54 +1,90 @@
 ﻿using DevExpress.Utils.Menu;
-using DevExpress.XtraBars;
-using DevExpress.XtraGrid.Columns;
-using DevExpress.XtraGrid.Menu;
+using DevExpress.XtraEditors;
 using DevExpress.XtraGrid.Views.Grid;
 using System;
-using System.Drawing;
+using System.Collections.Generic;
+using System.Windows.Forms;
+
 
 public partial class frСотрудники : DevExpress.XtraEditors.XtraForm
 {
-    public frСотрудники() { InitializeComponent(); }
+    public frСотрудники()
+    {
+        InitializeComponent();
+    }
 
     private void frСотрудники_Load(object sender, EventArgs e)
     {
-        gridControlСотрудники.DataSource = clsSql.ExecuteSP("dbo.ШтатСотрудники_SIUD", clsMisc.ASSqlFunction.ViewForm);
-        //gridViewСотрудники.НастроитьGridView(clsMisc.SqlFunction.)
-    }
-
-    private void gridViewСотрудники_PopupMenuShowing(object sender, DevExpress.XtraGrid.Views.Grid.PopupMenuShowingEventArgs e)
-    {
-        if (e.MenuType == GridMenuType.Row)
+        using (new DevExpress.Utils.WaitDialogForm("Идет загрузка ...", "Пожалуйста, подождите"))
         {
-            DXPopupMenu menu = e.Menu as DXPopupMenu;
-            menu.Items.Clear();
-                menu.Items.Add(new DXMenuItem ("Item 1"));
+            Обновить();
+            gridViewСотрудники.BestFitColumns();
+            gridViewСотрудники.ASНастроитьGridView(gridColumnVisible: "UIDСотрудника");
+            ASTimer timer = new ASTimer(gridViewСотрудники, 
+                                        new List<SimpleButton> { simpleButtonИзменить, simpleButtonУдалить }
+                                        ) { Enabled = true };
         }
     }
 
-    // Creates a menu item. 
-    DXMenuCheckItem CreateCheckItem(string caption, GridColumn column, Image image)
+    void Обновить(object value = null)
     {
-        DXMenuCheckItem item = new DXMenuCheckItem(caption,
-          !column.OptionsColumn.AllowMove, image, new EventHandler(OnCanMoveItemClick));
-        item.Tag = new MenuColumnInfo(column);
-        return item;
+        var dt = clsSql.ExecuteSP("dbo.ШтатСотрудники_SIUD", clsMisc.ASSqlFunction.ViewForm).dataTable;
+        gridViewСотрудники.ASОбновитьСохранитьВыделение(dt, "UIDСотрудника", value);       
     }
 
-    void OnCanMoveItemClick(object sender, EventArgs e)
+    private void simpleButtonОбновить_Click(object sender, EventArgs e) { Обновить(); }
+
+    private void gridViewСотрудники_PopupMenuShowing(object sender, PopupMenuShowingEventArgs e)
     {
-        DXMenuCheckItem item = sender as DXMenuCheckItem;
-        MenuColumnInfo info = item.Tag as MenuColumnInfo;
-        if (info == null) return;
-        info.Column.OptionsColumn.AllowMove = !item.Checked;
+        e.МенюДляAddEditDelete(new DXPopupMenu(), ДобавитьСотрудника, РедактироватьСотрудника, УдалитьСотрудника);
     }
 
-    class MenuColumnInfo
+#region Кнопки управления и контекстное меню  
+
+    void ДобавитьСотрудника(object sender, EventArgs e) 
     {
-        public MenuColumnInfo(GridColumn column)
+        using (var editСотрудник = new dlgEditСотрудник(gridViewСотрудники.GetFocusedRowCellDisplayText("UIDСотрудника").ToString(), clsMisc.ASSqlFunction.Insert))
         {
-            this.Column = column;
-        }
-        public GridColumn Column;
+            var result = editСотрудник.ShowDialog();
+            if (result == System.Windows.Forms.DialogResult.OK)
+            {
+                Обновить(editСотрудник.NewRecord);
+            }
+        }      
+
     }
+    private void simpleButtonДобавить_Click(object sender, EventArgs e) { ДобавитьСотрудника(sender, e); }
+
+    void РедактироватьСотрудника(object sender, EventArgs e)
+    {
+        using (var editСотрудник = new dlgEditСотрудник(gridViewСотрудники.GetFocusedRowCellDisplayText("UIDСотрудника").ToString(), clsMisc.ASSqlFunction.Update))
+        {
+            var result = editСотрудник.ShowDialog();
+            if (result == System.Windows.Forms.DialogResult.OK)
+            {
+                Обновить(editСотрудник.NewRecord);
+            }
+        }
+    }
+    private void simpleButtonИзменить_Click(object sender, EventArgs e) { РедактироватьСотрудника(sender, e); }
+
+    void УдалитьСотрудника(object sender, EventArgs e)
+    {
+        if (XtraMessageBox.Show("Вы уверены что хотите удалить сотрудника?", 
+                                Program.ProductName, 
+                                MessageBoxButtons.YesNo, 
+                                MessageBoxIcon.Question) == DialogResult.Yes)
+        {
+            clsSql.ExecuteSPNonQuery("dbo.ШтатСотрудники_SIUD",
+                clsMisc.ASSqlFunction.Delete, "@UIDСотрудника",
+                gridViewСотрудники.GetFocusedRowCellDisplayText("UIDСотрудника").ToString());
+                Обновить();
+        }
+    }
+    private void simpleButtonУдалить_Click(object sender, EventArgs e) { УдалитьСотрудника(sender, e); }
+
+ #endregion
+
+
 }
+

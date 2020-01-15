@@ -1,19 +1,8 @@
 ﻿using DevExpress.XtraEditors;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
-using static clsMisc;
 
-public static class clsExtensions
+public static partial class clsExtensions
 {
-    static public void ASНастроитьGridView(this DevExpress.XtraGrid.Views.Grid.GridView gridView)
-    {
-        
-    }
-
     /// <summary>
     //// Проверка содержит ли родительская форма MDI дочернюю форму 
     /// </summary>

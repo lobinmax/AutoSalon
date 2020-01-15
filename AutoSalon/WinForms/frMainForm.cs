@@ -7,7 +7,6 @@ public partial class frMainForm : DevExpress.XtraBars.Ribbon.RibbonForm
     {
         InitializeComponent();
         
-        //clsTabActivated cls2 = new clsTabActivated(barButtonItemДолжности, new XtraForm3(), this/*, new Dictionary<RibbonPageCategory, bool> { { ribbonPageCategory1, true } }*/);
         barStaticItemDB.Caption = Program.CurrentBase;
         barStaticItemServer.Caption = Program.CurrentServer;
 
@@ -32,9 +31,10 @@ public partial class frMainForm : DevExpress.XtraBars.Ribbon.RibbonForm
         } 
     }
 
-    private void barButtonItemДолжности_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+   
+    private void barButtonItemСправочники_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
     {
-        frДолжности frДолжности = new frДолжности();
+        frСправочники frДолжности = new frСправочники();
         if (this.ASMdiConstrain(frДолжности))
         {
             this.ASMdiChildFocus(frДолжности);

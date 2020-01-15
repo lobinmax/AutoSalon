@@ -8,6 +8,14 @@ using static clsMisc;
 
 public class clsSql
 {
+    public class QueryResponse
+    {
+        public object result;
+        public List <string> errors;
+        public bool? success;
+        public DataTable dataTable = new DataTable();
+    }
+
     private static SqlConnection conn;
 
     public static bool ConnectionToDase(string server, string db, string login, string pass)
@@ -84,18 +92,59 @@ public class clsSql
         }
     }
 
-    /// <summary>
-    /// Выполнение хранимой процедуры без параметров
-    /// </summary>
-    /// <param name="procedureName">Имя хранимой процедуры</param>
-    /// <returns>DataTable</returns>
-    public static DataTable ExecuteSP(string procedureName)
+    public static void ExecuteSPNonQuery(string procedureName, ASSqlFunction sqlFunction = ASSqlFunction.Null, params object[] parameters)
     {
         using (conn = GetSqlConnection())
         {
             SqlCommand command = new SqlCommand(procedureName, conn);
             SqlDataAdapter sqlDataAdapter = new SqlDataAdapter();
-            DataTable dataTable = new DataTable();
+
+            try
+            {
+                if (conn.State != ConnectionState.Open) { conn.Open(); }
+                command.CommandType = CommandType.StoredProcedure;
+
+                if ((parameters.Length % 2) != 0)
+                {
+                    throw new Exception("Ошибка программиста. Нехватка параметров в хранимой процедуре.");
+                }
+                // добавляем параметры
+                for (int i = 0; i < parameters.Length;)
+                {
+                    command.Parameters.AddWithValue(parameters[i].ToString(), parameters[i + 1]);
+                    i = i + 2;
+                }
+
+                if (sqlFunction != ASSqlFunction.Null)
+                {
+                    command.Parameters.AddWithValue("@Function", sqlFunction);
+                }
+
+                command.ExecuteNonQuery();
+            }
+
+            catch (Exception ex)
+            {
+                XtraMessageBox.Show($"{ex.Message}\nОшибка вызова: '{procedureName}'",
+                                    Program.ProductName,
+                                    MessageBoxButtons.OK,
+                                    MessageBoxIcon.Error);
+            }
+        }
+    }
+
+    /// <summary>
+    /// Выполнение хранимой процедуры без параметров. Заполняет dataTable
+    /// </summary>
+    /// <param name="procedureName">Имя хранимой процедуры</param>
+    /// <returns>DataTable</returns>
+    public static QueryResponse ExecuteSP(string procedureName)
+    {
+        var response = new QueryResponse() { success = true };
+        using (conn = GetSqlConnection())
+        {
+            SqlCommand command = new SqlCommand(procedureName, conn);
+            SqlDataAdapter sqlDataAdapter = new SqlDataAdapter();
 
             try
             {
@@ -103,8 +152,8 @@ public class clsSql
                 //command.ExecuteReader();
 
                 sqlDataAdapter.SelectCommand = command;
-                sqlDataAdapter.Fill(dataTable);
-                return dataTable;
+                sqlDataAdapter.Fill(response.dataTable);
+                return response;
             }
 
             catch (Exception ex)
@@ -113,24 +162,26 @@ public class clsSql
                                     Program.ProductName,
                                     MessageBoxButtons.OK,
                                     MessageBoxIcon.Error);
-                return null;
+                response.success = false;
+                // response.errors.Add(ex.StackTrace);
+                return response;
             }
         }
     }
 
     /// <summary>
-    /// Выполнение хранимой процедуры с параметрами
+    /// Выполнение хранимой процедуры с параметрами. Заполняет dataTable
     /// </summary>
     /// <param name="procedureName">Имя хранимой процедуры</param>
     /// <param name="parameters">Набор параметров @papmeter, значение</param>
     /// <returns>DataTable</returns>
-    public static DataTable ExecuteSP(string procedureName, params object[] parameters)
+    public static QueryResponse ExecuteSP(string procedureName, params object[] parameters)
     {
+        var response = new QueryResponse() { success = true };
         using (conn = GetSqlConnection())
         {
             SqlCommand command = new SqlCommand(procedureName, conn);
             SqlDataAdapter sqlDataAdapter = new SqlDataAdapter();
-            DataTable dataTable = new DataTable();
 
             try
             {
@@ -142,14 +193,15 @@ public class clsSql
                     throw new Exception("Ошибка программиста. Нехватка параметров в хранимой процедуре.");
                 }
                 // добавляем параметры
-                for (int i = 0; i < (parameters.Length / 2); i++)
+                for (int i = 0; i < (parameters.Length / 2);)
                 {
                     command.Parameters.AddWithValue(parameters[i].ToString(), parameters[i + 1]);
+                    i = i + 2;
                 }
 
                 sqlDataAdapter.SelectCommand = command;
-                sqlDataAdapter.Fill(dataTable);
-                return dataTable;
+                sqlDataAdapter.Fill(response.dataTable);
+                return response;
             }
 
             catch (Exception ex)
@@ -158,19 +210,26 @@ public class clsSql
                                     Program.ProductName,
                                     MessageBoxButtons.OK,
                                     MessageBoxIcon.Error);
-                return null;
+                response.success = false;
+                return response;
             }
         }
     }
 
-
-    public static DataTable ExecuteSP(string procedureName, ASSqlFunction sqlFunction, params object[] parameters)
+    /// /// <summary>
+    /// Выполнение хранимой процедуры с параметрами. Заполняет dataTable
+    /// </summary>
+    /// <param name="procedureName">Имя хранимой процедуры</param>
+    /// <param name="sqlFunction">Номер функции</param>
+    /// <param name="parameters">Набор параметров @papmeter, значение</param>
+    /// <returns>DataTable</returns>
+    public static QueryResponse ExecuteSP(string procedureName, ASSqlFunction sqlFunction = ASSqlFunction.Null, params object[] parameters)
     {
+        var response = new QueryResponse() { success = true };
         using (conn = GetSqlConnection())
         {
             SqlCommand command = new SqlCommand(procedureName, conn);
             SqlDataAdapter sqlDataAdapter = new SqlDataAdapter();
-            DataTable dataTable = new DataTable();
 
             try
             {
@@ -182,16 +241,20 @@ public class clsSql
                     throw new Exception("Ошибка программиста. Нехватка параметров в хранимой процедуре.");
                 }
                 // добавляем параметры
-                for (int i = 0; i < (parameters.Length / 2); i++)
+                for (int i = 0; i < parameters.Length; )
                 {
                     command.Parameters.AddWithValue(parameters[i].ToString(), parameters[i + 1]);
+                    i = i + 2;
                 }
-                command.Parameters.AddWithValue("@Function", sqlFunction);
 
+                if (sqlFunction != ASSqlFunction.Null)
+                {
+                    command.Parameters.AddWithValue("@Function", sqlFunction);
+                }
 
                 sqlDataAdapter.SelectCommand = command;
-                sqlDataAdapter.Fill(dataTable);
-                return dataTable;
+                sqlDataAdapter.Fill(response.dataTable);
+                return response;
             }
 
             catch (Exception ex)
@@ -200,23 +263,24 @@ public class clsSql
                                     Program.ProductName,
                                     MessageBoxButtons.OK,
                                     MessageBoxIcon.Error);
-                return null;
+                response.success = false;
+                return response;
             }
         }
     }
 
     /// <summary>
-    /// Выполнение скалярной пользовательской функции без параметров
+    /// Выполнение скалярной пользовательской функции без параметров. Заполняет result
     /// </summary>
     /// <param name="functionName"></param>
     /// <returns>object</returns>
     public static object ExecuteScalarFunction(string functionName)
     {
+        var response = new QueryResponse() { success = true };
         using (conn = GetSqlConnection())
         {
             SqlCommand command = new SqlCommand(functionName, conn);
             SqlDataAdapter sqlDataAdapter = new SqlDataAdapter();
-            DataTable dataTable = new DataTable();
 
             try
             {
@@ -224,12 +288,8 @@ public class clsSql
                 command.CommandType = CommandType.Text;
                 command.CommandText = $"SELECT {functionName}()";
 
-                var result = command.ExecuteScalar();
-                if (result == DBNull.Value)
-                    { return null; }
-                else
-                    { return result; }
-
+                response.result = clsMisc.DBout(command.ExecuteScalar());
+                return response;
             }
 
             catch (Exception ex)
@@ -238,19 +298,21 @@ public class clsSql
                                     Program.ProductName,
                                     MessageBoxButtons.OK,
                                     MessageBoxIcon.Error);
+                response.success = false;
                 return null;
             }
         }
     }
 
     /// <summary>
-    /// Выполнение скалярной пользовательской функции c параметрами
+    /// Выполнение скалярной пользовательской функции c параметрами. Заполняет result
     /// </summary>
     /// <param name="functionName"></param>
     /// <param name="parameters">Массив значений параметров</param>
     /// <returns>object</returns>
-    public static object ExecuteScalarFunction(string functionName, params object[] parameters)
+    public static QueryResponse ExecuteScalarFunction(string functionName, params object[] parameters)
     {
+        var response = new QueryResponse() { success = true };
         using (conn = GetSqlConnection())
         {
             SqlCommand command = new SqlCommand(functionName, conn);
@@ -258,7 +320,7 @@ public class clsSql
             DataTable dataTable = new DataTable();
             string parametersString = "";
             string spliter = "";
-
+            var result = new object();
             for (int i = 0; i < parameters.Length; i++)
             {
                 parametersString += (spliter + InOutValue.IsNumOrStringForDB(parameters[i].ToString()));
@@ -271,11 +333,8 @@ public class clsSql
                 command.CommandType = CommandType.Text;
                 command.CommandText = $"SELECT {functionName}({parametersString})";
 
-                var result = command.ExecuteScalar();
-                if (result == DBNull.Value)
-                    { return null; }
-                else
-                    { return result; }
+                response.result = clsMisc.DBout(command.ExecuteScalar());
+                return response;
             }
 
             catch (Exception ex)
@@ -284,7 +343,8 @@ public class clsSql
                                     Program.ProductName,
                                     MessageBoxButtons.OK,
                                     MessageBoxIcon.Error);
-                return null;
+                response.success = false;
+                return response;
             }
         }
     }
