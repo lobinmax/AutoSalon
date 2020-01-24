@@ -15,7 +15,7 @@ public partial class frСотрудники : DevExpress.XtraEditors.XtraForm
 
     private void frСотрудники_Load(object sender, EventArgs e)
     {
-        using (new DevExpress.Utils.WaitDialogForm("Идет загрузка ...", "Пожалуйста, подождите"))
+        using (var d = new DevExpress.Utils.WaitDialogForm("Идет загрузка ...", "Пожалуйста, подождите"))
         {
             Обновить();
             gridViewСотрудники.BestFitColumns();
@@ -51,8 +51,8 @@ public partial class frСотрудники : DevExpress.XtraEditors.XtraForm
                 Обновить(editСотрудник.NewRecord);
             }
         }      
-
     }
+
     private void simpleButtonДобавить_Click(object sender, EventArgs e) { ДобавитьСотрудника(sender, e); }
 
     void РедактироватьСотрудника(object sender, EventArgs e)
@@ -70,6 +70,7 @@ public partial class frСотрудники : DevExpress.XtraEditors.XtraForm
 
     void УдалитьСотрудника(object sender, EventArgs e)
     {
+        var selectRow = gridViewСотрудники.FocusedRowHandle;
         if (XtraMessageBox.Show("Вы уверены что хотите удалить сотрудника?", 
                                 Program.ProductName, 
                                 MessageBoxButtons.YesNo, 
@@ -79,6 +80,7 @@ public partial class frСотрудники : DevExpress.XtraEditors.XtraForm
                 clsMisc.ASSqlFunction.Delete, "@UIDСотрудника",
                 gridViewСотрудники.GetFocusedRowCellDisplayText("UIDСотрудника").ToString());
                 Обновить();
+                gridViewСотрудники.FocusedRowHandle = selectRow;
         }
     }
     private void simpleButtonУдалить_Click(object sender, EventArgs e) { УдалитьСотрудника(sender, e); }

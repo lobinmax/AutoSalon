@@ -1,8 +1,5 @@
 ﻿using DevExpress.XtraEditors;
-using DevExpress.XtraSplashScreen;
 using System;
-using System.Collections.Generic;
-using System.Text.RegularExpressions;
 using System.Windows.Forms;
 
 public partial class frLogin : DevExpress.XtraEditors.XtraForm
@@ -13,7 +10,7 @@ public partial class frLogin : DevExpress.XtraEditors.XtraForm
 
     private void simpleButton1_Click(object sender, EventArgs e)
     {
-        using(new DevExpress.Utils.WaitDialogForm("Подключение к базе данных ...", "Пожалуйста, пожождите"))
+        using (var d = new DevExpress.Utils.WaitDialogForm("Подключение к базе данных ...", "Пожалуйста, подождите!"))
         {
             if (clsSql.ConnectionToDase(
                             TextEdit_server.EditValue.ToString(),
@@ -22,6 +19,7 @@ public partial class frLogin : DevExpress.XtraEditors.XtraForm
                             TextEdit_Pass.EditValue.ToString()))
             {
                 // проверяем регистрацию в базе
+                d.Caption = "Проверка регистрации ...";
                 var dt = clsSql.ExecuteSP("dbo.ШтатСотрудники_SIUD", "@Логин", TextEdit_Login.EditValue.ToString()).dataTable;
                 if (dt.Rows.Count == 0 && TextEdit_Login.EditValue.ToString() != "sa")
                 {
@@ -36,6 +34,7 @@ public partial class frLogin : DevExpress.XtraEditors.XtraForm
 
                 // проверяем настройку базы
                 //bool efff;
+                d.Caption = "Проверка настройки базы ...";
                 var sett = clsSql.ExecuteScalarFunction("dbo.ЯдроПолучитьКонстанту", "База данных настроена");
                 if (!(Convert.ToBoolean(sett.result)) || sett is null)
                 {

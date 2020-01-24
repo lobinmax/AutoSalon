@@ -1,14 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Text;
-using System.Linq;
-using System.Threading.Tasks;
-using System.Windows.Forms;
-using DevExpress.XtraEditors;
-using DevExpress.XtraGrid.Views.Grid;
+using DevExpress.XtraBars.Navigation;
 
 public partial class frСправочники : DevExpress.XtraEditors.XtraForm
 {
@@ -19,69 +10,97 @@ public partial class frСправочники : DevExpress.XtraEditors.XtraForm
 
     private void frСправочники_Load(object sender, EventArgs e)
     {
-        var КПП = new NavPane(simpleButtonОбновить, gridViewТипыКпп, "UIDСотрудника", "dbo.ШтатСотрудники_SIUD");
-        Console.WriteLine();
-        
+        using (var d = new DevExpress.Utils.WaitDialogForm("Идет загрузка ...", "Пожалуйста, подождите"))
+        {
+            navigationPane_SelectedPageChanged(navigationPane, new SelectedPageChangedEventArgs(navigationPane.SelectedPage, navigationPane.SelectedPage));
+        }
     }
 
-    private void gridControlСотрудники_Click(object sender, EventArgs e)
+    private void navigationPane_StateChanged(object sender, DevExpress.XtraBars.Navigation.StateChangedEventArgs e)
     {
-
+        if(navigationPane.State != DevExpress.XtraBars.Navigation.NavigationPaneState.Default)
+        {
+            navigationPane.State = e.OldState;
+        }
     }
-}
 
-public interface INavPane
+    private void navigationPane_SelectedPageChanged(object sender, SelectedPageChangedEventArgs e)
+    {
+        var page = (NavigationPage) e.Page;
+        switch (page.Name)
+        {
+            case "navigationPageТипыКПП": 
+                using (var КПП = new clsDlgEditSimple(simpleButtonОбновить,
+                                        simpleButtonДобавить,
+                                        simpleButtonИзменить,
+                                        simpleButtonУдалить,
+                                        gridViewТипыКпп,
+                                        "IdТипКПП",
+                                        "dbo.АвтоТипКПП_SIUD",
+                                        "dlgEditТипКПП", () => gridViewТипыКпп.ASНастроитьGridView(true, "IdТипКПП"))) 
 {
-    void Обновить(object Idvalue = null);
-    //event EventHandler ОбновитьClick;
-    void Добавить();
-    void Изменить(object id);
-    void Удалить(object id);
-    
+                } ;
+                break;
+            case "navigationPageТипыКузова":
+                using (var ТипКузова = new clsDlgEditSimple(simpleButtonОбновить,
+                                        simpleButtonДобавить,
+                                        simpleButtonИзменить,
+                                        simpleButtonУдалить,
+                                        gridViewТипКузова,
+                                        "IdТипКузова",
+                                        "dbo.АвтоТипКузова_SIUD",
+                                        "dlgEditТипКузова", () => gridViewТипКузова.ASНастроитьGridView(true, "IdТипКузова")))
+                {
+                }; 
+                break;
+            case "navigationPageТипыПривода":
+                using (var ТипПривода = new clsDlgEditSimple(simpleButtonОбновить,
+                                        simpleButtonДобавить,
+                                        simpleButtonИзменить,
+                                        simpleButtonУдалить,
+                                        gridViewТипыПривода,
+                                        "IdТипПривода",
+                                        "dbo.АвтоТипПривода_SIUD",
+                                        "dlgEditТипПривода", () => gridViewТипыПривода.ASНастроитьGridView(true, "IdТипПривода")))
+                {
+                };
+                break;
+            case "navigationPageТипыТоплива":
+                using (var ТипТоплива = new clsDlgEditSimple(simpleButtonОбновить,
+                                        simpleButtonДобавить,
+                                        simpleButtonИзменить,
+                                        simpleButtonУдалить,
+                                        gridViewТипыТоплива,
+                                        "IdТипТоплива",
+                                        "dbo.АвтоТипТоплива_SIUD",
+                                        "dlgEditТипТоплива", () => gridViewТипыТоплива.ASНастроитьGridView(true, "IdТипТоплива")))
+                break;
+            case "navigationPageЗаказыСтатусы":
+                using (var СтатусЗаказа = new clsDlgEditSimple(simpleButtonОбновить,
+                                          simpleButtonДобавить,
+                                          simpleButtonИзменить,
+                                          simpleButtonУдалить,
+                                          gridViewСтатусыЗаказа,
+                                          "IdСтатусЗаказа",
+                                          "dbo.ТипыСтатусовЗаказа_SIUD",
+                                          "dlgEditТипыСтатусовЗаказа", () => gridViewСтатусыЗаказа.ASНастроитьGridView(true, "IdСтатусЗаказа")))
+                break;
+            case "navigationPageСтраны":
+                using (var Страны = new clsDlgEditSimple(simpleButtonОбновить,
+                                    simpleButtonДобавить,
+                                    simpleButtonИзменить,
+                                    simpleButtonУдалить,
+                                    gridViewСтраны,
+                                    "UIDСтраны",
+                                    "dbo.Страны_SIUD",
+                                    "dlgEditСтраны", () => gridViewСтраны.ASНастроитьGridView(true, "UIDСтраны")))
+                break;
+
+        }
+    }
 }
 
-public class NavPane : INavPane
-{
-    public string procedureName { get; set; }
-    public GridView gridView { get; set; }
-    public string IdFieldName { get; set; }
-    public SimpleButton btnОбновить { get; set; }
 
-    public NavPane(SimpleButton btnОбновить, GridView gridView, string IdFieldName, string procedureName)
-    {
-        this.btnОбновить = btnОбновить;
-        this.gridView = gridView;
-        this.IdFieldName = IdFieldName;
-        this.procedureName = procedureName;
 
-        this.Обновить();
-        this.gridView.BestFitColumns();
-        btnОбновить.Click += ОбновитьClick;
-    }
 
-    public void Добавить()
-    {
-        throw new NotImplementedException();
-    }
 
-    public void Изменить(object id)
-    {
-        throw new NotImplementedException();
-    }
-
-    public void Обновить(object Idvalue = null)
-    {
-        var dt = clsSql.ExecuteSP(this.procedureName, clsMisc.ASSqlFunction.ViewForm).dataTable;
-        gridView.ASОбновитьСохранитьВыделение(dt, this.IdFieldName, Idvalue);
-    }
-
-    public void ОбновитьClick(object sender, EventArgs e)
-    {
-        Обновить();
-    }
-
-    public void Удалить(object id)
-    {
-        throw new NotImplementedException();
-    }
-}

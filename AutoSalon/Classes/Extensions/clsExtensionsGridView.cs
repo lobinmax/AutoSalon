@@ -57,20 +57,23 @@ public static partial class clsExtensions
                                                     object value = null)
     {
         object ivalue = value;
-        if (gridView.DataSource != null /*&& value != null */&& fieldName != null)
+        if (gridView.DataSource != null && fieldName != null)
         {
             if (gridView.RowCount != 0)
             {
-                var dr = gridView.GetFocusedDataRow();
-                ivalue = dr[fieldName];
+                if(value == null)
+                {
+                    var dr = gridView.GetFocusedDataRow();
+                    ivalue = dr[fieldName];
+                }
             }
         }
         gridView.GridControl.DataSource = datatable;
 
         if (ivalue != null)
         {
-            
-            var memObject = Convert.ChangeType(ivalue, gridView.Columns.ColumnByFieldName(fieldName).ColumnType);
+            Type colType = gridView.Columns.ColumnByFieldName(fieldName).ColumnType;
+            var memObject = Convert.ChangeType(ivalue, colType);
             gridView.ASВыделитьСтрокуПоID(fieldName, memObject);
         }
     }
@@ -79,4 +82,5 @@ public static partial class clsExtensions
     {
         return DataTable.Rows.Cast<DataRow>();
     }
+     
 }

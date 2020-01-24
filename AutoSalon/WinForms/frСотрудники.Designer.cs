@@ -49,6 +49,10 @@
             // 
             // gridViewСотрудники
             // 
+            this.gridViewСотрудники.Appearance.HeaderPanel.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold);
+            this.gridViewСотрудники.Appearance.HeaderPanel.Options.UseFont = true;
+            this.gridViewСотрудники.Appearance.HeaderPanel.Options.UseTextOptions = true;
+            this.gridViewСотрудники.Appearance.HeaderPanel.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
             this.gridViewСотрудники.FocusRectStyle = DevExpress.XtraGrid.Views.Grid.DrawFocusRectStyle.RowFullFocus;
             this.gridViewСотрудники.GridControl = this.gridControlСотрудники;
             this.gridViewСотрудники.Name = "gridViewСотрудники";

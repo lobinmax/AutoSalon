@@ -53,6 +53,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="Classes\clsConnection.cs" />
+    <Compile Include="Classes\clsDlgEditSimple.cs" />
     <Compile Include="Classes\Extensions\clsExtensionsGridView.cs" />
     <Compile Include="Classes\clsMisc.cs" />
     <Compile Include="Classes\clsTabActivated.cs" />
@@ -70,6 +71,42 @@
     </Compile>
     <Compile Include="WinDialogs\dlgEditСотрудник.Designer.cs">
       <DependentUpon>dlgEditСотрудник.cs</DependentUpon>
+    </Compile>
+    <Compile Include="WinDialogs\dlgEditСтраны.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="WinDialogs\dlgEditСтраны.Designer.cs">
+      <DependentUpon>dlgEditСтраны.cs</DependentUpon>
+    </Compile>
+    <Compile Include="WinDialogs\dlgEditТипКПП.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="WinDialogs\dlgEditТипКПП.Designer.cs">
+      <DependentUpon>dlgEditТипКПП.cs</DependentUpon>
+    </Compile>
+    <Compile Include="WinDialogs\dlgEditТипыСтатусовЗаказа.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="WinDialogs\dlgEditТипыСтатусовЗаказа.Designer.cs">
+      <DependentUpon>dlgEditТипыСтатусовЗаказа.cs</DependentUpon>
+    </Compile>
+    <Compile Include="WinDialogs\dlgEditТипТоплива.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="WinDialogs\dlgEditТипТоплива.Designer.cs">
+      <DependentUpon>dlgEditТипТоплива.cs</DependentUpon>
+    </Compile>
+    <Compile Include="WinDialogs\dlgEditТипПривода.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="WinDialogs\dlgEditТипПривода.Designer.cs">
+      <DependentUpon>dlgEditТипПривода.cs</DependentUpon>
+    </Compile>
+    <Compile Include="WinDialogs\dlgEditТипКузова.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="WinDialogs\dlgEditТипКузова.Designer.cs">
+      <DependentUpon>dlgEditТипКузова.cs</DependentUpon>
     </Compile>
     <Compile Include="WinForms\frLogin.cs">
       <SubType>Form</SubType>
@@ -117,6 +154,24 @@
     </EmbeddedResource>
     <EmbeddedResource Include="WinDialogs\dlgEditСотрудник.resx">
       <DependentUpon>dlgEditСотрудник.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="WinDialogs\dlgEditСтраны.resx">
+      <DependentUpon>dlgEditСтраны.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="WinDialogs\dlgEditТипКПП.resx">
+      <DependentUpon>dlgEditТипКПП.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="WinDialogs\dlgEditТипыСтатусовЗаказа.resx">
+      <DependentUpon>dlgEditТипыСтатусовЗаказа.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="WinDialogs\dlgEditТипТоплива.resx">
+      <DependentUpon>dlgEditТипТоплива.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="WinDialogs\dlgEditТипПривода.resx">
+      <DependentUpon>dlgEditТипПривода.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="WinDialogs\dlgEditТипКузова.resx">
+      <DependentUpon>dlgEditТипКузова.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="WinForms\frLogin.resx">
       <DependentUpon>frLogin.cs</DependentUpon>
