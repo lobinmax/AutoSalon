@@ -8,39 +8,20 @@ using System.Windows.Forms;
 
 public class clsTabActivated
 {
-    private BarButtonItem _barButton;                               // Кнопка вызова
     private XtraForm _form;                                         // форма вызова
     private RibbonForm _ribbonform;                                 // форма контейнер
     private Dictionary<RibbonPageCategory, bool> _pageCategorys;    // коллекция доп вкладок
     private XtraTabbedMdiManager _xtraTabbedMdiManager;             // менеджер вкладок
 
     // конструктор
-    public clsTabActivated(BarButtonItem barButton, XtraForm form, RibbonForm ribbonform, Dictionary<RibbonPageCategory, bool> PageCategorys = null)
+    public clsTabActivated(/*BarButtonItem barButton,*/ XtraForm form, RibbonForm ribbonform, Dictionary<RibbonPageCategory, bool> PageCategorys = null)
     {
-        this._barButton = barButton;
         this._form = form;
         this._ribbonform = ribbonform;
         this._pageCategorys = PageCategorys;
 
         _xtraTabbedMdiManager = XtraTabbedMdiManager.GetXtraTabbedMdiManager(_ribbonform);
-
-        _barButton.ItemClick += new ItemClickEventHandler(barButtonItem_ItemClick);
         _xtraTabbedMdiManager.SelectedPageChanged += xtraTabbedMdiManager_SelectedPageChanged;
-    }
-
-    // обработчик кнопки для вызова формы
-    private void barButtonItem_ItemClick(object sender, ItemClickEventArgs e)
-    {       
-        foreach (Form MDIchild in _ribbonform.MdiChildren)
-        {
-            if (MDIchild.Equals(_form))
-            {
-                MDIchild.MdiParent = _ribbonform;
-                MDIchild.Focus();
-                return;
-            }
-        }
-
         _form.MdiParent = _ribbonform;
         _form.Show();
     }
