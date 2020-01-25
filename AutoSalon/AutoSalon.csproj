@@ -132,12 +132,6 @@
     <Compile Include="WinForms\frСправочники.Designer.cs">
       <DependentUpon>frСправочники.cs</DependentUpon>
     </Compile>
-    <Compile Include="WinForms\WaitForm1.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="WinForms\WaitForm1.Designer.cs">
-      <DependentUpon>WaitForm1.cs</DependentUpon>
-    </Compile>
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
@@ -184,9 +178,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="WinForms\frСправочники.resx">
       <DependentUpon>frСправочники.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="WinForms\WaitForm1.resx">
-      <DependentUpon>WaitForm1.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
