@@ -16,7 +16,7 @@ public partial class dlgEditТипПривода : DevExpress.XtraEditors.XtraFo
 
     public dlgEditТипПривода() { InitializeComponent(); }
 
-    private void dlgEditТипКПП_Load(object sender, EventArgs e)
+    private void dlgEditТипПривода_Load(object sender, EventArgs e)
     {
         var dicTag = (Dictionary<string, clsMisc.ASSqlFunction>)this.Tag;
         var keyValue = dicTag.SingleOrDefault();

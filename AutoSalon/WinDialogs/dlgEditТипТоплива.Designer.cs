@@ -84,7 +84,7 @@
             this.Controls.Add(this.textEditНаименование);
             this.Name = "dlgEditТипКузова";
             this.Text = "XtraForm2";
-            this.Load += new System.EventHandler(this.dlgEditТипКПП_Load);
+            this.Load += new System.EventHandler(this.dlgEditТипТоплива_Load);
             ((System.ComponentModel.ISupportInitialize)(this.textEditНаименование.Properties)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

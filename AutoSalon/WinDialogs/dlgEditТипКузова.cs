@@ -19,7 +19,7 @@ public partial class dlgEditТипКузова : DevExpress.XtraEditors.XtraForm
         InitializeComponent();
     }
 
-    private void dlgEditТипКПП_Load(object sender, EventArgs e)
+    private void dlgEditТипКузова_Load(object sender, EventArgs e)
     {
         var dicTag = (Dictionary<string, clsMisc.ASSqlFunction>)this.Tag;
         var keyValue = dicTag.SingleOrDefault();

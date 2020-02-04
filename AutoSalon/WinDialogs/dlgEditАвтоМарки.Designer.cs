@@ -1,4 +1,4 @@
-﻿partial class dlgEditСтраны
+﻿partial class dlgEditАвтоМарки
 {
     /// <summary>
     /// Required designer variable.
@@ -31,9 +31,9 @@
             this.simpleButtonОтменить = new DevExpress.XtraEditors.SimpleButton();
             this.simpleButtonСохранить = new DevExpress.XtraEditors.SimpleButton();
             this.labelControl2 = new DevExpress.XtraEditors.LabelControl();
-            this.textEditНаименованиеСокр = new DevExpress.XtraEditors.TextEdit();
+            this.LookUpEditСтраны = new DevExpress.XtraEditors.LookUpEdit();
             ((System.ComponentModel.ISupportInitialize)(this.textEditНаименование.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.textEditНаименованиеСокр.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.LookUpEditСтраны.Properties)).BeginInit();
             this.SuspendLayout();
             // 
             // textEditНаименование
@@ -79,37 +79,45 @@
             // 
             this.labelControl2.Location = new System.Drawing.Point(12, 68);
             this.labelControl2.Name = "labelControl2";
-            this.labelControl2.Size = new System.Drawing.Size(107, 13);
+            this.labelControl2.Size = new System.Drawing.Size(41, 13);
             this.labelControl2.TabIndex = 21;
-            this.labelControl2.Text = "Наименование сокр.:";
+            this.labelControl2.Text = "Страна:";
             // 
-            // textEditНаименованиеСокр
+            // LookUpEditСтраны
             // 
-            this.textEditНаименованиеСокр.Location = new System.Drawing.Point(12, 87);
-            this.textEditНаименованиеСокр.Name = "textEditНаименованиеСокр";
-            this.textEditНаименованиеСокр.Size = new System.Drawing.Size(286, 20);
-            this.textEditНаименованиеСокр.TabIndex = 20;
+            this.LookUpEditСтраны.Location = new System.Drawing.Point(12, 87);
+            this.LookUpEditСтраны.Name = "LookUpEditСтраны";
+            this.LookUpEditСтраны.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.LookUpEditСтраны.Properties.DisplayMember = "Наименование";
+            this.LookUpEditСтраны.Properties.NullText = "";
+            this.LookUpEditСтраны.Properties.PopupWidthMode = DevExpress.XtraEditors.PopupWidthMode.UseEditorWidth;
+            this.LookUpEditСтраны.Properties.ShowHeader = false;
+            this.LookUpEditСтраны.Properties.ShowLines = false;
+            this.LookUpEditСтраны.Properties.ValueMember = "UIDСтраны";
+            this.LookUpEditСтраны.Size = new System.Drawing.Size(286, 20);
+            this.LookUpEditСтраны.TabIndex = 20;
             // 
-            // dlgEditТипКПП
+            // dlgEditАвтоМарки
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(314, 170);
             this.Controls.Add(this.labelControl2);
-            this.Controls.Add(this.textEditНаименованиеСокр);
             this.Controls.Add(this.simpleButtonОтменить);
             this.Controls.Add(this.simpleButtonСохранить);
             this.Controls.Add(this.labelControl1);
             this.Controls.Add(this.textEditНаименование);
+            this.Controls.Add(this.LookUpEditСтраны);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.MaximizeBox = false;
             this.MinimizeBox = false;
-            this.Name = "dlgEditТипКПП";
+            this.Name = "dlgEditАвтоМарки";
             this.ShowInTaskbar = false;
             this.Text = "XtraForm1";
-            this.Load += new System.EventHandler(this.dlgEditСтраны_Load);
+            this.Load += new System.EventHandler(this.dlgEditАвтоМарки_Load);
             ((System.ComponentModel.ISupportInitialize)(this.textEditНаименование.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.textEditНаименованиеСокр.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.LookUpEditСтраны.Properties)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -121,5 +129,5 @@
     private DevExpress.XtraEditors.SimpleButton simpleButtonОтменить;
     private DevExpress.XtraEditors.SimpleButton simpleButtonСохранить;
     private DevExpress.XtraEditors.LabelControl labelControl2;
-    private DevExpress.XtraEditors.TextEdit textEditНаименованиеСокр;
+    private DevExpress.XtraEditors.LookUpEdit LookUpEditСтраны;
 }

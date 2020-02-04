@@ -66,11 +66,29 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <Compile Include="WinDialogs\dlgEditАвтоПоколения.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="WinDialogs\dlgEditАвтоПоколения.Designer.cs">
+      <DependentUpon>dlgEditАвтоПоколения.cs</DependentUpon>
+    </Compile>
+    <Compile Include="WinDialogs\dlgEditАвтоМодели.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="WinDialogs\dlgEditАвтоМодели.Designer.cs">
+      <DependentUpon>dlgEditАвтоМодели.cs</DependentUpon>
+    </Compile>
     <Compile Include="WinDialogs\dlgEditСотрудник.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="WinDialogs\dlgEditСотрудник.Designer.cs">
       <DependentUpon>dlgEditСотрудник.cs</DependentUpon>
+    </Compile>
+    <Compile Include="WinDialogs\dlgEditАвтоМарки.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="WinDialogs\dlgEditАвтоМарки.Designer.cs">
+      <DependentUpon>dlgEditАвтоМарки.cs</DependentUpon>
     </Compile>
     <Compile Include="WinDialogs\dlgEditСтраны.cs">
       <SubType>Form</SubType>
@@ -120,6 +138,12 @@
     <Compile Include="WinForms\frMainForm.Designer.cs">
       <DependentUpon>frMainForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="WinForms\frМаркиАвто.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="WinForms\frМаркиАвто.Designer.cs">
+      <DependentUpon>frМаркиАвто.cs</DependentUpon>
+    </Compile>
     <Compile Include="WinForms\frСотрудники.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -146,8 +170,17 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <EmbeddedResource Include="WinDialogs\dlgEditАвтоПоколения.resx">
+      <DependentUpon>dlgEditАвтоПоколения.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="WinDialogs\dlgEditАвтоМодели.resx">
+      <DependentUpon>dlgEditАвтоМодели.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="WinDialogs\dlgEditСотрудник.resx">
       <DependentUpon>dlgEditСотрудник.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="WinDialogs\dlgEditАвтоМарки.resx">
+      <DependentUpon>dlgEditАвтоМарки.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="WinDialogs\dlgEditСтраны.resx">
       <DependentUpon>dlgEditСтраны.cs</DependentUpon>
@@ -172,6 +205,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="WinForms\frMainForm.resx">
       <DependentUpon>frMainForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="WinForms\frМаркиАвто.resx">
+      <DependentUpon>frМаркиАвто.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="WinForms\frСотрудники.resx">
       <DependentUpon>frСотрудники.cs</DependentUpon>

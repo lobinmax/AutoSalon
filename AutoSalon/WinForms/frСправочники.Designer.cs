@@ -35,24 +35,24 @@
             this.gridControlТипыКПП = new DevExpress.XtraGrid.GridControl();
             this.gridViewТипыКпп = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.navigationPageТипыПривода = new DevExpress.XtraBars.Navigation.NavigationPage();
-            this.navigationPageТипыТоплива = new DevExpress.XtraBars.Navigation.NavigationPage();
-            this.navigationPageЗаказыСтатусы = new DevExpress.XtraBars.Navigation.NavigationPage();
-            this.navigationPageСтраны = new DevExpress.XtraBars.Navigation.NavigationPage();
-            this.panelControl1 = new DevExpress.XtraEditors.PanelControl();
-            this.panelControl2 = new DevExpress.XtraEditors.PanelControl();
-            this.simpleButtonУдалить = new DevExpress.XtraEditors.SimpleButton();
-            this.simpleButtonОбновить = new DevExpress.XtraEditors.SimpleButton();
-            this.simpleButtonДобавить = new DevExpress.XtraEditors.SimpleButton();
-            this.separatorControl1 = new DevExpress.XtraEditors.SeparatorControl();
-            this.simpleButtonИзменить = new DevExpress.XtraEditors.SimpleButton();
             this.gridControlТипыПривода = new DevExpress.XtraGrid.GridControl();
             this.gridViewТипыПривода = new DevExpress.XtraGrid.Views.Grid.GridView();
+            this.navigationPageТипыТоплива = new DevExpress.XtraBars.Navigation.NavigationPage();
             this.gridControlТипыТоплива = new DevExpress.XtraGrid.GridControl();
             this.gridViewТипыТоплива = new DevExpress.XtraGrid.Views.Grid.GridView();
+            this.navigationPageЗаказыСтатусы = new DevExpress.XtraBars.Navigation.NavigationPage();
             this.gridControlСтатусыЗаказа = new DevExpress.XtraGrid.GridControl();
             this.gridViewСтатусыЗаказа = new DevExpress.XtraGrid.Views.Grid.GridView();
+            this.navigationPageСтраны = new DevExpress.XtraBars.Navigation.NavigationPage();
             this.gridControlСтраны = new DevExpress.XtraGrid.GridControl();
             this.gridViewСтраны = new DevExpress.XtraGrid.Views.Grid.GridView();
+            this.panelControl2 = new DevExpress.XtraEditors.PanelControl();
+            this.simpleButtonИзменить = new DevExpress.XtraEditors.SimpleButton();
+            this.separatorControl1 = new DevExpress.XtraEditors.SeparatorControl();
+            this.simpleButtonДобавить = new DevExpress.XtraEditors.SimpleButton();
+            this.simpleButtonОбновить = new DevExpress.XtraEditors.SimpleButton();
+            this.simpleButtonУдалить = new DevExpress.XtraEditors.SimpleButton();
+            this.panelControl1 = new DevExpress.XtraEditors.PanelControl();
             ((System.ComponentModel.ISupportInitialize)(this.navigationPane)).BeginInit();
             this.navigationPane.SuspendLayout();
             this.navigationPageТипыКузова.SuspendLayout();
@@ -62,22 +62,22 @@
             ((System.ComponentModel.ISupportInitialize)(this.gridControlТипыКПП)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridViewТипыКпп)).BeginInit();
             this.navigationPageТипыПривода.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.gridControlТипыПривода)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridViewТипыПривода)).BeginInit();
             this.navigationPageТипыТоплива.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.gridControlТипыТоплива)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridViewТипыТоплива)).BeginInit();
             this.navigationPageЗаказыСтатусы.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.gridControlСтатусыЗаказа)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridViewСтатусыЗаказа)).BeginInit();
             this.navigationPageСтраны.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).BeginInit();
-            this.panelControl1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.gridControlСтраны)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridViewСтраны)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl2)).BeginInit();
             this.panelControl2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.separatorControl1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.gridControlТипыПривода)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.gridViewТипыПривода)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.gridControlТипыТоплива)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.gridViewТипыТоплива)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.gridControlСтатусыЗаказа)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.gridViewСтатусыЗаказа)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.gridControlСтраны)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.gridViewСтраны)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).BeginInit();
+            this.panelControl1.SuspendLayout();
             this.SuspendLayout();
             // 
             // navigationPane
@@ -190,101 +190,6 @@
             this.navigationPageТипыПривода.Name = "navigationPageТипыПривода";
             this.navigationPageТипыПривода.Size = new System.Drawing.Size(863, 393);
             // 
-            // navigationPageТипыТоплива
-            // 
-            this.navigationPageТипыТоплива.Caption = "Типы топлива";
-            this.navigationPageТипыТоплива.Controls.Add(this.gridControlТипыТоплива);
-            this.navigationPageТипыТоплива.ImageOptions.Image = global::AutoSalon.Properties.Resources.Driving_16x16;
-            this.navigationPageТипыТоплива.Name = "navigationPageТипыТоплива";
-            this.navigationPageТипыТоплива.Size = new System.Drawing.Size(863, 393);
-            // 
-            // navigationPageЗаказыСтатусы
-            // 
-            this.navigationPageЗаказыСтатусы.Caption = "Статусы заказов";
-            this.navigationPageЗаказыСтатусы.Controls.Add(this.gridControlСтатусыЗаказа);
-            this.navigationPageЗаказыСтатусы.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("navigationPageЗаказыСтатусы.ImageOptions.Image")));
-            this.navigationPageЗаказыСтатусы.Name = "navigationPageЗаказыСтатусы";
-            this.navigationPageЗаказыСтатусы.Size = new System.Drawing.Size(863, 393);
-            // 
-            // navigationPageСтраны
-            // 
-            this.navigationPageСтраны.Caption = "Страны";
-            this.navigationPageСтраны.Controls.Add(this.gridControlСтраны);
-            this.navigationPageСтраны.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("navigationPageСтраны.ImageOptions.Image")));
-            this.navigationPageСтраны.Name = "navigationPageСтраны";
-            this.navigationPageСтраны.Size = new System.Drawing.Size(863, 393);
-            // 
-            // panelControl1
-            // 
-            this.panelControl1.Controls.Add(this.panelControl2);
-            this.panelControl1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panelControl1.Location = new System.Drawing.Point(0, 0);
-            this.panelControl1.Name = "panelControl1";
-            this.panelControl1.Size = new System.Drawing.Size(1058, 40);
-            this.panelControl1.TabIndex = 1;
-            // 
-            // panelControl2
-            // 
-            this.panelControl2.Appearance.BackColor = System.Drawing.Color.Transparent;
-            this.panelControl2.Appearance.Options.UseBackColor = true;
-            this.panelControl2.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder;
-            this.panelControl2.Controls.Add(this.simpleButtonУдалить);
-            this.panelControl2.Controls.Add(this.simpleButtonОбновить);
-            this.panelControl2.Controls.Add(this.simpleButtonДобавить);
-            this.panelControl2.Controls.Add(this.separatorControl1);
-            this.panelControl2.Controls.Add(this.simpleButtonИзменить);
-            this.panelControl2.Dock = System.Windows.Forms.DockStyle.Left;
-            this.panelControl2.Location = new System.Drawing.Point(2, 2);
-            this.panelControl2.Name = "panelControl2";
-            this.panelControl2.Size = new System.Drawing.Size(210, 36);
-            this.panelControl2.TabIndex = 11;
-            // 
-            // simpleButtonУдалить
-            // 
-            this.simpleButtonУдалить.ImageOptions.Image = global::AutoSalon.Properties.Resources.Delete_16x16;
-            this.simpleButtonУдалить.Location = new System.Drawing.Point(176, 4);
-            this.simpleButtonУдалить.Name = "simpleButtonУдалить";
-            this.simpleButtonУдалить.ShowFocusRectangle = DevExpress.Utils.DefaultBoolean.False;
-            this.simpleButtonУдалить.Size = new System.Drawing.Size(27, 27);
-            this.simpleButtonУдалить.TabIndex = 8;
-            // 
-            // simpleButtonОбновить
-            // 
-            this.simpleButtonОбновить.ImageOptions.Image = global::AutoSalon.Properties.Resources.Action_Reload;
-            this.simpleButtonОбновить.Location = new System.Drawing.Point(7, 4);
-            this.simpleButtonОбновить.Name = "simpleButtonОбновить";
-            this.simpleButtonОбновить.ShowFocusRectangle = DevExpress.Utils.DefaultBoolean.False;
-            this.simpleButtonОбновить.Size = new System.Drawing.Size(92, 27);
-            this.simpleButtonОбновить.TabIndex = 9;
-            this.simpleButtonОбновить.Text = "Обновить";
-            // 
-            // simpleButtonДобавить
-            // 
-            this.simpleButtonДобавить.ImageOptions.Image = global::AutoSalon.Properties.Resources.Add_16x16;
-            this.simpleButtonДобавить.Location = new System.Drawing.Point(110, 4);
-            this.simpleButtonДобавить.Name = "simpleButtonДобавить";
-            this.simpleButtonДобавить.ShowFocusRectangle = DevExpress.Utils.DefaultBoolean.False;
-            this.simpleButtonДобавить.Size = new System.Drawing.Size(27, 27);
-            this.simpleButtonДобавить.TabIndex = 6;
-            // 
-            // separatorControl1
-            // 
-            this.separatorControl1.AutoSizeMode = true;
-            this.separatorControl1.LineOrientation = System.Windows.Forms.Orientation.Vertical;
-            this.separatorControl1.Location = new System.Drawing.Point(95, -1);
-            this.separatorControl1.Name = "separatorControl1";
-            this.separatorControl1.Size = new System.Drawing.Size(20, 35);
-            this.separatorControl1.TabIndex = 10;
-            // 
-            // simpleButtonИзменить
-            // 
-            this.simpleButtonИзменить.ImageOptions.Image = global::AutoSalon.Properties.Resources.Edit_16x16;
-            this.simpleButtonИзменить.Location = new System.Drawing.Point(143, 4);
-            this.simpleButtonИзменить.Name = "simpleButtonИзменить";
-            this.simpleButtonИзменить.ShowFocusRectangle = DevExpress.Utils.DefaultBoolean.False;
-            this.simpleButtonИзменить.Size = new System.Drawing.Size(27, 27);
-            this.simpleButtonИзменить.TabIndex = 7;
-            // 
             // gridControlТипыПривода
             // 
             this.gridControlТипыПривода.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -311,6 +216,14 @@
             this.gridViewТипыПривода.OptionsSelection.EnableAppearanceFocusedCell = false;
             this.gridViewТипыПривода.OptionsView.ColumnAutoWidth = false;
             this.gridViewТипыПривода.OptionsView.ShowGroupPanel = false;
+            // 
+            // navigationPageТипыТоплива
+            // 
+            this.navigationPageТипыТоплива.Caption = "Типы топлива";
+            this.navigationPageТипыТоплива.Controls.Add(this.gridControlТипыТоплива);
+            this.navigationPageТипыТоплива.ImageOptions.Image = global::AutoSalon.Properties.Resources.Driving_16x16;
+            this.navigationPageТипыТоплива.Name = "navigationPageТипыТоплива";
+            this.navigationPageТипыТоплива.Size = new System.Drawing.Size(863, 393);
             // 
             // gridControlТипыТоплива
             // 
@@ -339,6 +252,14 @@
             this.gridViewТипыТоплива.OptionsView.ColumnAutoWidth = false;
             this.gridViewТипыТоплива.OptionsView.ShowGroupPanel = false;
             // 
+            // navigationPageЗаказыСтатусы
+            // 
+            this.navigationPageЗаказыСтатусы.Caption = "Статусы заказов";
+            this.navigationPageЗаказыСтатусы.Controls.Add(this.gridControlСтатусыЗаказа);
+            this.navigationPageЗаказыСтатусы.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("navigationPageЗаказыСтатусы.ImageOptions.Image")));
+            this.navigationPageЗаказыСтатусы.Name = "navigationPageЗаказыСтатусы";
+            this.navigationPageЗаказыСтатусы.Size = new System.Drawing.Size(863, 393);
+            // 
             // gridControlСтатусыЗаказа
             // 
             this.gridControlСтатусыЗаказа.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -365,6 +286,14 @@
             this.gridViewСтатусыЗаказа.OptionsSelection.EnableAppearanceFocusedCell = false;
             this.gridViewСтатусыЗаказа.OptionsView.ColumnAutoWidth = false;
             this.gridViewСтатусыЗаказа.OptionsView.ShowGroupPanel = false;
+            // 
+            // navigationPageСтраны
+            // 
+            this.navigationPageСтраны.Caption = "Страны";
+            this.navigationPageСтраны.Controls.Add(this.gridControlСтраны);
+            this.navigationPageСтраны.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("navigationPageСтраны.ImageOptions.Image")));
+            this.navigationPageСтраны.Name = "navigationPageСтраны";
+            this.navigationPageСтраны.Size = new System.Drawing.Size(863, 393);
             // 
             // gridControlСтраны
             // 
@@ -393,6 +322,77 @@
             this.gridViewСтраны.OptionsView.ColumnAutoWidth = false;
             this.gridViewСтраны.OptionsView.ShowGroupPanel = false;
             // 
+            // panelControl2
+            // 
+            this.panelControl2.Appearance.BackColor = System.Drawing.Color.Transparent;
+            this.panelControl2.Appearance.Options.UseBackColor = true;
+            this.panelControl2.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder;
+            this.panelControl2.Controls.Add(this.simpleButtonУдалить);
+            this.panelControl2.Controls.Add(this.simpleButtonОбновить);
+            this.panelControl2.Controls.Add(this.simpleButtonДобавить);
+            this.panelControl2.Controls.Add(this.separatorControl1);
+            this.panelControl2.Controls.Add(this.simpleButtonИзменить);
+            this.panelControl2.Dock = System.Windows.Forms.DockStyle.Left;
+            this.panelControl2.Location = new System.Drawing.Point(2, 2);
+            this.panelControl2.Name = "panelControl2";
+            this.panelControl2.Size = new System.Drawing.Size(210, 36);
+            this.panelControl2.TabIndex = 11;
+            // 
+            // simpleButtonИзменить
+            // 
+            this.simpleButtonИзменить.ImageOptions.Image = global::AutoSalon.Properties.Resources.Edit_16x16;
+            this.simpleButtonИзменить.Location = new System.Drawing.Point(143, 4);
+            this.simpleButtonИзменить.Name = "simpleButtonИзменить";
+            this.simpleButtonИзменить.ShowFocusRectangle = DevExpress.Utils.DefaultBoolean.False;
+            this.simpleButtonИзменить.Size = new System.Drawing.Size(27, 27);
+            this.simpleButtonИзменить.TabIndex = 7;
+            // 
+            // separatorControl1
+            // 
+            this.separatorControl1.AutoSizeMode = true;
+            this.separatorControl1.LineOrientation = System.Windows.Forms.Orientation.Vertical;
+            this.separatorControl1.Location = new System.Drawing.Point(95, -1);
+            this.separatorControl1.Name = "separatorControl1";
+            this.separatorControl1.Size = new System.Drawing.Size(20, 35);
+            this.separatorControl1.TabIndex = 10;
+            // 
+            // simpleButtonДобавить
+            // 
+            this.simpleButtonДобавить.ImageOptions.Image = global::AutoSalon.Properties.Resources.Add_16x16;
+            this.simpleButtonДобавить.Location = new System.Drawing.Point(110, 4);
+            this.simpleButtonДобавить.Name = "simpleButtonДобавить";
+            this.simpleButtonДобавить.ShowFocusRectangle = DevExpress.Utils.DefaultBoolean.False;
+            this.simpleButtonДобавить.Size = new System.Drawing.Size(27, 27);
+            this.simpleButtonДобавить.TabIndex = 6;
+            // 
+            // simpleButtonОбновить
+            // 
+            this.simpleButtonОбновить.ImageOptions.Image = global::AutoSalon.Properties.Resources.Action_Reload;
+            this.simpleButtonОбновить.Location = new System.Drawing.Point(7, 4);
+            this.simpleButtonОбновить.Name = "simpleButtonОбновить";
+            this.simpleButtonОбновить.ShowFocusRectangle = DevExpress.Utils.DefaultBoolean.False;
+            this.simpleButtonОбновить.Size = new System.Drawing.Size(92, 27);
+            this.simpleButtonОбновить.TabIndex = 9;
+            this.simpleButtonОбновить.Text = "Обновить";
+            // 
+            // simpleButtonУдалить
+            // 
+            this.simpleButtonУдалить.ImageOptions.Image = global::AutoSalon.Properties.Resources.Delete_16x16;
+            this.simpleButtonУдалить.Location = new System.Drawing.Point(176, 4);
+            this.simpleButtonУдалить.Name = "simpleButtonУдалить";
+            this.simpleButtonУдалить.ShowFocusRectangle = DevExpress.Utils.DefaultBoolean.False;
+            this.simpleButtonУдалить.Size = new System.Drawing.Size(27, 27);
+            this.simpleButtonУдалить.TabIndex = 8;
+            // 
+            // panelControl1
+            // 
+            this.panelControl1.Controls.Add(this.panelControl2);
+            this.panelControl1.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panelControl1.Location = new System.Drawing.Point(0, 0);
+            this.panelControl1.Name = "panelControl1";
+            this.panelControl1.Size = new System.Drawing.Size(1058, 40);
+            this.panelControl1.TabIndex = 1;
+            // 
             // frСправочники
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -412,22 +412,22 @@
             ((System.ComponentModel.ISupportInitialize)(this.gridControlТипыКПП)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridViewТипыКпп)).EndInit();
             this.navigationPageТипыПривода.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.gridControlТипыПривода)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridViewТипыПривода)).EndInit();
             this.navigationPageТипыТоплива.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.gridControlТипыТоплива)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridViewТипыТоплива)).EndInit();
             this.navigationPageЗаказыСтатусы.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.gridControlСтатусыЗаказа)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridViewСтатусыЗаказа)).EndInit();
             this.navigationPageСтраны.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).EndInit();
-            this.panelControl1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.gridControlСтраны)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridViewСтраны)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl2)).EndInit();
             this.panelControl2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.separatorControl1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.gridControlТипыПривода)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.gridViewТипыПривода)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.gridControlТипыТоплива)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.gridViewТипыТоплива)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.gridControlСтатусыЗаказа)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.gridViewСтатусыЗаказа)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.gridControlСтраны)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.gridViewСтраны)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).EndInit();
+            this.panelControl1.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -441,13 +441,6 @@
     private DevExpress.XtraBars.Navigation.NavigationPage navigationPageТипыТоплива;
     private DevExpress.XtraBars.Navigation.NavigationPage navigationPageЗаказыСтатусы;
     private DevExpress.XtraBars.Navigation.NavigationPage navigationPageСтраны;
-    private DevExpress.XtraEditors.PanelControl panelControl1;
-    private DevExpress.XtraEditors.PanelControl panelControl2;
-    private DevExpress.XtraEditors.SimpleButton simpleButtonОбновить;
-    private DevExpress.XtraEditors.SimpleButton simpleButtonУдалить;
-    private DevExpress.XtraEditors.SimpleButton simpleButtonДобавить;
-    private DevExpress.XtraEditors.SimpleButton simpleButtonИзменить;
-    private DevExpress.XtraEditors.SeparatorControl separatorControl1;
     private DevExpress.XtraGrid.GridControl gridControlТипыКПП;
     private DevExpress.XtraGrid.Views.Grid.GridView gridViewТипыКпп;
     private DevExpress.XtraGrid.GridControl gridControlТипКузова;
@@ -460,4 +453,11 @@
     private DevExpress.XtraGrid.Views.Grid.GridView gridViewСтатусыЗаказа;
     private DevExpress.XtraGrid.GridControl gridControlСтраны;
     private DevExpress.XtraGrid.Views.Grid.GridView gridViewСтраны;
+    private DevExpress.XtraEditors.PanelControl panelControl2;
+    private DevExpress.XtraEditors.SimpleButton simpleButtonУдалить;
+    private DevExpress.XtraEditors.SimpleButton simpleButtonОбновить;
+    private DevExpress.XtraEditors.SimpleButton simpleButtonДобавить;
+    private DevExpress.XtraEditors.SeparatorControl separatorControl1;
+    private DevExpress.XtraEditors.SimpleButton simpleButtonИзменить;
+    private DevExpress.XtraEditors.PanelControl panelControl1;
 }

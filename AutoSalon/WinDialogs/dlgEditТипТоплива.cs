@@ -1,13 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Text;
 using System.Linq;
-using System.Threading.Tasks;
 using System.Windows.Forms;
-using DevExpress.XtraEditors;
 
 public partial class dlgEditТипТоплива : DevExpress.XtraEditors.XtraForm
 {
@@ -16,7 +10,7 @@ public partial class dlgEditТипТоплива : DevExpress.XtraEditors.XtraFo
 
     public dlgEditТипТоплива() { InitializeComponent(); }
 
-    private void dlgEditТипКПП_Load(object sender, EventArgs e)
+    private void dlgEditТипТоплива_Load(object sender, EventArgs e)
     {
         var dicTag = (Dictionary<string, clsMisc.ASSqlFunction>)this.Tag;
         var keyValue = dicTag.SingleOrDefault();

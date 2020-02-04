@@ -16,21 +16,18 @@ public static partial class clsExtensions
                                            params string[] gridColumnVisible)
     {
         if (gridColumnVisible.Length == 0) { return; }
-        foreach (GridColumn colGrid in gridView.Columns)
+
+        foreach(string colVisible in gridColumnVisible)
         {
-            foreach(string colName in gridColumnVisible)
+            foreach(GridColumn colGrid in gridView.Columns)
             {
-                if (IsHide)
+                if(string.Equals(colGrid.Name.Replace("col", ""), colVisible.ToString()))
                 {
-                    colGrid.Visible = (colGrid.Name != $"col{colName}");
+                    colGrid.Visible = (IsHide ?  false: true );
+                    break;
                 }
-                else
-                {
-                    colGrid.Visible = (colGrid.Name == $"col{colName}");
-                } 
             }
         }
-
     }
 
     /// <summary>
@@ -68,9 +65,15 @@ public static partial class clsExtensions
                 }
             }
         }
-        gridView.GridControl.DataSource = datatable;
 
-        if (ivalue != null)
+        gridView.GridControl.DataSource = datatable;
+        if ((String)gridView.Tag != "DSЗаполнен")
+        {
+            gridView.BestFitColumns();
+            gridView.Tag = "DSЗаполнен";
+        }
+
+        if (ivalue != null && ivalue != System.DBNull.Value)
         {
             Type colType = gridView.Columns.ColumnByFieldName(fieldName).ColumnType;
             var memObject = Convert.ChangeType(ivalue, colType);

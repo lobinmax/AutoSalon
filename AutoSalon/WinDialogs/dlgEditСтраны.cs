@@ -16,7 +16,7 @@ public partial class dlgEditСтраны : DevExpress.XtraEditors.XtraForm
 
     public dlgEditСтраны() { InitializeComponent(); }
 
-    private void dlgEditТипКПП_Load(object sender, EventArgs e)
+    private void dlgEditСтраны_Load(object sender, EventArgs e)
     {
         var dicTag = (Dictionary<string, clsMisc.ASSqlFunction>)this.Tag;
         var keyValue = dicTag.SingleOrDefault();

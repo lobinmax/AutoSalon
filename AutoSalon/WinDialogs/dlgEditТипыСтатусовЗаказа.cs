@@ -16,7 +16,7 @@ public partial class dlgEditТипыСтатусовЗаказа : DevExpress.Xt
 
     public dlgEditТипыСтатусовЗаказа() { InitializeComponent(); }
 
-    private void dlgEditТипКПП_Load(object sender, EventArgs e)
+    private void dlgEditТипыСтатусовЗаказа_Load(object sender, EventArgs e)
     {
         var dicTag = (Dictionary<string, clsMisc.ASSqlFunction>)this.Tag;
         var keyValue = dicTag.SingleOrDefault();

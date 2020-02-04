@@ -172,6 +172,7 @@
             this.barButtonItemМаркиАвто.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("barButtonItemМаркиАвто.ImageOptions.Image")));
             this.barButtonItemМаркиАвто.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("barButtonItemМаркиАвто.ImageOptions.LargeImage")));
             this.barButtonItemМаркиАвто.Name = "barButtonItemМаркиАвто";
+            this.barButtonItemМаркиАвто.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItemМаркиАвто_ItemClick);
             // 
             // ribbonPageАдминистрирование
             // 
