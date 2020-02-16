@@ -88,7 +88,7 @@
             this.ribbonPageКлиенты,
             this.ribbonPageОтчеты});
             this.ribbonControl1.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonControlStyle.Office2007;
-            this.ribbonControl1.Size = new System.Drawing.Size(980, 150);
+            this.ribbonControl1.Size = new System.Drawing.Size(1038, 150);
             this.ribbonControl1.StatusBar = this.ribbonStatusBar1;
             // 
             // barButtonItemСотрудники
@@ -123,6 +123,7 @@
             this.barButtonItemАвтоВПродаже.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("barButtonItemАвтоВПродаже.ImageOptions.Image")));
             this.barButtonItemАвтоВПродаже.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("barButtonItemАвтоВПродаже.ImageOptions.LargeImage")));
             this.barButtonItemАвтоВПродаже.Name = "barButtonItemАвтоВПродаже";
+            this.barButtonItemАвтоВПродаже.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItemАвтоВПродаже_ItemClick);
             // 
             // barButtonItemЗаказы
             // 
@@ -241,10 +242,10 @@
             this.ribbonStatusBar1.ItemLinks.Add(this.barStaticItemВремяТекущее);
             this.ribbonStatusBar1.ItemLinks.Add(this.barStaticItemServer);
             this.ribbonStatusBar1.ItemLinks.Add(this.barStaticItemDB);
-            this.ribbonStatusBar1.Location = new System.Drawing.Point(0, 426);
+            this.ribbonStatusBar1.Location = new System.Drawing.Point(0, 468);
             this.ribbonStatusBar1.Name = "ribbonStatusBar1";
             this.ribbonStatusBar1.Ribbon = this.ribbonControl1;
-            this.ribbonStatusBar1.Size = new System.Drawing.Size(980, 23);
+            this.ribbonStatusBar1.Size = new System.Drawing.Size(1038, 23);
             // 
             // ribbonPage2
             // 
@@ -260,7 +261,7 @@
             this.AllowFormGlass = DevExpress.Utils.DefaultBoolean.False;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(980, 449);
+            this.ClientSize = new System.Drawing.Size(1038, 491);
             this.Controls.Add(this.ribbonStatusBar1);
             this.Controls.Add(this.ribbonControl1);
             this.IconOptions.Image = ((System.Drawing.Image)(resources.GetObject("frMainForm.IconOptions.Image")));

@@ -62,7 +62,7 @@ public partial class frМаркиАвто : DevExpress.XtraEditors.XtraForm
         e.МенюДляAddEditDelete(dxpopupmenu, ДобавитьМарку, РедактироватьМарку, УдалитьМарку);
     }
 
-    private void gridViewМарки_FocusedRowChanged(object sender, EventArgs e)
+    private void gridViewМарки_FocusedRowChanged(object sender, DevExpress.XtraGrid.Views.Base.FocusedRowChangedEventArgs e)
     {
         ОбновитьМодели();
     }
@@ -133,7 +133,7 @@ public partial class frМаркиАвто : DevExpress.XtraEditors.XtraForm
                                       clsMisc.ASSqlFunction.Delete, "@UIDМарки",
                                       gridViewМарки.GetFocusedRowCellDisplayText("UIDМарки").ToString());
             ОбновитьМарки();
-            gridViewМарки.FocusedRowHandle = selectRow;
+            gridViewМарки.FocusedRowHandle = selectRow - 1;
         }
     }
     #endregion
@@ -182,7 +182,7 @@ public partial class frМаркиАвто : DevExpress.XtraEditors.XtraForm
                                       clsMisc.ASSqlFunction.Delete, "@UIDМодели",
                                       gridViewМодели.GetFocusedRowCellDisplayText("UIDМодели").ToString());
             ОбновитьМодели();
-            gridViewМодели.FocusedRowHandle = selectRow;
+            gridViewМодели.FocusedRowHandle = selectRow - 1;
         }
     }
 
@@ -236,7 +236,7 @@ public partial class frМаркиАвто : DevExpress.XtraEditors.XtraForm
                                       clsMisc.ASSqlFunction.Delete, "@UIDПоколения",
                                       gridViewМодели.GetFocusedRowCellDisplayText("UIDПоколения").ToString());
             ОбновитьМодели();
-            gridViewМодели.FocusedRowHandle = selectRow;
+            gridViewМодели.FocusedRowHandle = selectRow - 1;
         }
     }
 

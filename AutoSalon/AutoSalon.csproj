@@ -57,6 +57,7 @@
     <Compile Include="Classes\Extensions\clsExtensionsGridView.cs" />
     <Compile Include="Classes\clsMisc.cs" />
     <Compile Include="Classes\clsTabActivated.cs" />
+    <Compile Include="Classes\Extensions\clsExtensionsLookUpEdit.cs" />
     <Compile Include="Classes\Extensions\clsExtensionsMdiForm.cs" />
     <Compile Include="Classes\Extensions\clsExtensionsMenuHelper.cs" />
     <Compile Include="Program.cs" />
@@ -65,6 +66,12 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="WinDialogs\dlgEditАвтГараж.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="WinDialogs\dlgEditАвтГараж.Designer.cs">
+      <DependentUpon>dlgEditАвтГараж.cs</DependentUpon>
     </Compile>
     <Compile Include="WinDialogs\dlgEditАвтоПоколения.cs">
       <SubType>Form</SubType>
@@ -126,6 +133,12 @@
     <Compile Include="WinDialogs\dlgEditТипКузова.Designer.cs">
       <DependentUpon>dlgEditТипКузова.cs</DependentUpon>
     </Compile>
+    <Compile Include="WinForms\frГаражАвто.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="WinForms\frГаражАвто.Designer.cs">
+      <DependentUpon>frГаражАвто.cs</DependentUpon>
+    </Compile>
     <Compile Include="WinForms\frLogin.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -170,6 +183,9 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <EmbeddedResource Include="WinDialogs\dlgEditАвтГараж.resx">
+      <DependentUpon>dlgEditАвтГараж.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="WinDialogs\dlgEditАвтоПоколения.resx">
       <DependentUpon>dlgEditАвтоПоколения.cs</DependentUpon>
     </EmbeddedResource>
@@ -200,6 +216,9 @@
     <EmbeddedResource Include="WinDialogs\dlgEditТипКузова.resx">
       <DependentUpon>dlgEditТипКузова.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="WinForms\frГаражАвто.resx">
+      <DependentUpon>frГаражАвто.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="WinForms\frLogin.resx">
       <DependentUpon>frLogin.cs</DependentUpon>
     </EmbeddedResource>
@@ -229,87 +248,6 @@
     </BootstrapperPackage>
   </ItemGroup>
   <ItemGroup>
-    <Reference Include="DevExpress.BonusSkins.v19.2, Version=19.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>DLL\DevExpress.BonusSkins.v19.2.dll</HintPath>
-    </Reference>
-    <Reference Include="DevExpress.Data.v19.2, Version=19.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>DLL\DevExpress.Data.v19.2.dll</HintPath>
-    </Reference>
-    <Reference Include="DevExpress.Pdf.v19.2.Core, Version=19.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>DLL\DevExpress.Pdf.v19.2.Core.dll</HintPath>
-    </Reference>
-    <Reference Include="DevExpress.Printing.v19.2.Core, Version=19.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>DLL\DevExpress.Printing.v19.2.Core.dll</HintPath>
-    </Reference>
-    <Reference Include="DevExpress.Sparkline.v19.2.Core, Version=19.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>DLL\DevExpress.Sparkline.v19.2.Core.dll</HintPath>
-    </Reference>
-    <Reference Include="DevExpress.Utils.v19.2, Version=19.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>DLL\DevExpress.Utils.v19.2.dll</HintPath>
-    </Reference>
-    <Reference Include="DevExpress.XtraBars.v19.2, Version=19.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>DLL\DevExpress.XtraBars.v19.2.dll</HintPath>
-    </Reference>
-    <Reference Include="DevExpress.XtraEditors.v19.2, Version=19.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>DLL\DevExpress.XtraEditors.v19.2.dll</HintPath>
-    </Reference>
-    <Reference Include="DevExpress.XtraGrid.v19.2, Version=19.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
-    <Reference Include="DevExpress.XtraLayout.v19.2, Version=19.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>DLL\DevExpress.XtraLayout.v19.2.dll</HintPath>
-    </Reference>
-    <Reference Include="DevExpress.XtraNavBar.v19.2, Version=19.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
-    <Reference Include="DevExpress.XtraPrinting.v19.2, Version=19.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
-    <Reference Include="DevExpress.XtraTreeList.v19.2, Version=19.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>DLL\DevExpress.XtraTreeList.v19.2.dll</HintPath>
-    </Reference>
-    <Reference Include="Microsoft.CSharp">
-      <Private>True</Private>
-    </Reference>
-    <Reference Include="System">
-      <Private>True</Private>
-    </Reference>
-    <Reference Include="System.ComponentModel.DataAnnotations">
-      <Private>True</Private>
-    </Reference>
-    <Reference Include="System.Data">
-      <Private>True</Private>
-    </Reference>
-    <Reference Include="System.Data.DataSetExtensions">
-      <Private>True</Private>
-    </Reference>
-    <Reference Include="System.Data.Linq">
-      <Private>True</Private>
-    </Reference>
-    <Reference Include="System.Deployment">
-      <Private>True</Private>
-    </Reference>
-    <Reference Include="System.Drawing">
-      <Private>True</Private>
-    </Reference>
-    <Reference Include="System.Net.Http">
-      <Private>True</Private>
-    </Reference>
-    <Reference Include="System.Windows.Forms">
-      <Private>True</Private>
-    </Reference>
-    <Reference Include="System.Xml">
-      <Private>True</Private>
-    </Reference>
-    <Reference Include="System.Xml.Linq">
-      <Private>True</Private>
-    </Reference>
-  </ItemGroup>
-  <ItemGroup>
     <None Include="Resources\Add_16x16.png" />
   </ItemGroup>
   <ItemGroup>
@@ -329,6 +267,84 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\Action_Cancel.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="DevExpress.BonusSkins.v19.2, Version=19.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>DLL\DevExpress.BonusSkins.v19.2.dll</HintPath>
+    </Reference>
+    <Reference Include="DevExpress.Data.v19.2, Version=19.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>DLL\DevExpress.Data.v19.2.dll</HintPath>
+    </Reference>
+    <Reference Include="DevExpress.Images.v19.2, Version=19.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>DLL\DevExpress.Images.v19.2.dll</HintPath>
+    </Reference>
+    <Reference Include="DevExpress.Office.v19.2.Core, Version=19.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>DLL\DevExpress.Office.v19.2.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="DevExpress.Pdf.v19.2.Core, Version=19.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>DLL\DevExpress.Pdf.v19.2.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="DevExpress.Printing.v19.2.Core, Version=19.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>DLL\DevExpress.Printing.v19.2.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="DevExpress.RichEdit.v19.2.Core, Version=19.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>DLL\DevExpress.RichEdit.v19.2.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="DevExpress.Sparkline.v19.2.Core, Version=19.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>DLL\DevExpress.Sparkline.v19.2.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="DevExpress.Utils.v19.2, Version=19.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>DLL\DevExpress.Utils.v19.2.dll</HintPath>
+    </Reference>
+    <Reference Include="DevExpress.XtraBars.v19.2, Version=19.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>DLL\DevExpress.XtraBars.v19.2.dll</HintPath>
+    </Reference>
+    <Reference Include="DevExpress.XtraEditors.v19.2, Version=19.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>DLL\DevExpress.XtraEditors.v19.2.dll</HintPath>
+    </Reference>
+    <Reference Include="DevExpress.XtraGrid.v19.2, Version=19.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>DLL\DevExpress.XtraGrid.v19.2.dll</HintPath>
+    </Reference>
+    <Reference Include="DevExpress.XtraLayout.v19.2, Version=19.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>DLL\DevExpress.XtraLayout.v19.2.dll</HintPath>
+    </Reference>
+    <Reference Include="DevExpress.XtraNavBar.v19.2, Version=19.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>DLL\DevExpress.XtraNavBar.v19.2.dll</HintPath>
+    </Reference>
+    <Reference Include="DevExpress.XtraPrinting.v19.2, Version=19.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>DLL\DevExpress.XtraPrinting.v19.2.dll</HintPath>
+    </Reference>
+    <Reference Include="DevExpress.XtraTreeList.v19.2, Version=19.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>DLL\DevExpress.XtraTreeList.v19.2.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Data.Linq" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Xml.Linq" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

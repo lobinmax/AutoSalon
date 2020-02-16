@@ -21,7 +21,7 @@ public static partial class clsExtensions
         {
             foreach(GridColumn colGrid in gridView.Columns)
             {
-                if(string.Equals(colGrid.Name.Replace("col", ""), colVisible.ToString()))
+                if(string.Equals(colGrid.FieldName, colVisible.ToString()))
                 {
                     colGrid.Visible = (IsHide ?  false: true );
                     break;

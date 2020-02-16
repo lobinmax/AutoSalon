@@ -317,7 +317,6 @@ public class clsSql
         {
             SqlCommand command = new SqlCommand(functionName, conn);
             SqlDataAdapter sqlDataAdapter = new SqlDataAdapter();
-            DataTable dataTable = new DataTable();
             string parametersString = "";
             string spliter = "";
             var result = new object();
@@ -345,6 +344,36 @@ public class clsSql
                                     MessageBoxIcon.Error);
                 response.success = false;
                 return response;
+            }
+        }
+    }
+    
+    public static QueryResponse ExecuteQuery(string TextQuery)
+    {
+        var response = new QueryResponse() { success = true };
+        using (conn = GetSqlConnection())
+        {
+            SqlCommand command = new SqlCommand($"{TextQuery}", conn);
+            SqlDataAdapter sqlDataAdapter = new SqlDataAdapter();
+
+            try
+            {
+                if (conn.State != ConnectionState.Open) { conn.Open(); }
+                command.CommandType = CommandType.Text;
+
+                sqlDataAdapter.SelectCommand = command;
+                sqlDataAdapter.Fill(response.dataTable);
+                return response;
+            }
+
+            catch (Exception ex)
+            {
+                XtraMessageBox.Show($"{ex.Message}\nОшибка вызова запроса.",
+                                    Program.ProductName,
+                                    MessageBoxButtons.OK,
+                                    MessageBoxIcon.Error);
+                response.success = false;
+                return null;
             }
         }
     }

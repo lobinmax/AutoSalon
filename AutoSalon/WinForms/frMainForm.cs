@@ -54,7 +54,20 @@ public partial class frMainForm : DevExpress.XtraBars.Ribbon.RibbonForm
         }
         else
         {
-            clsTabActivated frДолжностиMDI = new clsTabActivated(frМаркиАвто, this);
+            clsTabActivated frМаркиАвтоMDI = new clsTabActivated(frМаркиАвто, this);
+        }
+    }
+
+    private void barButtonItemАвтоВПродаже_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+    {
+        frГаражАвто frГаражАвто = new frГаражАвто();
+        if (this.ASMdiConstrain(frГаражАвто))
+        {
+            this.ASMdiChildFocus(frГаражАвто);
+        }
+        else
+        {
+            clsTabActivated frМаркиАвтоMDI = new clsTabActivated(frГаражАвто, this);
         }
     }
 }
