@@ -36,6 +36,7 @@
             this.simpleButtonИзменить = new DevExpress.XtraEditors.SimpleButton();
             this.simpleButtonДобавить = new DevExpress.XtraEditors.SimpleButton();
             this.splitContainerControl1 = new DevExpress.XtraEditors.SplitContainerControl();
+            this.repositoryItemTextEdit1 = new DevExpress.XtraEditors.Repository.RepositoryItemTextEdit();
             ((System.ComponentModel.ISupportInitialize)(this.groupControl1)).BeginInit();
             this.groupControl1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gridControlИсторияЦены)).BeginInit();
@@ -44,6 +45,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.gridViewГараж)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerControl1)).BeginInit();
             this.splitContainerControl1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemTextEdit1)).BeginInit();
             this.SuspendLayout();
             // 
             // groupControl1
@@ -62,6 +64,8 @@
             this.gridControlИсторияЦены.Location = new System.Drawing.Point(2, 22);
             this.gridControlИсторияЦены.MainView = this.gridViewИсторияЦены;
             this.gridControlИсторияЦены.Name = "gridControlИсторияЦены";
+            this.gridControlИсторияЦены.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
+            this.repositoryItemTextEdit1});
             this.gridControlИсторияЦены.Size = new System.Drawing.Size(339, 563);
             this.gridControlИсторияЦены.TabIndex = 3;
             this.gridControlИсторияЦены.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
@@ -174,6 +178,14 @@
             this.splitContainerControl1.SplitterPosition = 343;
             this.splitContainerControl1.TabIndex = 10;
             // 
+            // repositoryItemTextEdit1
+            // 
+            this.repositoryItemTextEdit1.AutoHeight = false;
+            this.repositoryItemTextEdit1.Mask.EditMask = "n2";
+            this.repositoryItemTextEdit1.Mask.MaskType = DevExpress.XtraEditors.Mask.MaskType.Numeric;
+            this.repositoryItemTextEdit1.Mask.UseMaskAsDisplayFormat = true;
+            this.repositoryItemTextEdit1.Name = "repositoryItemTextEdit1";
+            // 
             // frГаражАвто
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -191,6 +203,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.gridViewГараж)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerControl1)).EndInit();
             this.splitContainerControl1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemTextEdit1)).EndInit();
             this.ResumeLayout(false);
 
     }
@@ -206,4 +219,5 @@
     private DevExpress.XtraGrid.GridControl gridControlИсторияЦены;
     private DevExpress.XtraGrid.Views.Grid.GridView gridViewИсторияЦены;
     private DevExpress.XtraEditors.SplitContainerControl splitContainerControl1;
+    private DevExpress.XtraEditors.Repository.RepositoryItemTextEdit repositoryItemTextEdit1;
 }

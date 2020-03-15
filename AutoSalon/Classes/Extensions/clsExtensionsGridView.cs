@@ -75,7 +75,7 @@ public static partial class clsExtensions
 
         if (ivalue != null && ivalue != System.DBNull.Value)
         {
-            Type colType = gridView.Columns.ColumnByFieldName(fieldName).ColumnType;
+            Type colType = gridView.Columns[fieldName].ColumnType;
             var memObject = Convert.ChangeType(ivalue, colType);
             gridView.ASВыделитьСтрокуПоID(fieldName, memObject);
         }
