@@ -2,13 +2,13 @@
 using System.Linq;
 using System.Windows.Forms;
 
-public partial class dlgEditАвтоМарки : DevExpress.XtraEditors.XtraForm
+public partial class dlgEditАвтоМарки : Form
 {
-    private string ForeigenKey;
+    private Guid? ForeigenKey;
     private clsMisc.ASSqlFunction sqlFunction;
     public object NewRecord { get; set; }
 
-    public dlgEditАвтоМарки(string UIDМарки, clsMisc.ASSqlFunction sqlFunction)
+    public dlgEditАвтоМарки(Guid? UIDМарки, clsMisc.ASSqlFunction sqlFunction)
     {
         InitializeComponent();
         this.ForeigenKey = UIDМарки;
@@ -19,17 +19,17 @@ public partial class dlgEditАвтоМарки : DevExpress.XtraEditors.XtraForm
     {
         this.Text = "Добавить запись";
         var dt = clsSql.ExecuteSP("dbo.Страны_SIUD", clsMisc.ASSqlFunction.ViewForm).dataTable;
-        LookUpEditСтраны.Properties.DataSource = dt;
-        LookUpEditСтраны.Properties.PopulateColumns();
-        LookUpEditСтраны.Properties.Columns["UIDСтраны"].Visible = false;
-        LookUpEditСтраны.Properties.Columns["Наименование сокр."].Visible = false;
-        LookUpEditСтраны.ItemIndex = 0;
+        LookUpEditСтраны.DataSource = dt;
+        LookUpEditСтраны.ValueMember = "UIDСтраны";
+        LookUpEditСтраны.DisplayMember = "Наименование";
+
+        LookUpEditСтраны.SelectedIndex = 0;
 
         if (sqlFunction == clsMisc.ASSqlFunction.Update)
         {
             var dr = clsSql.ExecuteSP("dbo.АвтоМарки_SIUD", clsMisc.ASSqlFunction.Select, "@UIDМарки", ForeigenKey).dataTable.RowsDR().SingleOrDefault();
-            textEditНаименование.EditValue = clsMisc.DBout(dr["Наименование"]);
-            LookUpEditСтраны.EditValue = clsMisc.DBout(dr["UIDСтранаПроизводитель"]);
+            textEditНаименование.Text = (string)clsMisc.DBout(dr["Наименование"]);
+            LookUpEditСтраны.SelectedValue = clsMisc.DBout(dr["UIDСтранаПроизводитель"]);
             this.Text = "Изменить запись";
         }
     }
@@ -38,16 +38,16 @@ public partial class dlgEditАвтоМарки : DevExpress.XtraEditors.XtraForm
 
     private void simpleButtonСохранить_Click(object sender, EventArgs e)
     {
-        if (!clsMisc.CheckFields(textEditНаименование.EditValue,
-                                 LookUpEditСтраны.EditValue))
+        if (!clsMisc.CheckFields(textEditНаименование.Text,
+                                 LookUpEditСтраны.Text))
         {
             return;
         }
 
         var response = clsSql.ExecuteSP("dbo.АвтоМарки_SIUD", this.sqlFunction,
             "@UIDМарки", clsMisc.DBin(this.ForeigenKey),
-            "@Марка", clsMisc.DBin(textEditНаименование.EditValue),
-            "@UIDСтраны", clsMisc.DBin(LookUpEditСтраны.EditValue));
+            "@Марка", clsMisc.DBin(textEditНаименование.Text),
+            "@UIDСтраны", clsMisc.DBin(LookUpEditСтраны.SelectedValue));
 
         if ((bool)response.success)
         {

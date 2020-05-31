@@ -26,22 +26,18 @@
     /// </summary>
     private void InitializeComponent()
     {
-            this.textEditМарка = new DevExpress.XtraEditors.TextEdit();
-            this.labelControl1 = new DevExpress.XtraEditors.LabelControl();
-            this.simpleButtonОтменить = new DevExpress.XtraEditors.SimpleButton();
-            this.simpleButtonСохранить = new DevExpress.XtraEditors.SimpleButton();
-            this.labelControl9 = new DevExpress.XtraEditors.LabelControl();
-            this.labelControl5 = new DevExpress.XtraEditors.LabelControl();
-            this.textEditНачалоПроизводства = new DevExpress.XtraEditors.TextEdit();
-            this.textEditМодель = new DevExpress.XtraEditors.TextEdit();
-            this.labelControl6 = new DevExpress.XtraEditors.LabelControl();
+            this.textEditМарка = new System.Windows.Forms.TextBox();
+            this.labelControl1 = new System.Windows.Forms.Label();
+            this.labelControl9 = new System.Windows.Forms.Label();
+            this.labelControl5 = new System.Windows.Forms.Label();
+            this.textEditНачалоПроизводства = new System.Windows.Forms.MaskedTextBox();
+            this.textEditМодель = new System.Windows.Forms.TextBox();
+            this.labelControl6 = new System.Windows.Forms.Label();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
-            this.textEditОкончаниеПроизводства = new DevExpress.XtraEditors.TextEdit();
-            ((System.ComponentModel.ISupportInitialize)(this.textEditМарка.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.textEditНачалоПроизводства.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.textEditМодель.Properties)).BeginInit();
+            this.textEditОкончаниеПроизводства = new System.Windows.Forms.MaskedTextBox();
+            this.simpleButtonОтменить = new System.Windows.Forms.Button();
+            this.simpleButtonСохранить = new System.Windows.Forms.Button();
             this.tableLayoutPanel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.textEditОкончаниеПроизводства.Properties)).BeginInit();
             this.SuspendLayout();
             // 
             // textEditМарка
@@ -49,70 +45,43 @@
             this.textEditМарка.Dock = System.Windows.Forms.DockStyle.Fill;
             this.textEditМарка.Location = new System.Drawing.Point(192, 18);
             this.textEditМарка.Name = "textEditМарка";
-            this.textEditМарка.Properties.ReadOnly = true;
+            this.textEditМарка.ReadOnly = true;
             this.textEditМарка.Size = new System.Drawing.Size(396, 20);
             this.textEditМарка.TabIndex = 2;
             // 
             // labelControl1
             // 
-            this.labelControl1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.labelControl1.Location = new System.Drawing.Point(18, 18);
+            this.labelControl1.Location = new System.Drawing.Point(18, 15);
             this.labelControl1.Name = "labelControl1";
-            this.labelControl1.Size = new System.Drawing.Size(168, 20);
+            this.labelControl1.Size = new System.Drawing.Size(168, 26);
             this.labelControl1.TabIndex = 3;
             this.labelControl1.Text = "Марка автомобиля:";
-            // 
-            // simpleButtonОтменить
-            // 
-            this.simpleButtonОтменить.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.simpleButtonОтменить.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.simpleButtonОтменить.ImageOptions.Image = global::AutoSalon.Properties.Resources.Action_Cancel;
-            this.simpleButtonОтменить.Location = new System.Drawing.Point(506, 158);
-            this.simpleButtonОтменить.Name = "simpleButtonОтменить";
-            this.simpleButtonОтменить.ShowFocusRectangle = DevExpress.Utils.DefaultBoolean.False;
-            this.simpleButtonОтменить.Size = new System.Drawing.Size(87, 23);
-            this.simpleButtonОтменить.TabIndex = 19;
-            this.simpleButtonОтменить.Text = "Отменить";
-            // 
-            // simpleButtonСохранить
-            // 
-            this.simpleButtonСохранить.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.simpleButtonСохранить.ImageOptions.Image = global::AutoSalon.Properties.Resources.Action_Inline_Save;
-            this.simpleButtonСохранить.Location = new System.Drawing.Point(391, 158);
-            this.simpleButtonСохранить.Name = "simpleButtonСохранить";
-            this.simpleButtonСохранить.ShowFocusRectangle = DevExpress.Utils.DefaultBoolean.False;
-            this.simpleButtonСохранить.Size = new System.Drawing.Size(109, 23);
-            this.simpleButtonСохранить.TabIndex = 18;
-            this.simpleButtonСохранить.Text = "Сохранить";
-            this.simpleButtonСохранить.Click += new System.EventHandler(this.simpleButtonСохранить_Click);
+            this.labelControl1.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // labelControl9
             // 
-            this.labelControl9.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.labelControl9.Location = new System.Drawing.Point(18, 70);
+            this.labelControl9.Location = new System.Drawing.Point(18, 67);
             this.labelControl9.Name = "labelControl9";
-            this.labelControl9.Size = new System.Drawing.Size(168, 20);
+            this.labelControl9.Size = new System.Drawing.Size(168, 26);
             this.labelControl9.TabIndex = 28;
             this.labelControl9.Text = "Начало производства, год:";
+            this.labelControl9.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // labelControl5
             // 
-            this.labelControl5.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.labelControl5.Location = new System.Drawing.Point(18, 96);
+            this.labelControl5.Location = new System.Drawing.Point(18, 93);
             this.labelControl5.Name = "labelControl5";
-            this.labelControl5.Size = new System.Drawing.Size(168, 20);
+            this.labelControl5.Size = new System.Drawing.Size(168, 26);
             this.labelControl5.TabIndex = 23;
             this.labelControl5.Text = "Окончание производства, год:";
+            this.labelControl5.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // textEditНачалоПроизводства
             // 
             this.textEditНачалоПроизводства.Dock = System.Windows.Forms.DockStyle.Fill;
             this.textEditНачалоПроизводства.Location = new System.Drawing.Point(192, 70);
+            this.textEditНачалоПроизводства.Mask = "0000";
             this.textEditНачалоПроизводства.Name = "textEditНачалоПроизводства";
-            this.textEditНачалоПроизводства.Properties.Mask.AutoComplete = DevExpress.XtraEditors.Mask.AutoCompleteType.None;
-            this.textEditНачалоПроизводства.Properties.Mask.EditMask = "[1-2][9-0]\\d\\d";
-            this.textEditНачалоПроизводства.Properties.Mask.MaskType = DevExpress.XtraEditors.Mask.MaskType.RegEx;
-            this.textEditНачалоПроизводства.Properties.Mask.SaveLiteral = false;
             this.textEditНачалоПроизводства.Size = new System.Drawing.Size(396, 20);
             this.textEditНачалоПроизводства.TabIndex = 26;
             // 
@@ -126,12 +95,12 @@
             // 
             // labelControl6
             // 
-            this.labelControl6.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.labelControl6.Location = new System.Drawing.Point(18, 44);
+            this.labelControl6.Location = new System.Drawing.Point(18, 41);
             this.labelControl6.Name = "labelControl6";
-            this.labelControl6.Size = new System.Drawing.Size(168, 20);
+            this.labelControl6.Size = new System.Drawing.Size(168, 26);
             this.labelControl6.TabIndex = 24;
             this.labelControl6.Text = "Модель автомобиля:";
+            this.labelControl6.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // tableLayoutPanel1
             // 
@@ -166,22 +135,44 @@
             // 
             this.textEditОкончаниеПроизводства.Dock = System.Windows.Forms.DockStyle.Fill;
             this.textEditОкончаниеПроизводства.Location = new System.Drawing.Point(192, 96);
+            this.textEditОкончаниеПроизводства.Mask = "0000";
             this.textEditОкончаниеПроизводства.Name = "textEditОкончаниеПроизводства";
-            this.textEditОкончаниеПроизводства.Properties.Mask.AutoComplete = DevExpress.XtraEditors.Mask.AutoCompleteType.None;
-            this.textEditОкончаниеПроизводства.Properties.Mask.EditMask = "[1-2][9-0]\\d\\d";
-            this.textEditОкончаниеПроизводства.Properties.Mask.MaskType = DevExpress.XtraEditors.Mask.MaskType.RegEx;
-            this.textEditОкончаниеПроизводства.Properties.Mask.SaveLiteral = false;
             this.textEditОкончаниеПроизводства.Size = new System.Drawing.Size(396, 20);
             this.textEditОкончаниеПроизводства.TabIndex = 27;
+            // 
+            // simpleButtonОтменить
+            // 
+            this.simpleButtonОтменить.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.simpleButtonОтменить.DialogResult = System.Windows.Forms.DialogResult.Cancel;
+            this.simpleButtonОтменить.Image = global::AutoSalon.Properties.Resources.Action_Cancel;
+            this.simpleButtonОтменить.ImageAlign = System.Drawing.ContentAlignment.BottomLeft;
+            this.simpleButtonОтменить.Location = new System.Drawing.Point(484, 158);
+            this.simpleButtonОтменить.Name = "simpleButtonОтменить";
+            this.simpleButtonОтменить.Size = new System.Drawing.Size(104, 23);
+            this.simpleButtonОтменить.TabIndex = 25;
+            this.simpleButtonОтменить.Text = "Отменить";
+            this.simpleButtonОтменить.Click += new System.EventHandler(this.simpleButtonОтменить_Click);
+            // 
+            // simpleButtonСохранить
+            // 
+            this.simpleButtonСохранить.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.simpleButtonСохранить.Image = global::AutoSalon.Properties.Resources.Action_Inline_Save;
+            this.simpleButtonСохранить.ImageAlign = System.Drawing.ContentAlignment.BottomLeft;
+            this.simpleButtonСохранить.Location = new System.Drawing.Point(369, 158);
+            this.simpleButtonСохранить.Name = "simpleButtonСохранить";
+            this.simpleButtonСохранить.Size = new System.Drawing.Size(109, 23);
+            this.simpleButtonСохранить.TabIndex = 24;
+            this.simpleButtonСохранить.Text = "Сохранить";
+            this.simpleButtonСохранить.Click += new System.EventHandler(this.simpleButtonСохранить_Click);
             // 
             // dlgEditАвтоМодели
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(609, 193);
-            this.Controls.Add(this.tableLayoutPanel1);
             this.Controls.Add(this.simpleButtonОтменить);
             this.Controls.Add(this.simpleButtonСохранить);
+            this.Controls.Add(this.tableLayoutPanel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.MaximizeBox = false;
             this.MinimizeBox = false;
@@ -189,26 +180,22 @@
             this.ShowInTaskbar = false;
             this.Text = "XtraForm1";
             this.Load += new System.EventHandler(this.dlgEditАвтоМодели_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.textEditМарка.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.textEditНачалоПроизводства.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.textEditМодель.Properties)).EndInit();
             this.tableLayoutPanel1.ResumeLayout(false);
             this.tableLayoutPanel1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.textEditОкончаниеПроизводства.Properties)).EndInit();
             this.ResumeLayout(false);
 
     }
 
     #endregion
-    private DevExpress.XtraEditors.TextEdit textEditМарка;
-    private DevExpress.XtraEditors.LabelControl labelControl1;
-    private DevExpress.XtraEditors.SimpleButton simpleButtonОтменить;
-    private DevExpress.XtraEditors.SimpleButton simpleButtonСохранить;
-    private DevExpress.XtraEditors.TextEdit textEditМодель;
-    private DevExpress.XtraEditors.LabelControl labelControl6;
-    private DevExpress.XtraEditors.LabelControl labelControl5;
-    private DevExpress.XtraEditors.LabelControl labelControl9;
-    private DevExpress.XtraEditors.TextEdit textEditНачалоПроизводства;
+    private System.Windows.Forms.TextBox textEditМарка;
+    private System.Windows.Forms.Label labelControl1;
+    private System.Windows.Forms.TextBox textEditМодель;
+    private System.Windows.Forms.Label labelControl6;
+    private System.Windows.Forms.Label labelControl5;
+    private System.Windows.Forms.Label labelControl9;
+    private System.Windows.Forms.MaskedTextBox textEditНачалоПроизводства;
     private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
-    private DevExpress.XtraEditors.TextEdit textEditОкончаниеПроизводства;
+    private System.Windows.Forms.MaskedTextBox textEditОкончаниеПроизводства;
+    private System.Windows.Forms.Button simpleButtonОтменить;
+    private System.Windows.Forms.Button simpleButtonСохранить;
 }

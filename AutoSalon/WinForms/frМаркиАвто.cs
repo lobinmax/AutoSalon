@@ -1,15 +1,14 @@
 ﻿using System;
+using System.Data;
+using System.Linq;
+using System.Windows.Forms;
 
-public partial class frМаркиАвто : DevExpress.XtraEditors.XtraForm
+public partial class frМаркиАвто : Form
 {
     public frМаркиАвто()
     {
-        using (var d = new DevExpress.Utils.WaitDialogForm("Идет загрузка ...", "Пожалуйста, подождите"))
-        {
-            InitializeComponent();
-
-            ОбновитьМарки();
-        }
+        InitializeComponent();
+        ОбновитьМарки();
     }
 
     private void frМаркиАвто_Load(object sender, System.EventArgs e) { }
@@ -26,79 +25,80 @@ public partial class frМаркиАвто : DevExpress.XtraEditors.XtraForm
 
     void ОбновитьМодели(object value = null)
     {
-        var dr = gridViewМарки.GetFocusedDataRow();
-        if (dr == null)
-        {
-            gridControlМодели.DataSource = null;
-            return;
-        }
+        var dr = gridViewМарки.SelectedRows.Cast<DataGridViewRow>().SingleOrDefault();
+        var UIDМарки =(dr == null) ? Guid.Empty : dr.Cells["UIDМарки"].Value;
 
         var dt = clsSql.ExecuteSP("dbo.АвтоМодели_SIUD", clsMisc.ASSqlFunction.ViewForm, 
-                                  "@UIDМарки", dr["UIDМарки"]).dataTable;
+                                  "@UIDМарки", UIDМарки).dataTable;
         gridViewМодели.ASОбновитьСохранитьВыделение(dt, "UIDМодели", value);
 
         gridViewМодели.ASНастроитьGridView(true, "UIDМарки", "UIDМодели");
     }
     void ОбновитьПоколения(object value = null)
     {
-        var dr = gridViewМодели.GetFocusedDataRow();
-        if (dr == null)
-        {
-            gridControlПоколения.DataSource = null;
-            return;
-        }
+        var dr = gridViewМодели.SelectedRows.Cast<DataGridViewRow>().SingleOrDefault();
+        var UIDМодели = (dr == null) ? Guid.Empty : dr.Cells["UIDМодели"].Value;
 
         var dt = clsSql.ExecuteSP("dbo.АвтоПоколения_SIUD", clsMisc.ASSqlFunction.ViewForm,
-                                  "@UIDМодели", dr["UIDМодели"]).dataTable;
+                                  "@UIDМодели", UIDМодели).dataTable;
         gridViewПоколения.ASОбновитьСохранитьВыделение(dt, "UIDПоколения", value);
 
         gridViewПоколения.ASНастроитьGridView(true, "UIDМарки", "UIDМодели", "UIDПоколения");
     }
 
-    private void gridViewМарки_PopupMenuShowing(object sender, DevExpress.XtraGrid.Views.Grid.PopupMenuShowingEventArgs e)
+    #region "Вызов контекстного меню"
+    private void gridViewМарки_MouseClick(object sender, MouseEventArgs e)
     {
-        DevExpress.Utils.Menu.DXPopupMenu dxpopupmenu = new DevExpress.Utils.Menu.DXPopupMenu();
-
-        e.МенюДляAddEditDelete(dxpopupmenu, ДобавитьМарку, РедактироватьМарку, УдалитьМарку);
+        var menu = new ContextMenuStrip();
+        e.МенюДляAddEditDelete(menu, (DataGridView)sender, ДобавитьМарку, РедактироватьМарку, УдалитьМарку);
     }
+    private void gridViewМодели_MouseClick(object sender, MouseEventArgs e)
+    {
+        var curRow = gridViewМарки.CurrentRow;
+        if (curRow != null)
+        {
+            var menu = new ContextMenuStrip();
+            e.МенюДляAddEditDelete(menu, (DataGridView)sender, ДобавитьМодель, РедактироватьМодель, УдалитьМодель);
+        }
+    }
+    private void gridViewПоколения_MouseClick(object sender, MouseEventArgs e)
+    {
+        var curRow = gridViewМодели.CurrentRow;
+        if (curRow != null)
+        {
+            var menu = new ContextMenuStrip();
+            e.МенюДляAddEditDelete(menu, (DataGridView)sender, ДобавитьПоколение, РедактироватьПоколение, УдалитьПоколение);
+        }
+    }
+    #endregion
 
-    private void gridViewМарки_FocusedRowChanged(object sender, DevExpress.XtraGrid.Views.Base.FocusedRowChangedEventArgs e)
+    #region "Выделение строк"
+    private void gridViewМарки_SelectionChanged(object sender, EventArgs e)
     {
         ОбновитьМодели();
     }
-    private void gridViewМарки_FilterRowChanged(object sender, EventArgs e)
+
+    private void gridViewМарки_DataSourceChanged(object sender, EventArgs e)
     {
         ОбновитьМодели();
     }
 
-    private void gridViewМодели_PopupMenuShowing(object sender, DevExpress.XtraGrid.Views.Grid.PopupMenuShowingEventArgs e)
-    {
-        DevExpress.Utils.Menu.DXPopupMenu dxpopupmenu = new DevExpress.Utils.Menu.DXPopupMenu();
-
-        e.МенюДляAddEditDelete(dxpopupmenu, ДобавитьМодель, РедактироватьМодель, УдалитьМодель);
-    }
-    private void gridViewМодели_FocusedRowChanged(object sender, DevExpress.XtraGrid.Views.Base.FocusedRowChangedEventArgs e)
-    {
-        ОбновитьПоколения();
-    }
-    private void gridViewМодели_FilterRowChanged(object sender, EventArgs e)
+    private void gridViewМодели_SelectionChanged(object sender, EventArgs e)
     {
         ОбновитьПоколения();
     }
 
-    private void gridViewПоколения_PopupMenuShowing(object sender, DevExpress.XtraGrid.Views.Grid.PopupMenuShowingEventArgs e)
+    private void gridViewМодели_DataSourceChanged(object sender, EventArgs e)
     {
-        DevExpress.Utils.Menu.DXPopupMenu dxpopupmenu = new DevExpress.Utils.Menu.DXPopupMenu();
-
-        e.МенюДляAddEditDelete(dxpopupmenu, ДобавитьПоколение, РедактироватьПоколение, УдалитьПоколение);
+        ОбновитьПоколения();
     }
+    #endregion
 
     #region "gridViewМарки" Кнопки управления и контекстное меню  
 
     void ДобавитьМарку(object sender, EventArgs e)
     {
-        using (var dlgEditАвтоМарки = new dlgEditАвтоМарки(null,
-                                                           clsMisc.ASSqlFunction.Insert))
+        using (var dlgEditАвтоМарки = new dlgEditАвтоМарки(null, clsMisc.ASSqlFunction.Insert))
         {
             var result = dlgEditАвтоМарки.ShowDialog();
             if (result == System.Windows.Forms.DialogResult.OK)
@@ -110,7 +110,7 @@ public partial class frМаркиАвто : DevExpress.XtraEditors.XtraForm
 
     void РедактироватьМарку(object sender, EventArgs e)
     {
-        using (var dlgEditАвтоМарки = new dlgEditАвтоМарки(gridViewМарки.GetFocusedRowCellDisplayText("UIDМарки").ToString(),
+        using (var dlgEditАвтоМарки = new dlgEditАвтоМарки((Guid)gridViewМарки["UIDМарки", gridViewМарки.CurrentRow.Index].Value,
                                                            clsMisc.ASSqlFunction.Update))
         {
             var result = dlgEditАвтоМарки.ShowDialog();
@@ -123,17 +123,15 @@ public partial class frМаркиАвто : DevExpress.XtraEditors.XtraForm
 
     void УдалитьМарку(object sender, EventArgs e)
     {
-        var selectRow = gridViewМарки.FocusedRowHandle;
-        if (DevExpress.XtraEditors.XtraMessageBox.Show("Вы уверены что хотите удалить запись?",
-                                                        Program.ProductName,
-                                                        System.Windows.Forms.MessageBoxButtons.YesNo,
-                                                        System.Windows.Forms.MessageBoxIcon.Question) == System.Windows.Forms.DialogResult.Yes)
+        if (MessageBox.Show("Вы уверены что хотите удалить запись?",
+                            Program.ProductName,
+                            System.Windows.Forms.MessageBoxButtons.YesNo,
+                            System.Windows.Forms.MessageBoxIcon.Question) == System.Windows.Forms.DialogResult.Yes)
         {
             clsSql.ExecuteSPNonQuery("dbo.АвтоМарки_SIUD",
                                       clsMisc.ASSqlFunction.Delete, "@UIDМарки",
-                                      gridViewМарки.GetFocusedRowCellDisplayText("UIDМарки").ToString());
+                                      gridViewМарки["UIDМарки", gridViewМарки.CurrentRow.Index].Value.ToString());
             ОбновитьМарки();
-            gridViewМарки.FocusedRowHandle = selectRow - 1;
         }
     }
     #endregion
@@ -143,7 +141,7 @@ public partial class frМаркиАвто : DevExpress.XtraEditors.XtraForm
     void ДобавитьМодель(object sender, EventArgs e)
     {
         using (var dlgEditАвтоМодели = new dlgEditАвтоМодели(null,
-                                                             gridViewМарки.GetFocusedRowCellDisplayText("UIDМарки").ToString(),
+                                                             (Guid)gridViewМарки["UIDМарки", gridViewМарки.CurrentRow.Index].Value,
                                                              clsMisc.ASSqlFunction.Insert))
         {
             var result = dlgEditАвтоМодели.ShowDialog();
@@ -156,10 +154,10 @@ public partial class frМаркиАвто : DevExpress.XtraEditors.XtraForm
 
     void РедактироватьМодель(object sender, EventArgs e)
     {
-        var dr = gridViewМодели.GetFocusedDataRow();
+        var dr = gridViewМодели.SelectedRows.Cast<DataGridViewRow>().SingleOrDefault();
         if (dr == null) { return; }
-        using (var dlgEditАвтоМодели = new dlgEditАвтоМодели(dr["UIDМодели"].ToString(),
-                                                             dr["UIDМарки"].ToString(),
+        using (var dlgEditАвтоМодели = new dlgEditАвтоМодели((Guid)dr.Cells["UIDМодели"].Value,
+                                                             (Guid)dr.Cells["UIDМарки"].Value,
                                                              clsMisc.ASSqlFunction.Update))
         {
             var result = dlgEditАвтоМодели.ShowDialog();
@@ -172,17 +170,15 @@ public partial class frМаркиАвто : DevExpress.XtraEditors.XtraForm
 
     void УдалитьМодель(object sender, EventArgs e)
     {
-        var selectRow = gridViewМодели.FocusedRowHandle;
-        if (DevExpress.XtraEditors.XtraMessageBox.Show("Вы уверены что хотите удалить запись?",
-                                                        Program.ProductName,
-                                                        System.Windows.Forms.MessageBoxButtons.YesNo,
-                                                        System.Windows.Forms.MessageBoxIcon.Question) == System.Windows.Forms.DialogResult.Yes)
+        if (MessageBox.Show("Вы уверены что хотите удалить запись?",
+                            Program.ProductName,
+                            System.Windows.Forms.MessageBoxButtons.YesNo,
+                            System.Windows.Forms.MessageBoxIcon.Question) == System.Windows.Forms.DialogResult.Yes)
         {
             clsSql.ExecuteSPNonQuery("dbo.АвтоМодели_SIUD",
-                                      clsMisc.ASSqlFunction.Delete, "@UIDМодели",
-                                      gridViewМодели.GetFocusedRowCellDisplayText("UIDМодели").ToString());
+                                     clsMisc.ASSqlFunction.Delete, "@UIDМодели",
+                                     gridViewМодели["UIDМодели", gridViewМодели.CurrentRow.Index].Value);
             ОбновитьМодели();
-            gridViewМодели.FocusedRowHandle = selectRow - 1;
         }
     }
 
@@ -192,11 +188,11 @@ public partial class frМаркиАвто : DevExpress.XtraEditors.XtraForm
 
     void ДобавитьПоколение(object sender, EventArgs e)
     {
-        var dr = gridViewМодели.GetFocusedDataRow();
+        var dr = gridViewМодели.SelectedRows.Cast<DataGridViewRow>().SingleOrDefault();
         if (dr == null) { return; }
         using (var dlgEditАвтоПоколения = new dlgEditАвтоПоколения(null,
-                                                                   dr["UIDМодели"].ToString(), 
-                                                                   dr["UIDМарки"].ToString(),
+                                                                   (Guid)dr.Cells["UIDМодели"].Value,
+                                                                   (Guid)dr.Cells["UIDМарки"].Value,
                                                                    clsMisc.ASSqlFunction.Insert))
         {
             var result = dlgEditАвтоПоколения.ShowDialog();
@@ -209,11 +205,11 @@ public partial class frМаркиАвто : DevExpress.XtraEditors.XtraForm
 
     void РедактироватьПоколение(object sender, EventArgs e)
     {
-        var dr = gridViewПоколения.GetFocusedDataRow();
+        var dr = gridViewПоколения.SelectedRows.Cast<DataGridViewRow>().SingleOrDefault();
         if (dr == null) { return; }
-        using (var dlgEditАвтоПоколения = new dlgEditАвтоПоколения(dr["UIDПоколения"].ToString(),
-                                                                   dr["UIDМодели"].ToString(),
-                                                                   dr["UIDМарки"].ToString(),
+        using (var dlgEditАвтоПоколения = new dlgEditАвтоПоколения((Guid)dr.Cells["UIDПоколения"].Value,
+                                                                   (Guid)dr.Cells["UIDМодели"].Value,
+                                                                   (Guid)dr.Cells["UIDМарки"].Value,
                                                                    clsMisc.ASSqlFunction.Update))
         {
             var result = dlgEditАвтоПоколения.ShowDialog();
@@ -226,22 +222,21 @@ public partial class frМаркиАвто : DevExpress.XtraEditors.XtraForm
 
     void УдалитьПоколение(object sender, EventArgs e)
     {
-        var selectRow = gridViewПоколения.FocusedRowHandle;
-        if (DevExpress.XtraEditors.XtraMessageBox.Show("Вы уверены что хотите удалить запись?",
+        if (MessageBox.Show("Вы уверены что хотите удалить запись?",
                                                         Program.ProductName,
                                                         System.Windows.Forms.MessageBoxButtons.YesNo,
                                                         System.Windows.Forms.MessageBoxIcon.Question) == System.Windows.Forms.DialogResult.Yes)
         {
             clsSql.ExecuteSPNonQuery("dbo.АвтоПоколения_SIUD",
                                       clsMisc.ASSqlFunction.Delete, "@UIDПоколения",
-                                      gridViewМодели.GetFocusedRowCellDisplayText("UIDПоколения").ToString());
+                                      gridViewПоколения["UIDПоколения", gridViewПоколения.CurrentRow.Index].Value);
             ОбновитьМодели();
-            gridViewМодели.FocusedRowHandle = selectRow - 1;
         }
     }
 
+
+
     #endregion
 
-   
 }
 

@@ -1,5 +1,4 @@
-﻿using DevExpress.XtraEditors;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
@@ -25,7 +24,7 @@ public class clsSql
             conn.ConnectionString = $"Data Source={server};" +
                         $"Initial Catalog={db};" +
                         $"Encrypt=False;" +
-                        $"Integrated Security=True;" +
+                        $"Integrated Security=False;" +
                         $"Password={pass};" +
                         $"User ID={login}";
             Program.ConnectionString = conn.ConnectionString;
@@ -44,7 +43,7 @@ public class clsSql
             }
             catch (SqlException ex)
             {
-                XtraMessageBox.Show($"{ex.Message}\nОшибка вызова: ConnectionToDase",
+                MessageBox.Show($"{ex.Message}\nОшибка вызова: ConnectionToDase",
                                     Program.ProductName,
                                     MessageBoxButtons.OK,
                                     MessageBoxIcon.Error);
@@ -84,7 +83,7 @@ public class clsSql
 
             catch (Exception ex)
             {
-                XtraMessageBox.Show($"{ex.Message}\nОшибка вызова: '{procedureName}'",
+                MessageBox.Show($"{ex.Message}\nОшибка вызова: '{procedureName}'",
                                     Program.ProductName,
                                     MessageBoxButtons.OK,
                                     MessageBoxIcon.Error);
@@ -125,7 +124,7 @@ public class clsSql
 
             catch (Exception ex)
             {
-                XtraMessageBox.Show($"{ex.Message}\nОшибка вызова: '{procedureName}'",
+                MessageBox.Show($"{ex.Message}\nОшибка вызова: '{procedureName}'",
                                     Program.ProductName,
                                     MessageBoxButtons.OK,
                                     MessageBoxIcon.Error);
@@ -158,7 +157,7 @@ public class clsSql
 
             catch (Exception ex)
             {
-                XtraMessageBox.Show($"{ex.Message}\nОшибка вызова: '{procedureName}'",
+                MessageBox.Show($"{ex.Message}\nОшибка вызова: '{procedureName}'",
                                     Program.ProductName,
                                     MessageBoxButtons.OK,
                                     MessageBoxIcon.Error);
@@ -206,7 +205,7 @@ public class clsSql
 
             catch (Exception ex)
             {
-                XtraMessageBox.Show($"{ex.Message}\nОшибка вызова: '{procedureName}'",
+                MessageBox.Show($"{ex.Message}\nОшибка вызова: '{procedureName}'",
                                     Program.ProductName,
                                     MessageBoxButtons.OK,
                                     MessageBoxIcon.Error);
@@ -259,7 +258,7 @@ public class clsSql
 
             catch (Exception ex)
             {
-                XtraMessageBox.Show($"{ex.Message}\nОшибка вызова: '{procedureName}'",
+                MessageBox.Show($"{ex.Message}\nОшибка вызова: '{procedureName}'",
                                     Program.ProductName,
                                     MessageBoxButtons.OK,
                                     MessageBoxIcon.Error);
@@ -294,7 +293,7 @@ public class clsSql
 
             catch (Exception ex)
             {
-                XtraMessageBox.Show($"{ex.Message}\nОшибка вызова: '{functionName}'",
+                MessageBox.Show($"{ex.Message}\nОшибка вызова: '{functionName}'",
                                     Program.ProductName,
                                     MessageBoxButtons.OK,
                                     MessageBoxIcon.Error);
@@ -338,7 +337,7 @@ public class clsSql
 
             catch (Exception ex)
             {
-                XtraMessageBox.Show($"{ex.Message}\nОшибка вызова: '{functionName}'",
+                MessageBox.Show($"{ex.Message}\nОшибка вызова: '{functionName}'",
                                     Program.ProductName,
                                     MessageBoxButtons.OK,
                                     MessageBoxIcon.Error);
@@ -368,7 +367,7 @@ public class clsSql
 
             catch (Exception ex)
             {
-                XtraMessageBox.Show($"{ex.Message}\nОшибка вызова запроса.",
+                MessageBox.Show($"{ex.Message}\nОшибка вызова запроса.",
                                     Program.ProductName,
                                     MessageBoxButtons.OK,
                                     MessageBoxIcon.Error);

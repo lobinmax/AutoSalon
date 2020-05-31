@@ -1,6 +1,4 @@
-﻿using DevExpress.XtraEditors;
-using DevExpress.XtraGrid.Views.Grid;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Windows.Forms;
@@ -23,7 +21,7 @@ public class clsMisc
     
     public static object DBout(object obj)
     {
-        if (obj == DBNull.Value)
+        if (obj.Equals(DBNull.Value))
         {
             return null;
         }
@@ -46,7 +44,7 @@ public class clsMisc
         {
             if ((obj == null) || string.IsNullOrWhiteSpace(obj.ToString()))
             {
-                XtraMessageBox.Show("Не все обязательные поля заполнены!", Program .ProductName, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Не все обязательные поля заполнены!", Program .ProductName, MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return false;
             }
         }
@@ -60,10 +58,10 @@ public class clsMisc
 /// </summary>
 public class ASTimer : Timer
 {
-    public static GridView _gridView;
-    public static List<SimpleButton> _simpleButton;
+    public static DataGridView _gridView;
+    public static List<Button> _simpleButton;
 
-    public ASTimer(GridView gridView, List<SimpleButton> simpleButton)
+    public ASTimer(DataGridView gridView, List<Button> simpleButton)
     {
         _gridView = gridView;
         _simpleButton = simpleButton;
@@ -73,9 +71,9 @@ public class ASTimer : Timer
     private void timer_Tick(object sender, EventArgs e)
     {
         if (_simpleButton == null) { return; }
-        foreach (SimpleButton btn in _simpleButton)
+        foreach (Button btn in _simpleButton)
         {
-            btn.Enabled = !(_gridView.FocusedRowHandle < 0);
+            btn.Enabled = !(_gridView.SelectedRows.Count == 0);
         }
     }
 

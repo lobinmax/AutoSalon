@@ -1,12 +1,9 @@
-﻿using DevExpress.Utils.Menu;
-using DevExpress.XtraEditors;
-using DevExpress.XtraGrid.Views.Grid;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Windows.Forms;
 
 
-public partial class frСотрудники : DevExpress.XtraEditors.XtraForm
+public partial class frСотрудники : Form
 {
     public frСотрудники()
     {
@@ -15,52 +12,45 @@ public partial class frСотрудники : DevExpress.XtraEditors.XtraForm
 
     private void frСотрудники_Load(object sender, EventArgs e)
     {
-        using (var d = new DevExpress.Utils.WaitDialogForm("Идет загрузка ...", "Пожалуйста, подождите"))
-        {
-            Обновить();
-            gridViewСотрудники.BestFitColumns();
-            gridViewСотрудники.ASНастроитьGridView(gridColumnVisible: "UIDСотрудника");
-            ASTimer timer = new ASTimer(gridViewСотрудники, 
-                                        new List<SimpleButton> { simpleButtonИзменить, simpleButtonУдалить }
-                                        ) { Enabled = true };
-        }
+        Обновить();
+        gridViewСотрудники.ASНастроитьGridView(gridColumnVisible: "UIDСотрудника");
+        ASTimer timer = new ASTimer(gridViewСотрудники, 
+                                    new List<Button> { buttonИзменить, buttonУдалить }
+                                    ) { Enabled = true };
     }
 
     void Обновить(object value = null)
     {
         var dt = clsSql.ExecuteSP("dbo.ШтатСотрудники_SIUD", clsMisc.ASSqlFunction.ViewForm).dataTable;
+        gridViewСотрудники.DataSource = dt;
         gridViewСотрудники.ASОбновитьСохранитьВыделение(dt, "UIDСотрудника", value);       
     }
 
     private void simpleButtonОбновить_Click(object sender, EventArgs e) { Обновить(); }
 
-    private void gridViewСотрудники_PopupMenuShowing(object sender, PopupMenuShowingEventArgs e)
-    {
-        e.МенюДляAddEditDelete(new DXPopupMenu(), ДобавитьСотрудника, РедактироватьСотрудника, УдалитьСотрудника);
-    }
 
-#region Кнопки управления и контекстное меню  
+    #region Кнопки управления и контекстное меню  
 
     void ДобавитьСотрудника(object sender, EventArgs e) 
     {
-        using (var editСотрудник = new dlgEditСотрудник(gridViewСотрудники.GetFocusedRowCellDisplayText("UIDСотрудника").ToString(), clsMisc.ASSqlFunction.Insert))
+        using (var editСотрудник = new dlgEditСотрудник(null, clsMisc.ASSqlFunction.Insert))
         {
             var result = editСотрудник.ShowDialog();
             if (result == System.Windows.Forms.DialogResult.OK)
             {
                 Обновить(editСотрудник.NewRecord);
             }
-        }      
+        }
     }
 
     private void simpleButtonДобавить_Click(object sender, EventArgs e) { ДобавитьСотрудника(sender, e); }
 
     void РедактироватьСотрудника(object sender, EventArgs e)
     {
-        using (var editСотрудник = new dlgEditСотрудник(gridViewСотрудники.GetFocusedRowCellDisplayText("UIDСотрудника").ToString(), clsMisc.ASSqlFunction.Update))
+        using (var editСотрудник = new dlgEditСотрудник(gridViewСотрудники["UIDСотрудника", gridViewСотрудники.CurrentRow.Index].Value.ToString(), clsMisc.ASSqlFunction.Update))
         {
             var result = editСотрудник.ShowDialog();
-            if (result == System.Windows.Forms.DialogResult.OK)
+            if (result == DialogResult.OK)
             {
                 Обновить(editСотрудник.NewRecord);
             }
@@ -70,23 +60,26 @@ public partial class frСотрудники : DevExpress.XtraEditors.XtraForm
 
     void УдалитьСотрудника(object sender, EventArgs e)
     {
-        var selectRow = gridViewСотрудники.FocusedRowHandle;
-        if (XtraMessageBox.Show("Вы уверены что хотите удалить сотрудника?", 
+        if (MessageBox.Show("Вы уверены что хотите удалить сотрудника?", 
                                 Program.ProductName, 
                                 MessageBoxButtons.YesNo, 
                                 MessageBoxIcon.Question) == DialogResult.Yes)
         {
             clsSql.ExecuteSPNonQuery("dbo.ШтатСотрудники_SIUD",
                 clsMisc.ASSqlFunction.Delete, "@UIDСотрудника",
-                gridViewСотрудники.GetFocusedRowCellDisplayText("UIDСотрудника").ToString());
+                gridViewСотрудники["UIDСотрудника", gridViewСотрудники.CurrentRow.Index].Value.ToString());
                 Обновить();
-                gridViewСотрудники.FocusedRowHandle = selectRow;
         }
     }
     private void simpleButtonУдалить_Click(object sender, EventArgs e) { УдалитьСотрудника(sender, e); }
+    #endregion
 
- #endregion
-
-
+    private void gridViewСотрудники_MouseClick(object sender, MouseEventArgs e)
+    {
+        var h = gridViewСотрудники.HitTest(e.X, e.Y);
+        var menu = new ContextMenuStrip();
+        e.МенюДляAddEditDelete(menu, (DataGridView)sender, ДобавитьСотрудника, РедактироватьСотрудника, УдалитьСотрудника);
+    }
+    
 }
 

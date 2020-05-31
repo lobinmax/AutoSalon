@@ -1,75 +1,84 @@
 ﻿using System;
 using System.Windows.Forms;
-    
-public partial class frMainForm : DevExpress.XtraBars.Ribbon.RibbonForm
+
+public partial class frMainForm : Form
 {
+
     public frMainForm()
     {
         InitializeComponent();
-        
-        barStaticItemDB.Caption = Program.CurrentBase;
-        barStaticItemServer.Caption = Program.CurrentServer;
 
+        barStaticItemDB.Text = Program.CurrentBase;
+        barStaticItemServer.Text = Program.CurrentServer;
     }
 
     private void XtraForm1_Load(object sender, EventArgs e) { }
 
     private void XtraForm1_FormClosed(object sender, FormClosedEventArgs e) { Application.Exit(); }
-    
-    private void timer_Tick(object sender, EventArgs e) { barStaticItemВремяТекущее.Caption = DateTime.Now.ToString(); }
 
-    private void barButtonItemСотрудники_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+    private void barButtonItemСотрудники_Click(object sender, EventArgs e)
     {
         frСотрудники frСотрудники = new frСотрудники();
-        if (this.ASMdiConstrain(frСотрудники))
+        foreach(MdiTabControl.TabPage tp in tabControlMDI.TabPages)
         {
-            this.ASMdiChildFocus(frСотрудники);
+            var _form = (Form)tp.Form;
+            if (_form.Name == frСотрудники.Name)
+            {
+                tp.Show();
+                _form.Refresh();
+                _form.Update();
+                return;
+            }
         }
-        else
-        {
-            clsTabActivated frСотрудникиMDI = new clsTabActivated(frСотрудники, this);
-        } 
+        tabControlMDI.TabPages.Add(frСотрудники);
     }
 
-   
-    private void barButtonItemСправочники_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+    private void barButtonItemСправочники_Click(object sender, EventArgs e)
     {
-        frСправочники frДолжности = new frСправочники();
-        if (this.ASMdiConstrain(frДолжности))
+        var frСправочники = new frСправочники();
+        foreach (MdiTabControl.TabPage tp in tabControlMDI.TabPages)
         {
-            this.ASMdiChildFocus(frДолжности);
+            var _form = (Form)tp.Form;
+            if (_form.Name == frСправочники.Name)
+            {
+                tp.Show();
+                _form.Refresh();
+                _form.Update();
+                return;
+            }
         }
-        else
-        {
-            clsTabActivated frДолжностиMDI = new clsTabActivated(frДолжности, this);
-        }
+        tabControlMDI.TabPages.Add(frСправочники);
+
     }
 
-    private void barButtonItemМаркиАвто_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+
+    private void barButtonItemМаркиАвто_Click(object sender, EventArgs e)
     {
-        frМаркиАвто frМаркиАвто = new frМаркиАвто();
-        if (this.ASMdiConstrain(frМаркиАвто))
+        var frМаркиАвто = new frМаркиАвто();
+        foreach (MdiTabControl.TabPage tp in tabControlMDI.TabPages)
         {
-            this.ASMdiChildFocus(frМаркиАвто);
+            var _form = (Form)tp.Form;
+            if (_form.Name == frМаркиАвто.Name)
+            {
+                tp.Show();
+                _form.Refresh();
+                _form.Update();
+                return;
+            }
         }
-        else
-        {
-            clsTabActivated frМаркиАвтоMDI = new clsTabActivated(frМаркиАвто, this);
-        }
+        tabControlMDI.TabPages.Add(frМаркиАвто);
     }
 
-    private void barButtonItemАвтоВПродаже_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
-    {
-        frГаражАвто frГаражАвто = new frГаражАвто();
-        if (this.ASMdiConstrain(frГаражАвто))
-        {
-            this.ASMdiChildFocus(frГаражАвто);
-        }
-        else
-        {
-            clsTabActivated frМаркиАвтоMDI = new clsTabActivated(frГаражАвто, this);
-        }
-    }
+    //private void barButtonItemАвтоВПродаже_Click(object sender, EventArgs e)
+    //{
+    //    frГаражАвто frГаражАвто = new frГаражАвто();
+    //    if (this.ASMdiConstrain(frГаражАвто))
+    //    {
+    //        this.ASMdiChildFocus(frГаражАвто);
+    //    }
+    //    else
+    //    {
+    //        clsTabActivated frМаркиАвтоMDI = new clsTabActivated(frГаражАвто, this);
+    //    }
+    //}
 }
-
-

@@ -1,63 +1,47 @@
 ﻿using System;
-using DevExpress.XtraBars.Navigation;
+using System.Windows.Forms;
 
-public partial class frСправочники : DevExpress.XtraEditors.XtraForm
+public partial class frСправочники : Form
 {
     public frСправочники()
     {
         InitializeComponent();
     }
 
-    private void frСправочники_Load(object sender, EventArgs e)
+    private void tabControl1_SelectedIndexChanged(object sender, EventArgs e)
     {
-        using (var d = new DevExpress.Utils.WaitDialogForm("Идет загрузка ...", "Пожалуйста, подождите"))
-        {
-            navigationPane_SelectedPageChanged(navigationPane, new SelectedPageChangedEventArgs(navigationPane.SelectedPage, navigationPane.SelectedPage));
-        }
-    }
-
-    private void navigationPane_StateChanged(object sender, DevExpress.XtraBars.Navigation.StateChangedEventArgs e)
-    {
-        if(navigationPane.State != DevExpress.XtraBars.Navigation.NavigationPaneState.Default)
-        {
-            navigationPane.State = e.OldState;
-        }
-    }
-
-    private void navigationPane_SelectedPageChanged(object sender, SelectedPageChangedEventArgs e)
-    {
-        var page = (NavigationPage) e.Page;
+        var page = tabControl.SelectedTab;
         switch (page.Name)
         {
-            case "navigationPageТипыКПП": 
-                using (var КПП = new clsDlgEditSimple(simpleButtonОбновить,
-                                        simpleButtonДобавить,
-                                        simpleButtonИзменить,
-                                        simpleButtonУдалить,
-                                        gridViewТипыКпп,
-                                        "IdТипКПП",
-                                        "dbo.АвтоТипКПП_SIUD",
-                                        "dlgEditТипКПП", () => gridViewТипыКпп.ASНастроитьGridView(true, "IdТипКПП"))) 
-{
-                } ;
+            case "tabPageТипыКПП":
+                using (var КПП = new clsDlgEditSimple(ButtonОбновить,
+                                                      ButtonДобавить,
+                                                      ButtonИзменить,
+                                                      ButtonУдалить,
+                                                      gridViewТипыКпп,
+                                                      "IdТипКПП",
+                                                      "dbo.АвтоТипКПП_SIUD",
+                                                      "dlgEditТипКПП", () => gridViewТипыКпп.ASНастроитьGridView(true, "IdТипКПП")))
+                {
+                };
                 break;
-            case "navigationPageТипыКузова":
-                using (var ТипКузова = new clsDlgEditSimple(simpleButtonОбновить,
-                                        simpleButtonДобавить,
-                                        simpleButtonИзменить,
-                                        simpleButtonУдалить,
+            case "tabPageТипыКузова":
+                using (var ТипКузова = new clsDlgEditSimple(ButtonОбновить,
+                                        ButtonДобавить,
+                                        ButtonИзменить,
+                                        ButtonУдалить,
                                         gridViewТипКузова,
                                         "IdТипКузова",
                                         "dbo.АвтоТипКузова_SIUD",
                                         "dlgEditТипКузова", () => gridViewТипКузова.ASНастроитьGridView(true, "IdТипКузова")))
                 {
-                }; 
+                };
                 break;
-            case "navigationPageТипыПривода":
-                using (var ТипПривода = new clsDlgEditSimple(simpleButtonОбновить,
-                                        simpleButtonДобавить,
-                                        simpleButtonИзменить,
-                                        simpleButtonУдалить,
+            case "tabPageТипыПривода":
+                using (var ТипПривода = new clsDlgEditSimple(ButtonОбновить,
+                                        ButtonДобавить,
+                                        ButtonИзменить,
+                                        ButtonУдалить,
                                         gridViewТипыПривода,
                                         "IdТипПривода",
                                         "dbo.АвтоТипПривода_SIUD",
@@ -65,39 +49,45 @@ public partial class frСправочники : DevExpress.XtraEditors.XtraForm
                 {
                 };
                 break;
-            case "navigationPageТипыТоплива":
-                using (var ТипТоплива = new clsDlgEditSimple(simpleButtonОбновить,
-                                        simpleButtonДобавить,
-                                        simpleButtonИзменить,
-                                        simpleButtonУдалить,
+            case "tabPageТипыТоплива":
+                using (var ТипТоплива = new clsDlgEditSimple(ButtonОбновить,
+                                        ButtonДобавить,
+                                        ButtonИзменить,
+                                        ButtonУдалить,
                                         gridViewТипыТоплива,
                                         "IdТипТоплива",
                                         "dbo.АвтоТипТоплива_SIUD",
                                         "dlgEditТипТоплива", () => gridViewТипыТоплива.ASНастроитьGridView(true, "IdТипТоплива")))
-                break;
-            case "navigationPageЗаказыСтатусы":
-                using (var СтатусЗаказа = new clsDlgEditSimple(simpleButtonОбновить,
-                                          simpleButtonДобавить,
-                                          simpleButtonИзменить,
-                                          simpleButtonУдалить,
+                    break;
+            case "tabPagePageЗаказыСтатусы":
+                using (var СтатусЗаказа = new clsDlgEditSimple(ButtonОбновить,
+                                          ButtonДобавить,
+                                          ButtonИзменить,
+                                          ButtonУдалить,
                                           gridViewСтатусыЗаказа,
                                           "IdСтатусЗаказа",
                                           "dbo.ТипыСтатусовЗаказа_SIUD",
                                           "dlgEditТипыСтатусовЗаказа", () => gridViewСтатусыЗаказа.ASНастроитьGridView(true, "IdСтатусЗаказа")))
-                break;
-            case "navigationPageСтраны":
-                using (var Страны = new clsDlgEditSimple(simpleButtonОбновить,
-                                    simpleButtonДобавить,
-                                    simpleButtonИзменить,
-                                    simpleButtonУдалить,
+                    break;
+            case "tabPageСтраны":
+                using (var Страны = new clsDlgEditSimple(ButtonОбновить,
+                                    ButtonДобавить,
+                                    ButtonИзменить,
+                                    ButtonУдалить,
                                     gridViewСтраны,
                                     "UIDСтраны",
                                     "dbo.Страны_SIUD",
                                     "dlgEditСтраны", () => gridViewСтраны.ASНастроитьGridView(true, "UIDСтраны")))
-                break;
+                    break;
 
         }
     }
+
+    private void frСправочники_Load(object sender, EventArgs e)
+    {
+        tabControl1_SelectedIndexChanged(sender, e);
+    }
+    
 }
 
 

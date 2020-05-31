@@ -1,5 +1,4 @@
-﻿using DevExpress.XtraEditors;
-using System.Windows.Forms;
+﻿using System.Windows.Forms;
 
 public static partial class clsExtensions
 {
@@ -9,7 +8,7 @@ public static partial class clsExtensions
     /// <param name="MDIParent">Родительская форма</param>
     /// <param name="MDIChild">Дочерняя форма</param>
     /// <returns></returns>
-    static public bool ASMdiConstrain(this XtraForm MDIParent, XtraForm MDIChild)
+    static public bool ASMdiConstrain(this Form MDIParent, Form MDIChild)
     {
         foreach (Form MDIch in MDIParent.MdiChildren)
         {
@@ -26,7 +25,7 @@ public static partial class clsExtensions
     /// </summary>
     /// <param name="MDIParent">Родительская форма</param>
     /// <param name="MDIChild">Дочерняя форма</param>
-    static public void ASMdiChildFocus(this XtraForm MDIParent, XtraForm MDIChild)
+    static public void ASMdiChildFocus(this Form MDIParent, Form MDIChild)
     {
         if (MDIParent.ASMdiConstrain(MDIChild))
         {

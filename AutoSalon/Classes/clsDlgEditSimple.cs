@@ -1,6 +1,4 @@
-﻿using DevExpress.XtraEditors;
-using DevExpress.XtraGrid.Views.Grid;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Reflection;
@@ -9,12 +7,12 @@ using System.Windows.Forms;
 class clsDlgEditSimple: IDisposable
 {
     private string procedureName { get; set; }
-    private GridView gridView { get; set; }
+    private DataGridView gridView { get; set; }
     private string IdFieldName { get; set; }
-    private SimpleButton btnОбновить { get; set; }
-    private SimpleButton btnДобавить { get; set; }
-    private SimpleButton btnИзменить { get; set; }
-    private SimpleButton btnУдалить { get; set; }
+    private Button btnОбновить { get; set; }
+    private Button btnДобавить { get; set; }
+    private Button btnИзменить { get; set; }
+    private Button btnУдалить { get; set; }
     private string dlgEditForm { get; set; }
 
     /// <summary>
@@ -28,11 +26,11 @@ class clsDlgEditSimple: IDisposable
     /// <param name="IdFieldName">Имя ключевогополя в таблице</param>
     /// <param name="procedureName">Имя процедуры SIUD</param>
     /// <param name="dlgEditForm">Форма диалог</param>
-    public clsDlgEditSimple(SimpleButton btnОбновить, 
-                            SimpleButton btnДобавить,
-                            SimpleButton btnИзменить,
-                            SimpleButton btnУдалить,
-                            GridView gridView, 
+    public clsDlgEditSimple(Button btnОбновить,
+                            Button btnДобавить,
+                            Button btnИзменить,
+                            Button btnУдалить,
+                            DataGridView gridView, 
                             string IdFieldName, 
                             string procedureName, 
                             string dlgEditForm, Action settingGridView)
@@ -49,7 +47,6 @@ class clsDlgEditSimple: IDisposable
 
         this.Обновить();
         settingGridView();
-        this.gridView.BestFitColumns();
 
         RemoveHandlerList(this.btnОбновить);
         RemoveHandlerList(this.btnДобавить);
@@ -60,7 +57,7 @@ class clsDlgEditSimple: IDisposable
         this.btnДобавить.Click += ДобавитьClick;
         this.btnИзменить.Click += ИзменитьClick;
         this.btnУдалить.Click += УдалитьClick;
-        gridView.PopupMenuShowing += gridView_PopupMenuShowing;
+        gridView.MouseClick += gridView_MouseClick;
     }
 
     private void ДобавитьClick(object sender, EventArgs e)
@@ -90,7 +87,7 @@ class clsDlgEditSimple: IDisposable
         Form form = (Form)constructor.Invoke(new object[] { });
 
         var QueryParameters = new Dictionary<string, clsMisc.ASSqlFunction>();
-        QueryParameters.Add(gridView.GetFocusedRowCellDisplayText(this.IdFieldName), clsMisc.ASSqlFunction.Update);
+        QueryParameters.Add(gridView[this.IdFieldName, gridView.CurrentRow.Index].Value.ToString(), clsMisc.ASSqlFunction.Update);
         form.Tag = QueryParameters;
 
         var result = form.ShowDialog();
@@ -110,26 +107,27 @@ class clsDlgEditSimple: IDisposable
 
     private void УдалитьClick(object sender, EventArgs e)
     {
-        var selectRow = gridView.FocusedRowHandle;
-        if (XtraMessageBox.Show("Вы уверены что хотите удалить запись?",
+        //var selectRow = gridView.FocusedRowHandle;
+        if (MessageBox.Show("Вы уверены что хотите удалить запись?",
                                 Program.ProductName,
                                 MessageBoxButtons.YesNo,
                                 MessageBoxIcon.Question) == DialogResult.Yes)
         {
             clsSql.ExecuteSPNonQuery(this.procedureName,
                 clsMisc.ASSqlFunction.Delete, $"@{IdFieldName}",
-                gridView.GetFocusedRowCellDisplayText(IdFieldName).ToString());
+                gridView[IdFieldName, gridView.CurrentRow.Index].Value.ToString());
 
             Обновить();
-            gridView.FocusedRowHandle = selectRow;
-            gridView.SelectRow(selectRow);
+            //gridView.FocusedRowHandle = selectRow;
+            //gridView.SelectRow(selectRow);
         }
     }
 
-    private void gridView_PopupMenuShowing(object sender, PopupMenuShowingEventArgs e)
+    private void gridView_MouseClick(object sender, MouseEventArgs e)
     {
-        DevExpress.Utils.Menu.DXPopupMenu dxpopupmenu = new DevExpress.Utils.Menu.DXPopupMenu();
-        e.МенюДляAddEditDelete(dxpopupmenu, ДобавитьClick, ИзменитьClick, УдалитьClick);
+        var h = ((DataGridView)sender).HitTest(e.X, e.Y);
+        var menu = new ContextMenuStrip();
+        e.МенюДляAddEditDelete(menu, (DataGridView)sender, ДобавитьClick, ИзменитьClick, УдалитьClick);
     }
 
     public void RemoveHandlerList(Control c)

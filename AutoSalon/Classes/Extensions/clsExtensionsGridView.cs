@@ -1,5 +1,4 @@
-﻿using DevExpress.XtraGrid.Columns;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Linq;
@@ -11,7 +10,7 @@ public static partial class clsExtensions
     /// </summary>
     /// <param name="IsHide">True - скрыть указанные, False - указанные оставить видимыми</param>
     /// <param name="gridColumnVisible"></param>
-    static public void ASНастроитьGridView(this DevExpress.XtraGrid.Views.Grid.GridView gridView,
+    static public void ASНастроитьGridView(this System.Windows.Forms.DataGridView gridView,
                                            bool IsHide = true,
                                            params string[] gridColumnVisible)
     {
@@ -19,9 +18,9 @@ public static partial class clsExtensions
 
         foreach(string colVisible in gridColumnVisible)
         {
-            foreach(GridColumn colGrid in gridView.Columns)
+            foreach(System.Windows.Forms.DataGridViewColumn colGrid in gridView.Columns)
             {
-                if(string.Equals(colGrid.FieldName, colVisible.ToString()))
+                if(string.Equals(colGrid.HeaderText, colVisible.ToString()))
                 {
                     colGrid.Visible = (IsHide ?  false: true );
                     break;
@@ -35,11 +34,20 @@ public static partial class clsExtensions
     /// </summary>
     /// <param name="fieldName">Имя ключевого поля</param>
     /// <param name="value">Значений  ключевого поля</param>
-    static public void ASВыделитьСтрокуПоID(this DevExpress.XtraGrid.Views.Grid.GridView gridView,
+    static public void ASВыделитьСтрокуПоID(this System.Windows.Forms.DataGridView gridView,
                                             string fieldName, object value)
     {
+        //gridView.FocusedRowHandle = gridView.LocateByValue(fieldName, value);
+        for(var row = 0; row < gridView.Rows.Count; row++)
+        {
+            if (gridView[fieldName, row].Value.ToString().Equals(value.ToString()))
+            {
+                gridView[gridView.FirstDisplayedScrollingColumnIndex, row].Selected = true;
+                break;
+            }
+        }
 
-        gridView.FocusedRowHandle = gridView.LocateByValue(fieldName, value);
+
     }
 
     /// <summary>
@@ -48,9 +56,9 @@ public static partial class clsExtensions
     /// <param name="datatable">Истосник данных</param>
     /// <param name="fieldName">Имя ключевого поля</param>
     /// <param name="value">Значений  ключевого поля</param>
-    static public void ASОбновитьСохранитьВыделение(this DevExpress.XtraGrid.Views.Grid.GridView gridView,
+    static public void ASОбновитьСохранитьВыделение(this System.Windows.Forms.DataGridView gridView,
                                                     DataTable datatable,
-                                                    string fieldName = null, 
+                                                    string fieldName = null,
                                                     object value = null)
     {
         object ivalue = value;
@@ -58,26 +66,24 @@ public static partial class clsExtensions
         {
             if (gridView.RowCount != 0)
             {
-                if(value == null)
+                if (value == null && gridView.CurrentRow != null)
                 {
-                    var dr = gridView.GetFocusedDataRow();
-                    ivalue = dr[fieldName];
+                    ivalue = gridView[fieldName, gridView.CurrentRow.Index].Value.ToString();
                 }
             }
         }
 
-        gridView.GridControl.DataSource = datatable;
+        gridView.DataSource = datatable;
         if ((String)gridView.Tag != "DSЗаполнен")
         {
-            gridView.BestFitColumns();
             gridView.Tag = "DSЗаполнен";
         }
 
         if (ivalue != null && ivalue != System.DBNull.Value)
         {
-            Type colType = gridView.Columns[fieldName].ColumnType;
-            var memObject = Convert.ChangeType(ivalue, colType);
-            gridView.ASВыделитьСтрокуПоID(fieldName, memObject);
+            //Type colType = gridView.Columns[fieldName].ValueType;
+            //var memObject = Convert.ChangeType(ivalue.ToString(), Type.GetType(gridView.Columns[fieldName].ValueType.ToString()));
+            gridView.ASВыделитьСтрокуПоID(fieldName, ivalue);
         }
     }
 
