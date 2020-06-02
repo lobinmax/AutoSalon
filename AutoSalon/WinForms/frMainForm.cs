@@ -69,16 +69,20 @@ public partial class frMainForm : Form
         tabControlMDI.TabPages.Add(frМаркиАвто);
     }
 
-    //private void barButtonItemАвтоВПродаже_Click(object sender, EventArgs e)
-    //{
-    //    frГаражАвто frГаражАвто = new frГаражАвто();
-    //    if (this.ASMdiConstrain(frГаражАвто))
-    //    {
-    //        this.ASMdiChildFocus(frГаражАвто);
-    //    }
-    //    else
-    //    {
-    //        clsTabActivated frМаркиАвтоMDI = new clsTabActivated(frГаражАвто, this);
-    //    }
-    //}
+    private void barButtonItemАвтоВПродаже_Click(object sender, EventArgs e)
+    {
+        var frГаражАвто = new frГаражАвто();
+        foreach (MdiTabControl.TabPage tp in tabControlMDI.TabPages)
+        {
+            var _form = (Form)tp.Form;
+            if (_form.Name == frГаражАвто.Name)
+            {
+                tp.Show();
+                _form.Refresh();
+                _form.Update();
+                return;
+            }
+        }
+        tabControlMDI.TabPages.Add(frГаражАвто);
+    }
 }

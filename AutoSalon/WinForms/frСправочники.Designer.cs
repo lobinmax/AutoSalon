@@ -36,14 +36,14 @@
             this.tabPageТипыКПП = new System.Windows.Forms.TabPage();
             this.gridViewТипыКпп = new System.Windows.Forms.DataGridView();
             this.tabPageТипыКузова = new System.Windows.Forms.TabPage();
-            this.tabPageТипыПривода = new System.Windows.Forms.TabPage();
-            this.tabPageТипыТоплива = new System.Windows.Forms.TabPage();
-            this.tabPageЗаказыСтатусы = new System.Windows.Forms.TabPage();
-            this.tabPageСтраны = new System.Windows.Forms.TabPage();
             this.gridViewТипКузова = new System.Windows.Forms.DataGridView();
+            this.tabPageТипыПривода = new System.Windows.Forms.TabPage();
             this.gridViewТипыПривода = new System.Windows.Forms.DataGridView();
+            this.tabPageТипыТоплива = new System.Windows.Forms.TabPage();
             this.gridViewТипыТоплива = new System.Windows.Forms.DataGridView();
+            this.tabPageЗаказыСтатусы = new System.Windows.Forms.TabPage();
             this.gridViewСтатусыЗаказа = new System.Windows.Forms.DataGridView();
+            this.tabPageСтраны = new System.Windows.Forms.TabPage();
             this.gridViewСтраны = new System.Windows.Forms.DataGridView();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
@@ -51,14 +51,14 @@
             this.tabPageТипыКПП.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gridViewТипыКпп)).BeginInit();
             this.tabPageТипыКузова.SuspendLayout();
-            this.tabPageТипыПривода.SuspendLayout();
-            this.tabPageТипыТоплива.SuspendLayout();
-            this.tabPageЗаказыСтатусы.SuspendLayout();
-            this.tabPageСтраны.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gridViewТипКузова)).BeginInit();
+            this.tabPageТипыПривода.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gridViewТипыПривода)).BeginInit();
+            this.tabPageТипыТоплива.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gridViewТипыТоплива)).BeginInit();
+            this.tabPageЗаказыСтатусы.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gridViewСтатусыЗаказа)).BeginInit();
+            this.tabPageСтраны.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gridViewСтраны)).BeginInit();
             this.SuspendLayout();
             // 
@@ -148,7 +148,7 @@
             this.tabPageТипыКПП.Location = new System.Drawing.Point(4, 22);
             this.tabPageТипыКПП.Name = "tabPageТипыКПП";
             this.tabPageТипыКПП.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPageТипыКПП.Size = new System.Drawing.Size(970, 394);
+            this.tabPageТипыКПП.Size = new System.Drawing.Size(1088, 427);
             this.tabPageТипыКПП.TabIndex = 0;
             this.tabPageТипыКПП.Text = "Типы КПП";
             this.tabPageТипыКПП.UseVisualStyleBackColor = true;
@@ -170,7 +170,7 @@
             this.gridViewТипыКпп.RowTemplate.Height = 18;
             this.gridViewТипыКпп.RowTemplate.ReadOnly = true;
             this.gridViewТипыКпп.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.gridViewТипыКпп.Size = new System.Drawing.Size(964, 388);
+            this.gridViewТипыКпп.Size = new System.Drawing.Size(1082, 421);
             this.gridViewТипыКпп.TabIndex = 2;
             // 
             // tabPageТипыКузова
@@ -183,50 +183,6 @@
             this.tabPageТипыКузова.TabIndex = 1;
             this.tabPageТипыКузова.Text = "Типы кузова";
             this.tabPageТипыКузова.UseVisualStyleBackColor = true;
-            // 
-            // tabPageТипыПривода
-            // 
-            this.tabPageТипыПривода.Controls.Add(this.gridViewТипыПривода);
-            this.tabPageТипыПривода.Location = new System.Drawing.Point(4, 22);
-            this.tabPageТипыПривода.Name = "tabPageТипыПривода";
-            this.tabPageТипыПривода.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPageТипыПривода.Size = new System.Drawing.Size(970, 394);
-            this.tabPageТипыПривода.TabIndex = 2;
-            this.tabPageТипыПривода.Text = "Типы привода";
-            this.tabPageТипыПривода.UseVisualStyleBackColor = true;
-            // 
-            // tabPageТипыТоплива
-            // 
-            this.tabPageТипыТоплива.Controls.Add(this.gridViewТипыТоплива);
-            this.tabPageТипыТоплива.Location = new System.Drawing.Point(4, 22);
-            this.tabPageТипыТоплива.Name = "tabPageТипыТоплива";
-            this.tabPageТипыТоплива.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPageТипыТоплива.Size = new System.Drawing.Size(970, 394);
-            this.tabPageТипыТоплива.TabIndex = 3;
-            this.tabPageТипыТоплива.Text = "Типы топлива";
-            this.tabPageТипыТоплива.UseVisualStyleBackColor = true;
-            // 
-            // tabPageЗаказыСтатусы
-            // 
-            this.tabPageЗаказыСтатусы.Controls.Add(this.gridViewСтатусыЗаказа);
-            this.tabPageЗаказыСтатусы.Location = new System.Drawing.Point(4, 22);
-            this.tabPageЗаказыСтатусы.Name = "tabPageЗаказыСтатусы";
-            this.tabPageЗаказыСтатусы.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPageЗаказыСтатусы.Size = new System.Drawing.Size(970, 394);
-            this.tabPageЗаказыСтатусы.TabIndex = 4;
-            this.tabPageЗаказыСтатусы.Text = "Статусы заказов";
-            this.tabPageЗаказыСтатусы.UseVisualStyleBackColor = true;
-            // 
-            // tabPageСтраны
-            // 
-            this.tabPageСтраны.Controls.Add(this.gridViewСтраны);
-            this.tabPageСтраны.Location = new System.Drawing.Point(4, 22);
-            this.tabPageСтраны.Name = "tabPageСтраны";
-            this.tabPageСтраны.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPageСтраны.Size = new System.Drawing.Size(970, 394);
-            this.tabPageСтраны.TabIndex = 5;
-            this.tabPageСтраны.Text = "Страны";
-            this.tabPageСтраны.UseVisualStyleBackColor = true;
             // 
             // gridViewТипКузова
             // 
@@ -248,6 +204,17 @@
             this.gridViewТипКузова.Size = new System.Drawing.Size(1082, 421);
             this.gridViewТипКузова.TabIndex = 3;
             // 
+            // tabPageТипыПривода
+            // 
+            this.tabPageТипыПривода.Controls.Add(this.gridViewТипыПривода);
+            this.tabPageТипыПривода.Location = new System.Drawing.Point(4, 22);
+            this.tabPageТипыПривода.Name = "tabPageТипыПривода";
+            this.tabPageТипыПривода.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPageТипыПривода.Size = new System.Drawing.Size(1088, 427);
+            this.tabPageТипыПривода.TabIndex = 2;
+            this.tabPageТипыПривода.Text = "Типы привода";
+            this.tabPageТипыПривода.UseVisualStyleBackColor = true;
+            // 
             // gridViewТипыПривода
             // 
             this.gridViewТипыПривода.AllowUserToAddRows = false;
@@ -265,8 +232,19 @@
             this.gridViewТипыПривода.RowTemplate.Height = 18;
             this.gridViewТипыПривода.RowTemplate.ReadOnly = true;
             this.gridViewТипыПривода.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.gridViewТипыПривода.Size = new System.Drawing.Size(964, 388);
+            this.gridViewТипыПривода.Size = new System.Drawing.Size(1082, 421);
             this.gridViewТипыПривода.TabIndex = 3;
+            // 
+            // tabPageТипыТоплива
+            // 
+            this.tabPageТипыТоплива.Controls.Add(this.gridViewТипыТоплива);
+            this.tabPageТипыТоплива.Location = new System.Drawing.Point(4, 22);
+            this.tabPageТипыТоплива.Name = "tabPageТипыТоплива";
+            this.tabPageТипыТоплива.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPageТипыТоплива.Size = new System.Drawing.Size(1088, 427);
+            this.tabPageТипыТоплива.TabIndex = 3;
+            this.tabPageТипыТоплива.Text = "Типы топлива";
+            this.tabPageТипыТоплива.UseVisualStyleBackColor = true;
             // 
             // gridViewТипыТоплива
             // 
@@ -285,8 +263,19 @@
             this.gridViewТипыТоплива.RowTemplate.Height = 18;
             this.gridViewТипыТоплива.RowTemplate.ReadOnly = true;
             this.gridViewТипыТоплива.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.gridViewТипыТоплива.Size = new System.Drawing.Size(964, 388);
+            this.gridViewТипыТоплива.Size = new System.Drawing.Size(1082, 421);
             this.gridViewТипыТоплива.TabIndex = 3;
+            // 
+            // tabPageЗаказыСтатусы
+            // 
+            this.tabPageЗаказыСтатусы.Controls.Add(this.gridViewСтатусыЗаказа);
+            this.tabPageЗаказыСтатусы.Location = new System.Drawing.Point(4, 22);
+            this.tabPageЗаказыСтатусы.Name = "tabPageЗаказыСтатусы";
+            this.tabPageЗаказыСтатусы.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPageЗаказыСтатусы.Size = new System.Drawing.Size(1088, 427);
+            this.tabPageЗаказыСтатусы.TabIndex = 4;
+            this.tabPageЗаказыСтатусы.Text = "Статусы заказов";
+            this.tabPageЗаказыСтатусы.UseVisualStyleBackColor = true;
             // 
             // gridViewСтатусыЗаказа
             // 
@@ -305,8 +294,19 @@
             this.gridViewСтатусыЗаказа.RowTemplate.Height = 18;
             this.gridViewСтатусыЗаказа.RowTemplate.ReadOnly = true;
             this.gridViewСтатусыЗаказа.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.gridViewСтатусыЗаказа.Size = new System.Drawing.Size(964, 388);
+            this.gridViewСтатусыЗаказа.Size = new System.Drawing.Size(1082, 421);
             this.gridViewСтатусыЗаказа.TabIndex = 3;
+            // 
+            // tabPageСтраны
+            // 
+            this.tabPageСтраны.Controls.Add(this.gridViewСтраны);
+            this.tabPageСтраны.Location = new System.Drawing.Point(4, 22);
+            this.tabPageСтраны.Name = "tabPageСтраны";
+            this.tabPageСтраны.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPageСтраны.Size = new System.Drawing.Size(1088, 427);
+            this.tabPageСтраны.TabIndex = 5;
+            this.tabPageСтраны.Text = "Страны";
+            this.tabPageСтраны.UseVisualStyleBackColor = true;
             // 
             // gridViewСтраны
             // 
@@ -325,7 +325,7 @@
             this.gridViewСтраны.RowTemplate.Height = 18;
             this.gridViewСтраны.RowTemplate.ReadOnly = true;
             this.gridViewСтраны.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.gridViewСтраны.Size = new System.Drawing.Size(964, 388);
+            this.gridViewСтраны.Size = new System.Drawing.Size(1082, 421);
             this.gridViewСтраны.TabIndex = 3;
             // 
             // frСправочники
@@ -342,14 +342,14 @@
             this.tabPageТипыКПП.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.gridViewТипыКпп)).EndInit();
             this.tabPageТипыКузова.ResumeLayout(false);
-            this.tabPageТипыПривода.ResumeLayout(false);
-            this.tabPageТипыТоплива.ResumeLayout(false);
-            this.tabPageЗаказыСтатусы.ResumeLayout(false);
-            this.tabPageСтраны.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.gridViewТипКузова)).EndInit();
+            this.tabPageТипыПривода.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.gridViewТипыПривода)).EndInit();
+            this.tabPageТипыТоплива.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.gridViewТипыТоплива)).EndInit();
+            this.tabPageЗаказыСтатусы.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.gridViewСтатусыЗаказа)).EndInit();
+            this.tabPageСтраны.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.gridViewСтраны)).EndInit();
             this.ResumeLayout(false);
 

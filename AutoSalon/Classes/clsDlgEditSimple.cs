@@ -97,14 +97,6 @@ class clsDlgEditSimple: IDisposable
         }
     }
 
-    private void Обновить(object Idvalue = null)
-    {
-        var dt = clsSql.ExecuteSP(this.procedureName, clsMisc.ASSqlFunction.ViewForm).dataTable;
-        this.gridView.ASОбновитьСохранитьВыделение(dt, this.IdFieldName, Idvalue);
-    }
-
-    private void ОбновитьClick(object sender, EventArgs e) { Обновить(); }
-
     private void УдалитьClick(object sender, EventArgs e)
     {
         if (MessageBox.Show("Вы уверены что хотите удалить запись?",
@@ -119,6 +111,15 @@ class clsDlgEditSimple: IDisposable
             Обновить();
         }
     }
+
+    private void Обновить(object Idvalue = null)
+    {
+        var dt = clsSql.ExecuteSP(this.procedureName, clsMisc.ASSqlFunction.ViewForm).dataTable;
+        this.gridView.ASОбновитьСохранитьВыделение(dt, this.IdFieldName, Idvalue);
+    }
+
+    private void ОбновитьClick(object sender, EventArgs e) { Обновить(); }
+
 
     private void gridView_MouseClick(object sender, MouseEventArgs e)
     {

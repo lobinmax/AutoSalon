@@ -8,6 +8,11 @@ public partial class frСправочники : Form
         InitializeComponent();
     }
 
+    private void frСправочники_Load(object sender, EventArgs e)
+    {
+        tabControl1_SelectedIndexChanged(sender, e);
+    }
+
     private void tabControl1_SelectedIndexChanged(object sender, EventArgs e)
     {
         var page = tabControl.SelectedTab;
@@ -59,7 +64,7 @@ public partial class frСправочники : Form
                                         "dbo.АвтоТипТоплива_SIUD",
                                         "dlgEditТипТоплива", () => gridViewТипыТоплива.ASНастроитьGridView(true, "IdТипТоплива")))
                     break;
-            case "tabPagePageЗаказыСтатусы":
+            case "tabPageЗаказыСтатусы":
                 using (var СтатусЗаказа = new clsDlgEditSimple(ButtonОбновить,
                                           ButtonДобавить,
                                           ButtonИзменить,
@@ -82,12 +87,6 @@ public partial class frСправочники : Form
 
         }
     }
-
-    private void frСправочники_Load(object sender, EventArgs e)
-    {
-        tabControl1_SelectedIndexChanged(sender, e);
-    }
-    
 }
 
 

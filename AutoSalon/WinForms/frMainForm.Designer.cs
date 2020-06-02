@@ -74,6 +74,7 @@
             this.barButtonItemАвтоВПродаже.Name = "barButtonItemАвтоВПродаже";
             this.barButtonItemАвтоВПродаже.Size = new System.Drawing.Size(160, 22);
             this.barButtonItemАвтоВПродаже.Text = "Авто в продаже";
+            this.barButtonItemАвтоВПродаже.Click += new System.EventHandler(this.barButtonItemАвтоВПродаже_Click);
             // 
             // toolStripMenuItem2
             // 
