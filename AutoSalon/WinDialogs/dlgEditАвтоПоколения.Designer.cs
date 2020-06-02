@@ -205,6 +205,7 @@ partial class dlgEditАвтоПоколения
             this.MinimizeBox = false;
             this.Name = "dlgEditАвтоПоколения";
             this.ShowInTaskbar = false;
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "XtraForm1";
             this.Load += new System.EventHandler(this.dlgEditАвтоМодели_Load);
             this.tableLayoutPanel1.ResumeLayout(false);

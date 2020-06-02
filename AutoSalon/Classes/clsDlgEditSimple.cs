@@ -107,7 +107,6 @@ class clsDlgEditSimple: IDisposable
 
     private void УдалитьClick(object sender, EventArgs e)
     {
-        //var selectRow = gridView.FocusedRowHandle;
         if (MessageBox.Show("Вы уверены что хотите удалить запись?",
                                 Program.ProductName,
                                 MessageBoxButtons.YesNo,
@@ -118,14 +117,11 @@ class clsDlgEditSimple: IDisposable
                 gridView[IdFieldName, gridView.CurrentRow.Index].Value.ToString());
 
             Обновить();
-            //gridView.FocusedRowHandle = selectRow;
-            //gridView.SelectRow(selectRow);
         }
     }
 
     private void gridView_MouseClick(object sender, MouseEventArgs e)
     {
-        var h = ((DataGridView)sender).HitTest(e.X, e.Y);
         var menu = new ContextMenuStrip();
         e.МенюДляAddEditDelete(menu, (DataGridView)sender, ДобавитьClick, ИзменитьClick, УдалитьClick);
     }

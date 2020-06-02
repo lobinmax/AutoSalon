@@ -111,6 +111,7 @@
             this.MinimizeBox = false;
             this.Name = "dlgEditАвтоМарки";
             this.ShowInTaskbar = false;
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "XtraForm1";
             this.Load += new System.EventHandler(this.dlgEditАвтоМарки_Load);
             this.ResumeLayout(false);

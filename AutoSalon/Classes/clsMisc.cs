@@ -19,7 +19,7 @@ public class clsMisc
 
     }
     
-    public static object DBout(object obj)
+    public static T DBout<T>(T obj) where T : class
     {
         if (obj.Equals(DBNull.Value))
         {
@@ -28,13 +28,20 @@ public class clsMisc
         return obj;
     }
 
-    public static object DBin(object obj)
+    public static object DBin<T>(T? Obj) where T : struct
     {
-        if (obj == null)
-        {
+        if (!Obj.HasValue)
             return DBNull.Value;
-        }
-        return obj;
+        else
+            return Obj;
+    }
+
+    public static object DBin<T>(T Obj, object NullValue = null) where T : class
+    {
+        if (Obj == null || Obj.ToString() == "")
+            return DBNull.Value;
+        else
+            return Obj;
     }
 
     public static bool CheckFields(params object[] controls)

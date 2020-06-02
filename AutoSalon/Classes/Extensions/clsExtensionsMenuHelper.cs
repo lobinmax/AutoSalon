@@ -25,7 +25,7 @@ public static partial class clsExtensions
 
         if (e.Button == MouseButtons.Right && h.Type == DataGridViewHitTestType.Cell)
         {
-            dataGrid.Rows[h.RowIndex].Selected = true;
+            dataGrid.CurrentCell = dataGrid[h.ColumnIndex, h.RowIndex];
             PopupMenu.Items.Add("Изменить", AutoSalon.Properties.Resources.Edit_16x16, actionEdit);
             PopupMenu.Items.Add("Удалить", AutoSalon.Properties.Resources.Delete_16x16, actionDelete);
         }

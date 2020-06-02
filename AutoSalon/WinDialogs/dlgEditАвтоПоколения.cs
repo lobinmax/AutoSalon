@@ -6,8 +6,8 @@ public partial class dlgEditАвтоПоколения : Form
 {
     private Guid? ForeigenKey;
     private clsMisc.ASSqlFunction sqlFunction;
-    private Guid UIDМодели;
-    private Guid UIDМарки;
+    private Guid? UIDМодели;
+    private Guid? UIDМарки;
     public object NewRecord { get; set; }
 
     public dlgEditАвтоПоколения(Guid? UIDПоколение, Guid UIDМодели, Guid UIDМарки, clsMisc.ASSqlFunction sqlFunction)

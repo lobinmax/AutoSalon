@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Windows.Forms;
 
-public partial class dlgEditТипТоплива : DevExpress.XtraEditors.XtraForm
+public partial class dlgEditТипТоплива : Form
 {
     private string ForeigenKey;
     private clsMisc.ASSqlFunction sqlFunction;
@@ -21,7 +21,7 @@ public partial class dlgEditТипТоплива : DevExpress.XtraEditors.XtraFo
         if (sqlFunction == clsMisc.ASSqlFunction.Update)
         {
             var dr = clsSql.ExecuteSP("dbo.АвтоТипТоплива_SIUD", clsMisc.ASSqlFunction.ViewForm, "@IdТипТоплива", ForeigenKey).dataTable.RowsDR().SingleOrDefault();
-            textEditНаименование.EditValue = clsMisc.DBout(dr["Наименование"]);
+            textEditНаименование.Text = clsMisc.DBout((string)dr["Наименование"]);
             this.Text = "Изменить запись";
         }
     }
@@ -30,14 +30,14 @@ public partial class dlgEditТипТоплива : DevExpress.XtraEditors.XtraFo
 
     private void simpleButtonСохранить_Click(object sender, EventArgs e)
     {
-        if (!clsMisc.CheckFields(textEditНаименование.EditValue))
+        if (!clsMisc.CheckFields(textEditНаименование.Text))
         {
             return;
         }
 
         var response = clsSql.ExecuteSP("dbo.АвтоТипТоплива_SIUD", this.sqlFunction,
             "@IdТипТоплива", this.ForeigenKey,
-            "@Наименование", clsMisc.DBin(textEditНаименование.EditValue));
+            "@Наименование", clsMisc.DBin(textEditНаименование.Text));
 
         if ((bool)response.success)
         {

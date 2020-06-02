@@ -1,15 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Text;
 using System.Linq;
-using System.Threading.Tasks;
 using System.Windows.Forms;
-using DevExpress.XtraEditors;
 
-public partial class dlgEditТипПривода : DevExpress.XtraEditors.XtraForm
+public partial class dlgEditТипПривода : Form
 {
     private string ForeigenKey;
     private clsMisc.ASSqlFunction sqlFunction;
@@ -27,7 +21,7 @@ public partial class dlgEditТипПривода : DevExpress.XtraEditors.XtraFo
         if (sqlFunction == clsMisc.ASSqlFunction.Update)
         {
             var dr = clsSql.ExecuteSP("dbo.АвтоТипПривода_SIUD", clsMisc.ASSqlFunction.ViewForm, "@IdТипПривода", ForeigenKey).dataTable.RowsDR().SingleOrDefault();
-            textEditНаименование.EditValue = clsMisc.DBout(dr["Наименование"]);
+            textEditНаименование.Text = clsMisc.DBout((string)dr["Наименование"]);
             this.Text = "Изменить запись";
         }
     }
@@ -36,14 +30,14 @@ public partial class dlgEditТипПривода : DevExpress.XtraEditors.XtraFo
 
     private void simpleButtonСохранить_Click(object sender, EventArgs e)
     {
-        if (!clsMisc.CheckFields(textEditНаименование.EditValue))
+        if (!clsMisc.CheckFields(textEditНаименование.Text))
         {
             return;
         }
 
         var response = clsSql.ExecuteSP("dbo.АвтоТипПривода_SIUD", this.sqlFunction,
             "@IdТипПривода", this.ForeigenKey,
-            "@Наименование", clsMisc.DBin(textEditНаименование.EditValue));
+            "@Наименование", clsMisc.DBin(textEditНаименование.Text));
 
         if ((bool)response.success)
         {

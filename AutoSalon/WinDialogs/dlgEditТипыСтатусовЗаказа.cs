@@ -1,15 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Text;
 using System.Linq;
-using System.Threading.Tasks;
 using System.Windows.Forms;
-using DevExpress.XtraEditors;
 
-public partial class dlgEditТипыСтатусовЗаказа : DevExpress.XtraEditors.XtraForm
+public partial class dlgEditТипыСтатусовЗаказа : Form
 {
     private string ForeigenKey;
     private clsMisc.ASSqlFunction sqlFunction;
@@ -24,10 +18,11 @@ public partial class dlgEditТипыСтатусовЗаказа : DevExpress.Xt
         sqlFunction = keyValue.Value;
         this.Text = "Добавить запись";
 
+            var dr = clsSql.ExecuteSP("dbo.ТипыСтатусовЗаказа_SIUD", clsMisc.ASSqlFunction.ViewForm, "@IdСтатусЗаказа", ForeigenKey).dataTable.RowsDR().SingleOrDefault();
+
         if (sqlFunction == clsMisc.ASSqlFunction.Update)
         {
-            var dr = clsSql.ExecuteSP("dbo.ТипыСтатусовЗаказа_SIUD", clsMisc.ASSqlFunction.ViewForm, "@IdСтатусЗаказа", ForeigenKey).dataTable.RowsDR().SingleOrDefault();
-            textEditНаименование.EditValue = clsMisc.DBout(dr["Наименование"]);
+            textEditНаименование.Text = clsMisc.DBout((string)dr["Наименование"]);
             this.Text = "Изменить запись";
         }
     }
@@ -36,14 +31,14 @@ public partial class dlgEditТипыСтатусовЗаказа : DevExpress.Xt
 
     private void simpleButtonСохранить_Click(object sender, EventArgs e)
     {
-        if (!clsMisc.CheckFields(textEditНаименование.EditValue))
+        if (!clsMisc.CheckFields(textEditНаименование.Text))
         {
             return;
         }
 
         var response = clsSql.ExecuteSP("dbo.ТипыСтатусовЗаказа_SIUD", this.sqlFunction,
             "IdСтатусЗаказа", this.ForeigenKey,
-            "@Наименование", clsMisc.DBin(textEditНаименование.EditValue));
+            "@Наименование", clsMisc.DBin(textEditНаименование.Text));
 
         if ((bool)response.success)
         {
