@@ -146,31 +146,35 @@
             // 
             // barStaticItemDB
             // 
+            this.barStaticItemDB.Image = ((System.Drawing.Image)(resources.GetObject("barStaticItemDB.Image")));
             this.barStaticItemDB.Name = "barStaticItemDB";
-            this.barStaticItemDB.Size = new System.Drawing.Size(118, 17);
+            this.barStaticItemDB.Size = new System.Drawing.Size(134, 17);
             this.barStaticItemDB.Text = "toolStripStatusLabel1";
             // 
             // barStaticItemServer
             // 
+            this.barStaticItemServer.Image = ((System.Drawing.Image)(resources.GetObject("barStaticItemServer.Image")));
             this.barStaticItemServer.Name = "barStaticItemServer";
-            this.barStaticItemServer.Size = new System.Drawing.Size(118, 17);
+            this.barStaticItemServer.Size = new System.Drawing.Size(134, 17);
             this.barStaticItemServer.Text = "toolStripStatusLabel2";
             // 
             // tabControlMDI
             // 
+            this.tabControlMDI.BackColor = System.Drawing.SystemColors.Control;
+            this.tabControlMDI.BackLowColor = System.Drawing.SystemColors.Control;
             this.tabControlMDI.CloseButtonVisible = true;
             this.tabControlMDI.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tabControlMDI.Location = new System.Drawing.Point(0, 24);
             this.tabControlMDI.MenuRenderer = null;
             this.tabControlMDI.Name = "tabControlMDI";
             this.tabControlMDI.Size = new System.Drawing.Size(1291, 594);
-            this.tabControlMDI.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.Default;
             this.tabControlMDI.TabBorderEnhanced = true;
             this.tabControlMDI.TabCloseButtonImage = null;
             this.tabControlMDI.TabCloseButtonImageDisabled = null;
             this.tabControlMDI.TabCloseButtonImageHot = null;
             this.tabControlMDI.TabCloseButtonSize = new System.Drawing.Size(14, 14);
             this.tabControlMDI.TabCloseButtonVisible = false;
+            this.tabControlMDI.TabGlassGradient = true;
             this.tabControlMDI.TabHeight = 20;
             this.tabControlMDI.TabIconSize = new System.Drawing.Size(0, 0);
             this.tabControlMDI.TabIndex = 3;

@@ -47,7 +47,7 @@ public partial class frСотрудники : Form
 
     void РедактироватьСотрудника(object sender, EventArgs e)
     {
-        using (var editСотрудник = new dlgEditСотрудник(gridViewСотрудники["UIDСотрудника", gridViewСотрудники.CurrentRow.Index].Value.ToString(), clsMisc.ASSqlFunction.Update))
+        using (var editСотрудник = new dlgEditСотрудник((Guid)gridViewСотрудники["UIDСотрудника", gridViewСотрудники.CurrentRow.Index].Value, clsMisc.ASSqlFunction.Update))
         {
             var result = editСотрудник.ShowDialog();
             if (result == DialogResult.OK)

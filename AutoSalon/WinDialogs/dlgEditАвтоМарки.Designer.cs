@@ -26,6 +26,7 @@
     /// </summary>
     private void InitializeComponent()
     {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(dlgEditАвтоМарки));
             this.textEditНаименование = new System.Windows.Forms.TextBox();
             this.labelControl1 = new System.Windows.Forms.Label();
             this.labelControl2 = new System.Windows.Forms.Label();
@@ -107,6 +108,7 @@
             this.Controls.Add(this.textEditНаименование);
             this.Controls.Add(this.LookUpEditСтраны);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "dlgEditАвтоМарки";

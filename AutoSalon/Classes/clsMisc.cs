@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Windows.Forms;
@@ -38,10 +39,12 @@ public class clsMisc
 
     public static object DBin<T>(T Obj, object NullValue = null) where T : class
     {
-        if (Obj == null || Obj.ToString() == "")
+        if (Obj == null || string.IsNullOrEmpty(Obj.ToString()))
+        {
             return DBNull.Value;
-        else
-            return Obj;
+        }
+
+        return Obj;
     }
 
     public static bool CheckFields(params object[] controls)
@@ -57,7 +60,17 @@ public class clsMisc
         }
         return true;
     }
-    
+    public static bool CheckFields(List<Control> listControl)
+    {
+        var emptyControl = listControl.Where(f => string.IsNullOrWhiteSpace(f.Text)).ToList();
+        if (emptyControl.Any())
+        {
+            MessageBox.Show("Не все обязательные поля заполнены!", Program.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Error);
+            return false;
+        }
+
+        return true;
+    }
 }
 
 /// <summary>

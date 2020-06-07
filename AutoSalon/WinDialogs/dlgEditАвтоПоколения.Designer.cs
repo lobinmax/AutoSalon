@@ -28,6 +28,7 @@ partial class dlgEditАвтоПоколения
     /// </summary>
     private void InitializeComponent()
     {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(dlgEditАвтоПоколения));
             this.textEditМарка = new System.Windows.Forms.TextBox();
             this.textEditНачалоПроизводства = new System.Windows.Forms.MaskedTextBox();
             this.textEditМодель = new System.Windows.Forms.TextBox();
@@ -201,6 +202,7 @@ partial class dlgEditАвтоПоколения
             this.Controls.Add(this.simpleButtonСохранить);
             this.Controls.Add(this.tableLayoutPanel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "dlgEditАвтоПоколения";

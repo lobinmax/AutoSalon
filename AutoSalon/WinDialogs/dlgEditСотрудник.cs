@@ -5,13 +5,12 @@ using System.Data;
 using System.Drawing;
 using System.Text;
 using System.Linq;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 public partial class dlgEditСотрудник : System.Windows.Forms.Form
 {
     public object NewRecord { get; set; }
-    object ForeigenKey;
+    Guid? ForeigenKey;
     clsMisc.ASSqlFunction SqlFunction;
 
     public dlgEditСотрудник()
@@ -19,11 +18,11 @@ public partial class dlgEditСотрудник : System.Windows.Forms.Form
         InitializeComponent();
     }
     
-    public dlgEditСотрудник(object UIDСотрудника, clsMisc.ASSqlFunction sqlFunction)
+    public dlgEditСотрудник(Guid? UIDСотрудника, clsMisc.ASSqlFunction sqlFunction)
     {
         InitializeComponent();
 
-        textBoxДомен.Text = System.Environment.UserDomainName;
+        textBoxДомен.Text = Environment.UserDomainName;
 
         gridLookUpEditДолжности.DataSource = clsSql.ExecuteSP("dbo.Должности_SIUD").dataTable;
         gridLookUpEditДолжности.ValueMember = "Id";
@@ -92,7 +91,7 @@ public partial class dlgEditСотрудник : System.Windows.Forms.Form
         if ((bool)response.success)
         {
             var dr = response.dataTable.RowsDR().SingleOrDefault();
-            ForeigenKey = dr[0];
+            ForeigenKey = (Guid)dr[0];
             this.DialogResult = DialogResult.OK;
         }
     }

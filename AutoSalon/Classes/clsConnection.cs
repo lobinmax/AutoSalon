@@ -34,7 +34,7 @@ public class clsSql
 
             try
             {
-                if (conn.State == System.Data.ConnectionState.Closed)
+                if (conn.State == ConnectionState.Closed)
                 {
                     conn.Open();
                     return true;
@@ -108,10 +108,9 @@ public class clsSql
                     throw new Exception("Ошибка программиста. Нехватка параметров в хранимой процедуре.");
                 }
                 // добавляем параметры
-                for (int i = 0; i < parameters.Length;)
+                for (int i = 0; i < parameters.Length; i = i + 2)
                 {
-                    command.Parameters.AddWithValue(parameters[i].ToString(), parameters[i + 1]);
-                    i = i + 2;
+                    command.Parameters.AddWithValue((string)parameters[i], parameters[i + 1]);
                 }
 
                 if (sqlFunction != ASSqlFunction.Null)
@@ -192,10 +191,9 @@ public class clsSql
                     throw new Exception("Ошибка программиста. Нехватка параметров в хранимой процедуре.");
                 }
                 // добавляем параметры
-                for (int i = 0; i < (parameters.Length / 2);)
+                for (int i = 0; i < parameters.Length; i = i + 2)
                 {
-                    command.Parameters.AddWithValue(parameters[i].ToString(), parameters[i + 1]);
-                    i = i + 2;
+                    command.Parameters.AddWithValue((string)parameters[i], parameters[i + 1]);
                 }
 
                 sqlDataAdapter.SelectCommand = command;
@@ -240,10 +238,9 @@ public class clsSql
                     throw new Exception("Ошибка программиста. Нехватка параметров в хранимой процедуре.");
                 }
                 // добавляем параметры
-                for (int i = 0; i < parameters.Length; )
+                for (int i = 0; i < parameters.Length; i = i + 2)
                 {
-                    command.Parameters.AddWithValue(parameters[i].ToString(), parameters[i + 1]);
-                    i = i + 2;
+                    command.Parameters.AddWithValue((string)parameters[i], parameters[i + 1]);
                 }
 
                 if (sqlFunction != ASSqlFunction.Null)

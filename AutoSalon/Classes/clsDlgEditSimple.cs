@@ -58,6 +58,10 @@ class clsDlgEditSimple: IDisposable
         this.btnИзменить.Click += ИзменитьClick;
         this.btnУдалить.Click += УдалитьClick;
         gridView.MouseClick += gridView_MouseClick;
+
+        ASTimer timer = new ASTimer(gridView,
+                                    new List<Button> { this.btnИзменить, this.btnУдалить }
+                                    ) { Enabled = true };
     }
 
     private void ДобавитьClick(object sender, EventArgs e)

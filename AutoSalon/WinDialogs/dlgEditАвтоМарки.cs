@@ -18,12 +18,7 @@ public partial class dlgEditАвтоМарки : Form
     private void dlgEditАвтоМарки_Load(object sender, EventArgs e)
     {
         this.Text = "Добавить запись";
-        var dt = clsSql.ExecuteSP("dbo.Страны_SIUD", clsMisc.ASSqlFunction.ViewForm).dataTable;
-        LookUpEditСтраны.DataSource = dt;
-        LookUpEditСтраны.ValueMember = "UIDСтраны";
-        LookUpEditСтраны.DisplayMember = "Наименование";
-
-        LookUpEditСтраны.SelectedIndex = 0;
+        LookUpEditСтраны.ASНастроитьВыпадалку_SP("dbo.Страны_SIUD", "UIDСтраны", "Наименование");
 
         if (sqlFunction == clsMisc.ASSqlFunction.Update)
         {

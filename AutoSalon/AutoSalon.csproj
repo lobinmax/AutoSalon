@@ -59,7 +59,7 @@
     <Compile Include="Classes\clsDlgEditSimple.cs" />
     <Compile Include="Classes\Extensions\clsExtensionsGridView.cs" />
     <Compile Include="Classes\clsMisc.cs" />
-    <Compile Include="Classes\Extensions\clsExtensionsLookUpEdit.cs" />
+    <Compile Include="Classes\Extensions\clsExtensionsComboBox.cs" />
     <Compile Include="Classes\Extensions\clsExtensionsMenuHelper.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -67,6 +67,12 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="WinDialogs\dlgEditАвтоГараж.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="WinDialogs\dlgEditАвтоГараж.Designer.cs">
+      <DependentUpon>dlgEditАвтоГараж.cs</DependentUpon>
     </Compile>
     <Compile Include="WinDialogs\dlgEditАвтоМарки.cs">
       <SubType>Form</SubType>
@@ -175,6 +181,9 @@
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="WinDialogs\dlgEditАвтоГараж.resx">
+      <DependentUpon>dlgEditАвтоГараж.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="WinDialogs\dlgEditАвтоМарки.resx">
       <DependentUpon>dlgEditАвтоМарки.cs</DependentUpon>

@@ -26,6 +26,7 @@
     /// </summary>
     private void InitializeComponent()
     {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(dlgEditТипПривода));
             this.labelControl1 = new System.Windows.Forms.Label();
             this.textEditНаименование = new System.Windows.Forms.TextBox();
             this.simpleButtonОтменить = new System.Windows.Forms.Button();
@@ -82,6 +83,7 @@
             this.Controls.Add(this.simpleButtonСохранить);
             this.Controls.Add(this.labelControl1);
             this.Controls.Add(this.textEditНаименование);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "dlgEditТипПривода";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "XtraForm2";

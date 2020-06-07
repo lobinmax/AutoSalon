@@ -26,6 +26,7 @@
     /// </summary>
     private void InitializeComponent()
     {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(dlgEditСотрудник));
             this.labelControl = new System.Windows.Forms.Label();
             this.textEditLogin = new System.Windows.Forms.TextBox();
             this.textEditФамилия = new System.Windows.Forms.TextBox();
@@ -254,6 +255,7 @@
             this.Controls.Add(this.labelControl);
             this.Controls.Add(this.memoExEditПол);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "dlgEditСотрудник";
