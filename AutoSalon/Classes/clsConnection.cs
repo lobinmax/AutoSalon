@@ -247,7 +247,7 @@ public class clsSql
                 {
                     command.Parameters.AddWithValue("@Function", sqlFunction);
                 }
-
+                
                 sqlDataAdapter.SelectCommand = command;
                 sqlDataAdapter.Fill(response.dataTable);
                 return response;
@@ -270,7 +270,7 @@ public class clsSql
     /// </summary>
     /// <param name="functionName"></param>
     /// <returns>object</returns>
-    public static object ExecuteScalarFunction(string functionName)
+    public static QueryResponse ExecuteScalarFunction(string functionName)
     {
         var response = new QueryResponse() { success = true };
         using (conn = GetSqlConnection())

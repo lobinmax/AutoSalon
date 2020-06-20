@@ -184,7 +184,7 @@
     <value>Microsoft Sans Serif, 9.75pt, style=Bold, Italic</value>
   </data>
   <data name="label12.Location" type="System.Drawing.Point, System.Drawing">
-    <value>560, 15</value>
+    <value>544, 15</value>
   </data>
   <data name="label12.Size" type="System.Drawing.Size, System.Drawing">
     <value>180, 16</value>
@@ -373,7 +373,7 @@
     <value>NoControl</value>
   </data>
   <data name="label13.Location" type="System.Drawing.Point, System.Drawing">
-    <value>503, 9</value>
+    <value>487, 9</value>
   </data>
   <data name="label13.Size" type="System.Drawing.Size, System.Drawing">
     <value>237, 16</value>
@@ -554,6 +554,30 @@
   </data>
   <data name="groupBox1.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
     <value>GrowAndShrink</value>
+  </data>
+  <data name="buttonСброситьЦвет.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="buttonСброситьЦвет.Location" type="System.Drawing.Point, System.Drawing">
+    <value>176, 743</value>
+  </data>
+  <data name="buttonСброситьЦвет.Size" type="System.Drawing.Size, System.Drawing">
+    <value>22, 22</value>
+  </data>
+  <data name="buttonСброситьЦвет.TabIndex" type="System.Int32, mscorlib">
+    <value>57</value>
+  </data>
+  <data name="&gt;&gt;buttonСброситьЦвет.Name" xml:space="preserve">
+    <value>buttonСброситьЦвет</value>
+  </data>
+  <data name="&gt;&gt;buttonСброситьЦвет.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;buttonСброситьЦвет.Parent" xml:space="preserve">
+    <value>groupBox1</value>
+  </data>
+  <data name="&gt;&gt;buttonСброситьЦвет.ZOrder" xml:space="preserve">
+    <value>0</value>
   </data>
   <data name="groupBox9.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Top, Left, Right</value>
@@ -741,10 +765,10 @@
     <value>groupBox1</value>
   </data>
   <data name="&gt;&gt;groupBox9.ZOrder" xml:space="preserve">
-    <value>0</value>
+    <value>1</value>
   </data>
   <data name="buttonОчиститьФильтры.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
-    <value>None</value>
+    <value>Bottom, Right</value>
   </data>
   <data name="buttonОчиститьФильтры.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
@@ -763,7 +787,7 @@
     <value>NoControl</value>
   </data>
   <data name="buttonОчиститьФильтры.Location" type="System.Drawing.Point, System.Drawing">
-    <value>6, 812</value>
+    <value>150, 812</value>
   </data>
   <data name="buttonОчиститьФильтры.Size" type="System.Drawing.Size, System.Drawing">
     <value>90, 27</value>
@@ -787,7 +811,7 @@
     <value>groupBox1</value>
   </data>
   <data name="&gt;&gt;buttonОчиститьФильтры.ZOrder" xml:space="preserve">
-    <value>1</value>
+    <value>2</value>
   </data>
   <data name="groupBox8.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Top, Left, Right</value>
@@ -975,12 +999,12 @@
     <value>groupBox1</value>
   </data>
   <data name="&gt;&gt;groupBox8.ZOrder" xml:space="preserve">
-    <value>2</value>
+    <value>3</value>
   </data>
-  <data name="button4.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
-    <value>None</value>
+  <data name="buttonПрименитьФильтр.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Bottom, Right</value>
   </data>
-  <data name="button4.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+  <data name="buttonПрименитьФильтр.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAALGPC/xhBQAAAAx0RVh0VGl0
         bGUARml0ZXI78vWy2gAAAGtJREFUOE/t07EKgDAMBNB8ckVE3PPfMVdsSdMMkTo6vMFwd4NQEpElxMyy
@@ -988,38 +1012,38 @@
         0TyhG0Q1LT2IEaZxAAAAAElFTkSuQmCC
 </value>
   </data>
-  <data name="button4.ImageAlign" type="System.Drawing.ContentAlignment, System.Drawing">
+  <data name="buttonПрименитьФильтр.ImageAlign" type="System.Drawing.ContentAlignment, System.Drawing">
     <value>MiddleLeft</value>
   </data>
-  <data name="button4.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+  <data name="buttonПрименитьФильтр.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
-  <data name="button4.Location" type="System.Drawing.Point, System.Drawing">
+  <data name="buttonПрименитьФильтр.Location" type="System.Drawing.Point, System.Drawing">
     <value>245, 812</value>
   </data>
-  <data name="button4.Size" type="System.Drawing.Size, System.Drawing">
+  <data name="buttonПрименитьФильтр.Size" type="System.Drawing.Size, System.Drawing">
     <value>104, 27</value>
   </data>
-  <data name="button4.TabIndex" type="System.Int32, mscorlib">
+  <data name="buttonПрименитьФильтр.TabIndex" type="System.Int32, mscorlib">
     <value>54</value>
   </data>
-  <data name="button4.Text" xml:space="preserve">
+  <data name="buttonПрименитьФильтр.Text" xml:space="preserve">
     <value>Применить</value>
   </data>
-  <data name="button4.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
+  <data name="buttonПрименитьФильтр.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
     <value>TopRight</value>
   </data>
-  <data name="&gt;&gt;button4.Name" xml:space="preserve">
-    <value>button4</value>
+  <data name="&gt;&gt;buttonПрименитьФильтр.Name" xml:space="preserve">
+    <value>buttonПрименитьФильтр</value>
   </data>
-  <data name="&gt;&gt;button4.Type" xml:space="preserve">
+  <data name="&gt;&gt;buttonПрименитьФильтр.Type" xml:space="preserve">
     <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;button4.Parent" xml:space="preserve">
+  <data name="&gt;&gt;buttonПрименитьФильтр.Parent" xml:space="preserve">
     <value>groupBox1</value>
   </data>
-  <data name="&gt;&gt;button4.ZOrder" xml:space="preserve">
-    <value>3</value>
+  <data name="&gt;&gt;buttonПрименитьФильтр.ZOrder" xml:space="preserve">
+    <value>4</value>
   </data>
   <data name="groupBox7.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Top, Left, Right</value>
@@ -1207,7 +1231,7 @@
     <value>groupBox1</value>
   </data>
   <data name="&gt;&gt;groupBox7.ZOrder" xml:space="preserve">
-    <value>4</value>
+    <value>5</value>
   </data>
   <data name="groupBox6.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Top, Left, Right</value>
@@ -1321,7 +1345,7 @@
     <value>groupBox1</value>
   </data>
   <data name="&gt;&gt;groupBox6.ZOrder" xml:space="preserve">
-    <value>5</value>
+    <value>6</value>
   </data>
   <data name="checkBoxБезПробега.Location" type="System.Drawing.Point, System.Drawing">
     <value>240, 741</value>
@@ -1345,7 +1369,7 @@
     <value>groupBox1</value>
   </data>
   <data name="&gt;&gt;checkBoxБезПробега.ZOrder" xml:space="preserve">
-    <value>6</value>
+    <value>7</value>
   </data>
   <data name="simpleButtonColor.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
@@ -1387,7 +1411,7 @@
     <value>groupBox1</value>
   </data>
   <data name="&gt;&gt;simpleButtonColor.ZOrder" xml:space="preserve">
-    <value>7</value>
+    <value>8</value>
   </data>
   <data name="groupBox5.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Top, Left, Right</value>
@@ -1889,7 +1913,7 @@
     <value>groupBox1</value>
   </data>
   <data name="&gt;&gt;groupBox5.ZOrder" xml:space="preserve">
-    <value>8</value>
+    <value>9</value>
   </data>
   <data name="groupBox4.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Top, Left, Right</value>
@@ -2207,7 +2231,7 @@
     <value>groupBox1</value>
   </data>
   <data name="&gt;&gt;groupBox4.ZOrder" xml:space="preserve">
-    <value>9</value>
+    <value>10</value>
   </data>
   <data name="labelColor.Location" type="System.Drawing.Point, System.Drawing">
     <value>83, 746</value>
@@ -2228,7 +2252,7 @@
     <value>groupBox1</value>
   </data>
   <data name="&gt;&gt;labelColor.ZOrder" xml:space="preserve">
-    <value>10</value>
+    <value>11</value>
   </data>
   <data name="groupBox3.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Top, Left, Right</value>
@@ -2416,7 +2440,7 @@
     <value>groupBox1</value>
   </data>
   <data name="&gt;&gt;groupBox3.ZOrder" xml:space="preserve">
-    <value>11</value>
+    <value>12</value>
   </data>
   <data name="groupBox2.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Top, Left, Right</value>
@@ -2604,7 +2628,7 @@
     <value>groupBox1</value>
   </data>
   <data name="&gt;&gt;groupBox2.ZOrder" xml:space="preserve">
-    <value>12</value>
+    <value>13</value>
   </data>
   <data name="labelControl12.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -2631,7 +2655,7 @@
     <value>groupBox1</value>
   </data>
   <data name="&gt;&gt;labelControl12.ZOrder" xml:space="preserve">
-    <value>13</value>
+    <value>14</value>
   </data>
   <data name="groupBox1.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Fill</value>

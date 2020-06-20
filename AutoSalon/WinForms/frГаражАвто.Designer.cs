@@ -43,6 +43,7 @@
             this.buttonИзменитьЦену = new System.Windows.Forms.Button();
             this.buttonДобавитьЦену = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.buttonСброситьЦвет = new System.Windows.Forms.Button();
             this.groupBox9 = new System.Windows.Forms.GroupBox();
             this.button10 = new System.Windows.Forms.Button();
             this.textBoxМощностьДо = new System.Windows.Forms.TextBox();
@@ -56,7 +57,7 @@
             this.textBoxПробегОт = new System.Windows.Forms.TextBox();
             this.label10 = new System.Windows.Forms.Label();
             this.label11 = new System.Windows.Forms.Label();
-            this.button4 = new System.Windows.Forms.Button();
+            this.buttonПрименитьФильтр = new System.Windows.Forms.Button();
             this.groupBox7 = new System.Windows.Forms.GroupBox();
             this.button3 = new System.Windows.Forms.Button();
             this.textBoxОбъемДо = new System.Windows.Forms.TextBox();
@@ -180,6 +181,9 @@
             this.gridViewГараж.RowTemplate.Height = 18;
             this.gridViewГараж.RowTemplate.ReadOnly = true;
             this.gridViewГараж.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.gridViewГараж.DataSourceChanged += new System.EventHandler(this.gridViewГараж_DataSourceChanged);
+            this.gridViewГараж.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.gridViewГараж_CellFormatting);
+            this.gridViewГараж.SelectionChanged += new System.EventHandler(this.gridViewГараж_SelectionChanged);
             this.gridViewГараж.MouseClick += new System.Windows.Forms.MouseEventHandler(this.gridViewГараж_MouseClick);
             // 
             // panel1
@@ -283,10 +287,11 @@
             // groupBox1
             // 
             resources.ApplyResources(this.groupBox1, "groupBox1");
+            this.groupBox1.Controls.Add(this.buttonСброситьЦвет);
             this.groupBox1.Controls.Add(this.groupBox9);
             this.groupBox1.Controls.Add(this.buttonОчиститьФильтры);
             this.groupBox1.Controls.Add(this.groupBox8);
-            this.groupBox1.Controls.Add(this.button4);
+            this.groupBox1.Controls.Add(this.buttonПрименитьФильтр);
             this.groupBox1.Controls.Add(this.groupBox7);
             this.groupBox1.Controls.Add(this.groupBox6);
             this.groupBox1.Controls.Add(this.checkBoxБезПробега);
@@ -299,6 +304,14 @@
             this.groupBox1.Controls.Add(this.labelControl12);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.TabStop = false;
+            // 
+            // buttonСброситьЦвет
+            // 
+            this.buttonСброситьЦвет.Image = global::AutoSalon.Properties.Resources.Delete_16x16;
+            resources.ApplyResources(this.buttonСброситьЦвет, "buttonСброситьЦвет");
+            this.buttonСброситьЦвет.Name = "buttonСброситьЦвет";
+            this.buttonСброситьЦвет.UseVisualStyleBackColor = true;
+            this.buttonСброситьЦвет.Click += new System.EventHandler(this.buttonСброситьЦвет_Click);
             // 
             // groupBox9
             // 
@@ -317,6 +330,7 @@
             this.button10.Name = "button10";
             this.button10.Tag = "textBoxМощностьОт;textBoxОбъемДо";
             this.button10.UseVisualStyleBackColor = true;
+            this.button10.Click += new System.EventHandler(this.buttonОчистить_Click);
             // 
             // textBoxМощностьДо
             // 
@@ -384,11 +398,12 @@
             resources.ApplyResources(this.label11, "label11");
             this.label11.Name = "label11";
             // 
-            // button4
+            // buttonПрименитьФильтр
             // 
-            resources.ApplyResources(this.button4, "button4");
-            this.button4.Name = "button4";
-            this.button4.UseVisualStyleBackColor = true;
+            resources.ApplyResources(this.buttonПрименитьФильтр, "buttonПрименитьФильтр");
+            this.buttonПрименитьФильтр.Name = "buttonПрименитьФильтр";
+            this.buttonПрименитьФильтр.UseVisualStyleBackColor = true;
+            this.buttonПрименитьФильтр.Click += new System.EventHandler(this.buttonПрименитьФильтр_Click);
             // 
             // groupBox7
             // 
@@ -675,6 +690,7 @@
             this.labelColor.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             resources.ApplyResources(this.labelColor, "labelColor");
             this.labelColor.Name = "labelColor";
+            this.labelColor.BackColorChanged += new System.EventHandler(this.labelColor_BackColorChanged);
             // 
             // groupBox3
             // 
@@ -849,7 +865,7 @@
     private System.Windows.Forms.SplitContainer splitContainer1;
     private System.Windows.Forms.DataGridView gridViewИсторияЦены;
     private System.Windows.Forms.DataGridView gridViewГараж;
-    private System.Windows.Forms.Button button4;
+    private System.Windows.Forms.Button buttonПрименитьФильтр;
     private System.Windows.Forms.GroupBox groupBox7;
     private System.Windows.Forms.Button button3;
     private System.Windows.Forms.TextBox textBoxОбъемДо;
@@ -892,4 +908,5 @@
     private System.Windows.Forms.TextBox textBoxМощностьОт;
     private System.Windows.Forms.Label label14;
     private System.Windows.Forms.Label label15;
+    private System.Windows.Forms.Button buttonСброситьЦвет;
 }

@@ -26,6 +26,32 @@ public class clsMisc
         {
             return null;
         }
+
+        if (obj.GetType() == typeof(Decimal))
+        {
+            return (T)(object)Convert.ToDecimal(obj);
+        }
+
+        if (obj.GetType() == typeof(int))
+        {
+            return (T)(object)Convert.ToInt32(obj);
+        }
+
+        if (obj.GetType() == typeof(bool))
+        {
+            return (T)(object)Convert.ToBoolean(obj);
+        }
+
+        if (obj.GetType() == typeof(string))
+        {
+            return (T)(object)Convert.ToString(obj);
+        }
+
+        if (obj.GetType() == typeof(DateTime))
+        {
+            return (T)(object)Convert.ToDateTime(obj);
+        }
+
         return obj;
     }
 

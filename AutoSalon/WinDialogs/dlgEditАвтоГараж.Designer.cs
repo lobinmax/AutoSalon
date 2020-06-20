@@ -37,7 +37,7 @@
             this.labelControl12 = new System.Windows.Forms.Label();
             this.labelControl13 = new System.Windows.Forms.Label();
             this.labelControl14 = new System.Windows.Forms.Label();
-            this.lookUpEditСтатусТовара = new System.Windows.Forms.ComboBox();
+            this.comboBoxСтатусАвто = new System.Windows.Forms.ComboBox();
             this.comboBoxТипТоплива = new System.Windows.Forms.ComboBox();
             this.comboBoxТипПривода = new System.Windows.Forms.ComboBox();
             this.comboBoxТипКузова = new System.Windows.Forms.ComboBox();
@@ -68,8 +68,6 @@
             this.comboBoxОбъемДвигателя = new System.Windows.Forms.ComboBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.checkBoxОбновитьСтатистику = new System.Windows.Forms.CheckBox();
-            this.label6 = new System.Windows.Forms.Label();
-            this.comboBoxСтатусАвто = new System.Windows.Forms.ComboBox();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.SuspendLayout();
@@ -78,11 +76,12 @@
             // 
             this.labelControl6.AutoEllipsis = true;
             this.labelControl6.AutoSize = true;
-            this.labelControl6.Location = new System.Drawing.Point(17, 201);
+            this.labelControl6.Location = new System.Drawing.Point(18, 230);
             this.labelControl6.Name = "labelControl6";
             this.labelControl6.Size = new System.Drawing.Size(82, 13);
             this.labelControl6.TabIndex = 25;
             this.labelControl6.Text = "Статус товара:";
+            this.labelControl6.Visible = false;
             // 
             // labelControl7
             // 
@@ -138,7 +137,7 @@
             // 
             this.labelControl12.AutoEllipsis = true;
             this.labelControl12.AutoSize = true;
-            this.labelControl12.Location = new System.Drawing.Point(17, 228);
+            this.labelControl12.Location = new System.Drawing.Point(18, 202);
             this.labelControl12.Name = "labelControl12";
             this.labelControl12.Size = new System.Drawing.Size(61, 13);
             this.labelControl12.TabIndex = 24;
@@ -164,13 +163,13 @@
             this.labelControl14.TabIndex = 31;
             this.labelControl14.Text = "Тип КПП:";
             // 
-            // lookUpEditСтатусТовара
+            // comboBoxСтатусАвто
             // 
-            this.lookUpEditСтатусТовара.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.lookUpEditСтатусТовара.Location = new System.Drawing.Point(104, 198);
-            this.lookUpEditСтатусТовара.Name = "lookUpEditСтатусТовара";
-            this.lookUpEditСтатусТовара.Size = new System.Drawing.Size(146, 21);
-            this.lookUpEditСтатусТовара.TabIndex = 34;
+            this.comboBoxСтатусАвто.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboBoxСтатусАвто.Location = new System.Drawing.Point(105, 227);
+            this.comboBoxСтатусАвто.Name = "comboBoxСтатусАвто";
+            this.comboBoxСтатусАвто.Size = new System.Drawing.Size(146, 21);
+            this.comboBoxСтатусАвто.TabIndex = 34;
             // 
             // comboBoxТипТоплива
             // 
@@ -226,7 +225,6 @@
             this.textEditПробег.Name = "textEditПробег";
             this.textEditПробег.Size = new System.Drawing.Size(90, 20);
             this.textEditПробег.TabIndex = 24;
-            this.textEditПробег.Text = "0";
             this.textEditПробег.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textEditТолькоЦыфры_KeyPress);
             // 
             // labelControl1
@@ -365,7 +363,7 @@
             // labelColor
             // 
             this.labelColor.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.labelColor.Location = new System.Drawing.Point(104, 227);
+            this.labelColor.Location = new System.Drawing.Point(105, 201);
             this.labelColor.Name = "labelColor";
             this.labelColor.Size = new System.Drawing.Size(61, 17);
             this.labelColor.TabIndex = 48;
@@ -373,11 +371,12 @@
             // simpleButtonColor
             // 
             this.simpleButtonColor.Image = ((System.Drawing.Image)(resources.GetObject("simpleButtonColor.Image")));
-            this.simpleButtonColor.Location = new System.Drawing.Point(171, 224);
+            this.simpleButtonColor.Location = new System.Drawing.Point(172, 198);
             this.simpleButtonColor.Name = "simpleButtonColor";
             this.simpleButtonColor.Size = new System.Drawing.Size(22, 22);
             this.simpleButtonColor.TabIndex = 49;
             this.simpleButtonColor.UseVisualStyleBackColor = true;
+            this.simpleButtonColor.Click += new System.EventHandler(this.simpleButtonColor_Click);
             // 
             // groupBox1
             // 
@@ -472,35 +471,12 @@
             this.checkBoxОбновитьСтатистику.Text = "Обновить статистику";
             this.checkBoxОбновитьСтатистику.UseVisualStyleBackColor = true;
             // 
-            // label6
-            // 
-            this.label6.AutoEllipsis = true;
-            this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(17, 256);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(70, 13);
-            this.label6.TabIndex = 54;
-            this.label6.Text = "Статус авто:";
-            this.label6.Visible = false;
-            // 
-            // comboBoxСтатусАвто
-            // 
-            this.comboBoxСтатусАвто.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboBoxСтатусАвто.FormattingEnabled = true;
-            this.comboBoxСтатусАвто.Location = new System.Drawing.Point(104, 253);
-            this.comboBoxСтатусАвто.Name = "comboBoxСтатусАвто";
-            this.comboBoxСтатусАвто.Size = new System.Drawing.Size(190, 21);
-            this.comboBoxСтатусАвто.TabIndex = 56;
-            this.comboBoxСтатусАвто.Visible = false;
-            // 
             // dlgEditАвтоГараж
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(817, 368);
-            this.Controls.Add(this.comboBoxСтатусАвто);
             this.Controls.Add(this.checkBoxОбновитьСтатистику);
-            this.Controls.Add(this.label6);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.simpleButtonColor);
@@ -513,7 +489,7 @@
             this.Controls.Add(this.label1);
             this.Controls.Add(this.simpleButtonОтменить);
             this.Controls.Add(this.simpleButtonСохранить);
-            this.Controls.Add(this.lookUpEditСтатусТовара);
+            this.Controls.Add(this.comboBoxСтатусАвто);
             this.Controls.Add(this.labelControl12);
             this.Controls.Add(this.labelControl6);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
@@ -548,7 +524,7 @@
     private System.Windows.Forms.ComboBox comboBoxТипКузова;
     private System.Windows.Forms.ComboBox comboBoxТипПривода;
     private System.Windows.Forms.ComboBox comboBoxТипТоплива;
-    private System.Windows.Forms.ComboBox lookUpEditСтатусТовара;
+    private System.Windows.Forms.ComboBox comboBoxСтатусАвто;
     private System.Windows.Forms.Label labelControl14;
     private System.Windows.Forms.Label labelControl13;
     private System.Windows.Forms.Label labelControl12;
@@ -575,6 +551,4 @@
     private System.Windows.Forms.Label label5;
     private System.Windows.Forms.ComboBox comboBoxМощностьДвигателя;
     private System.Windows.Forms.CheckBox checkBoxОбновитьСтатистику;
-    private System.Windows.Forms.Label label6;
-    private System.Windows.Forms.ComboBox comboBoxСтатусАвто;
 }

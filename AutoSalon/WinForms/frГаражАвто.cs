@@ -1,16 +1,19 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Linq;
 using System.Windows.Forms;
 
 public partial class frГаражАвто : Form
 {
+    private string colorAuto = null;
+
     public frГаражАвто()
     {
         InitializeComponent();
 
-        ОбновитьГараж();
         ЗаполнитьФильтры();
+        ОбновитьГараж();
 
         colorDialog1.Color = this.BackColor;
     }
@@ -24,35 +27,67 @@ public partial class frГаражАвто : Form
 
     void ОбновитьГараж(object value = null)
     {
-        var dt = clsSql.ExecuteSP("dbo.ГаражАвто_SIUD", clsMisc.ASSqlFunction.ViewForm).dataTable;
+        bool? СтранаИзготовитель = null;
+        if (radioButtonОтечественные.Checked)
+        {
+            СтранаИзготовитель = false;
+        }
+        if (radioButtonИномарки.Checked)
+        {
+            СтранаИзготовитель = true;
+        }
+
+        var dt = clsSql.ExecuteSP("dbo.ГаражАвто_SIUD", clsMisc.ASSqlFunction.ViewForm,
+            "@UIDМарки", clsMisc.DBin(comboBoxМарка.ASSelectedRow()["UID"]),
+            "@UIDМодели", clsMisc.DBin(comboBoxМодель.ASSelectedRow()["UID"]),
+            "@UIDПоколения", clsMisc.DBin(comboBoxПоколение.ASSelectedRow()["UID"]),
+            "@Стоимость", clsMisc.DBin(textBoxЦенаОт.Text),
+            "@СтоимостьДо", clsMisc.DBin(textBoxЦенаДо.Text),
+            "@Пробег", clsMisc.DBin(textBoxПробегОт.Text),
+            "@ПробегДо", clsMisc.DBin(textBoxПробегДо.Text),
+            "@ГодВыпуска", clsMisc.DBin(textBoxВыпускОт.Text),
+            "@ГодВыпускаДо", clsMisc.DBin(textBoxВыпускДо.Text),
+            "@ОбъемДвигателя", clsMisc.DBin(textBoxОбъемОт.Text),
+            "@ОбъемДвигателяДо", clsMisc.DBin(textBoxОбъемДо.Text),
+            "@МощностьДвигателя", clsMisc.DBin(textBoxМощностьОт.Text),
+            "@МощностьДвигателяДо", clsMisc.DBin(textBoxМощностьДо.Text),
+            "@IdТипПривода", clsMisc.DBin(comboBoxТипПривода.ASSelectedRow()["Id"]),
+            "@IdТипКузова", clsMisc.DBin(comboBoxТипКузова.ASSelectedRow()["Id"]),
+            "@IdТипРуля", clsMisc.DBin(comboBoxТипРуля.ASSelectedRow()["Id"]),
+            "@IdТипКПП", clsMisc.DBin(comboBoxТипКПП.ASSelectedRow()["Id"]),
+            "@ЦветRGB", clsMisc.DBin(colorAuto),
+            "@СтранаИзготовитель", clsMisc.DBin(СтранаИзготовитель),
+            "@БезПробега", clsMisc.DBin((object)checkBoxБезПробега.Checked)).dataTable;
         gridViewГараж.ASОбновитьСохранитьВыделение(dt, "UIDТовара", value);
 
         gridViewГараж.ASНастроитьGridView(true, "UIDТовара", "UIDСтоимости");
+        gridViewГараж.Columns["ЦветRGB"].ValueType = typeof(Color);
+
     }
 
     private void simpleButtonОбновить_Click(object sender, EventArgs e) { ОбновитьГараж(); }
 
-    void ОбновитьИсториюЦен(object value = null)
+    void ОбновитьИсториюЦен()
     {
-    //    var dr = gridViewГараж.SelectedRows.Cast<DataGridViewRow>().SingleOrDefault();
-    //    if (dr == null)
-    //    {
-    //        gridViewИсторияЦены.DataSource = null;
-    //        return;
-    //    }
+        var dr = gridViewГараж.SelectedRows.Cast<DataGridViewRow>().SingleOrDefault();
+        if (dr == null)
+        {
+            gridViewИсторияЦены.DataSource = null;
+            return;
+        }
 
-    //    var dt = clsSql.ExecuteSP("dbo.ГаражСтоимостьАвто_SIUD", clsMisc.ASSqlFunction.ViewForm,
-    //                              "@UIDТовара", dr.Cells["UIDТовара"]).dataTable;
-    //    gridViewИсторияЦены.ASОбновитьСохранитьВыделение(dt, "UIDТовара", value);
+        var dt = clsSql.ExecuteSP("dbo.ГаражСтоимостьАвтоИстория",
+                                  "@UIDТовара", dr.Cells["UIDТовара"].Value).dataTable;
+        gridViewИсторияЦены.ASОбновитьСохранитьВыделение(dt, "UIDСтоимостиАвто", dr.Cells["UIDТовара"].Value);
 
-    //    gridViewИсторияЦены.ASНастроитьGridView(true, "UIDСтоимости", 
-    //                                                  "UIDТовара", 
-    //                                                  "ДатаСоздания", 
-    //                                                  "ДатаИзменения", 
-    //                                                  "UIDАвтора", 
-    //                                                  "Автор", 
-    //                                                  "UIDИзменяющего");
+        gridViewИсторияЦены.ASНастроитьGridView(true, "UIDСтоимостиАвто", "UIDТовара");
     }
+
+    private void gridViewГараж_DataSourceChanged(object sender, EventArgs e) { ОбновитьИсториюЦен(); }
+
+    private void gridViewГараж_SelectionChanged(object sender, EventArgs e) { ОбновитьИсториюЦен(); }
+
+    #region Контекстное моню
 
     private void gridViewГараж_MouseClick(object sender, MouseEventArgs e)
     {
@@ -60,16 +95,6 @@ public partial class frГаражАвто : Form
         e.МенюДляAddEditDelete(menu, (DataGridView)sender, ДобавитьТовар, РедактироватьТовар, УдалитьТовар);
     }
     
-    //private void gridViewГараж_FocusedRowChanged(object sender, DevExpress.XtraGrid.Views.Base.FocusedRowChangedEventArgs e)
-    //{
-    //    ОбновитьИсториюЦен();
-    //}
-
-    //private void gridViewГараж_ColumnFilterDataSourceChanged(object sender, EventArgs e)
-    //{
-    //    ОбновитьИсториюЦен();
-    //}
-
     void ДобавитьТовар(object sender, EventArgs e)
     {
         using (var dlgEditАвтГараж = new dlgEditАвтоГараж(null, clsMisc.ASSqlFunction.Insert))
@@ -89,7 +114,7 @@ public partial class frГаражАвто : Form
                                                          clsMisc.ASSqlFunction.Update))
         {
             var result = dlgEditАвтГараж.ShowDialog();
-            if (result == System.Windows.Forms.DialogResult.OK)
+            if (result == DialogResult.OK)
             {
                 ОбновитьГараж(dlgEditАвтГараж.NewRecord);
             }
@@ -113,11 +138,111 @@ public partial class frГаражАвто : Form
     }
     private void simpleButtonУдалить_Click(object sender, EventArgs e) { УдалитьТовар(sender, e); }
 
-    private void simpleButtonColor_Click(object sender, EventArgs e)
+    #endregion
+
+    #region Фильтры
+
+    private void ЗаполнитьФильтры()
     {
-        if (colorDialog1.ShowDialog() == DialogResult.Cancel)
+        comboBoxМарка.ASНастроитьВыпадалку_SP("СписокФильтров_МаркиАвто", "UID", "Name");
+
+        textBoxЦенаОт.Text = "0";
+        textBoxЦенаДо.Text = "10000000";
+        textBoxПробегОт.Text = "0";
+        textBoxПробегДо.Text = "1000000";
+        textBoxВыпускОт.Text = "1950";
+        textBoxВыпускДо.Text = DateTime.Now.Year.ToString();
+        textBoxОбъемОт.Text = "0.0";
+        textBoxОбъемДо.Text = "10.0";
+        textBoxМощностьОт.Text = "30";
+        textBoxМощностьДо.Text = "600";
+
+        comboBoxТипТоплива.ASНастроитьВыпадалку_SP("СписокФильтров_ТипТоплива", "Id", "Name");
+        comboBoxТипПривода.ASНастроитьВыпадалку_SP("СписокФильтров_ТипПривода", "Id", "Name");
+        comboBoxТипКузова.ASНастроитьВыпадалку_SP("СписокФильтров_ТипКузова", "Id", "Name");
+        comboBoxТипРуля.ASНастроитьВыпадалку_SP("СписокФильтров_ТипРуля", "Id", "Name");
+        comboBoxТипКПП.ASНастроитьВыпадалку_SP("СписокФильтров_ТипКПП", "Id", "Name");
+
+        radioButtonЛюбая.Checked = true;
+        labelColor.BackColor = SystemColors.Control;
+        colorAuto = null;
+        checkBoxБезПробега.Checked = false;
+    }
+
+    private void buttonОчиститьФильтры_Click(object sender, EventArgs e)
+    {
+        ЗаполнитьФильтры();
+    }
+
+    private void comboBoxМарка_SelectedValueChanged(object sender, EventArgs e)
+    {
+        comboBoxМодель.ASНастроитьВыпадалку_SP
+        (
+            "СписокФильтров_МоделиАвто",
+            "UID",
+            "Name",
+            0,
+            "@Все",
+            0,
+            "@UIDМарки",
+            clsMisc.DBin(comboBoxМарка.ASSelectedRow()["UID"])
+        );
+    }
+
+    private void comboBoxМодель_SelectedIndexChanged(object sender, EventArgs e)
+    {
+        comboBoxПоколение.ASНастроитьВыпадалку_SP
+        (
+            "СписокФильтров_ПоколенияАвто",
+            "UID",
+            "Name",
+            0,
+            "@Все",
+            0,
+            "@UIDМарки",
+            clsMisc.DBin(comboBoxМарка.ASSelectedRow()["UID"]),
+            "@UIDМодели",
+            clsMisc.DBin(comboBoxМодель.ASSelectedRow()["UID"])
+        );
+    }
+
+    private void buttonПрименитьФильтр_Click(object sender, EventArgs e)
+    {
+        ОбновитьГараж();
+    }
+
+    // обозначить цвет авто
+    private void gridViewГараж_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
+    {
+        if (e.RowIndex == -1) return;
+        var cell = (sender as DataGridView)[e.ColumnIndex, e.RowIndex];
+        var colNameЦвет = gridViewГараж.Columns["ЦветRGB"].Index;
+        var colNameЦена = gridViewГараж.Columns["Цена"].Index;
+        if (e.ColumnIndex == colNameЦвет)
+        {
+            var cellColor = Color.FromArgb(Convert.ToInt32(cell.Value.ToString()));
+            cell.Style.BackColor = cellColor;
+            cell.Style.SelectionBackColor = cellColor;
+            cell.Style.ForeColor = cellColor;
+            cell.Style.SelectionForeColor = cellColor;
+
             return;
-        labelColor.BackColor = colorDialog1.Color;
+        }
+        if (e.ColumnIndex == colNameЦена)
+        {
+            cell.Style.Format = "C";
+        }
+    }
+
+    private void labelColor_BackColorChanged(object sender, EventArgs e)
+    {
+        colorAuto = labelColor.BackColor.ToArgb().ToString();
+    }
+
+    private void buttonСброситьЦвет_Click(object sender, EventArgs e)
+    {
+        colorAuto = null;
+        labelColor.BackColor = SystemColors.Control;
     }
 
     private void buttonОчистить_Click(object sender, EventArgs e)
@@ -125,15 +250,15 @@ public partial class frГаражАвто : Form
         var controlName = (string)((Button)sender).Tag; // имя контрола который нужно очистить
         var controlNameArr = controlName.Split(';');
 
-        foreach(var c in controlNameArr)
+        foreach (var c in controlNameArr)
         {
             var control = this.Controls.Find(c, true).SingleOrDefault();
             if (control == null) { return; }
 
-            if(control.GetType() == typeof(ComboBox))
+            if (control.GetType() == typeof(ComboBox))
             {
                 var comboBox = (ComboBox)control;
-                if(comboBox.Items.Count != 0)
+                if (comboBox.Items.Count != 0)
                 {
                     comboBox.SelectedIndex = 0;
                 }
@@ -143,7 +268,7 @@ public partial class frГаражАвто : Form
                 }
             }
 
-            if(control.GetType() == typeof(TextBox))
+            if (control.GetType() == typeof(TextBox))
             {
                 if (control.Name.StartsWith("textBoxЦена"))
                 {
@@ -204,66 +329,13 @@ public partial class frГаражАвто : Form
         }
     }
 
-    private void ЗаполнитьФильтры()
+    private void simpleButtonColor_Click(object sender, EventArgs e)
     {
-        comboBoxМарка.ASНастроитьВыпадалку_SP("СписокФильтров_МаркиАвто", "UID", "Name");
-
-        textBoxЦенаОт.Text = "0";
-        textBoxЦенаДо.Text = "10000000";
-        textBoxПробегОт.Text = "0";
-        textBoxПробегДо.Text = "1000000";
-        textBoxВыпускОт.Text = "1950";
-        textBoxВыпускДо.Text = DateTime.Now.Year.ToString();
-        textBoxОбъемОт.Text = "0.0";
-        textBoxОбъемДо.Text = "10.0";
-        textBoxМощностьОт.Text = "30";
-        textBoxМощностьДо.Text = "600";
-
-        comboBoxТипТоплива.ASНастроитьВыпадалку_SP("СписокФильтров_ТипТоплива", "Id", "Name");
-        comboBoxТипПривода.ASНастроитьВыпадалку_SP("СписокФильтров_ТипПривода", "Id", "Name");
-        comboBoxТипКузова.ASНастроитьВыпадалку_SP("СписокФильтров_ТипКузова", "Id", "Name");
-        comboBoxТипРуля.ASНастроитьВыпадалку_SP("СписокФильтров_ТипРуля", "Id", "Name");
-        comboBoxТипКПП.ASНастроитьВыпадалку_SP("СписокФильтров_ТипКПП", "Id", "Name");
-
-        radioButtonЛюбая.Checked = true;
-        labelColor.BackColor = System.Drawing.SystemColors.Control;
-        checkBoxБезПробега.Checked = false;
+        if (colorDialog1.ShowDialog() == DialogResult.Cancel)
+            return;
+        labelColor.BackColor = colorDialog1.Color;
     }
 
-    private void buttonОчиститьФильтры_Click(object sender, EventArgs e)
-    {
-        ЗаполнитьФильтры();
-    }
+    #endregion
 
-    private void comboBoxМарка_SelectedValueChanged(object sender, EventArgs e)
-    {
-        comboBoxМодель.ASНастроитьВыпадалку_SP
-        (
-            "СписокФильтров_МоделиАвто",
-            "UID",
-            "Name",
-            0,
-            "@Все",
-            0,
-            "@UIDМарки",
-            clsMisc.DBin(comboBoxМарка.ASSelectedRow()["UID"])
-        );
-    }
-
-    private void comboBoxМодель_SelectedIndexChanged(object sender, EventArgs e)
-    {
-        comboBoxПоколение.ASНастроитьВыпадалку_SP
-        (
-            "СписокФильтров_ПоколенияАвто",
-            "UID",
-            "Name",
-            0,
-            "@Все",
-            0,
-            "@UIDМарки",
-            clsMisc.DBin(comboBoxМарка.ASSelectedRow()["UID"]),
-            "@UIDМодели",
-            clsMisc.DBin(comboBoxМодель.ASSelectedRow()["UID"])
-        );
-    }
 }

@@ -9,7 +9,6 @@ public partial class dlgEditАвтоГараж : Form
 {
     private Guid? ForeigenKey;
     private clsMisc.ASSqlFunction sqlFunction;
-    private Guid? UIDСтоимости;
     public object NewRecord { get; set; }
 
     public dlgEditАвтоГараж(Guid? UIDТовара, clsMisc.ASSqlFunction sqlFunction)
@@ -21,21 +20,22 @@ public partial class dlgEditАвтоГараж : Form
 
     private void dlgEditАвтоМарки_Load(object sender, EventArgs e)
     {
-        comboBoxМарка.ASНастроитьВыпадалку_SP("СписокФильтров_МаркиАвто", "UID", "Name", 0, "@Все", 0);
+        this.Text = "Добавить запись";
 
+        comboBoxМарка.ASНастроитьВыпадалку_SP("СписокФильтров_МаркиАвто", "UID", "Name", 0, "@Все", 0);
         comboBoxТипТоплива.ASНастроитьВыпадалку_SP("СписокФильтров_ТипТоплива", "Id", "Name", 0, "@Все", 0);
         comboBoxТипПривода.ASНастроитьВыпадалку_SP("СписокФильтров_ТипПривода", "Id", "Name", 0, "@Все", 0);
         comboBoxТипКузова.ASНастроитьВыпадалку_SP("СписокФильтров_ТипКузова", "Id", "Name", 0, "@Все", 0);
         comboBoxТипРуля.ASНастроитьВыпадалку_SP("СписокФильтров_ТипРуля", "Id", "Name", 0, "@Все", 0);
         comboBoxТипКПП.ASНастроитьВыпадалку_SP("СписокФильтров_ТипКПП", "Id", "Name", 0, "@Все", 0);
+        comboBoxСтатусАвто.ASНастроитьВыпадалку_SP("СписокФильтров_СтатусАвто", "Id", "Name", 1, "@Все", 0);
 
         var dt = new DataTable() { Columns = { new DataColumn("ValueMember"), new DataColumn("DisplayMember") } };
         for(var i = 0.1m; i<=10; i = i + 0.1m)
         {
-            var val = Math.Round(i, 1);
             var dr = dt.NewRow();
-            dr["ValueMember"] = val;
-            dr["DisplayMember"] =$"{val} л";
+            dr["ValueMember"] = i;
+            dr["DisplayMember"] =$"{Math.Round(i, 1)} л";
             dt.Rows.Add(dr);
         }
         comboBoxОбъемДвигателя.DataSource = dt;
@@ -56,20 +56,32 @@ public partial class dlgEditАвтоГараж : Form
         comboBoxМощностьДвигателя.DisplayMember = "DisplayMember";
         comboBoxМощностьДвигателя.SelectedValue = 80;
 
-        this.Text = "Добавить запись";
         if (sqlFunction == clsMisc.ASSqlFunction.Update)
         {
-            comboBoxСтатусАвто.Visible = true;
-            label6.Visible = true;
-            checkBoxОбновитьСтатистику.Enabled = false;
+            this.Text = "Изменить запись";
+
+            labelControl6.Visible = true;
+            checkBoxОбновитьСтатистику.Enabled = true;
 
             var dr = clsSql.ExecuteSP("dbo.ГаражАвто_SIUD", clsMisc.ASSqlFunction.Select, "@UIDТовара", ForeigenKey).dataTable.RowsDR().SingleOrDefault();
 
             comboBoxМарка.SelectedValue = clsMisc.DBout(dr["UIDМарки"]);
             comboBoxМодель.SelectedValue = clsMisc.DBout(dr["UIDМодели"]);
             comboBoxПоколение.SelectedValue = clsMisc.DBout(dr["UIDПоколения"]);
-
-            this.Text = "Изменить запись";
+            textEditVIN.Text = clsMisc.DBout((string)dr["VIN"]);
+            textEditНомерКузова.Text = clsMisc.DBout((string)dr["НомерКузова"]);
+            labelColor.BackColor = Color.FromArgb(Convert.ToInt32(dr["ЦветRGB"]));
+            comboBoxСтатусАвто.SelectedValue = clsMisc.DBout(dr["IdСтатусАвто"]);
+            textEditСтоимость.Text = clsMisc.DBout(dr["Стоимость"].ToString());
+            comboBoxТипТоплива.SelectedValue = clsMisc.DBout(dr["IdТипТоплива"]);
+            comboBoxТипПривода.SelectedValue = clsMisc.DBout(dr["IdТипПривода"]);
+            comboBoxТипКузова.SelectedValue = clsMisc.DBout(dr["IdТипКузова"]);
+            comboBoxТипРуля.SelectedValue = clsMisc.DBout(dr["IdТипРуля"]);
+            comboBoxТипКПП.SelectedValue = clsMisc.DBout(dr["IdТипКПП"]);
+            textEditГодВыпуска.Text = clsMisc.DBout((string)dr["ГодВыпуска"]);
+            textEditПробег.Text = clsMisc.DBout(dr["Пробег"].ToString());
+            comboBoxОбъемДвигателя.SelectedValue =  clsMisc.DBout(dr["ОбъемДвигателя"]);
+            comboBoxМощностьДвигателя.SelectedValue = clsMisc.DBout(dr["МощностьДвигателя"]);
         }
     }
 
@@ -138,7 +150,7 @@ public partial class dlgEditАвтоГараж : Form
             comboBoxМарка,
             comboBoxМодель,
             comboBoxПоколение,
-            comboBoxСтатусАвто, // добавить выпадлку заполненную
+            comboBoxСтатусАвто, 
             comboBoxТипТоплива,
             comboBoxТипПривода,
             comboBoxТипКузова,
@@ -161,9 +173,8 @@ public partial class dlgEditАвтоГараж : Form
             "@UIDМарки", clsMisc.DBin(comboBoxМарка.ASSelectedRow()["UID"]),
             "@UIDМодели", clsMisc.DBin(comboBoxМодель.ASSelectedRow()["UID"]),
             "@UIDПоколения", clsMisc.DBin(comboBoxПоколение.ASSelectedRow()["UID"]),
-            "@UIDСтоимости", clsMisc.DBin(UIDСтоимости),
             "@ОбновитьСтатистику", clsMisc.DBin((object)checkBoxОбновитьСтатистику.Checked),
-            "@Стоимсть", clsMisc.DBin(textEditСтоимость.Text),
+            "@Стоимость", clsMisc.DBin(textEditСтоимость.Text),
             "@IdСтатусАвто", clsMisc.DBin(comboBoxСтатусАвто.ASSelectedRow()["Id"]),
             "@IdТипТоплива", clsMisc.DBin(comboBoxТипТоплива.ASSelectedRow()["Id"]),
             "@IdТипПривода", clsMisc.DBin(comboBoxТипПривода.ASSelectedRow()["Id"]),
@@ -173,10 +184,9 @@ public partial class dlgEditАвтоГараж : Form
             "@ГодВыпуска", clsMisc.DBin(textEditГодВыпуска.Text),
             "@Пробег", clsMisc.DBin(textEditПробег.Text),
             "@ЦветRGB", clsMisc.DBin(labelColor.BackColor.ToArgb().ToString()),
-            "@ЦветHEX", clsMisc.DBin(""),
             "@VIN", clsMisc.DBin(textEditVIN.Text),
-            "@ОбъемДвигателя", clsMisc.DBin(comboBoxОбъемДвигателя.Text),
-            "@МощностьДвигателя", clsMisc.DBin(comboBoxМощностьДвигателя.Text),
+            "@ОбъемДвигателя", clsMisc.DBin(comboBoxОбъемДвигателя.SelectedValue),
+            "@МощностьДвигателя", clsMisc.DBin(comboBoxМощностьДвигателя.SelectedValue),
             "@НомерКузова", clsMisc.DBin(textEditНомерКузова.Text));
 
         if ((bool)response.success)
@@ -186,4 +196,13 @@ public partial class dlgEditАвтоГараж : Form
             this.DialogResult = DialogResult.OK;
         }
     }
+
+    private void simpleButtonColor_Click(object sender, EventArgs e)
+    {
+        if (textEditЦветАвто.ShowDialog() == DialogResult.OK)
+        {
+            labelColor.BackColor = textEditЦветАвто.Color;
+        }
+    }
+
 }

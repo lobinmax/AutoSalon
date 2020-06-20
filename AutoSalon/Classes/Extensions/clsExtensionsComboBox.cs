@@ -101,6 +101,6 @@ public static partial class clsExtensions
 
     static public DataRow ASSelectedRow(this ComboBox comboBox)
     {
-        return ((DataRowView)comboBox.SelectedItem).Row;
+        return ((DataRowView)comboBox.SelectedItem)?.Row;
     }
 }
