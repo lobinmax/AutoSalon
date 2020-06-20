@@ -51,13 +51,15 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>LoginScreen.ico</ApplicationIcon>
+  </PropertyGroup>
   <ItemGroup>
     <Compile Include="Classes\clsConnection.cs" />
     <Compile Include="Classes\clsDlgEditSimple.cs" />
     <Compile Include="Classes\Extensions\clsExtensionsGridView.cs" />
     <Compile Include="Classes\clsMisc.cs" />
-    <Compile Include="Classes\clsTabActivated.cs" />
-    <Compile Include="Classes\Extensions\clsExtensionsMdiForm.cs" />
+    <Compile Include="Classes\Extensions\clsExtensionsComboBox.cs" />
     <Compile Include="Classes\Extensions\clsExtensionsMenuHelper.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -66,11 +68,17 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <Compile Include="WinDialogs\dlgEditАвтоПоколения.cs">
+    <Compile Include="WinDialogs\dlgEditАвтоГараж.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="WinDialogs\dlgEditАвтоПоколения.Designer.cs">
-      <DependentUpon>dlgEditАвтоПоколения.cs</DependentUpon>
+    <Compile Include="WinDialogs\dlgEditАвтоГараж.Designer.cs">
+      <DependentUpon>dlgEditАвтоГараж.cs</DependentUpon>
+    </Compile>
+    <Compile Include="WinDialogs\dlgEditАвтоМарки.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="WinDialogs\dlgEditАвтоМарки.Designer.cs">
+      <DependentUpon>dlgEditАвтоМарки.cs</DependentUpon>
     </Compile>
     <Compile Include="WinDialogs\dlgEditАвтоМодели.cs">
       <SubType>Form</SubType>
@@ -78,17 +86,17 @@
     <Compile Include="WinDialogs\dlgEditАвтоМодели.Designer.cs">
       <DependentUpon>dlgEditАвтоМодели.cs</DependentUpon>
     </Compile>
+    <Compile Include="WinDialogs\dlgEditАвтоПоколения.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="WinDialogs\dlgEditАвтоПоколения.Designer.cs">
+      <DependentUpon>dlgEditАвтоПоколения.cs</DependentUpon>
+    </Compile>
     <Compile Include="WinDialogs\dlgEditСотрудник.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="WinDialogs\dlgEditСотрудник.Designer.cs">
       <DependentUpon>dlgEditСотрудник.cs</DependentUpon>
-    </Compile>
-    <Compile Include="WinDialogs\dlgEditАвтоМарки.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="WinDialogs\dlgEditАвтоМарки.Designer.cs">
-      <DependentUpon>dlgEditАвтоМарки.cs</DependentUpon>
     </Compile>
     <Compile Include="WinDialogs\dlgEditСтраны.cs">
       <SubType>Form</SubType>
@@ -102,17 +110,11 @@
     <Compile Include="WinDialogs\dlgEditТипКПП.Designer.cs">
       <DependentUpon>dlgEditТипКПП.cs</DependentUpon>
     </Compile>
-    <Compile Include="WinDialogs\dlgEditТипыСтатусовЗаказа.cs">
+    <Compile Include="WinDialogs\dlgEditТипКузова.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="WinDialogs\dlgEditТипыСтатусовЗаказа.Designer.cs">
-      <DependentUpon>dlgEditТипыСтатусовЗаказа.cs</DependentUpon>
-    </Compile>
-    <Compile Include="WinDialogs\dlgEditТипТоплива.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="WinDialogs\dlgEditТипТоплива.Designer.cs">
-      <DependentUpon>dlgEditТипТоплива.cs</DependentUpon>
+    <Compile Include="WinDialogs\dlgEditТипКузова.Designer.cs">
+      <DependentUpon>dlgEditТипКузова.cs</DependentUpon>
     </Compile>
     <Compile Include="WinDialogs\dlgEditТипПривода.cs">
       <SubType>Form</SubType>
@@ -120,11 +122,23 @@
     <Compile Include="WinDialogs\dlgEditТипПривода.Designer.cs">
       <DependentUpon>dlgEditТипПривода.cs</DependentUpon>
     </Compile>
-    <Compile Include="WinDialogs\dlgEditТипКузова.cs">
+    <Compile Include="WinDialogs\dlgEditТипТоплива.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="WinDialogs\dlgEditТипКузова.Designer.cs">
-      <DependentUpon>dlgEditТипКузова.cs</DependentUpon>
+    <Compile Include="WinDialogs\dlgEditТипТоплива.Designer.cs">
+      <DependentUpon>dlgEditТипТоплива.cs</DependentUpon>
+    </Compile>
+    <Compile Include="WinDialogs\dlgEditТипыСтатусовЗаказа.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="WinDialogs\dlgEditТипыСтатусовЗаказа.Designer.cs">
+      <DependentUpon>dlgEditТипыСтатусовЗаказа.cs</DependentUpon>
+    </Compile>
+    <Compile Include="WinForms\frMainForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="WinForms\frMainForm.Designer.cs">
+      <DependentUpon>frMainForm.cs</DependentUpon>
     </Compile>
     <Compile Include="WinForms\frLogin.cs">
       <SubType>Form</SubType>
@@ -132,11 +146,11 @@
     <Compile Include="WinForms\frLogin.Designer.cs">
       <DependentUpon>frLogin.cs</DependentUpon>
     </Compile>
-    <Compile Include="WinForms\frMainForm.cs">
+    <Compile Include="WinForms\frГаражАвто.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="WinForms\frMainForm.Designer.cs">
-      <DependentUpon>frMainForm.cs</DependentUpon>
+    <Compile Include="WinForms\frГаражАвто.Designer.cs">
+      <DependentUpon>frГаражАвто.cs</DependentUpon>
     </Compile>
     <Compile Include="WinForms\frМаркиАвто.cs">
       <SubType>Form</SubType>
@@ -161,26 +175,27 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="ImagesIcons\" />
     <Folder Include="Interfaces\" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Properties\licenses.licx" />
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <EmbeddedResource Include="WinDialogs\dlgEditАвтоПоколения.resx">
-      <DependentUpon>dlgEditАвтоПоколения.cs</DependentUpon>
+    <EmbeddedResource Include="WinDialogs\dlgEditАвтоГараж.resx">
+      <DependentUpon>dlgEditАвтоГараж.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="WinDialogs\dlgEditАвтоМарки.resx">
+      <DependentUpon>dlgEditАвтоМарки.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="WinDialogs\dlgEditАвтоМодели.resx">
       <DependentUpon>dlgEditАвтоМодели.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="WinDialogs\dlgEditАвтоПоколения.resx">
+      <DependentUpon>dlgEditАвтоПоколения.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="WinDialogs\dlgEditСотрудник.resx">
       <DependentUpon>dlgEditСотрудник.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="WinDialogs\dlgEditАвтоМарки.resx">
-      <DependentUpon>dlgEditАвтоМарки.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="WinDialogs\dlgEditСтраны.resx">
       <DependentUpon>dlgEditСтраны.cs</DependentUpon>
@@ -188,23 +203,26 @@
     <EmbeddedResource Include="WinDialogs\dlgEditТипКПП.resx">
       <DependentUpon>dlgEditТипКПП.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="WinDialogs\dlgEditТипыСтатусовЗаказа.resx">
-      <DependentUpon>dlgEditТипыСтатусовЗаказа.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="WinDialogs\dlgEditТипТоплива.resx">
-      <DependentUpon>dlgEditТипТоплива.cs</DependentUpon>
+    <EmbeddedResource Include="WinDialogs\dlgEditТипКузова.resx">
+      <DependentUpon>dlgEditТипКузова.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="WinDialogs\dlgEditТипПривода.resx">
       <DependentUpon>dlgEditТипПривода.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="WinDialogs\dlgEditТипКузова.resx">
-      <DependentUpon>dlgEditТипКузова.cs</DependentUpon>
+    <EmbeddedResource Include="WinDialogs\dlgEditТипТоплива.resx">
+      <DependentUpon>dlgEditТипТоплива.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="WinDialogs\dlgEditТипыСтатусовЗаказа.resx">
+      <DependentUpon>dlgEditТипыСтатусовЗаказа.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="WinForms\frMainForm.resx">
+      <DependentUpon>frMainForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="WinForms\frLogin.resx">
       <DependentUpon>frLogin.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="WinForms\frMainForm.resx">
-      <DependentUpon>frMainForm.cs</DependentUpon>
+    <EmbeddedResource Include="WinForms\frГаражАвто.resx">
+      <DependentUpon>frГаражАвто.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="WinForms\frМаркиАвто.resx">
       <DependentUpon>frМаркиАвто.cs</DependentUpon>
@@ -229,87 +247,6 @@
     </BootstrapperPackage>
   </ItemGroup>
   <ItemGroup>
-    <Reference Include="DevExpress.BonusSkins.v19.2, Version=19.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>DLL\DevExpress.BonusSkins.v19.2.dll</HintPath>
-    </Reference>
-    <Reference Include="DevExpress.Data.v19.2, Version=19.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>DLL\DevExpress.Data.v19.2.dll</HintPath>
-    </Reference>
-    <Reference Include="DevExpress.Pdf.v19.2.Core, Version=19.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>DLL\DevExpress.Pdf.v19.2.Core.dll</HintPath>
-    </Reference>
-    <Reference Include="DevExpress.Printing.v19.2.Core, Version=19.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>DLL\DevExpress.Printing.v19.2.Core.dll</HintPath>
-    </Reference>
-    <Reference Include="DevExpress.Sparkline.v19.2.Core, Version=19.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>DLL\DevExpress.Sparkline.v19.2.Core.dll</HintPath>
-    </Reference>
-    <Reference Include="DevExpress.Utils.v19.2, Version=19.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>DLL\DevExpress.Utils.v19.2.dll</HintPath>
-    </Reference>
-    <Reference Include="DevExpress.XtraBars.v19.2, Version=19.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>DLL\DevExpress.XtraBars.v19.2.dll</HintPath>
-    </Reference>
-    <Reference Include="DevExpress.XtraEditors.v19.2, Version=19.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>DLL\DevExpress.XtraEditors.v19.2.dll</HintPath>
-    </Reference>
-    <Reference Include="DevExpress.XtraGrid.v19.2, Version=19.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
-    <Reference Include="DevExpress.XtraLayout.v19.2, Version=19.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>DLL\DevExpress.XtraLayout.v19.2.dll</HintPath>
-    </Reference>
-    <Reference Include="DevExpress.XtraNavBar.v19.2, Version=19.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
-    <Reference Include="DevExpress.XtraPrinting.v19.2, Version=19.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
-    <Reference Include="DevExpress.XtraTreeList.v19.2, Version=19.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>DLL\DevExpress.XtraTreeList.v19.2.dll</HintPath>
-    </Reference>
-    <Reference Include="Microsoft.CSharp">
-      <Private>True</Private>
-    </Reference>
-    <Reference Include="System">
-      <Private>True</Private>
-    </Reference>
-    <Reference Include="System.ComponentModel.DataAnnotations">
-      <Private>True</Private>
-    </Reference>
-    <Reference Include="System.Data">
-      <Private>True</Private>
-    </Reference>
-    <Reference Include="System.Data.DataSetExtensions">
-      <Private>True</Private>
-    </Reference>
-    <Reference Include="System.Data.Linq">
-      <Private>True</Private>
-    </Reference>
-    <Reference Include="System.Deployment">
-      <Private>True</Private>
-    </Reference>
-    <Reference Include="System.Drawing">
-      <Private>True</Private>
-    </Reference>
-    <Reference Include="System.Net.Http">
-      <Private>True</Private>
-    </Reference>
-    <Reference Include="System.Windows.Forms">
-      <Private>True</Private>
-    </Reference>
-    <Reference Include="System.Xml">
-      <Private>True</Private>
-    </Reference>
-    <Reference Include="System.Xml.Linq">
-      <Private>True</Private>
-    </Reference>
-  </ItemGroup>
-  <ItemGroup>
     <None Include="Resources\Add_16x16.png" />
   </ItemGroup>
   <ItemGroup>
@@ -329,6 +266,63 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\Action_Cancel.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="MdiTabControl">
+      <HintPath>.\MdiTabControl.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.CSharp">
+      <EmbedInteropTypes>False</EmbedInteropTypes>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System">
+      <EmbedInteropTypes>False</EmbedInteropTypes>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.ComponentModel.DataAnnotations">
+      <EmbedInteropTypes>False</EmbedInteropTypes>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Data">
+      <EmbedInteropTypes>False</EmbedInteropTypes>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Data.DataSetExtensions">
+      <EmbedInteropTypes>False</EmbedInteropTypes>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Data.Linq">
+      <EmbedInteropTypes>False</EmbedInteropTypes>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Deployment">
+      <EmbedInteropTypes>False</EmbedInteropTypes>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Drawing">
+      <EmbedInteropTypes>False</EmbedInteropTypes>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Net.Http">
+      <EmbedInteropTypes>False</EmbedInteropTypes>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Windows.Forms">
+      <EmbedInteropTypes>False</EmbedInteropTypes>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Xml">
+      <EmbedInteropTypes>False</EmbedInteropTypes>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Xml.Linq">
+      <EmbedInteropTypes>False</EmbedInteropTypes>
+      <Private>True</Private>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="ImagesIcons\LoginScreen.png" />
+    <Content Include="LoginScreen.ico" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -7,9 +7,8 @@ using System.Text;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using DevExpress.XtraEditors;
 
-public partial class dlgEditТипКПП : DevExpress.XtraEditors.XtraForm
+public partial class dlgEditТипКПП : System.Windows.Forms.Form
 {
     private string ForeigenKey;
     private clsMisc.ASSqlFunction sqlFunction;
@@ -30,8 +29,8 @@ public partial class dlgEditТипКПП : DevExpress.XtraEditors.XtraForm
         if (sqlFunction == clsMisc.ASSqlFunction.Update)
         {
             var dr = clsSql.ExecuteSP("dbo.АвтоТипКПП_SIUD", clsMisc.ASSqlFunction.ViewForm, "@IdТипКПП", ForeigenKey).dataTable.RowsDR().SingleOrDefault();
-            textEditНаименование.EditValue = clsMisc.DBout(dr["Наименование"]);
-            textEditНаименованиеСокр.EditValue = clsMisc.DBout(dr["Наименование сокр."]);
+            textEditНаименование.Text = (string) clsMisc.DBout(dr["Наименование"]);
+            textEditНаименованиеСокр.Text = (string) clsMisc.DBout(dr["Наименование сокр."]);
             this.Text = "Изменить запись";
         }
     }
@@ -40,16 +39,16 @@ public partial class dlgEditТипКПП : DevExpress.XtraEditors.XtraForm
 
     private void simpleButtonСохранить_Click(object sender, EventArgs e)
     {
-        if (!clsMisc.CheckFields(textEditНаименование.EditValue, 
-                                 textEditНаименованиеСокр.EditValue))
+        if (!clsMisc.CheckFields(textEditНаименование.Text, 
+                                 textEditНаименованиеСокр.Text))
         {
             return;
         }
 
         var response = clsSql.ExecuteSP("АвтоТипКПП_SIUD", this.sqlFunction,
             "@IdТипКПП", this.ForeigenKey,
-            "@Наименование", clsMisc.DBin(textEditНаименование.EditValue),
-            "@НаименованиеСокр", clsMisc.DBin(textEditНаименованиеСокр.EditValue));
+            "@Наименование", clsMisc.DBin(textEditНаименование.Text),
+            "@НаименованиеСокр", clsMisc.DBin(textEditНаименованиеСокр.Text));
 
         if ((bool)response.success)
         {

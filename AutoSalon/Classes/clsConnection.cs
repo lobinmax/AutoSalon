@@ -1,5 +1,4 @@
-﻿using DevExpress.XtraEditors;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
@@ -25,7 +24,7 @@ public class clsSql
             conn.ConnectionString = $"Data Source={server};" +
                         $"Initial Catalog={db};" +
                         $"Encrypt=False;" +
-                        $"Integrated Security=True;" +
+                        $"Integrated Security=False;" +
                         $"Password={pass};" +
                         $"User ID={login}";
             Program.ConnectionString = conn.ConnectionString;
@@ -35,7 +34,7 @@ public class clsSql
 
             try
             {
-                if (conn.State == System.Data.ConnectionState.Closed)
+                if (conn.State == ConnectionState.Closed)
                 {
                     conn.Open();
                     return true;
@@ -44,7 +43,7 @@ public class clsSql
             }
             catch (SqlException ex)
             {
-                XtraMessageBox.Show($"{ex.Message}\nОшибка вызова: ConnectionToDase",
+                MessageBox.Show($"{ex.Message}\nОшибка вызова: ConnectionToDase",
                                     Program.ProductName,
                                     MessageBoxButtons.OK,
                                     MessageBoxIcon.Error);
@@ -84,7 +83,7 @@ public class clsSql
 
             catch (Exception ex)
             {
-                XtraMessageBox.Show($"{ex.Message}\nОшибка вызова: '{procedureName}'",
+                MessageBox.Show($"{ex.Message}\nОшибка вызова: '{procedureName}'",
                                     Program.ProductName,
                                     MessageBoxButtons.OK,
                                     MessageBoxIcon.Error);
@@ -109,10 +108,9 @@ public class clsSql
                     throw new Exception("Ошибка программиста. Нехватка параметров в хранимой процедуре.");
                 }
                 // добавляем параметры
-                for (int i = 0; i < parameters.Length;)
+                for (int i = 0; i < parameters.Length; i = i + 2)
                 {
-                    command.Parameters.AddWithValue(parameters[i].ToString(), parameters[i + 1]);
-                    i = i + 2;
+                    command.Parameters.AddWithValue((string)parameters[i], parameters[i + 1]);
                 }
 
                 if (sqlFunction != ASSqlFunction.Null)
@@ -125,7 +123,7 @@ public class clsSql
 
             catch (Exception ex)
             {
-                XtraMessageBox.Show($"{ex.Message}\nОшибка вызова: '{procedureName}'",
+                MessageBox.Show($"{ex.Message}\nОшибка вызова: '{procedureName}'",
                                     Program.ProductName,
                                     MessageBoxButtons.OK,
                                     MessageBoxIcon.Error);
@@ -158,7 +156,7 @@ public class clsSql
 
             catch (Exception ex)
             {
-                XtraMessageBox.Show($"{ex.Message}\nОшибка вызова: '{procedureName}'",
+                MessageBox.Show($"{ex.Message}\nОшибка вызова: '{procedureName}'",
                                     Program.ProductName,
                                     MessageBoxButtons.OK,
                                     MessageBoxIcon.Error);
@@ -193,10 +191,9 @@ public class clsSql
                     throw new Exception("Ошибка программиста. Нехватка параметров в хранимой процедуре.");
                 }
                 // добавляем параметры
-                for (int i = 0; i < (parameters.Length / 2);)
+                for (int i = 0; i < parameters.Length; i = i + 2)
                 {
-                    command.Parameters.AddWithValue(parameters[i].ToString(), parameters[i + 1]);
-                    i = i + 2;
+                    command.Parameters.AddWithValue((string)parameters[i], parameters[i + 1]);
                 }
 
                 sqlDataAdapter.SelectCommand = command;
@@ -206,7 +203,7 @@ public class clsSql
 
             catch (Exception ex)
             {
-                XtraMessageBox.Show($"{ex.Message}\nОшибка вызова: '{procedureName}'",
+                MessageBox.Show($"{ex.Message}\nОшибка вызова: '{procedureName}'",
                                     Program.ProductName,
                                     MessageBoxButtons.OK,
                                     MessageBoxIcon.Error);
@@ -241,17 +238,16 @@ public class clsSql
                     throw new Exception("Ошибка программиста. Нехватка параметров в хранимой процедуре.");
                 }
                 // добавляем параметры
-                for (int i = 0; i < parameters.Length; )
+                for (int i = 0; i < parameters.Length; i = i + 2)
                 {
-                    command.Parameters.AddWithValue(parameters[i].ToString(), parameters[i + 1]);
-                    i = i + 2;
+                    command.Parameters.AddWithValue((string)parameters[i], parameters[i + 1]);
                 }
 
                 if (sqlFunction != ASSqlFunction.Null)
                 {
                     command.Parameters.AddWithValue("@Function", sqlFunction);
                 }
-
+                
                 sqlDataAdapter.SelectCommand = command;
                 sqlDataAdapter.Fill(response.dataTable);
                 return response;
@@ -259,7 +255,7 @@ public class clsSql
 
             catch (Exception ex)
             {
-                XtraMessageBox.Show($"{ex.Message}\nОшибка вызова: '{procedureName}'",
+                MessageBox.Show($"{ex.Message}\nОшибка вызова: '{procedureName}'",
                                     Program.ProductName,
                                     MessageBoxButtons.OK,
                                     MessageBoxIcon.Error);
@@ -274,7 +270,7 @@ public class clsSql
     /// </summary>
     /// <param name="functionName"></param>
     /// <returns>object</returns>
-    public static object ExecuteScalarFunction(string functionName)
+    public static QueryResponse ExecuteScalarFunction(string functionName)
     {
         var response = new QueryResponse() { success = true };
         using (conn = GetSqlConnection())
@@ -294,7 +290,7 @@ public class clsSql
 
             catch (Exception ex)
             {
-                XtraMessageBox.Show($"{ex.Message}\nОшибка вызова: '{functionName}'",
+                MessageBox.Show($"{ex.Message}\nОшибка вызова: '{functionName}'",
                                     Program.ProductName,
                                     MessageBoxButtons.OK,
                                     MessageBoxIcon.Error);
@@ -317,7 +313,6 @@ public class clsSql
         {
             SqlCommand command = new SqlCommand(functionName, conn);
             SqlDataAdapter sqlDataAdapter = new SqlDataAdapter();
-            DataTable dataTable = new DataTable();
             string parametersString = "";
             string spliter = "";
             var result = new object();
@@ -339,12 +334,42 @@ public class clsSql
 
             catch (Exception ex)
             {
-                XtraMessageBox.Show($"{ex.Message}\nОшибка вызова: '{functionName}'",
+                MessageBox.Show($"{ex.Message}\nОшибка вызова: '{functionName}'",
                                     Program.ProductName,
                                     MessageBoxButtons.OK,
                                     MessageBoxIcon.Error);
                 response.success = false;
                 return response;
+            }
+        }
+    }
+    
+    public static QueryResponse ExecuteQuery(string TextQuery)
+    {
+        var response = new QueryResponse() { success = true };
+        using (conn = GetSqlConnection())
+        {
+            SqlCommand command = new SqlCommand($"{TextQuery}", conn);
+            SqlDataAdapter sqlDataAdapter = new SqlDataAdapter();
+
+            try
+            {
+                if (conn.State != ConnectionState.Open) { conn.Open(); }
+                command.CommandType = CommandType.Text;
+
+                sqlDataAdapter.SelectCommand = command;
+                sqlDataAdapter.Fill(response.dataTable);
+                return response;
+            }
+
+            catch (Exception ex)
+            {
+                MessageBox.Show($"{ex.Message}\nОшибка вызова запроса.",
+                                    Program.ProductName,
+                                    MessageBoxButtons.OK,
+                                    MessageBoxIcon.Error);
+                response.success = false;
+                return null;
             }
         }
     }

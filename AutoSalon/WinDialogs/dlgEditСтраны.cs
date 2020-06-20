@@ -7,9 +7,8 @@ using System.Text;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using DevExpress.XtraEditors;
 
-public partial class dlgEditСтраны : DevExpress.XtraEditors.XtraForm
+public partial class dlgEditСтраны : Form
 {
     private string ForeigenKey;
     private clsMisc.ASSqlFunction sqlFunction;
@@ -27,8 +26,8 @@ public partial class dlgEditСтраны : DevExpress.XtraEditors.XtraForm
         if (sqlFunction == clsMisc.ASSqlFunction.Update)
         {
             var dr = clsSql.ExecuteSP("dbo.Страны_SIUD", clsMisc.ASSqlFunction.ViewForm, "@UIDСтраны", ForeigenKey).dataTable.RowsDR().SingleOrDefault();
-            textEditНаименование.EditValue = clsMisc.DBout(dr["Наименование"]);
-            textEditНаименованиеСокр.EditValue = clsMisc.DBout(dr["Наименование сокр."]);
+            textEditНаименование.Text = clsMisc.DBout((string)dr["Наименование"]);
+            textEditНаименованиеСокр.Text = clsMisc.DBout((string)dr["Наименование сокр."]);
             this.Text = "Изменить запись";
         }
     }
@@ -37,16 +36,16 @@ public partial class dlgEditСтраны : DevExpress.XtraEditors.XtraForm
 
     private void simpleButtonСохранить_Click(object sender, EventArgs e)
     {
-        if (!clsMisc.CheckFields(textEditНаименование.EditValue, 
-                                 textEditНаименованиеСокр.EditValue))
+        if (!clsMisc.CheckFields(textEditНаименование.Text, 
+                                 textEditНаименованиеСокр.Text))
         {
             return;
         }
 
         var response = clsSql.ExecuteSP("Страны_SIUD", this.sqlFunction,
-            "@UIDСтраны", this.ForeigenKey,
-            "@Наименование", clsMisc.DBin(textEditНаименование.EditValue),
-            "@НаименованиеСокр", clsMisc.DBin(textEditНаименованиеСокр.EditValue));
+            "@UIDСтраны", clsMisc.DBin(this.ForeigenKey),
+            "@Наименование", clsMisc.DBin(textEditНаименование.Text),
+            "@НаименованиеСокр", clsMisc.DBin(textEditНаименованиеСокр.Text));
 
         if ((bool)response.success)
         {

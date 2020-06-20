@@ -1,6 +1,5 @@
-﻿using DevExpress.XtraEditors;
-using DevExpress.XtraGrid.Views.Grid;
-using System;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Windows.Forms;
@@ -21,22 +20,57 @@ public class clsMisc
 
     }
     
-    public static object DBout(object obj)
+    public static T DBout<T>(T obj) where T : class
     {
-        if (obj == DBNull.Value)
+        if (obj.Equals(DBNull.Value))
         {
             return null;
         }
+
+        if (obj.GetType() == typeof(Decimal))
+        {
+            return (T)(object)Convert.ToDecimal(obj);
+        }
+
+        if (obj.GetType() == typeof(int))
+        {
+            return (T)(object)Convert.ToInt32(obj);
+        }
+
+        if (obj.GetType() == typeof(bool))
+        {
+            return (T)(object)Convert.ToBoolean(obj);
+        }
+
+        if (obj.GetType() == typeof(string))
+        {
+            return (T)(object)Convert.ToString(obj);
+        }
+
+        if (obj.GetType() == typeof(DateTime))
+        {
+            return (T)(object)Convert.ToDateTime(obj);
+        }
+
         return obj;
     }
 
-    public static object DBin(object obj)
+    public static object DBin<T>(T? Obj) where T : struct
     {
-        if (obj == null)
+        if (!Obj.HasValue)
+            return DBNull.Value;
+        else
+            return Obj;
+    }
+
+    public static object DBin<T>(T Obj, object NullValue = null) where T : class
+    {
+        if (Obj == null || string.IsNullOrEmpty(Obj.ToString()))
         {
             return DBNull.Value;
         }
-        return obj;
+
+        return Obj;
     }
 
     public static bool CheckFields(params object[] controls)
@@ -46,13 +80,23 @@ public class clsMisc
         {
             if ((obj == null) || string.IsNullOrWhiteSpace(obj.ToString()))
             {
-                XtraMessageBox.Show("Не все обязательные поля заполнены!", Program .ProductName, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Не все обязательные поля заполнены!", Program .ProductName, MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return false;
             }
         }
         return true;
     }
-    
+    public static bool CheckFields(List<Control> listControl)
+    {
+        var emptyControl = listControl.Where(f => string.IsNullOrWhiteSpace(f.Text)).ToList();
+        if (emptyControl.Any())
+        {
+            MessageBox.Show("Не все обязательные поля заполнены!", Program.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Error);
+            return false;
+        }
+
+        return true;
+    }
 }
 
 /// <summary>
@@ -60,10 +104,10 @@ public class clsMisc
 /// </summary>
 public class ASTimer : Timer
 {
-    public static GridView _gridView;
-    public static List<SimpleButton> _simpleButton;
+    public static DataGridView _gridView;
+    public static List<Button> _simpleButton;
 
-    public ASTimer(GridView gridView, List<SimpleButton> simpleButton)
+    public ASTimer(DataGridView gridView, List<Button> simpleButton)
     {
         _gridView = gridView;
         _simpleButton = simpleButton;
@@ -73,9 +117,9 @@ public class ASTimer : Timer
     private void timer_Tick(object sender, EventArgs e)
     {
         if (_simpleButton == null) { return; }
-        foreach (SimpleButton btn in _simpleButton)
+        foreach (Button btn in _simpleButton)
         {
-            btn.Enabled = !(_gridView.FocusedRowHandle < 0);
+            btn.Enabled = !(_gridView.SelectedRows.Count == 0);
         }
     }
 

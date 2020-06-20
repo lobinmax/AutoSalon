@@ -26,35 +26,32 @@
     /// </summary>
     private void InitializeComponent()
     {
-            this.panelControl1 = new DevExpress.XtraEditors.PanelControl();
-            this.panelControl2 = new DevExpress.XtraEditors.PanelControl();
-            this.simpleButtonОбновить = new DevExpress.XtraEditors.SimpleButton();
-            this.splitContainerControl1 = new DevExpress.XtraEditors.SplitContainerControl();
-            this.gridControlМарки = new DevExpress.XtraGrid.GridControl();
-            this.gridViewМарки = new DevExpress.XtraGrid.Views.Grid.GridView();
-            this.splitContainerControl2 = new DevExpress.XtraEditors.SplitContainerControl();
-            this.gridControlМодели = new DevExpress.XtraGrid.GridControl();
-            this.gridViewМодели = new DevExpress.XtraGrid.Views.Grid.GridView();
-            this.gridControlПоколения = new DevExpress.XtraGrid.GridControl();
-            this.gridViewПоколения = new DevExpress.XtraGrid.Views.Grid.GridView();
-            ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).BeginInit();
+            this.panelControl1 = new System.Windows.Forms.Panel();
+            this.panelControl2 = new System.Windows.Forms.Panel();
+            this.simpleButtonОбновить = new System.Windows.Forms.Button();
+            this.splitContainer1 = new System.Windows.Forms.SplitContainer();
+            this.gridViewМарки = new System.Windows.Forms.DataGridView();
+            this.splitContainer2 = new System.Windows.Forms.SplitContainer();
+            this.gridViewМодели = new System.Windows.Forms.DataGridView();
+            this.gridViewПоколения = new System.Windows.Forms.DataGridView();
             this.panelControl1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.panelControl2)).BeginInit();
             this.panelControl2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.splitContainerControl1)).BeginInit();
-            this.splitContainerControl1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.gridControlМарки)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
+            this.splitContainer1.Panel1.SuspendLayout();
+            this.splitContainer1.Panel2.SuspendLayout();
+            this.splitContainer1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gridViewМарки)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.splitContainerControl2)).BeginInit();
-            this.splitContainerControl2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.gridControlМодели)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainer2)).BeginInit();
+            this.splitContainer2.Panel1.SuspendLayout();
+            this.splitContainer2.Panel2.SuspendLayout();
+            this.splitContainer2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gridViewМодели)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.gridControlПоколения)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridViewПоколения)).BeginInit();
             this.SuspendLayout();
             // 
             // panelControl1
             // 
+            this.panelControl1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.panelControl1.Controls.Add(this.panelControl2);
             this.panelControl1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panelControl1.Location = new System.Drawing.Point(0, 0);
@@ -64,171 +61,151 @@
             // 
             // panelControl2
             // 
-            this.panelControl2.Appearance.BackColor = System.Drawing.Color.Transparent;
-            this.panelControl2.Appearance.Options.UseBackColor = true;
-            this.panelControl2.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder;
             this.panelControl2.Controls.Add(this.simpleButtonОбновить);
             this.panelControl2.Dock = System.Windows.Forms.DockStyle.Left;
-            this.panelControl2.Location = new System.Drawing.Point(2, 2);
+            this.panelControl2.Location = new System.Drawing.Point(0, 0);
             this.panelControl2.Name = "panelControl2";
-            this.panelControl2.Size = new System.Drawing.Size(106, 36);
+            this.panelControl2.Size = new System.Drawing.Size(103, 38);
             this.panelControl2.TabIndex = 11;
             // 
             // simpleButtonОбновить
             // 
-            this.simpleButtonОбновить.ImageOptions.Image = global::AutoSalon.Properties.Resources.Action_Reload;
+            this.simpleButtonОбновить.Image = global::AutoSalon.Properties.Resources.Action_Reload;
+            this.simpleButtonОбновить.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.simpleButtonОбновить.Location = new System.Drawing.Point(7, 4);
             this.simpleButtonОбновить.Name = "simpleButtonОбновить";
-            this.simpleButtonОбновить.ShowFocusRectangle = DevExpress.Utils.DefaultBoolean.False;
-            this.simpleButtonОбновить.Size = new System.Drawing.Size(92, 27);
+            this.simpleButtonОбновить.Size = new System.Drawing.Size(83, 27);
             this.simpleButtonОбновить.TabIndex = 9;
             this.simpleButtonОбновить.Text = "Обновить";
+            this.simpleButtonОбновить.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.simpleButtonОбновить.Click += new System.EventHandler(this.simpleButtonОбновить_Click);
             // 
-            // splitContainerControl1
+            // splitContainer1
             // 
-            this.splitContainerControl1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.splitContainerControl1.Location = new System.Drawing.Point(0, 40);
-            this.splitContainerControl1.Name = "splitContainerControl1";
-            this.splitContainerControl1.Panel1.Controls.Add(this.gridControlМарки);
-            this.splitContainerControl1.Panel1.Text = "Panel1";
-            this.splitContainerControl1.Panel2.Controls.Add(this.splitContainerControl2);
-            this.splitContainerControl1.Panel2.Text = "Panel2";
-            this.splitContainerControl1.Size = new System.Drawing.Size(1189, 549);
-            this.splitContainerControl1.SplitterPosition = 325;
-            this.splitContainerControl1.TabIndex = 3;
+            this.splitContainer1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.splitContainer1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.splitContainer1.Location = new System.Drawing.Point(0, 40);
+            this.splitContainer1.Name = "splitContainer1";
             // 
-            // gridControlМарки
+            // splitContainer1.Panel1
             // 
-            this.gridControlМарки.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.gridControlМарки.Location = new System.Drawing.Point(0, 0);
-            this.gridControlМарки.MainView = this.gridViewМарки;
-            this.gridControlМарки.Name = "gridControlМарки";
-            this.gridControlМарки.Size = new System.Drawing.Size(325, 549);
-            this.gridControlМарки.TabIndex = 2;
-            this.gridControlМарки.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
-            this.gridViewМарки});
+            this.splitContainer1.Panel1.Controls.Add(this.gridViewМарки);
+            // 
+            // splitContainer1.Panel2
+            // 
+            this.splitContainer1.Panel2.Controls.Add(this.splitContainer2);
+            this.splitContainer1.Size = new System.Drawing.Size(1189, 549);
+            this.splitContainer1.SplitterDistance = 335;
+            this.splitContainer1.TabIndex = 3;
             // 
             // gridViewМарки
             // 
-            this.gridViewМарки.Appearance.HeaderPanel.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold);
-            this.gridViewМарки.Appearance.HeaderPanel.Options.UseFont = true;
-            this.gridViewМарки.Appearance.HeaderPanel.Options.UseTextOptions = true;
-            this.gridViewМарки.Appearance.HeaderPanel.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
-            this.gridViewМарки.FocusRectStyle = DevExpress.XtraGrid.Views.Grid.DrawFocusRectStyle.RowFullFocus;
-            this.gridViewМарки.GridControl = this.gridControlМарки;
+            this.gridViewМарки.AllowUserToAddRows = false;
+            this.gridViewМарки.AllowUserToDeleteRows = false;
+            this.gridViewМарки.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
+            this.gridViewМарки.ColumnHeadersHeight = 20;
+            this.gridViewМарки.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
+            this.gridViewМарки.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.gridViewМарки.Location = new System.Drawing.Point(0, 0);
+            this.gridViewМарки.MultiSelect = false;
             this.gridViewМарки.Name = "gridViewМарки";
-            this.gridViewМарки.OptionsBehavior.EditorShowMode = DevExpress.Utils.EditorShowMode.MouseDownFocused;
-            this.gridViewМарки.OptionsBehavior.ReadOnly = true;
-            this.gridViewМарки.OptionsFind.AllowFindPanel = false;
-            this.gridViewМарки.OptionsSelection.EnableAppearanceFocusedCell = false;
-            this.gridViewМарки.OptionsView.ShowGroupPanel = false;
-            this.gridViewМарки.OptionsView.ShowViewCaption = true;
-            this.gridViewМарки.ViewCaption = "Марки автомобилей";
-            this.gridViewМарки.PopupMenuShowing += new DevExpress.XtraGrid.Views.Grid.PopupMenuShowingEventHandler(this.gridViewМарки_PopupMenuShowing);
-            this.gridViewМарки.FocusedRowChanged += new DevExpress.XtraGrid.Views.Base.FocusedRowChangedEventHandler(this.gridViewМарки_FocusedRowChanged);
-            this.gridViewМарки.ColumnFilterChanged += new System.EventHandler(this.gridViewМарки_FilterRowChanged);
-            this.gridViewМарки.DataSourceChanged += new System.EventHandler(this.gridViewМарки_FilterRowChanged);
+            this.gridViewМарки.ReadOnly = true;
+            this.gridViewМарки.RowHeadersWidth = 25;
+            this.gridViewМарки.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
+            this.gridViewМарки.RowTemplate.Height = 18;
+            this.gridViewМарки.RowTemplate.ReadOnly = true;
+            this.gridViewМарки.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.gridViewМарки.Size = new System.Drawing.Size(333, 547);
+            this.gridViewМарки.TabIndex = 2;
+            this.gridViewМарки.DataSourceChanged += new System.EventHandler(this.gridViewМарки_DataSourceChanged);
+            this.gridViewМарки.SelectionChanged += new System.EventHandler(this.gridViewМарки_SelectionChanged);
+            this.gridViewМарки.MouseClick += new System.Windows.Forms.MouseEventHandler(this.gridViewМарки_MouseClick);
             // 
-            // splitContainerControl2
+            // splitContainer2
             // 
-            this.splitContainerControl2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.splitContainerControl2.Horizontal = false;
-            this.splitContainerControl2.Location = new System.Drawing.Point(0, 0);
-            this.splitContainerControl2.Name = "splitContainerControl2";
-            this.splitContainerControl2.Panel1.Controls.Add(this.gridControlМодели);
-            this.splitContainerControl2.Panel1.Text = "Panel1";
-            this.splitContainerControl2.Panel2.Controls.Add(this.gridControlПоколения);
-            this.splitContainerControl2.Panel2.Text = "Panel2";
-            this.splitContainerControl2.Size = new System.Drawing.Size(858, 549);
-            this.splitContainerControl2.SplitterPosition = 287;
-            this.splitContainerControl2.TabIndex = 0;
+            this.splitContainer2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.splitContainer2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.splitContainer2.Location = new System.Drawing.Point(0, 0);
+            this.splitContainer2.Name = "splitContainer2";
+            this.splitContainer2.Orientation = System.Windows.Forms.Orientation.Horizontal;
             // 
-            // gridControlМодели
+            // splitContainer2.Panel1
             // 
-            this.gridControlМодели.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.gridControlМодели.Location = new System.Drawing.Point(0, 0);
-            this.gridControlМодели.MainView = this.gridViewМодели;
-            this.gridControlМодели.Name = "gridControlМодели";
-            this.gridControlМодели.Size = new System.Drawing.Size(858, 287);
-            this.gridControlМодели.TabIndex = 2;
-            this.gridControlМодели.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
-            this.gridViewМодели});
+            this.splitContainer2.Panel1.Controls.Add(this.gridViewМодели);
+            // 
+            // splitContainer2.Panel2
+            // 
+            this.splitContainer2.Panel2.Controls.Add(this.gridViewПоколения);
+            this.splitContainer2.Size = new System.Drawing.Size(850, 549);
+            this.splitContainer2.SplitterDistance = 266;
+            this.splitContainer2.TabIndex = 0;
             // 
             // gridViewМодели
             // 
-            this.gridViewМодели.Appearance.HeaderPanel.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold);
-            this.gridViewМодели.Appearance.HeaderPanel.Options.UseFont = true;
-            this.gridViewМодели.Appearance.HeaderPanel.Options.UseTextOptions = true;
-            this.gridViewМодели.Appearance.HeaderPanel.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
-            this.gridViewМодели.FocusRectStyle = DevExpress.XtraGrid.Views.Grid.DrawFocusRectStyle.RowFullFocus;
-            this.gridViewМодели.GridControl = this.gridControlМодели;
+            this.gridViewМодели.AllowUserToAddRows = false;
+            this.gridViewМодели.AllowUserToDeleteRows = false;
+            this.gridViewМодели.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
+            this.gridViewМодели.ColumnHeadersHeight = 20;
+            this.gridViewМодели.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
+            this.gridViewМодели.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.gridViewМодели.Location = new System.Drawing.Point(0, 0);
+            this.gridViewМодели.MultiSelect = false;
             this.gridViewМодели.Name = "gridViewМодели";
-            this.gridViewМодели.OptionsBehavior.EditorShowMode = DevExpress.Utils.EditorShowMode.MouseDownFocused;
-            this.gridViewМодели.OptionsBehavior.ReadOnly = true;
-            this.gridViewМодели.OptionsFind.AllowFindPanel = false;
-            this.gridViewМодели.OptionsSelection.EnableAppearanceFocusedCell = false;
-            this.gridViewМодели.OptionsView.ColumnAutoWidth = false;
-            this.gridViewМодели.OptionsView.ShowGroupPanel = false;
-            this.gridViewМодели.OptionsView.ShowViewCaption = true;
-            this.gridViewМодели.ViewCaption = "Модели авмобилей";
-            this.gridViewМодели.PopupMenuShowing += new DevExpress.XtraGrid.Views.Grid.PopupMenuShowingEventHandler(this.gridViewМодели_PopupMenuShowing);
-            this.gridViewМодели.FocusedRowChanged += new DevExpress.XtraGrid.Views.Base.FocusedRowChangedEventHandler(this.gridViewМодели_FocusedRowChanged);
-            this.gridViewМодели.ColumnFilterChanged += new System.EventHandler(this.gridViewМодели_FilterRowChanged);
-            this.gridViewМодели.DataSourceChanged += new System.EventHandler(this.gridViewМодели_FilterRowChanged);
-            // 
-            // gridControlПоколения
-            // 
-            this.gridControlПоколения.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.gridControlПоколения.Location = new System.Drawing.Point(0, 0);
-            this.gridControlПоколения.MainView = this.gridViewПоколения;
-            this.gridControlПоколения.Name = "gridControlПоколения";
-            this.gridControlПоколения.Size = new System.Drawing.Size(858, 256);
-            this.gridControlПоколения.TabIndex = 2;
-            this.gridControlПоколения.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
-            this.gridViewПоколения});
+            this.gridViewМодели.ReadOnly = true;
+            this.gridViewМодели.RowHeadersWidth = 25;
+            this.gridViewМодели.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
+            this.gridViewМодели.RowTemplate.Height = 18;
+            this.gridViewМодели.RowTemplate.ReadOnly = true;
+            this.gridViewМодели.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.gridViewМодели.Size = new System.Drawing.Size(848, 264);
+            this.gridViewМодели.TabIndex = 2;
+            this.gridViewМодели.DataSourceChanged += new System.EventHandler(this.gridViewМодели_DataSourceChanged);
+            this.gridViewМодели.SelectionChanged += new System.EventHandler(this.gridViewМодели_SelectionChanged);
+            this.gridViewМодели.MouseClick += new System.Windows.Forms.MouseEventHandler(this.gridViewМодели_MouseClick);
             // 
             // gridViewПоколения
             // 
-            this.gridViewПоколения.Appearance.HeaderPanel.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold);
-            this.gridViewПоколения.Appearance.HeaderPanel.Options.UseFont = true;
-            this.gridViewПоколения.Appearance.HeaderPanel.Options.UseTextOptions = true;
-            this.gridViewПоколения.Appearance.HeaderPanel.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
-            this.gridViewПоколения.FocusRectStyle = DevExpress.XtraGrid.Views.Grid.DrawFocusRectStyle.RowFullFocus;
-            this.gridViewПоколения.GridControl = this.gridControlПоколения;
+            this.gridViewПоколения.AllowUserToAddRows = false;
+            this.gridViewПоколения.AllowUserToDeleteRows = false;
+            this.gridViewПоколения.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
+            this.gridViewПоколения.ColumnHeadersHeight = 20;
+            this.gridViewПоколения.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
+            this.gridViewПоколения.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.gridViewПоколения.Location = new System.Drawing.Point(0, 0);
+            this.gridViewПоколения.MultiSelect = false;
             this.gridViewПоколения.Name = "gridViewПоколения";
-            this.gridViewПоколения.OptionsBehavior.EditorShowMode = DevExpress.Utils.EditorShowMode.MouseDownFocused;
-            this.gridViewПоколения.OptionsBehavior.ReadOnly = true;
-            this.gridViewПоколения.OptionsFind.AllowFindPanel = false;
-            this.gridViewПоколения.OptionsSelection.EnableAppearanceFocusedCell = false;
-            this.gridViewПоколения.OptionsView.ColumnAutoWidth = false;
-            this.gridViewПоколения.OptionsView.ShowGroupPanel = false;
-            this.gridViewПоколения.OptionsView.ShowViewCaption = true;
-            this.gridViewПоколения.ViewCaption = "Поколения автомобилей";
-            this.gridViewПоколения.PopupMenuShowing += new DevExpress.XtraGrid.Views.Grid.PopupMenuShowingEventHandler(this.gridViewПоколения_PopupMenuShowing);
+            this.gridViewПоколения.ReadOnly = true;
+            this.gridViewПоколения.RowHeadersWidth = 25;
+            this.gridViewПоколения.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
+            this.gridViewПоколения.RowTemplate.Height = 18;
+            this.gridViewПоколения.RowTemplate.ReadOnly = true;
+            this.gridViewПоколения.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.gridViewПоколения.Size = new System.Drawing.Size(848, 277);
+            this.gridViewПоколения.TabIndex = 2;
+            this.gridViewПоколения.MouseClick += new System.Windows.Forms.MouseEventHandler(this.gridViewПоколения_MouseClick);
             // 
             // frМаркиАвто
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1189, 589);
-            this.Controls.Add(this.splitContainerControl1);
+            this.Controls.Add(this.splitContainer1);
             this.Controls.Add(this.panelControl1);
             this.Name = "frМаркиАвто";
             this.Text = "Марки автомобилей";
             this.Load += new System.EventHandler(this.frМаркиАвто_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).EndInit();
             this.panelControl1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.panelControl2)).EndInit();
             this.panelControl2.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.splitContainerControl1)).EndInit();
-            this.splitContainerControl1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.gridControlМарки)).EndInit();
+            this.splitContainer1.Panel1.ResumeLayout(false);
+            this.splitContainer1.Panel2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
+            this.splitContainer1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.gridViewМарки)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.splitContainerControl2)).EndInit();
-            this.splitContainerControl2.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.gridControlМодели)).EndInit();
+            this.splitContainer2.Panel1.ResumeLayout(false);
+            this.splitContainer2.Panel2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainer2)).EndInit();
+            this.splitContainer2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.gridViewМодели)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.gridControlПоколения)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridViewПоколения)).EndInit();
             this.ResumeLayout(false);
 
@@ -236,15 +213,12 @@
 
     #endregion
 
-    private DevExpress.XtraEditors.PanelControl panelControl1;
-    private DevExpress.XtraEditors.PanelControl panelControl2;
-    private DevExpress.XtraEditors.SplitContainerControl splitContainerControl1;
-    private DevExpress.XtraEditors.SplitContainerControl splitContainerControl2;
-    private DevExpress.XtraEditors.SimpleButton simpleButtonОбновить;
-    private DevExpress.XtraGrid.GridControl gridControlМарки;
-    private DevExpress.XtraGrid.Views.Grid.GridView gridViewМарки;
-    private DevExpress.XtraGrid.GridControl gridControlМодели;
-    private DevExpress.XtraGrid.Views.Grid.GridView gridViewМодели;
-    private DevExpress.XtraGrid.GridControl gridControlПоколения;
-    private DevExpress.XtraGrid.Views.Grid.GridView gridViewПоколения;
+    private System.Windows.Forms.Panel panelControl1;
+    private System.Windows.Forms.Panel panelControl2;
+    private System.Windows.Forms.Button simpleButtonОбновить;
+    private System.Windows.Forms.SplitContainer splitContainer1;
+    private System.Windows.Forms.SplitContainer splitContainer2;
+    private System.Windows.Forms.DataGridView gridViewМарки;
+    private System.Windows.Forms.DataGridView gridViewМодели;
+    private System.Windows.Forms.DataGridView gridViewПоколения;
 }

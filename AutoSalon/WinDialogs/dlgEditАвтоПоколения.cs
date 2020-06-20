@@ -2,15 +2,15 @@
 using System.Linq;
 using System.Windows.Forms;
 
-public partial class dlgEditАвтоПоколения : DevExpress.XtraEditors.XtraForm
+public partial class dlgEditАвтоПоколения : Form
 {
-    private string ForeigenKey;
+    private Guid? ForeigenKey;
     private clsMisc.ASSqlFunction sqlFunction;
-    private string UIDМодели;
-    private string UIDМарки;
+    private Guid? UIDМодели;
+    private Guid? UIDМарки;
     public object NewRecord { get; set; }
 
-    public dlgEditАвтоПоколения(string UIDПоколение, string UIDМодели, string UIDМарки, clsMisc.ASSqlFunction sqlFunction)
+    public dlgEditАвтоПоколения(Guid? UIDПоколение, Guid UIDМодели, Guid UIDМарки, clsMisc.ASSqlFunction sqlFunction)
     {
         InitializeComponent();
         this.ForeigenKey = UIDПоколение; 
@@ -22,18 +22,18 @@ public partial class dlgEditАвтоПоколения : DevExpress.XtraEditors.
     private void dlgEditАвтоМодели_Load(object sender, EventArgs e)
     {
         this.Text = "Добавить запись";
-        var dt = clsSql.ExecuteSP("dbo.АвтоПоколения_SIUD", clsMisc.ASSqlFunction.Select, "@UIDМодели", ForeigenKey).dataTable;
+        var dt = clsSql.ExecuteSP("dbo.АвтоПоколения_SIUD", clsMisc.ASSqlFunction.Select, "@UIDМодели", UIDМодели).dataTable;
         var dr = dt.RowsDR().FirstOrDefault();
-        textEditМарка.EditValue = clsMisc.DBout(dr["Марка"]);
-        textEditМодель.EditValue = clsMisc.DBout(dr["Поколение"]);
+        textEditМарка.Text = (string)clsMisc.DBout(dr["Марка"]);
+        textEditМодель.Text = (string)clsMisc.DBout(dr["Модель"]);
 
         if (sqlFunction == clsMisc.ASSqlFunction.Update)
         {
-            textEditМарка.EditValue = clsMisc.DBout(dr["Марка"]);
-            textEditМодель.EditValue = clsMisc.DBout(dr["Модель"]);
-            textEditПоколение.EditValue = clsMisc.DBout(dr["Поколение"]);
-            textEditНачалоПроизводства.EditValue = clsMisc.DBout(dr["Начало производства"]);
-            textEditОкончаниеПроизводства.EditValue = clsMisc.DBout(dr["Окончание производства"]);
+            textEditМарка.Text = (string)clsMisc.DBout(dr["Марка"]);
+            textEditМодель.Text = (string)clsMisc.DBout(dr["Модель"]);
+            textEditПоколение.Text = (string)clsMisc.DBout(dr["Поколение"]);
+            textEditНачалоПроизводства.Text = Convert.ToString(clsMisc.DBout(dr["Начало производства"]));
+            textEditОкончаниеПроизводства.Text = Convert.ToString(clsMisc.DBout(dr["Окончание производства"]));
 
             this.Text = "Изменить запись";
         }
@@ -43,8 +43,8 @@ public partial class dlgEditАвтоПоколения : DevExpress.XtraEditors.
 
     private void simpleButtonСохранить_Click(object sender, EventArgs e)
     {
-        if (!clsMisc.CheckFields(textEditПоколение.EditValue,
-                                 textEditНачалоПроизводства.EditValue))
+        if (!clsMisc.CheckFields(textEditПоколение.Text,
+                                 textEditНачалоПроизводства.Text))
         {
             return;
         }
@@ -53,9 +53,9 @@ public partial class dlgEditАвтоПоколения : DevExpress.XtraEditors.
             "@UIDПоколения", clsMisc.DBin(this.ForeigenKey),
             "@UIDМодели", clsMisc.DBin(this.UIDМодели),
             "@UIDМарки", clsMisc.DBin(this.UIDМарки),
-            "@Поколение", clsMisc.DBin(textEditПоколение.EditValue),
-            "@НачалоПроизводства", clsMisc.DBin(textEditНачалоПроизводства.EditValue),
-            "@ОкончаниеПроизводства", clsMisc.DBin(textEditОкончаниеПроизводства.EditValue));
+            "@Поколение", clsMisc.DBin(textEditПоколение.Text),
+            "@НачалоПроизводства", clsMisc.DBin(textEditНачалоПроизводства.Text),
+            "@ОкончаниеПроизводства", clsMisc.DBin(textEditОкончаниеПроизводства.Text));
 
         if ((bool)response.success)
         {
