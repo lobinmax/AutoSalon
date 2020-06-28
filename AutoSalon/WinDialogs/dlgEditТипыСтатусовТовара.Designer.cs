@@ -1,4 +1,4 @@
-﻿partial class dlgEditТипТоплива
+﻿partial class dlgEditТипыСтатусовТовара
 {
     /// <summary>
     /// Required designer variable.
@@ -26,7 +26,7 @@
     /// </summary>
     private void InitializeComponent()
     {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(dlgEditТипТоплива));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(dlgEditТипыСтатусовТовара));
             this.labelControl1 = new System.Windows.Forms.Label();
             this.textEditНаименование = new System.Windows.Forms.TextBox();
             this.simpleButtonОтменить = new System.Windows.Forms.Button();
@@ -35,6 +35,8 @@
             // 
             // labelControl1
             // 
+            this.labelControl1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.labelControl1.AutoSize = true;
             this.labelControl1.Location = new System.Drawing.Point(12, 16);
             this.labelControl1.Name = "labelControl1";
@@ -60,9 +62,8 @@
             this.simpleButtonОтменить.Location = new System.Drawing.Point(280, 80);
             this.simpleButtonОтменить.Name = "simpleButtonОтменить";
             this.simpleButtonОтменить.Size = new System.Drawing.Size(104, 23);
-            this.simpleButtonОтменить.TabIndex = 25;
+            this.simpleButtonОтменить.TabIndex = 27;
             this.simpleButtonОтменить.Text = "Отменить";
-            this.simpleButtonОтменить.Click += new System.EventHandler(this.simpleButtonОтменить_Click);
             // 
             // simpleButtonСохранить
             // 
@@ -72,11 +73,11 @@
             this.simpleButtonСохранить.Location = new System.Drawing.Point(165, 80);
             this.simpleButtonСохранить.Name = "simpleButtonСохранить";
             this.simpleButtonСохранить.Size = new System.Drawing.Size(109, 23);
-            this.simpleButtonСохранить.TabIndex = 24;
+            this.simpleButtonСохранить.TabIndex = 26;
             this.simpleButtonСохранить.Text = "Сохранить";
             this.simpleButtonСохранить.Click += new System.EventHandler(this.simpleButtonСохранить_Click);
             // 
-            // dlgEditТипТоплива
+            // dlgEditТипыСтатусовТовара
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -86,11 +87,11 @@
             this.Controls.Add(this.labelControl1);
             this.Controls.Add(this.textEditНаименование);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.Name = "dlgEditТипТоплива";
+            this.Name = "dlgEditТипыСтатусовТовара";
             this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "XtraForm2";
-            this.Load += new System.EventHandler(this.dlgEditТипТоплива_Load);
+            this.Load += new System.EventHandler(this.dlgEditТипыСтатусовЗаказа_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

@@ -85,6 +85,7 @@
             this.Controls.Add(this.textEditНаименование);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "dlgEditТипПривода";
+            this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "XtraForm2";
             this.Load += new System.EventHandler(this.dlgEditТипПривода_Load);

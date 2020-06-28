@@ -51,7 +51,6 @@ public partial class frMainForm : Form
 
     }
 
-
     private void barButtonItemМаркиАвто_Click(object sender, EventArgs e)
     {
         var frМаркиАвто = new frМаркиАвто();
@@ -84,5 +83,22 @@ public partial class frMainForm : Form
             }
         }
         tabControlMDI.TabPages.Add(frГаражАвто);
+    }
+
+    private void toolStripMenuItem3_Click(object sender, EventArgs e)
+    {
+        var frКлиенты = new frКлиенты();
+        foreach (MdiTabControl.TabPage tp in tabControlMDI.TabPages)
+        {
+            var _form = (Form)tp.Form;
+            if (_form.Name == frКлиенты.Name)
+            {
+                tp.Show();
+                _form.Refresh();
+                _form.Update();
+                return;
+            }
+        }
+        tabControlMDI.TabPages.Add(frКлиенты);
     }
 }

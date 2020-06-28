@@ -75,6 +75,7 @@
             this.simpleButtonСохранить.Size = new System.Drawing.Size(109, 23);
             this.simpleButtonСохранить.TabIndex = 26;
             this.simpleButtonСохранить.Text = "Сохранить";
+            this.simpleButtonСохранить.Click += new System.EventHandler(this.simpleButtonСохранить_Click);
             // 
             // dlgEditТипыСтатусовЗаказа
             // 
@@ -87,6 +88,7 @@
             this.Controls.Add(this.textEditНаименование);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "dlgEditТипыСтатусовЗаказа";
+            this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "XtraForm2";
             this.Load += new System.EventHandler(this.dlgEditТипыСтатусовЗаказа_Load);
