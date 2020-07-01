@@ -247,6 +247,7 @@
             this.gridViewИсторияЦены.RowTemplate.Height = 18;
             this.gridViewИсторияЦены.RowTemplate.ReadOnly = true;
             this.gridViewИсторияЦены.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.gridViewИсторияЦены.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.gridViewИсторияЦены_CellFormatting);
             // 
             // panel2
             // 

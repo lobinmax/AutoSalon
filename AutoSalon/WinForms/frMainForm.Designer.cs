@@ -66,20 +66,20 @@
             this.barButtonItemАвтоВПродаже,
             this.toolStripMenuItem2});
             this.гаражToolStripMenuItem.Name = "гаражToolStripMenuItem";
-            this.гаражToolStripMenuItem.Size = new System.Drawing.Size(53, 20);
+            this.гаражToolStripMenuItem.Size = new System.Drawing.Size(51, 20);
             this.гаражToolStripMenuItem.Text = "Гараж";
             // 
             // barButtonItemАвтоВПродаже
             // 
             this.barButtonItemАвтоВПродаже.Name = "barButtonItemАвтоВПродаже";
-            this.barButtonItemАвтоВПродаже.Size = new System.Drawing.Size(160, 22);
+            this.barButtonItemАвтоВПродаже.Size = new System.Drawing.Size(154, 22);
             this.barButtonItemАвтоВПродаже.Text = "Авто в продаже";
             this.barButtonItemАвтоВПродаже.Click += new System.EventHandler(this.barButtonItemАвтоВПродаже_Click);
             // 
             // toolStripMenuItem2
             // 
             this.toolStripMenuItem2.Name = "toolStripMenuItem2";
-            this.toolStripMenuItem2.Size = new System.Drawing.Size(160, 22);
+            this.toolStripMenuItem2.Size = new System.Drawing.Size(154, 22);
             this.toolStripMenuItem2.Text = "Заказы";
             // 
             // клиентыToolStripMenuItem
@@ -87,19 +87,20 @@
             this.клиентыToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.toolStripMenuItem3});
             this.клиентыToolStripMenuItem.Name = "клиентыToolStripMenuItem";
-            this.клиентыToolStripMenuItem.Size = new System.Drawing.Size(67, 20);
+            this.клиентыToolStripMenuItem.Size = new System.Drawing.Size(63, 20);
             this.клиентыToolStripMenuItem.Text = "Клиенты";
             // 
             // toolStripMenuItem3
             // 
             this.toolStripMenuItem3.Name = "toolStripMenuItem3";
-            this.toolStripMenuItem3.Size = new System.Drawing.Size(171, 22);
+            this.toolStripMenuItem3.Size = new System.Drawing.Size(165, 22);
             this.toolStripMenuItem3.Text = "Данные клиентов";
+            this.toolStripMenuItem3.Click += new System.EventHandler(this.toolStripMenuItem3_Click);
             // 
             // отчетыToolStripMenuItem
             // 
             this.отчетыToolStripMenuItem.Name = "отчетыToolStripMenuItem";
-            this.отчетыToolStripMenuItem.Size = new System.Drawing.Size(60, 20);
+            this.отчетыToolStripMenuItem.Size = new System.Drawing.Size(56, 20);
             this.отчетыToolStripMenuItem.Text = "Отчеты";
             // 
             // администрированиеToolStripMenuItem
@@ -109,27 +110,27 @@
             this.barButtonItemСправочники,
             this.barButtonItemМаркиАвто});
             this.администрированиеToolStripMenuItem.Name = "администрированиеToolStripMenuItem";
-            this.администрированиеToolStripMenuItem.Size = new System.Drawing.Size(134, 20);
+            this.администрированиеToolStripMenuItem.Size = new System.Drawing.Size(123, 20);
             this.администрированиеToolStripMenuItem.Text = "Администрирование";
             // 
             // barButtonItemСотрудники
             // 
             this.barButtonItemСотрудники.Name = "barButtonItemСотрудники";
-            this.barButtonItemСотрудники.Size = new System.Drawing.Size(188, 22);
+            this.barButtonItemСотрудники.Size = new System.Drawing.Size(177, 22);
             this.barButtonItemСотрудники.Text = "Сотрудники";
             this.barButtonItemСотрудники.Click += new System.EventHandler(this.barButtonItemСотрудники_Click);
             // 
             // barButtonItemСправочники
             // 
             this.barButtonItemСправочники.Name = "barButtonItemСправочники";
-            this.barButtonItemСправочники.Size = new System.Drawing.Size(188, 22);
+            this.barButtonItemСправочники.Size = new System.Drawing.Size(177, 22);
             this.barButtonItemСправочники.Text = "Справочники";
             this.barButtonItemСправочники.Click += new System.EventHandler(this.barButtonItemСправочники_Click);
             // 
             // barButtonItemМаркиАвто
             // 
             this.barButtonItemМаркиАвто.Name = "barButtonItemМаркиАвто";
-            this.barButtonItemМаркиАвто.Size = new System.Drawing.Size(188, 22);
+            this.barButtonItemМаркиАвто.Size = new System.Drawing.Size(177, 22);
             this.barButtonItemМаркиАвто.Text = "Марки автомобилей";
             this.barButtonItemМаркиАвто.Click += new System.EventHandler(this.barButtonItemМаркиАвто_Click);
             // 
@@ -148,14 +149,14 @@
             // 
             this.barStaticItemDB.Image = ((System.Drawing.Image)(resources.GetObject("barStaticItemDB.Image")));
             this.barStaticItemDB.Name = "barStaticItemDB";
-            this.barStaticItemDB.Size = new System.Drawing.Size(134, 17);
+            this.barStaticItemDB.Size = new System.Drawing.Size(123, 17);
             this.barStaticItemDB.Text = "toolStripStatusLabel1";
             // 
             // barStaticItemServer
             // 
             this.barStaticItemServer.Image = ((System.Drawing.Image)(resources.GetObject("barStaticItemServer.Image")));
             this.barStaticItemServer.Name = "barStaticItemServer";
-            this.barStaticItemServer.Size = new System.Drawing.Size(134, 17);
+            this.barStaticItemServer.Size = new System.Drawing.Size(123, 17);
             this.barStaticItemServer.Text = "toolStripStatusLabel2";
             // 
             // tabControlMDI

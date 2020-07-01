@@ -92,6 +92,24 @@
     <Compile Include="WinDialogs\dlgEditАвтоПоколения.Designer.cs">
       <DependentUpon>dlgEditАвтоПоколения.cs</DependentUpon>
     </Compile>
+    <Compile Include="WinDialogs\dlgEditКлиенты.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="WinDialogs\dlgEditКлиенты.Designer.cs">
+      <DependentUpon>dlgEditКлиенты.cs</DependentUpon>
+    </Compile>
+    <Compile Include="WinDialogs\dlgEditНайденныеКлиенты.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="WinDialogs\dlgEditНайденныеКлиенты.Designer.cs">
+      <DependentUpon>dlgEditНайденныеКлиенты.cs</DependentUpon>
+    </Compile>
+    <Compile Include="WinDialogs\dlgEditОформитьЗаказ.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="WinDialogs\dlgEditОформитьЗаказ.Designer.cs">
+      <DependentUpon>dlgEditОформитьЗаказ.cs</DependentUpon>
+    </Compile>
     <Compile Include="WinDialogs\dlgEditСотрудник.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -128,6 +146,12 @@
     <Compile Include="WinDialogs\dlgEditТипТоплива.Designer.cs">
       <DependentUpon>dlgEditТипТоплива.cs</DependentUpon>
     </Compile>
+    <Compile Include="WinDialogs\dlgEditТипыСтатусовТовара.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="WinDialogs\dlgEditТипыСтатусовТовара.Designer.cs">
+      <DependentUpon>dlgEditТипыСтатусовТовара.cs</DependentUpon>
+    </Compile>
     <Compile Include="WinDialogs\dlgEditТипыСтатусовЗаказа.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -151,6 +175,12 @@
     </Compile>
     <Compile Include="WinForms\frГаражАвто.Designer.cs">
       <DependentUpon>frГаражАвто.cs</DependentUpon>
+    </Compile>
+    <Compile Include="WinForms\frКлиенты.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="WinForms\frКлиенты.Designer.cs">
+      <DependentUpon>frКлиенты.cs</DependentUpon>
     </Compile>
     <Compile Include="WinForms\frМаркиАвто.cs">
       <SubType>Form</SubType>
@@ -194,6 +224,15 @@
     <EmbeddedResource Include="WinDialogs\dlgEditАвтоПоколения.resx">
       <DependentUpon>dlgEditАвтоПоколения.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="WinDialogs\dlgEditКлиенты.resx">
+      <DependentUpon>dlgEditКлиенты.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="WinDialogs\dlgEditНайденныеКлиенты.resx">
+      <DependentUpon>dlgEditНайденныеКлиенты.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="WinDialogs\dlgEditОформитьЗаказ.resx">
+      <DependentUpon>dlgEditОформитьЗаказ.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="WinDialogs\dlgEditСотрудник.resx">
       <DependentUpon>dlgEditСотрудник.cs</DependentUpon>
     </EmbeddedResource>
@@ -212,6 +251,9 @@
     <EmbeddedResource Include="WinDialogs\dlgEditТипТоплива.resx">
       <DependentUpon>dlgEditТипТоплива.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="WinDialogs\dlgEditТипыСтатусовТовара.resx">
+      <DependentUpon>dlgEditТипыСтатусовТовара.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="WinDialogs\dlgEditТипыСтатусовЗаказа.resx">
       <DependentUpon>dlgEditТипыСтатусовЗаказа.cs</DependentUpon>
     </EmbeddedResource>
@@ -223,6 +265,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="WinForms\frГаражАвто.resx">
       <DependentUpon>frГаражАвто.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="WinForms\frКлиенты.resx">
+      <DependentUpon>frКлиенты.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="WinForms\frМаркиАвто.resx">
       <DependentUpon>frМаркиАвто.cs</DependentUpon>
@@ -247,6 +292,7 @@
     </BootstrapperPackage>
   </ItemGroup>
   <ItemGroup>
+    <None Include="AutoSalon.csproj.bak" />
     <None Include="Resources\Add_16x16.png" />
   </ItemGroup>
   <ItemGroup>
@@ -321,6 +367,8 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="MdiTabControl.dll" />
+    <None Include="Resources\Contact_16x16.png" />
     <None Include="ImagesIcons\LoginScreen.png" />
     <Content Include="LoginScreen.ico" />
   </ItemGroup>

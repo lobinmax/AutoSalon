@@ -1,0 +1,2 @@
+﻿CREATE ROLE [SalonWorker] AUTHORIZATION [dbo]
+GO

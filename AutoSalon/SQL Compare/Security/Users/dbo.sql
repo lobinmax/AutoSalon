@@ -1,0 +1,3 @@
+﻿CREATE USER [dbo]
+  FOR LOGIN [DESKTOP-0N5E68P\lobin]
+GO

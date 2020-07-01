@@ -36,7 +36,7 @@ public partial class frСотрудники : Form
         using (var editСотрудник = new dlgEditСотрудник(null, clsMisc.ASSqlFunction.Insert))
         {
             var result = editСотрудник.ShowDialog();
-            if (result == System.Windows.Forms.DialogResult.OK)
+            if (result == DialogResult.OK)
             {
                 Обновить(editСотрудник.NewRecord);
             }

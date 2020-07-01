@@ -1,0 +1,9 @@
+﻿SET QUOTED_IDENTIFIER, ANSI_NULLS ON
+GO
+CREATE FUNCTION [dbo].[DtТекущаяДата]()
+RETURNS DATE 
+AS 
+BEGIN
+	RETURN CAST(dbo.DtТекущаяДатаВремя() AS DATE)
+END
+GO

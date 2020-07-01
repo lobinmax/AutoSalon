@@ -82,7 +82,7 @@
             this.TextEdit_server.Name = "TextEdit_server";
             this.TextEdit_server.Size = new System.Drawing.Size(263, 21);
             this.TextEdit_server.TabIndex = 2;
-            this.TextEdit_server.Text = "DESKTOP-0N5E68P\\SQLSERVER_LOBIN";
+            this.TextEdit_server.Text = "DESKTOP-0N5E68P";
             // 
             // TextEdit_db
             // 

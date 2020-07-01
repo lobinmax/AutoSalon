@@ -87,12 +87,31 @@ public partial class frГаражАвто : Form
 
     private void gridViewГараж_SelectionChanged(object sender, EventArgs e) { ОбновитьИсториюЦен(); }
 
-    #region Контекстное моню
+    private void gridViewИсторияЦены_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
+    {
+        if (e.RowIndex == -1) return;
+        var cell = (sender as DataGridView)[e.ColumnIndex, e.RowIndex];
+        if (e.ColumnIndex == (sender as DataGridView).Columns["Цена"].Index)
+        {
+            cell.Style.Format = "C";
+        }
+    }
+
+    #region Контекстное меню
 
     private void gridViewГараж_MouseClick(object sender, MouseEventArgs e)
     {
+        var FocusDR = gridViewГараж.SelectedRows.Cast<DataGridViewRow>().SingleOrDefault();
         var menu = new ContextMenuStrip();
+
+        if (FocusDR != null)
+        {
+            menu.Items.Add("Оформить заказ", AutoSalon.Properties.Resources.Contact_16x16, ОформитьЗаказ);
+            menu.Items.Add(new ToolStripSeparator());
+        } 
+        
         e.МенюДляAddEditDelete(menu, (DataGridView)sender, ДобавитьТовар, РедактироватьТовар, УдалитьТовар);
+
     }
     
     void ДобавитьТовар(object sender, EventArgs e)
@@ -121,8 +140,7 @@ public partial class frГаражАвто : Form
         }
     }
     private void simpleButtonИзменить_Click(object sender, EventArgs e) { РедактироватьТовар(sender, e); }
-
-
+    
     void УдалитьТовар(object sender, EventArgs e)
     {
         if (MessageBox.Show("Вы уверены что хотите удалить запись?",
@@ -137,6 +155,18 @@ public partial class frГаражАвто : Form
         }
     }
     private void simpleButtonУдалить_Click(object sender, EventArgs e) { УдалитьТовар(sender, e); }
+
+    void ОформитьЗаказ(object sender, EventArgs e)
+    {
+        var FocusDR = gridViewГараж.SelectedRows.Cast<DataGridViewRow>().SingleOrDefault();
+        using (var dlgEditЗаказ = new dlgEditОформитьЗаказ((Guid)FocusDR.Cells["UIDТовара"].Value, clsMisc.ASSqlFunction.Insert))
+        {
+            if(dlgEditЗаказ.ShowDialog() == DialogResult.OK)
+            {
+                ОбновитьГараж();
+            }
+        }
+    }
 
     #endregion
 
@@ -216,8 +246,8 @@ public partial class frГаражАвто : Form
     {
         if (e.RowIndex == -1) return;
         var cell = (sender as DataGridView)[e.ColumnIndex, e.RowIndex];
-        var colNameЦвет = gridViewГараж.Columns["ЦветRGB"].Index;
-        var colNameЦена = gridViewГараж.Columns["Цена"].Index;
+        var colNameЦвет = (sender as DataGridView).Columns["ЦветRGB"].Index;
+        var colNameЦена = (sender as DataGridView).Columns["Цена"].Index;
         if (e.ColumnIndex == colNameЦвет)
         {
             var cellColor = Color.FromArgb(Convert.ToInt32(cell.Value.ToString()));

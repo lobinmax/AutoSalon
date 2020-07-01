@@ -19,70 +19,95 @@ public partial class frСправочники : Form
         switch (page.Name)
         {
             case "tabPageТипыКПП":
-                using (var КПП = new clsDlgEditSimple(ButtonОбновить,
-                                                      ButtonДобавить,
-                                                      ButtonИзменить,
-                                                      ButtonУдалить,
-                                                      gridViewТипыКпп,
-                                                      "IdТипКПП",
-                                                      "dbo.АвтоТипКПП_SIUD",
-                                                      "dlgEditТипКПП", () => gridViewТипыКпп.ASНастроитьGridView(true, "IdТипКПП")))
-                {
-                };
+                using (var КПП = new clsDlgEditSimple
+                    (
+                        ButtonОбновить,
+                        ButtonДобавить,
+                        ButtonИзменить,
+                        ButtonУдалить,
+                        gridViewТипыКпп,
+                        "IdТипКПП",
+                        "dbo.АвтоТипКПП_SIUD",
+                        "dlgEditТипКПП", () => gridViewТипыКпп.ASНастроитьGridView(true, "IdТипКПП")
+                    ))
                 break;
             case "tabPageТипыКузова":
-                using (var ТипКузова = new clsDlgEditSimple(ButtonОбновить,
-                                        ButtonДобавить,
-                                        ButtonИзменить,
-                                        ButtonУдалить,
-                                        gridViewТипКузова,
-                                        "IdТипКузова",
-                                        "dbo.АвтоТипКузова_SIUD",
-                                        "dlgEditТипКузова", () => gridViewТипКузова.ASНастроитьGridView(true, "IdТипКузова")))
-                {
-                };
+                using (var ТипКузова = new clsDlgEditSimple
+                    (
+                        ButtonОбновить,
+                        ButtonДобавить,
+                        ButtonИзменить,
+                        ButtonУдалить,
+                        gridViewТипКузова,
+                        "IdТипКузова",
+                        "dbo.АвтоТипКузова_SIUD",
+                        "dlgEditТипКузова", () => gridViewТипКузова.ASНастроитьGridView(true, "IdТипКузова")
+                    ))
                 break;
             case "tabPageТипыПривода":
-                using (var ТипПривода = new clsDlgEditSimple(ButtonОбновить,
-                                        ButtonДобавить,
-                                        ButtonИзменить,
-                                        ButtonУдалить,
-                                        gridViewТипыПривода,
-                                        "IdТипПривода",
-                                        "dbo.АвтоТипПривода_SIUD",
-                                        "dlgEditТипПривода", () => gridViewТипыПривода.ASНастроитьGridView(true, "IdТипПривода")))
-                {
-                };
+                using (var ТипПривода = new clsDlgEditSimple
+                    (
+                        ButtonОбновить,
+                        ButtonДобавить,
+                        ButtonИзменить,
+                        ButtonУдалить,
+                        gridViewТипыПривода,
+                        "IdТипПривода",
+                        "dbo.АвтоТипПривода_SIUD",
+                        "dlgEditТипПривода", () => gridViewТипыПривода.ASНастроитьGridView(true, "IdТипПривода")
+                    ))
                 break;
             case "tabPageТипыТоплива":
-                using (var ТипТоплива = new clsDlgEditSimple(ButtonОбновить,
-                                        ButtonДобавить,
-                                        ButtonИзменить,
-                                        ButtonУдалить,
-                                        gridViewТипыТоплива,
-                                        "IdТипТоплива",
-                                        "dbo.АвтоТипТоплива_SIUD",
-                                        "dlgEditТипТоплива", () => gridViewТипыТоплива.ASНастроитьGridView(true, "IdТипТоплива")))
+                using (var ТипТоплива = new clsDlgEditSimple
+                    (
+                        ButtonОбновить,
+                        ButtonДобавить,
+                        ButtonИзменить,
+                        ButtonУдалить,
+                        gridViewТипыТоплива,
+                        "IdТипТоплива",
+                        "dbo.АвтоТипТоплива_SIUD",
+                        "dlgEditТипТоплива", () => gridViewТипыТоплива.ASНастроитьGridView(true, "IdТипТоплива")
+                    ))
                     break;
             case "tabPageЗаказыСтатусы":
-                using (var СтатусЗаказа = new clsDlgEditSimple(ButtonОбновить,
-                                          ButtonДобавить,
-                                          ButtonИзменить,
-                                          ButtonУдалить,
-                                          gridViewСтатусыЗаказа,
-                                          "IdСтатусЗаказа",
-                                          "dbo.ТипыСтатусовЗаказа_SIUD",
-                                          "dlgEditТипыСтатусовЗаказа", () => gridViewСтатусыЗаказа.ASНастроитьGridView(true, "IdСтатусЗаказа")))
+                using (var СтатусЗаказа = new clsDlgEditSimple
+                    (
+                        ButtonОбновить,
+                        ButtonДобавить,
+                        ButtonИзменить,
+                        ButtonУдалить,
+                        gridViewСтатусыЗаказа,
+                        "IdСтатусЗаказа",
+                        "dbo.ТипыСтатусовЗаказа_SIUD",
+                        "dlgEditТипыСтатусовЗаказа", () => gridViewСтатусыЗаказа.ASНастроитьGridView(true, "IdСтатусЗаказа")
+                    ))
+                    break;
+            case "tabPageСтатусыТовара":
+                using (var СтатусЗаказа = new clsDlgEditSimple
+                    (
+                        ButtonОбновить,
+                        ButtonДобавить,
+                        ButtonИзменить,
+                        ButtonУдалить,
+                        GridViewСтатусыТоваров,
+                        "IdСтатусАвто",
+                        "dbo.ТипыСтатусовТовара_SIUD",
+                        "dlgEditТипыСтатусовТовара", () => GridViewСтатусыТоваров.ASНастроитьGridView(true, "IdСтатусАвто")
+                    ))
                     break;
             case "tabPageСтраны":
-                using (var Страны = new clsDlgEditSimple(ButtonОбновить,
-                                    ButtonДобавить,
-                                    ButtonИзменить,
-                                    ButtonУдалить,
-                                    gridViewСтраны,
-                                    "UIDСтраны",
-                                    "dbo.Страны_SIUD",
-                                    "dlgEditСтраны", () => gridViewСтраны.ASНастроитьGridView(true, "UIDСтраны")))
+                using (var Страны = new clsDlgEditSimple
+                    (
+                        ButtonОбновить,
+                        ButtonДобавить,
+                        ButtonИзменить,
+                        ButtonУдалить,
+                        gridViewСтраны,
+                        "UIDСтраны",
+                        "dbo.Страны_SIUD",
+                        "dlgEditСтраны", () => gridViewСтраны.ASНастроитьGridView(true, "UIDСтраны")
+                    ))
                     break;
 
         }
