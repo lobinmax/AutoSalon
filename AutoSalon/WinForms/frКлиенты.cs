@@ -26,9 +26,8 @@ public partial class frКлиенты : Form
         Обновить();
     }
 
-    private void Обновить()
+    private void Обновить(object value = null)
     {
-        var value = (Guid?) Guid.Empty;
         var focusDR = gridViewКлиента.SelectedRows.Cast<DataGridViewRow>().SingleOrDefault(); 
         if (focusDR != null)
         {
@@ -36,7 +35,7 @@ public partial class frКлиенты : Form
         }
 
         var КлиентыDT = clsSql.ExecuteSP("dbo.Клиенты_SIUD", clsMisc.ASSqlFunction.ViewForm).dataTable;
-        gridViewКлиента.ASОбновитьСохранитьВыделение(КлиентыDT, "UIDКлиента", value.Value);
+        gridViewКлиента.ASОбновитьСохранитьВыделение(КлиентыDT, "UIDКлиента", value);
         gridViewКлиента.ASНастроитьGridView(true, "UIDКлиента");
     }
 
@@ -52,7 +51,7 @@ public partial class frКлиенты : Form
         {
             if (dlgEditКлиенты.ShowDialog() == DialogResult.OK)
             {
-                Обновить();
+                Обновить(dlgEditКлиенты.UIDКлиента);
             }
         }
     }
@@ -69,7 +68,7 @@ public partial class frКлиенты : Form
         {
             if (dlgEditКлиенты.ShowDialog() == DialogResult.OK)
             {
-                Обновить();
+                Обновить(dlgEditКлиенты.UIDКлиента);
             }
         }
     }

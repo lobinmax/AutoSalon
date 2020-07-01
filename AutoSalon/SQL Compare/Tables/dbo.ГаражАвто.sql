@@ -3,7 +3,7 @@
   [UIDМарки] [uniqueidentifier] NOT NULL,
   [UIDМодели] [uniqueidentifier] NOT NULL,
   [UIDПоколения] [uniqueidentifier] NOT NULL,
-  [UIDСтоимсти] [uniqueidentifier] NOT NULL,
+  [UIDСтоимости] [uniqueidentifier] NOT NULL,
   [IdСтатусАвто] [tinyint] NOT NULL,
   [IdТипТоплива] [tinyint] NOT NULL,
   [IdТипПривода] [tinyint] NOT NULL,
@@ -67,7 +67,7 @@ ALTER TABLE [dbo].[ГаражАвто]
 GO
 
 ALTER TABLE [dbo].[ГаражАвто]
-  ADD CONSTRAINT [FK_ГаражАвто_ГаражСтоимостьАвто_UIDСтоимостиАвто] FOREIGN KEY ([UIDСтоимсти]) REFERENCES [dbo].[ГаражСтоимостьАвто] ([UIDСтоимостиАвто])
+  ADD CONSTRAINT [FK_ГаражАвто_ГаражСтоимостьАвто_UIDСтоимостиАвто] FOREIGN KEY ([UIDСтоимости]) REFERENCES [dbo].[ГаражСтоимостьАвто] ([UIDСтоимостиАвто])
 GO
 
 ALTER TABLE [dbo].[ГаражАвто]

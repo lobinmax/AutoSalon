@@ -3,16 +3,27 @@
   [UIDТовара] [uniqueidentifier] NOT NULL,
   [UIDСтоимости] [uniqueidentifier] NOT NULL,
   [UIDКлиента] [uniqueidentifier] NOT NULL,
-  [ДатаЗаказа] [datetime] NOT NULL,
+  [НомерЗаказа] [varchar](20) NOT NULL DEFAULT ([dbo].[ЗаказыГенераторНомера]()),
+  [ДатаЗаказа] [date] NOT NULL,
   [IdСтатусаЗаказа] [tinyint] NOT NULL,
   [СуммаОплаты] [money] NOT NULL,
-  [ДатаСоздания] [datetime] NOT NULL,
-  [ДатаИзменения] [datetime] NOT NULL,
-  [UIDАвтора] [uniqueidentifier] NOT NULL,
-  [UIDИзменяющего] [uniqueidentifier] NOT NULL,
+  [ДатаСоздания] [datetime] NOT NULL DEFAULT ([dbo].[DtТекущаяДатаВремя]()),
+  [ДатаИзменения] [datetime] NOT NULL DEFAULT ([dbo].[DtТекущаяДатаВремя]()),
+  [UIDАвтора] [uniqueidentifier] NOT NULL DEFAULT ([dbo].[ШтатПолучитьUIDСотрудника]()),
+  [UIDИзменяющего] [uniqueidentifier] NOT NULL DEFAULT ([dbo].[ШтатПолучитьUIDСотрудника]()),
   CONSTRAINT [PK_Заказы_UIDЗаказа] PRIMARY KEY CLUSTERED ([UIDЗаказа])
 )
 ON [PRIMARY]
+GO
+
+CREATE UNIQUE INDEX [UK_Заказы]
+  ON [dbo].[Заказы] ([UIDТовара], [UIDКлиента])
+  ON [PRIMARY]
+GO
+
+CREATE UNIQUE INDEX [UK_Заказы_НомерЗаказа]
+  ON [dbo].[Заказы] ([НомерЗаказа])
+  ON [PRIMARY]
 GO
 
 ALTER TABLE [dbo].[Заказы]
@@ -25,6 +36,10 @@ GO
 
 ALTER TABLE [dbo].[Заказы]
   ADD CONSTRAINT [FK_Заказы_UIDИзменяющего] FOREIGN KEY ([UIDИзменяющего]) REFERENCES [dbo].[ШтатСотрудники] ([UIDСотрудника])
+GO
+
+ALTER TABLE [dbo].[Заказы]
+  ADD CONSTRAINT [FK_Заказы_UIDТовара] FOREIGN KEY ([UIDТовара]) REFERENCES [dbo].[ГаражАвто] ([UIDТовара])
 GO
 
 ALTER TABLE [dbo].[Заказы]

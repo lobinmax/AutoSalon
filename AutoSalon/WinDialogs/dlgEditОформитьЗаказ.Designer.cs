@@ -47,7 +47,7 @@
             this.comboBoxТипКПП = new System.Windows.Forms.ComboBox();
             this.textEditГодВыпуска = new System.Windows.Forms.TextBox();
             this.textEditПробег = new System.Windows.Forms.TextBox();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.textBoxОплачено = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.labelControl1 = new System.Windows.Forms.Label();
@@ -99,6 +99,7 @@
             this.label16 = new System.Windows.Forms.Label();
             this.simpleButtonСохранить = new System.Windows.Forms.Button();
             this.simpleButtonОтменить = new System.Windows.Forms.Button();
+            this.labelНомерЗаказа = new System.Windows.Forms.Label();
             this.tabControl1.SuspendLayout();
             this.tabPageТовар.SuspendLayout();
             this.groupBox1.SuspendLayout();
@@ -123,7 +124,7 @@
             // tabPageТовар
             // 
             this.tabPageТовар.Controls.Add(this.groupBox1);
-            this.tabPageТовар.Controls.Add(this.textBox1);
+            this.tabPageТовар.Controls.Add(this.textBoxОплачено);
             this.tabPageТовар.Controls.Add(this.label4);
             this.tabPageТовар.Controls.Add(this.groupBox2);
             this.tabPageТовар.Controls.Add(this.labelColor);
@@ -342,12 +343,12 @@
             this.textEditПробег.Size = new System.Drawing.Size(90, 20);
             this.textEditПробег.TabIndex = 24;
             // 
-            // textBox1
+            // textBoxОплачено
             // 
-            this.textBox1.Location = new System.Drawing.Point(99, 258);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(98, 20);
-            this.textBox1.TabIndex = 69;
+            this.textBoxОплачено.Location = new System.Drawing.Point(99, 258);
+            this.textBoxОплачено.Name = "textBoxОплачено";
+            this.textBoxОплачено.Size = new System.Drawing.Size(98, 20);
+            this.textBoxОплачено.TabIndex = 69;
             // 
             // label4
             // 
@@ -869,6 +870,16 @@
             this.simpleButtonОтменить.TabIndex = 33;
             this.simpleButtonОтменить.Text = "Отменить";
             // 
+            // labelНомерЗаказа
+            // 
+            this.labelНомерЗаказа.AutoEllipsis = true;
+            this.labelНомерЗаказа.AutoSize = true;
+            this.labelНомерЗаказа.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.labelНомерЗаказа.Location = new System.Drawing.Point(9, 356);
+            this.labelНомерЗаказа.Name = "labelНомерЗаказа";
+            this.labelНомерЗаказа.Size = new System.Drawing.Size(0, 16);
+            this.labelНомерЗаказа.TabIndex = 71;
+            // 
             // dlgEditОформитьЗаказ
             // 
             this.AcceptButton = this.simpleButtonСохранить;
@@ -876,9 +887,11 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.CancelButton = this.simpleButtonОтменить;
             this.ClientSize = new System.Drawing.Size(786, 378);
+            this.Controls.Add(this.labelНомерЗаказа);
             this.Controls.Add(this.simpleButtonОтменить);
             this.Controls.Add(this.simpleButtonСохранить);
             this.Controls.Add(this.tabControl1);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.Name = "dlgEditОформитьЗаказ";
             this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
@@ -896,6 +909,7 @@
             this.groupBoxПД.ResumeLayout(false);
             this.groupBoxПД.PerformLayout();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
     }
 
@@ -923,7 +937,7 @@
     private System.Windows.Forms.Label labelControl12;
     private System.Windows.Forms.ComboBox comboBoxСтатусЗаказа;
     private System.Windows.Forms.Label labelControl6;
-    private System.Windows.Forms.TextBox textBox1;
+    private System.Windows.Forms.TextBox textBoxОплачено;
     private System.Windows.Forms.Label label4;
     private System.Windows.Forms.GroupBox groupBox1;
     private System.Windows.Forms.Label label5;
@@ -974,4 +988,5 @@
     private System.Windows.Forms.Label label16;
     private System.Windows.Forms.Button buttonСоздатьКлиента;
     private System.Windows.Forms.Button buttonНайтиКлиента;
+    private System.Windows.Forms.Label labelНомерЗаказа;
 }

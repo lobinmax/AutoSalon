@@ -72,7 +72,7 @@ public partial class dlgEditАвтоГараж : Form
             textEditНомерКузова.Text = clsMisc.DBout((string)dr["НомерКузова"]);
             labelColor.BackColor = Color.FromArgb(Convert.ToInt32(dr["ЦветRGB"]));
             comboBoxСтатусАвто.SelectedValue = clsMisc.DBout(dr["IdСтатусАвто"]);
-            textEditСтоимость.Text = clsMisc.DBout(dr["Стоимость"].ToString());
+            textEditСтоимость.Text = $"{clsMisc.DBout(dr["Стоимость"].ToString()):C2}";
             comboBoxТипТоплива.SelectedValue = clsMisc.DBout(dr["IdТипТоплива"]);
             comboBoxТипПривода.SelectedValue = clsMisc.DBout(dr["IdТипПривода"]);
             comboBoxТипКузова.SelectedValue = clsMisc.DBout(dr["IdТипКузова"]);
@@ -161,7 +161,8 @@ public partial class dlgEditАвтоГараж : Form
             textEditVIN,
             comboBoxОбъемДвигателя,
             comboBoxМощностьДвигателя,
-            textEditНомерКузова
+            textEditНомерКузова,
+            textEditСтоимость
         }))
 
         {

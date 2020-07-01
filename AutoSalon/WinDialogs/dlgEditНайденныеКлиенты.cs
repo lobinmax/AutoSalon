@@ -27,9 +27,9 @@ public partial class dlgEditНайденныеКлиенты : Form
         if (FocusDR != null)
         {
             UIDКлиента = (Guid)FocusDR.Cells["UIDКлиента"].Value;
-            DialogResult = DialogResult.OK;
         }
 
+        DialogResult = DialogResult.OK;
     }
 
     private void simpleButtonОтменить_Click(object sender, EventArgs e)
