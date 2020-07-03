@@ -24,7 +24,7 @@ public class clsSql
             conn.ConnectionString = $"Data Source={server};" +
                         $"Initial Catalog={db};" +
                         $"Encrypt=False;" +
-                        $"Integrated Security=False;" +
+                        $"Integrated Security=True;" +
                         $"Password={pass};" +
                         $"User ID={login}";
             Program.ConnectionString = conn.ConnectionString;

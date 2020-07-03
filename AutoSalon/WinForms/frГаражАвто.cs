@@ -159,7 +159,7 @@ public partial class frГаражАвто : Form
     void ОформитьЗаказ(object sender, EventArgs e)
     {
         var FocusDR = gridViewГараж.SelectedRows.Cast<DataGridViewRow>().SingleOrDefault();
-        using (var dlgEditЗаказ = new dlgEditОформитьЗаказ((Guid)FocusDR.Cells["UIDТовара"].Value))
+        using (var dlgEditЗаказ = new dlgEditОформитьЗаказ((Guid)FocusDR.Cells["UIDТовара"].Value, null, clsMisc.ASSqlFunction.Insert))
         {
             if(dlgEditЗаказ.ShowDialog() == DialogResult.OK)
             {

@@ -42,7 +42,7 @@ public partial class frЗаказы : Form
 
         var ЗаказыDT = clsSql.ExecuteSP("dbo.Заказы_SIUD", clsMisc.ASSqlFunction.ViewForm).dataTable;
         gridViewЗаказы.ASОбновитьСохранитьВыделение(ЗаказыDT, "UIDЗаказа", value);
-        gridViewЗаказы.ASНастроитьGridView(true, "UIDЗаказа");
+        gridViewЗаказы.ASНастроитьGridView(true, "UIDЗаказа", "UIDТовара");
     }
 
     private void gridViewЗаказы_MouseClick(object sender, MouseEventArgs e)
@@ -62,6 +62,7 @@ public partial class frЗаказы : Form
     private void ИзменитьЗаказ(object sender, EventArgs e)
     {
         using (var dlgEditОформитьЗаказ = new dlgEditОформитьЗаказ(
+            (Guid)gridViewЗаказы["UIDТовара", gridViewЗаказы.CurrentRow.Index].Value,
             (Guid)gridViewЗаказы["UIDЗаказа", gridViewЗаказы.CurrentRow.Index].Value, 
             clsMisc.ASSqlFunction.Update))
         {

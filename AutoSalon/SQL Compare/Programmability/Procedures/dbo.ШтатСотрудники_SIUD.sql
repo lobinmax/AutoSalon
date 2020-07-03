@@ -89,7 +89,11 @@ BEGIN
 
         EXEC sys.sp_sqlexec @p1 = @cmd
 
-        INSERT dbo.ШтатСотрудники (Логин,
+        SET @UIDСотрудника = NEWID()
+        INSERT dbo.ШтатСотрудники 
+        ( 
+        UIDСотрудника,
+        Логин,
         Фамилия,
         Имя,
         Отчество,
@@ -100,7 +104,7 @@ BEGIN
         Телефон,
         Email,
         IdПола)
-        VALUES (@Логин, @Фамилия, @Имя, @Отчество, @ДатаРождения, @IdДолжности, dbo.DtТекущаяДатаВремя(), dbo.ШтатПолучитьUIDСотрудника(), @Телефон, @Email, @IdПола)
+        VALUES (@UIDСотрудника, @Логин, @Фамилия, @Имя, @Отчество, @ДатаРождения, @IdДолжности, dbo.DtТекущаяДатаВремя(), dbo.ШтатПолучитьUIDСотрудника(), @Телефон, @Email, @IdПола)
 
         COMMIT TRANSACTION
     END
@@ -154,11 +158,7 @@ BEGIN
         COMMIT TRANSACTION
     END
 
-    IF @Function IN (2, 3)
-    BEGIN
-        SELECT
-            SCOPE_IDENTITY()
-    END
+    IF @Function IN (2, 3) BEGIN SELECT @UIDСотрудника AS id END 
 
 END
 GO

@@ -1,7 +1,7 @@
 ﻿CREATE TABLE [dbo].[Заказы] (
   [UIDЗаказа] [uniqueidentifier] NOT NULL CONSTRAINT [DF_Заказы_UIDЗаказа] DEFAULT (newid()) ROWGUIDCOL,
   [UIDТовара] [uniqueidentifier] NOT NULL,
-  [UIDСтоимости] [uniqueidentifier] NOT NULL,
+  [СтоимостьАвто] [money] NOT NULL,
   [UIDКлиента] [uniqueidentifier] NOT NULL,
   [НомерЗаказа] [varchar](20) NOT NULL DEFAULT ([dbo].[ЗаказыГенераторНомера]()),
   [ДатаЗаказа] [date] NOT NULL,

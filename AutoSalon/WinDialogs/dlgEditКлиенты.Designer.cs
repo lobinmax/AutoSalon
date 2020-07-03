@@ -358,6 +358,7 @@
             this.Controls.Add(this.labelControl3);
             this.Controls.Add(this.textEditФамилия);
             this.Controls.Add(this.labelControl2);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.Name = "dlgEditКлиенты";
             this.ShowInTaskbar = false;
             this.Text = "dlgEditКлиенты";
