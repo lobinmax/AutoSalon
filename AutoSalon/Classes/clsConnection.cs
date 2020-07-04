@@ -23,7 +23,7 @@ public class clsSql
         {
             conn.ConnectionString = $"Data Source={server};" +
                         $"Initial Catalog={db};" +
-                        $"Integrated Security = {winAutent};" + 
+                        $"Integrated Security = {winAutent};" +
                         $"Password={pass};" +
                         $"User ID={login}";
             Program.ConnectionString = conn.ConnectionString;
