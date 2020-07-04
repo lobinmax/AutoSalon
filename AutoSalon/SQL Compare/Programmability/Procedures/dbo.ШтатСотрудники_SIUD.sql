@@ -1,19 +1,19 @@
 ﻿SET QUOTED_IDENTIFIER, ANSI_NULLS ON
 GO
-CREATE PROCEDURE [dbo].[ШтатСотрудники_SIUD] 
-    @UIDСотрудника UNIQUEIDENTIFIER = NULL,
-    @Логин VARCHAR(100) = NULL,
-    @Домен VARCHAR(100) = NULL,
-    @Фамилия VARCHAR(200) = NULL,
-    @Имя VARCHAR(200) = NULL,
-    @Отчество VARCHAR(200) = NULL,
-    @ДатаРождения DATE = NULL,
-    @Телефон VARCHAR(100) = NULL,
-    @Email VARCHAR(100) = NULL,
-    @IdПола TINYINT = NULL,
-    @IdДолжности INT = NULL,
 
-    @Function TINYINT = 0 -- 0 - источник данных формы
+CREATE PROCEDURE [dbo].[ШтатСотрудники_SIUD] @UIDСотрудника UNIQUEIDENTIFIER = NULL,
+@Логин VARCHAR(100) = NULL,
+@Домен VARCHAR(100) = NULL,
+@Фамилия VARCHAR(200) = NULL,
+@Имя VARCHAR(200) = NULL,
+@Отчество VARCHAR(200) = NULL,
+@ДатаРождения DATE = NULL,
+@Телефон VARCHAR(100) = NULL,
+@Email VARCHAR(100) = NULL,
+@IdПола TINYINT = NULL,
+@IdДолжности INT = NULL,
+
+@Function TINYINT = 0 -- 0 - источник данных формы
 AS
 BEGIN
     SET NOCOUNT ON
@@ -41,8 +41,8 @@ BEGIN
            ,шс.[Пол сотрудника]
         FROM dbo.vШтатСотрудники AS шс
         WHERE (@UIDСотрудника IS NULL
-            OR шс.UIDСотрудника = @UIDСотрудника)
-            AND шс.Логин != 'sa'
+        OR шс.UIDСотрудника = @UIDСотрудника)
+        AND шс.Логин != 'sa'
         ORDER BY шс.Логин
     END
 
@@ -65,7 +65,7 @@ BEGIN
            ,шс.IdПола
         FROM dbo.ШтатСотрудники AS шс
         WHERE (@UIDСотрудника IS NULL
-            OR шс.UIDСотрудника = @UIDСотрудника)
+        OR шс.UIDСотрудника = @UIDСотрудника)
     END
 
     IF @Function = 2
@@ -91,20 +91,32 @@ BEGIN
 
         SET @UIDСотрудника = NEWID()
         INSERT dbo.ШтатСотрудники 
-        ( 
-        UIDСотрудника,
-        Логин,
-        Фамилия,
-        Имя,
-        Отчество,
-        [Дата рождения],
-        IdДолжности,
-        ДатаСоздания,
-        UIDАвтора,
-        Телефон,
-        Email,
-        IdПола)
-        VALUES (@UIDСотрудника, @Логин, @Фамилия, @Имя, @Отчество, @ДатаРождения, @IdДолжности, dbo.DtТекущаяДатаВремя(), dbo.ШтатПолучитьUIDСотрудника(), @Телефон, @Email, @IdПола)
+        (
+            UIDСотрудника,
+            Логин, Домен, 
+            Фамилия,
+            Имя,
+            Отчество,
+            [Дата рождения],
+            IdДолжности,
+            Телефон,
+            Email,
+            IdПола
+        )
+        VALUES 
+        (
+            @UIDСотрудника, 
+            @Логин, 
+            @Домен, 
+            @Фамилия, 
+            @Имя, 
+            @Отчество, 
+            @ДатаРождения, 
+            @IdДолжности, 
+            @Телефон, 
+            @Email, 
+            @IdПола
+        )
 
         COMMIT TRANSACTION
     END
@@ -140,6 +152,8 @@ BEGIN
            ,Телефон = @Телефон
            ,Email = @Email
            ,IdПола = @IdПола
+           ,ДатаИзменения = dbo.DtТекущаяДатаВремя()
+           ,UIDИзменяющего = dbo.ШтатПолучитьUIDСотрудника()
         WHERE UIDСотрудника = @UIDСотрудника
 
         COMMIT TRANSACTION
@@ -158,7 +172,10 @@ BEGIN
         COMMIT TRANSACTION
     END
 
-    IF @Function IN (2, 3) BEGIN SELECT @UIDСотрудника AS id END 
+    IF @Function IN (2, 3)
+    BEGIN
+        SELECT @UIDСотрудника AS id
+    END
 
 END
 GO

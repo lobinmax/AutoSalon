@@ -38,7 +38,10 @@
             this.labelControl4 = new System.Windows.Forms.Label();
             this.TextEdit_Pass = new System.Windows.Forms.TextBox();
             this.checkEdit1 = new System.Windows.Forms.CheckBox();
+            this.checkBoxWinAuten = new System.Windows.Forms.CheckBox();
+            this.panel1 = new System.Windows.Forms.Panel();
             ((System.ComponentModel.ISupportInitialize)(this.pictureEdit1)).BeginInit();
+            this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // pictureEdit1
@@ -94,7 +97,7 @@
             // 
             // TextEdit_Login
             // 
-            this.TextEdit_Login.Location = new System.Drawing.Point(319, 44);
+            this.TextEdit_Login.Location = new System.Drawing.Point(3, 20);
             this.TextEdit_Login.Name = "TextEdit_Login";
             this.TextEdit_Login.Size = new System.Drawing.Size(231, 20);
             this.TextEdit_Login.TabIndex = 6;
@@ -102,7 +105,7 @@
             // 
             // labelControl3
             // 
-            this.labelControl3.Location = new System.Drawing.Point(319, 25);
+            this.labelControl3.Location = new System.Drawing.Point(3, 1);
             this.labelControl3.Name = "labelControl3";
             this.labelControl3.Size = new System.Drawing.Size(231, 16);
             this.labelControl3.TabIndex = 7;
@@ -110,7 +113,7 @@
             // 
             // labelControl4
             // 
-            this.labelControl4.Location = new System.Drawing.Point(319, 88);
+            this.labelControl4.Location = new System.Drawing.Point(3, 52);
             this.labelControl4.Name = "labelControl4";
             this.labelControl4.Size = new System.Drawing.Size(231, 16);
             this.labelControl4.TabIndex = 9;
@@ -118,7 +121,7 @@
             // 
             // TextEdit_Pass
             // 
-            this.TextEdit_Pass.Location = new System.Drawing.Point(319, 107);
+            this.TextEdit_Pass.Location = new System.Drawing.Point(3, 71);
             this.TextEdit_Pass.Name = "TextEdit_Pass";
             this.TextEdit_Pass.PasswordChar = '•';
             this.TextEdit_Pass.Size = new System.Drawing.Size(231, 20);
@@ -127,23 +130,41 @@
             // 
             // checkEdit1
             // 
-            this.checkEdit1.Location = new System.Drawing.Point(319, 133);
+            this.checkEdit1.Location = new System.Drawing.Point(3, 97);
             this.checkEdit1.Name = "checkEdit1";
             this.checkEdit1.Size = new System.Drawing.Size(231, 19);
             this.checkEdit1.TabIndex = 10;
             this.checkEdit1.Text = "Показать пароль";
             this.checkEdit1.CheckedChanged += new System.EventHandler(this.checkEdit1_CheckedChanged);
             // 
+            // checkBoxWinAuten
+            // 
+            this.checkBoxWinAuten.Location = new System.Drawing.Point(319, 156);
+            this.checkBoxWinAuten.Name = "checkBoxWinAuten";
+            this.checkBoxWinAuten.Size = new System.Drawing.Size(231, 19);
+            this.checkBoxWinAuten.TabIndex = 11;
+            this.checkBoxWinAuten.Text = "Windows аутентификация";
+            this.checkBoxWinAuten.CheckedChanged += new System.EventHandler(this.checkBox1_CheckedChanged);
+            // 
+            // panel1
+            // 
+            this.panel1.Controls.Add(this.labelControl4);
+            this.panel1.Controls.Add(this.TextEdit_Login);
+            this.panel1.Controls.Add(this.checkEdit1);
+            this.panel1.Controls.Add(this.labelControl3);
+            this.panel1.Controls.Add(this.TextEdit_Pass);
+            this.panel1.Location = new System.Drawing.Point(317, 12);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(248, 126);
+            this.panel1.TabIndex = 12;
+            // 
             // frLogin
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(568, 298);
-            this.Controls.Add(this.checkEdit1);
-            this.Controls.Add(this.labelControl4);
-            this.Controls.Add(this.TextEdit_Pass);
-            this.Controls.Add(this.labelControl3);
-            this.Controls.Add(this.TextEdit_Login);
+            this.Controls.Add(this.panel1);
+            this.Controls.Add(this.checkBoxWinAuten);
             this.Controls.Add(this.labelControl2);
             this.Controls.Add(this.labelControl1);
             this.Controls.Add(this.Button_Connect);
@@ -159,8 +180,9 @@
             this.Text = "Добро пожаловать ...";
             this.Load += new System.EventHandler(this.frLogin_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pictureEdit1)).EndInit();
+            this.panel1.ResumeLayout(false);
+            this.panel1.PerformLayout();
             this.ResumeLayout(false);
-            this.PerformLayout();
 
     }
 
@@ -177,4 +199,6 @@
     private System.Windows.Forms.Label labelControl4;
     private System.Windows.Forms.TextBox TextEdit_Pass;
     private System.Windows.Forms.CheckBox checkEdit1;
+    private System.Windows.Forms.CheckBox checkBoxWinAuten;
+    private System.Windows.Forms.Panel panel1;
 }

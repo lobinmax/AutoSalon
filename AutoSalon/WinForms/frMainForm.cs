@@ -1,4 +1,5 @@
 ﻿using System;
+using System.IO;
 using System.Windows.Forms;
 
 public partial class frMainForm : Form
@@ -123,5 +124,29 @@ public partial class frMainForm : Form
             }
         }
         tabControlMDI.TabPages.Add(frЗаказы);
+    }
+
+    private void автомобилеНаПродажеToolStripMenuItem_Click(object sender, EventArgs e)
+    {
+        var fReport = new FastReport.Report();
+        using (var mStream = new MemoryStream(AutoSalon.Properties.Resources.АвтоНаПродаже))
+        {
+            fReport.Load(mStream);
+            fReport.SetParameterValue("ConnectionString", Program.ConnectionString);
+            fReport.Show(true, this);
+            fReport.Dispose();
+        }
+    }
+
+    private void реестрЗаказовToolStripMenuItem_Click(object sender, EventArgs e)
+    {
+        var fReport = new FastReport.Report();
+        using (var mStream = new MemoryStream(AutoSalon.Properties.Resources.СписокЗаказов))
+        {
+            fReport.Load(mStream);
+            fReport.SetParameterValue("ConnectionString", Program.ConnectionString);
+            fReport.Show(true, this);
+            fReport.Dispose();
+        }
     }
 }

@@ -34,6 +34,7 @@
             this.клиентыToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem3 = new System.Windows.Forms.ToolStripMenuItem();
             this.отчетыToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.автомобилеНаПродажеToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.администрированиеToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.barButtonItemСотрудники = new System.Windows.Forms.ToolStripMenuItem();
             this.barButtonItemСправочники = new System.Windows.Forms.ToolStripMenuItem();
@@ -42,6 +43,7 @@
             this.barStaticItemDB = new System.Windows.Forms.ToolStripStatusLabel();
             this.barStaticItemServer = new System.Windows.Forms.ToolStripStatusLabel();
             this.tabControlMDI = new MdiTabControl.TabControl();
+            this.реестрЗаказовToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.statusStrip1.SuspendLayout();
             this.SuspendLayout();
@@ -100,9 +102,19 @@
             // 
             // отчетыToolStripMenuItem
             // 
+            this.отчетыToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.автомобилеНаПродажеToolStripMenuItem,
+            this.реестрЗаказовToolStripMenuItem});
             this.отчетыToolStripMenuItem.Name = "отчетыToolStripMenuItem";
             this.отчетыToolStripMenuItem.Size = new System.Drawing.Size(56, 20);
             this.отчетыToolStripMenuItem.Text = "Отчеты";
+            // 
+            // автомобилеНаПродажеToolStripMenuItem
+            // 
+            this.автомобилеНаПродажеToolStripMenuItem.Name = "автомобилеНаПродажеToolStripMenuItem";
+            this.автомобилеНаПродажеToolStripMenuItem.Size = new System.Drawing.Size(198, 22);
+            this.автомобилеНаПродажеToolStripMenuItem.Text = "Автомобиле на продаже";
+            this.автомобилеНаПродажеToolStripMenuItem.Click += new System.EventHandler(this.автомобилеНаПродажеToolStripMenuItem_Click);
             // 
             // администрированиеToolStripMenuItem
             // 
@@ -181,6 +193,13 @@
             this.tabControlMDI.TabIconSize = new System.Drawing.Size(0, 0);
             this.tabControlMDI.TabIndex = 3;
             // 
+            // реестрЗаказовToolStripMenuItem
+            // 
+            this.реестрЗаказовToolStripMenuItem.Name = "реестрЗаказовToolStripMenuItem";
+            this.реестрЗаказовToolStripMenuItem.Size = new System.Drawing.Size(198, 22);
+            this.реестрЗаказовToolStripMenuItem.Text = "Реестр заказов";
+            this.реестрЗаказовToolStripMenuItem.Click += new System.EventHandler(this.реестрЗаказовToolStripMenuItem_Click);
+            // 
             // frMainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -221,4 +240,6 @@
         private System.Windows.Forms.ToolStripStatusLabel barStaticItemDB;
         private System.Windows.Forms.ToolStripStatusLabel barStaticItemServer;
     private MdiTabControl.TabControl tabControlMDI;
+    private System.Windows.Forms.ToolStripMenuItem автомобилеНаПродажеToolStripMenuItem;
+    private System.Windows.Forms.ToolStripMenuItem реестрЗаказовToolStripMenuItem;
 }

@@ -209,6 +209,8 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+    <None Include="Отчеты\АвтоНаПродаже.frx" />
+    <None Include="Отчеты\СписокЗаказов.frx" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Interfaces\" />
@@ -323,8 +325,13 @@
     <None Include="Resources\Action_Cancel.png" />
   </ItemGroup>
   <ItemGroup>
-    <Reference Include="MdiTabControl">
-      <HintPath>.\MdiTabControl.dll</HintPath>
+    <Reference Include="FastReport, Version=2020.1.17.0, Culture=neutral, PublicKeyToken=db7e5ce63278458c, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>Dll\FastReport.dll</HintPath>
+    </Reference>
+    <Reference Include="MdiTabControl, Version=1.0.3742.19745, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>Dll\MdiTabControl.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.CSharp">
       <EmbedInteropTypes>False</EmbedInteropTypes>
@@ -377,7 +384,12 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="MdiTabControl.dll" />
+    <Content Include="Dll\FastReport.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Dll\MdiTabControl.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="SQL Compare\AutoSalon.sql" />
     <Content Include="SQL Compare\config.xml" />
     <Content Include="SQL Compare\Programmability\Functions\dbo.DtТекущаяДата.sql" />

@@ -17,14 +17,13 @@ public class clsSql
 
     private static SqlConnection conn;
 
-    public static bool ConnectionToDase(string server, string db, string login, string pass)
+    public static bool ConnectionToDase(string server, string db, string login, string pass, bool winAutent)
     {
         using (conn = new SqlConnection())
         {
             conn.ConnectionString = $"Data Source={server};" +
                         $"Initial Catalog={db};" +
-                        $"Encrypt=False;" +
-                        $"Integrated Security=True;" +
+                        $"Integrated Security = {winAutent};" + 
                         $"Password={pass};" +
                         $"User ID={login}";
             Program.ConnectionString = conn.ConnectionString;
