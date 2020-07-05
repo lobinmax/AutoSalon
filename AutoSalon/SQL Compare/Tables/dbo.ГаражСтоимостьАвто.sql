@@ -24,3 +24,7 @@ GO
 ALTER TABLE [dbo].[ГаражСтоимостьАвто]
   ADD CONSTRAINT [FK_ГаражСтоимостьАвто_UIDИзменяющего] FOREIGN KEY ([UIDИзменяющего]) REFERENCES [dbo].[ШтатСотрудники] ([UIDСотрудника])
 GO
+
+ALTER TABLE [dbo].[ГаражСтоимостьАвто]
+  ADD CONSTRAINT [FK_ГаражСтоимостьАвто_UIDТовара] FOREIGN KEY ([UIDТовара]) REFERENCES [dbo].[ГаражАвто] ([UIDТовара])
+GO

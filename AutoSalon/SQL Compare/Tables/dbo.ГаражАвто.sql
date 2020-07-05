@@ -7,7 +7,6 @@
   [IdСтатусАвто] [tinyint] NOT NULL,
   [IdТипТоплива] [tinyint] NOT NULL,
   [IdТипПривода] [tinyint] NOT NULL,
-  [IdТипКузова] [tinyint] NOT NULL,
   [IdТипРуля] [tinyint] NOT NULL,
   [IdТипКПП] [tinyint] NOT NULL,
   [UIDАвтора] [uniqueidentifier] NOT NULL DEFAULT ([dbo].[ШтатПолучитьUIDСотрудника]()),
@@ -47,10 +46,6 @@ ALTER TABLE [dbo].[ГаражАвто]
 GO
 
 ALTER TABLE [dbo].[ГаражАвто]
-  ADD CONSTRAINT [FK_ГаражАвто_АвтоТипКузова_IdТипКузова] FOREIGN KEY ([IdТипКузова]) REFERENCES [dbo].[АвтоТипКузова] ([IdТипКузова])
-GO
-
-ALTER TABLE [dbo].[ГаражАвто]
   ADD CONSTRAINT [FK_ГаражАвто_АвтоТипПривода_IdТипПривода] FOREIGN KEY ([IdТипПривода]) REFERENCES [dbo].[АвтоТипПривода] ([IdТипПривода])
 GO
 
@@ -64,10 +59,6 @@ GO
 
 ALTER TABLE [dbo].[ГаражАвто]
   ADD CONSTRAINT [FK_ГаражАвто_ГаражСтатусАвто_IdСтатусАвто] FOREIGN KEY ([IdСтатусАвто]) REFERENCES [dbo].[ГаражСтатусАвто] ([IdСтатусАвто])
-GO
-
-ALTER TABLE [dbo].[ГаражАвто]
-  ADD CONSTRAINT [FK_ГаражАвто_ГаражСтоимостьАвто_UIDСтоимостиАвто] FOREIGN KEY ([UIDСтоимости]) REFERENCES [dbo].[ГаражСтоимостьАвто] ([UIDСтоимостиАвто])
 GO
 
 ALTER TABLE [dbo].[ГаражАвто]

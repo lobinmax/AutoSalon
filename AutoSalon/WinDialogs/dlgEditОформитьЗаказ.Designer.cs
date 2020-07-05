@@ -35,14 +35,12 @@
             this.comboBoxОбъемДвигателя = new System.Windows.Forms.ComboBox();
             this.labelControl7 = new System.Windows.Forms.Label();
             this.labelControl8 = new System.Windows.Forms.Label();
-            this.labelControl9 = new System.Windows.Forms.Label();
             this.labelControl10 = new System.Windows.Forms.Label();
             this.labelControl11 = new System.Windows.Forms.Label();
             this.labelControl13 = new System.Windows.Forms.Label();
             this.labelControl14 = new System.Windows.Forms.Label();
             this.comboBoxТипТоплива = new System.Windows.Forms.ComboBox();
             this.comboBoxТипПривода = new System.Windows.Forms.ComboBox();
-            this.comboBoxТипКузова = new System.Windows.Forms.ComboBox();
             this.comboBoxТипРуля = new System.Windows.Forms.ComboBox();
             this.comboBoxТипКПП = new System.Windows.Forms.ComboBox();
             this.textEditГодВыпуска = new System.Windows.Forms.TextBox();
@@ -153,21 +151,19 @@
             this.groupBox1.Controls.Add(this.comboBoxОбъемДвигателя);
             this.groupBox1.Controls.Add(this.labelControl7);
             this.groupBox1.Controls.Add(this.labelControl8);
-            this.groupBox1.Controls.Add(this.labelControl9);
             this.groupBox1.Controls.Add(this.labelControl10);
             this.groupBox1.Controls.Add(this.labelControl11);
             this.groupBox1.Controls.Add(this.labelControl13);
             this.groupBox1.Controls.Add(this.labelControl14);
             this.groupBox1.Controls.Add(this.comboBoxТипТоплива);
             this.groupBox1.Controls.Add(this.comboBoxТипПривода);
-            this.groupBox1.Controls.Add(this.comboBoxТипКузова);
             this.groupBox1.Controls.Add(this.comboBoxТипРуля);
             this.groupBox1.Controls.Add(this.comboBoxТипКПП);
             this.groupBox1.Controls.Add(this.textEditГодВыпуска);
             this.groupBox1.Controls.Add(this.textEditПробег);
             this.groupBox1.Location = new System.Drawing.Point(427, 6);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(334, 268);
+            this.groupBox1.Size = new System.Drawing.Size(334, 246);
             this.groupBox1.TabIndex = 70;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Характеристики автомобиля";
@@ -176,7 +172,7 @@
             // 
             this.label5.AutoEllipsis = true;
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(21, 239);
+            this.label5.Location = new System.Drawing.Point(21, 215);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(118, 13);
             this.label5.TabIndex = 54;
@@ -186,7 +182,7 @@
             // 
             this.comboBoxМощностьДвигателя.DropDownStyle = System.Windows.Forms.ComboBoxStyle.Simple;
             this.comboBoxМощностьДвигателя.FormattingEnabled = true;
-            this.comboBoxМощностьДвигателя.Location = new System.Drawing.Point(145, 236);
+            this.comboBoxМощностьДвигателя.Location = new System.Drawing.Point(145, 212);
             this.comboBoxМощностьДвигателя.Name = "comboBoxМощностьДвигателя";
             this.comboBoxМощностьДвигателя.Size = new System.Drawing.Size(90, 21);
             this.comboBoxМощностьДвигателя.TabIndex = 53;
@@ -196,7 +192,7 @@
             // 
             this.label6.AutoEllipsis = true;
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(21, 212);
+            this.label6.Location = new System.Drawing.Point(21, 188);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(100, 13);
             this.label6.TabIndex = 52;
@@ -206,7 +202,7 @@
             // 
             this.comboBoxОбъемДвигателя.DropDownStyle = System.Windows.Forms.ComboBoxStyle.Simple;
             this.comboBoxОбъемДвигателя.FormattingEnabled = true;
-            this.comboBoxОбъемДвигателя.Location = new System.Drawing.Point(145, 209);
+            this.comboBoxОбъемДвигателя.Location = new System.Drawing.Point(145, 185);
             this.comboBoxОбъемДвигателя.Name = "comboBoxОбъемДвигателя";
             this.comboBoxОбъемДвигателя.Size = new System.Drawing.Size(90, 21);
             this.comboBoxОбъемДвигателя.TabIndex = 51;
@@ -232,21 +228,11 @@
             this.labelControl8.TabIndex = 27;
             this.labelControl8.Text = "Тип привода:";
             // 
-            // labelControl9
-            // 
-            this.labelControl9.AutoEllipsis = true;
-            this.labelControl9.AutoSize = true;
-            this.labelControl9.Location = new System.Drawing.Point(21, 82);
-            this.labelControl9.Name = "labelControl9";
-            this.labelControl9.Size = new System.Drawing.Size(67, 13);
-            this.labelControl9.TabIndex = 28;
-            this.labelControl9.Text = "Тип кузова:";
-            // 
             // labelControl10
             // 
             this.labelControl10.AutoEllipsis = true;
             this.labelControl10.AutoSize = true;
-            this.labelControl10.Location = new System.Drawing.Point(21, 108);
+            this.labelControl10.Location = new System.Drawing.Point(21, 84);
             this.labelControl10.Name = "labelControl10";
             this.labelControl10.Size = new System.Drawing.Size(55, 13);
             this.labelControl10.TabIndex = 29;
@@ -256,7 +242,7 @@
             // 
             this.labelControl11.AutoEllipsis = true;
             this.labelControl11.AutoSize = true;
-            this.labelControl11.Location = new System.Drawing.Point(20, 160);
+            this.labelControl11.Location = new System.Drawing.Point(20, 136);
             this.labelControl11.Name = "labelControl11";
             this.labelControl11.Size = new System.Drawing.Size(74, 13);
             this.labelControl11.TabIndex = 30;
@@ -266,7 +252,7 @@
             // 
             this.labelControl13.AutoEllipsis = true;
             this.labelControl13.AutoSize = true;
-            this.labelControl13.Location = new System.Drawing.Point(20, 186);
+            this.labelControl13.Location = new System.Drawing.Point(20, 162);
             this.labelControl13.Name = "labelControl13";
             this.labelControl13.Size = new System.Drawing.Size(47, 13);
             this.labelControl13.TabIndex = 24;
@@ -276,7 +262,7 @@
             // 
             this.labelControl14.AutoEllipsis = true;
             this.labelControl14.AutoSize = true;
-            this.labelControl14.Location = new System.Drawing.Point(20, 134);
+            this.labelControl14.Location = new System.Drawing.Point(20, 110);
             this.labelControl14.Name = "labelControl14";
             this.labelControl14.Size = new System.Drawing.Size(55, 13);
             this.labelControl14.TabIndex = 31;
@@ -300,19 +286,10 @@
             this.comboBoxТипПривода.TabIndex = 36;
             this.comboBoxТипПривода.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.comboBox_KeyPress);
             // 
-            // comboBoxТипКузова
-            // 
-            this.comboBoxТипКузова.DropDownStyle = System.Windows.Forms.ComboBoxStyle.Simple;
-            this.comboBoxТипКузова.Location = new System.Drawing.Point(145, 79);
-            this.comboBoxТипКузова.Name = "comboBoxТипКузова";
-            this.comboBoxТипКузова.Size = new System.Drawing.Size(171, 21);
-            this.comboBoxТипКузова.TabIndex = 37;
-            this.comboBoxТипКузова.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.comboBox_KeyPress);
-            // 
             // comboBoxТипРуля
             // 
             this.comboBoxТипРуля.DropDownStyle = System.Windows.Forms.ComboBoxStyle.Simple;
-            this.comboBoxТипРуля.Location = new System.Drawing.Point(145, 105);
+            this.comboBoxТипРуля.Location = new System.Drawing.Point(145, 81);
             this.comboBoxТипРуля.Name = "comboBoxТипРуля";
             this.comboBoxТипРуля.Size = new System.Drawing.Size(171, 21);
             this.comboBoxТипРуля.TabIndex = 38;
@@ -321,7 +298,7 @@
             // comboBoxТипКПП
             // 
             this.comboBoxТипКПП.DropDownStyle = System.Windows.Forms.ComboBoxStyle.Simple;
-            this.comboBoxТипКПП.Location = new System.Drawing.Point(145, 131);
+            this.comboBoxТипКПП.Location = new System.Drawing.Point(145, 107);
             this.comboBoxТипКПП.Name = "comboBoxТипКПП";
             this.comboBoxТипКПП.Size = new System.Drawing.Size(171, 21);
             this.comboBoxТипКПП.TabIndex = 39;
@@ -329,7 +306,7 @@
             // 
             // textEditГодВыпуска
             // 
-            this.textEditГодВыпуска.Location = new System.Drawing.Point(145, 157);
+            this.textEditГодВыпуска.Location = new System.Drawing.Point(145, 133);
             this.textEditГодВыпуска.Name = "textEditГодВыпуска";
             this.textEditГодВыпуска.ReadOnly = true;
             this.textEditГодВыпуска.Size = new System.Drawing.Size(58, 20);
@@ -337,7 +314,7 @@
             // 
             // textEditПробег
             // 
-            this.textEditПробег.Location = new System.Drawing.Point(145, 183);
+            this.textEditПробег.Location = new System.Drawing.Point(145, 159);
             this.textEditПробег.Name = "textEditПробег";
             this.textEditПробег.ReadOnly = true;
             this.textEditПробег.Size = new System.Drawing.Size(90, 20);
@@ -946,14 +923,12 @@
     private System.Windows.Forms.ComboBox comboBoxОбъемДвигателя;
     private System.Windows.Forms.Label labelControl7;
     private System.Windows.Forms.Label labelControl8;
-    private System.Windows.Forms.Label labelControl9;
     private System.Windows.Forms.Label labelControl10;
     private System.Windows.Forms.Label labelControl11;
     private System.Windows.Forms.Label labelControl13;
     private System.Windows.Forms.Label labelControl14;
     private System.Windows.Forms.ComboBox comboBoxТипТоплива;
     private System.Windows.Forms.ComboBox comboBoxТипПривода;
-    private System.Windows.Forms.ComboBox comboBoxТипКузова;
     private System.Windows.Forms.ComboBox comboBoxТипРуля;
     private System.Windows.Forms.ComboBox comboBoxТипКПП;
     private System.Windows.Forms.TextBox textEditГодВыпуска;

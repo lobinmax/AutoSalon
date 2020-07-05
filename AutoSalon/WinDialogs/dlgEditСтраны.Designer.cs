@@ -44,17 +44,19 @@
             // 
             // labelControl1
             // 
-            this.labelControl1.Location = new System.Drawing.Point(12, 12);
+            this.labelControl1.AutoSize = true;
+            this.labelControl1.Location = new System.Drawing.Point(12, 15);
             this.labelControl1.Name = "labelControl1";
-            this.labelControl1.Size = new System.Drawing.Size(77, 13);
+            this.labelControl1.Size = new System.Drawing.Size(86, 13);
             this.labelControl1.TabIndex = 3;
             this.labelControl1.Text = "Наименование:";
             // 
             // labelControl2
             // 
-            this.labelControl2.Location = new System.Drawing.Point(12, 68);
+            this.labelControl2.AutoSize = true;
+            this.labelControl2.Location = new System.Drawing.Point(12, 71);
             this.labelControl2.Name = "labelControl2";
-            this.labelControl2.Size = new System.Drawing.Size(107, 13);
+            this.labelControl2.Size = new System.Drawing.Size(116, 13);
             this.labelControl2.TabIndex = 21;
             this.labelControl2.Text = "Наименование сокр.:";
             // 
@@ -94,6 +96,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoSize = true;
             this.ClientSize = new System.Drawing.Size(400, 157);
             this.Controls.Add(this.simpleButtonОтменить);
             this.Controls.Add(this.simpleButtonСохранить);

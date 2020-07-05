@@ -42,6 +42,8 @@ partial class dlgEditАвтоПоколения
             this.labelControl1 = new System.Windows.Forms.Label();
             this.simpleButtonОтменить = new System.Windows.Forms.Button();
             this.simpleButtonСохранить = new System.Windows.Forms.Button();
+            this.label1 = new System.Windows.Forms.Label();
+            this.comboBoxТипКузова = new System.Windows.Forms.ComboBox();
             this.tableLayoutPanel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -82,6 +84,8 @@ partial class dlgEditАвтоПоколения
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 174F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 402F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 488F));
+            this.tableLayoutPanel1.Controls.Add(this.comboBoxТипКузова, 2, 6);
+            this.tableLayoutPanel1.Controls.Add(this.label1, 1, 6);
             this.tableLayoutPanel1.Controls.Add(this.textEditПоколение, 2, 3);
             this.tableLayoutPanel1.Controls.Add(this.labelControl2, 1, 2);
             this.tableLayoutPanel1.Controls.Add(this.textEditОкончаниеПроизводства, 2, 5);
@@ -101,8 +105,8 @@ partial class dlgEditАвтоПоколения
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle());
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 8F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(609, 168);
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle());
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(609, 180);
             this.tableLayoutPanel1.TabIndex = 23;
             // 
             // textEditПоколение
@@ -193,6 +197,24 @@ partial class dlgEditАвтоПоколения
             this.simpleButtonСохранить.Text = "Сохранить";
             this.simpleButtonСохранить.Click += new System.EventHandler(this.simpleButtonСохранить_Click);
             // 
+            // label1
+            // 
+            this.label1.Location = new System.Drawing.Point(18, 150);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(168, 26);
+            this.label1.TabIndex = 26;
+            this.label1.Text = "Тип кузова:";
+            this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // comboBoxТипКузова
+            // 
+            this.comboBoxТипКузова.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.comboBoxТипКузова.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboBoxТипКузова.Location = new System.Drawing.Point(192, 153);
+            this.comboBoxТипКузова.Name = "comboBoxТипКузова";
+            this.comboBoxТипКузова.Size = new System.Drawing.Size(396, 21);
+            this.comboBoxТипКузова.TabIndex = 40;
+            // 
             // dlgEditАвтоПоколения
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -230,4 +252,6 @@ partial class dlgEditАвтоПоколения
     private System.Windows.Forms.Label labelControl1;
     private System.Windows.Forms.Button simpleButtonОтменить;
     private System.Windows.Forms.Button simpleButtonСохранить;
+    private System.Windows.Forms.Label label1;
+    private System.Windows.Forms.ComboBox comboBoxТипКузова;
 }

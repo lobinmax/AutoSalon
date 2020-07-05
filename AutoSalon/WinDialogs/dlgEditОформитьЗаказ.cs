@@ -54,8 +54,7 @@ public partial class dlgEditОформитьЗаказ : Form
 
         comboBoxМарка.ASНастроитьВыпадалку_SP("СписокФильтров_МаркиАвто", "UID", "Name", 0, "@Все", 0);
         comboBoxТипТоплива.ASНастроитьВыпадалку_SP("СписокФильтров_ТипТоплива", "Id", "Name", 0, "@Все", 0);
-        comboBoxТипПривода.ASНастроитьВыпадалку_SP("СписокФильтров_ТипПривода", "Id", "Name", 0, "@Все", 0);
-        comboBoxТипКузова.ASНастроитьВыпадалку_SP("СписокФильтров_ТипКузова", "Id", "Name", 0, "@Все", 0);
+        comboBoxТипПривода.ASНастроитьВыпадалку_SP("СписокФильтров_ТипПривода", "Id", "Name", 0, "@Все", 0); 
         comboBoxТипРуля.ASНастроитьВыпадалку_SP("СписокФильтров_ТипРуля", "Id", "Name", 0, "@Все", 0);
         comboBoxТипКПП.ASНастроитьВыпадалку_SP("СписокФильтров_ТипКПП", "Id", "Name", 0, "@Все", 0);
         comboBoxСтатусЗаказа.ASНастроитьВыпадалку_SP("СписокФильтров_СтатусыЗаказа", "Id", "Name", 0, "@Все", 0);
@@ -83,8 +82,7 @@ public partial class dlgEditОформитьЗаказ : Form
         СтоимостьАвто = Convert.ToDecimal(clsMisc.DBout(dr["Стоимость"].ToString()));
         textEditСтоимость.Text = clsMisc.DBout(dr["Стоимость"].ToString());
         comboBoxТипТоплива.SelectedValue = clsMisc.DBout(dr["IdТипТоплива"]);
-        comboBoxТипПривода.SelectedValue = clsMisc.DBout(dr["IdТипПривода"]);
-        comboBoxТипКузова.SelectedValue = clsMisc.DBout(dr["IdТипКузова"]);
+        comboBoxТипПривода.SelectedValue = clsMisc.DBout(dr["IdТипПривода"]); 
         comboBoxТипРуля.SelectedValue = clsMisc.DBout(dr["IdТипРуля"]);
         comboBoxТипКПП.SelectedValue = clsMisc.DBout(dr["IdТипКПП"]);
         textEditГодВыпуска.Text = (string)clsMisc.DBout(dr["ГодВыпуска"]);
