@@ -6,26 +6,25 @@ using System.Windows.Forms;
 
 public partial class dlgEditОформитьЗаказ : Form
 {
-    private Guid? ForeigenKey;
-
+    private Guid? UIDКлиента;
+    private Guid? UIDТовара;
+    private decimal? СтоимостьАвто;
+    private clsMisc.ASSqlFunction SqlFunction;
+    public Guid? UIDЗаказа;
+    
     public dlgEditОформитьЗаказ()
     {
-        InitializeComponent();
+            InitializeComponent();
     }
 
-    public dlgEditОформитьЗаказ(Guid? UIDТовара, clsMisc.ASSqlFunction sqlFunction)
+    private void ЗаполнитьПоля()
     {
-        InitializeComponent();
-        ForeigenKey = UIDТовара;
+        memoExEditПол.DataSource = clsSql.ExecuteQuery("SELECT * FROM vКлиентыПол").dataTable;
+        memoExEditПол.ValueMember = "Id";
+        memoExEditПол.DisplayMember = "Наименование";
+        memoExEditПол.SelectedItem = 0;
 
-        comboBoxМарка.ASНастроитьВыпадалку_SP("СписокФильтров_МаркиАвто", "UID", "Name", 0, "@Все", 0);
-        comboBoxТипТоплива.ASНастроитьВыпадалку_SP("СписокФильтров_ТипТоплива", "Id", "Name", 0, "@Все", 0);
-        comboBoxТипПривода.ASНастроитьВыпадалку_SP("СписокФильтров_ТипПривода", "Id", "Name", 0, "@Все", 0);
-        comboBoxТипКузова.ASНастроитьВыпадалку_SP("СписокФильтров_ТипКузова", "Id", "Name", 0, "@Все", 0);
-        comboBoxТипРуля.ASНастроитьВыпадалку_SP("СписокФильтров_ТипРуля", "Id", "Name", 0, "@Все", 0);
-        comboBoxТипКПП.ASНастроитьВыпадалку_SP("СписокФильтров_ТипКПП", "Id", "Name", 0, "@Все", 0);
-        comboBoxСтатусЗаказа.ASНастроитьВыпадалку_SP("СписокФильтров_СтатусыЗаказа", "Id", "Name", 0, "@Все", 0);
-
+        // Объем двигателя
         var dt = new DataTable() { Columns = { new DataColumn("ValueMember"), new DataColumn("DisplayMember") } };
         for (var i = 0.1m; i <= 10; i = i + 0.1m)
         {
@@ -39,6 +38,7 @@ public partial class dlgEditОформитьЗаказ : Form
         comboBoxОбъемДвигателя.DisplayMember = "DisplayMember";
         comboBoxОбъемДвигателя.SelectedValue = 1.5m;
 
+        // Мощность
         var dt1 = new DataTable() { Columns = { new DataColumn("ValueMember"), new DataColumn("DisplayMember") } };
         for (var i = 30; i <= 600; i = i + 10)
         {
@@ -52,11 +52,20 @@ public partial class dlgEditОформитьЗаказ : Form
         comboBoxМощностьДвигателя.DisplayMember = "DisplayMember";
         comboBoxМощностьДвигателя.SelectedValue = 80;
 
-        var dr = clsSql.ExecuteSP("dbo.ГаражАвто_SIUD", clsMisc.ASSqlFunction.Select, "@UIDТовара", ForeigenKey).dataTable.RowsDR().SingleOrDefault();
+        comboBoxМарка.ASНастроитьВыпадалку_SP("СписокФильтров_МаркиАвто", "UID", "Name", 0, "@Все", 0);
+        comboBoxТипТоплива.ASНастроитьВыпадалку_SP("СписокФильтров_ТипТоплива", "Id", "Name", 0, "@Все", 0);
+        comboBoxТипПривода.ASНастроитьВыпадалку_SP("СписокФильтров_ТипПривода", "Id", "Name", 0, "@Все", 0); 
+        comboBoxТипРуля.ASНастроитьВыпадалку_SP("СписокФильтров_ТипРуля", "Id", "Name", 0, "@Все", 0);
+        comboBoxТипКПП.ASНастроитьВыпадалку_SP("СписокФильтров_ТипКПП", "Id", "Name", 0, "@Все", 0);
+        comboBoxСтатусЗаказа.ASНастроитьВыпадалку_SP("СписокФильтров_СтатусыЗаказа", "Id", "Name", 0, "@Все", 0);
 
+    }
+
+    private void ЗаполнитьДанныеАвто(DataRow dr)
+    {
         comboBoxМарка.SelectedValue = clsMisc.DBout(dr["UIDМарки"]);
 
-        comboBoxМодель.ASНастроитьВыпадалку_SP("СписокФильтров_МоделиАвто","UID","Name", 0, "@Все", 0, "@UIDМарки", clsMisc.DBin(comboBoxМарка.ASSelectedRow()["UID"]));
+        comboBoxМодель.ASНастроитьВыпадалку_SP("СписокФильтров_МоделиАвто", "UID", "Name", 0, "@Все", 0, "@UIDМарки", clsMisc.DBin(comboBoxМарка.ASSelectedRow()["UID"]));
         comboBoxМодель.SelectedValue = clsMisc.DBout(dr["UIDМодели"]);
 
         comboBoxПоколение.ASНастроитьВыпадалку_SP("СписокФильтров_ПоколенияАвто", "UID", "Name", 0, "@Все", 0,
@@ -66,22 +75,58 @@ public partial class dlgEditОформитьЗаказ : Form
             clsMisc.DBin(comboBoxМодель.ASSelectedRow()["UID"]));
         comboBoxПоколение.SelectedValue = clsMisc.DBout(dr["UIDПоколения"]);
 
-        textEditVIN.Text = clsMisc.DBout((string)dr["VIN"]);
-        textEditНомерКузова.Text = clsMisc.DBout((string)dr["НомерКузова"]);
+        textEditVIN.Text = (string)clsMisc.DBout(dr["VIN"]);
+        textEditНомерКузова.Text = (string)clsMisc.DBout(dr["НомерКузова"]);
         labelColor.BackColor = Color.FromArgb(Convert.ToInt32(dr["ЦветRGB"]));
         comboBoxСтатусЗаказа.SelectedValue = clsMisc.DBout(dr["IdСтатусАвто"]);
+        СтоимостьАвто = Convert.ToDecimal(clsMisc.DBout(dr["Стоимость"].ToString()));
         textEditСтоимость.Text = clsMisc.DBout(dr["Стоимость"].ToString());
         comboBoxТипТоплива.SelectedValue = clsMisc.DBout(dr["IdТипТоплива"]);
-        comboBoxТипПривода.SelectedValue = clsMisc.DBout(dr["IdТипПривода"]);
-        comboBoxТипКузова.SelectedValue = clsMisc.DBout(dr["IdТипКузова"]);
+        comboBoxТипПривода.SelectedValue = clsMisc.DBout(dr["IdТипПривода"]); 
         comboBoxТипРуля.SelectedValue = clsMisc.DBout(dr["IdТипРуля"]);
         comboBoxТипКПП.SelectedValue = clsMisc.DBout(dr["IdТипКПП"]);
-        textEditГодВыпуска.Text = clsMisc.DBout((string)dr["ГодВыпуска"]);
+        textEditГодВыпуска.Text = (string)clsMisc.DBout(dr["ГодВыпуска"]);
         textEditПробег.Text = clsMisc.DBout(dr["Пробег"].ToString());
         comboBoxОбъемДвигателя.SelectedValue = clsMisc.DBout(dr["ОбъемДвигателя"]);
         comboBoxМощностьДвигателя.SelectedValue = clsMisc.DBout(dr["МощностьДвигателя"]);
     }
-    
+
+    public dlgEditОформитьЗаказ(Guid UIDТовара, Guid? UIDЗаказа, clsMisc.ASSqlFunction sqlFunction)
+    {
+        InitializeComponent();
+        ЗаполнитьПоля();
+        this.SqlFunction = sqlFunction;
+        this.UIDТовара = UIDТовара;
+        this.UIDЗаказа = UIDЗаказа;
+
+        var АвтоDR = clsSql.ExecuteSP(
+            "dbo.ГаражАвто_SIUD",
+            clsMisc.ASSqlFunction.Select,
+            "@UIDТовара", UIDТовара).dataTable.RowsDR().SingleOrDefault();
+        ЗаполнитьДанныеАвто(АвтоDR);
+
+        if (sqlFunction == clsMisc.ASSqlFunction.Insert)
+        {
+            this.Text = "Оформить заказ";
+        }
+
+        if (sqlFunction == clsMisc.ASSqlFunction.Update)
+        {
+            this.Text = "Редактировать заказ";
+
+            var ЗаказDR = clsSql.ExecuteSP(
+                "dbo.Заказы_SIUD",
+                clsMisc.ASSqlFunction.Select,
+                "@UIDЗаказа", UIDЗаказа).dataTable.RowsDR().SingleOrDefault();
+
+            ЗаполнитьДанныеКлиента((Guid)ЗаказDR["UIDКлиента"]);
+
+            comboBoxСтатусЗаказа.SelectedValue = clsMisc.DBout(ЗаказDR["IdСтатусаЗаказа"]);
+            labelНомерЗаказа.Text = clsMisc.DBout(ЗаказDR["НомерЗаказа"].ToString());
+            textBoxОплачено.Text = clsMisc.DBout(ЗаказDR["СуммаОплаты"].ToString());
+            textEditСтоимость.Text = clsMisc.DBout(ЗаказDR["Стоимость"].ToString()); // перзаписываем стоимость из заказа
+        }
+    }
 
     private void comboBox_KeyPress(object sender, KeyPressEventArgs e)
     {
@@ -117,9 +162,28 @@ public partial class dlgEditОформитьЗаказ : Form
 
     private void ЗаполнитьДанныеКлиента(Guid UIDКлиента)
     {
-        var КлиентDR = clsSql.ExecuteSP("dbo.Клиенты_SIUD", clsMisc.ASSqlFunction.Select, "@UIDКлиента", UIDКлиента).dataTable.RowsDR().SingleOrDefault();
+        var КлиентDR = clsSql.ExecuteSP(
+            "dbo.Клиенты_SIUD", 
+            clsMisc.ASSqlFunction.Select, 
+            "@UIDКлиента", UIDКлиента).dataTable.RowsDR().SingleOrDefault();
+
         if (КлиентDR == null)
         {
+            textEditФамилия.Text = null;
+            textEditИмя.Text = null;
+            textEditОтчество.Text = null;
+            textEditТелефон.Text = null;
+            textEditEmail.Text = null;
+            textBoxАдресРегистрации.Text = null;
+            TextBoxПДСерия.Text = null;
+            TextBoxПДНомер.Text = null;
+            TextBoxПДКодПодразделения.Text = null;
+            TextBoxПДДатаВыдачи.Text = null;
+            dateEditДатаРождения.Text = null;
+            memoExEditПол.SelectedItem = 0;
+            textBoxПДКемВыдан.Text = null;
+
+            this.UIDКлиента = null;
             return;
         }
 
@@ -127,7 +191,7 @@ public partial class dlgEditОформитьЗаказ : Form
         textEditИмя.Text = clsMisc.DBout((string)КлиентDR["Имя"]);
         textEditОтчество.Text = clsMisc.DBout((string)КлиентDR["Отчество"]);
         textEditТелефон.Text = clsMisc.DBout((string)КлиентDR["Номер телефона"]);
-        textEditEmail.Text = clsMisc.DBout((string)КлиентDR["Email"]);
+        textEditEmail.Text = clsMisc.DBout(КлиентDR["Email"].ToString());
         textBoxАдресРегистрации.Text = clsMisc.DBout((string)КлиентDR["Адрес регистрации"]);
         TextBoxПДСерия.Text = clsMisc.DBout((string)КлиентDR["ПД Серия"]);
         TextBoxПДНомер.Text = clsMisc.DBout((string)КлиентDR["ПД Номер"]);
@@ -136,10 +200,34 @@ public partial class dlgEditОформитьЗаказ : Form
         dateEditДатаРождения.Value = (DateTime)clsMisc.DBout(КлиентDR["ПД Дата рождения"]);
         memoExEditПол.SelectedValue = Convert.ToInt16(clsMisc.DBout(КлиентDR["IdПола"]));
         textBoxПДКемВыдан.Text = clsMisc.DBout((string)КлиентDR["ПД Кем выдан"]);
+        this.UIDКлиента = UIDКлиента;
     }
 
     private void simpleButtonСохранить_Click(object sender, EventArgs e)
     {
+        if (!clsMisc.CheckFields(
+            UIDТовара,
+            СтоимостьАвто, 
+            UIDКлиента,
+            textBoxОплачено.Text))
+        {
+            return;
+        }
 
+        var response = clsSql.ExecuteSP("dbo.Заказы_SIUD", SqlFunction,
+            "@UIDЗаказа", UIDЗаказа,
+            "@UIDТовара", UIDТовара,
+            "@СтоимостьАвто", СтоимостьАвто,
+            "@UIDКлиента", UIDКлиента,
+            "@IdСтатусаЗаказа", comboBoxСтатусЗаказа.SelectedValue,
+            "@СуммаОплаты", textBoxОплачено.Text);
+
+        if ((bool)response.success)
+        {
+            var dr = response.dataTable.RowsDR().SingleOrDefault();
+            UIDЗаказа = (Guid)clsMisc.DBout(dr[0]);
+            this.Tag = dr[0];
+            this.DialogResult = DialogResult.OK;
+        }
     }
 }

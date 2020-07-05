@@ -1,4 +1,5 @@
 ﻿using System;
+using System.IO;
 using System.Windows.Forms;
 
 public partial class frMainForm : Form
@@ -25,6 +26,7 @@ public partial class frMainForm : Form
             if (_form.Name == frСотрудники.Name)
             {
                 tp.Show();
+                tp.Select();
                 _form.Refresh();
                 _form.Update();
                 return;
@@ -42,6 +44,7 @@ public partial class frMainForm : Form
             if (_form.Name == frСправочники.Name)
             {
                 tp.Show();
+                tp.Select();
                 _form.Refresh();
                 _form.Update();
                 return;
@@ -60,6 +63,7 @@ public partial class frMainForm : Form
             if (_form.Name == frМаркиАвто.Name)
             {
                 tp.Show();
+                tp.Select();
                 _form.Refresh();
                 _form.Update();
                 return;
@@ -77,6 +81,7 @@ public partial class frMainForm : Form
             if (_form.Name == frГаражАвто.Name)
             {
                 tp.Show();
+                tp.Select();
                 _form.Refresh();
                 _form.Update();
                 return;
@@ -94,11 +99,54 @@ public partial class frMainForm : Form
             if (_form.Name == frКлиенты.Name)
             {
                 tp.Show();
+                tp.Select();
                 _form.Refresh();
                 _form.Update();
                 return;
             }
         }
         tabControlMDI.TabPages.Add(frКлиенты);
+    }
+
+    private void toolStripMenuItem2_Click(object sender, EventArgs e)
+    {
+        var frЗаказы = new frЗаказы();
+        foreach (MdiTabControl.TabPage tp in tabControlMDI.TabPages)
+        {
+            var _form = (Form)tp.Form;
+            if (_form.Name == frЗаказы.Name)
+            {
+                tp.Show();
+                tp.Select();
+                _form.Refresh();
+                _form.Update();
+                return;
+            }
+        }
+        tabControlMDI.TabPages.Add(frЗаказы);
+    }
+
+    private void автомобилеНаПродажеToolStripMenuItem_Click(object sender, EventArgs e)
+    {
+        var fReport = new FastReport.Report();
+        using (var mStream = new MemoryStream(AutoSalon.Properties.Resources.АвтоНаПродаже))
+        {
+            fReport.Load(mStream);
+            fReport.SetParameterValue("ConnectionString", Program.ConnectionString);
+            fReport.Show(true, this);
+            fReport.Dispose();
+        }
+    }
+
+    private void реестрЗаказовToolStripMenuItem_Click(object sender, EventArgs e)
+    {
+        var fReport = new FastReport.Report();
+        using (var mStream = new MemoryStream(AutoSalon.Properties.Resources.СписокЗаказов))
+        {
+            fReport.Load(mStream);
+            fReport.SetParameterValue("ConnectionString", Program.ConnectionString);
+            fReport.Show(true, this);
+            fReport.Dispose();
+        }
     }
 }

@@ -36,19 +36,19 @@ public partial class dlgEditКлиенты : Form
                 return;
             }
 
-            textEditФамилия.Text = clsMisc.DBout((string)КлиентDR["Фамилия"]);
-            textEditИмя.Text = clsMisc.DBout((string)КлиентDR["Имя"]);
-            textEditОтчество.Text = clsMisc.DBout((string)КлиентDR["Отчество"]);
-            textEditТелефон.Text = clsMisc.DBout((string)КлиентDR["Номер телефона"]);
-            textEditEmail.Text = clsMisc.DBout((string)КлиентDR["Email"]);
-            textBoxАдресРегистрации.Text = clsMisc.DBout((string)КлиентDR["Адрес регистрации"]);
-            TextBoxПДСерия.Text = clsMisc.DBout((string)КлиентDR["ПД Серия"]);
-            TextBoxПДНомер.Text = clsMisc.DBout((string)КлиентDR["ПД Номер"]);
-            TextBoxПДКодПодразделения.Text = clsMisc.DBout((string)КлиентDR["ПД Код подразделения"]);
+            textEditФамилия.Text = (string)clsMisc.DBout(КлиентDR["Фамилия"]);
+            textEditИмя.Text = (string)clsMisc.DBout(КлиентDR["Имя"]);
+            textEditОтчество.Text = (string)clsMisc.DBout(КлиентDR["Отчество"]);
+            textEditТелефон.Text = (string)clsMisc.DBout(КлиентDR["Номер телефона"]);
+            textEditEmail.Text = (string)clsMisc.DBout(КлиентDR["Email"]);
+            textBoxАдресРегистрации.Text = (string)clsMisc.DBout(КлиентDR["Адрес регистрации"]);
+            TextBoxПДСерия.Text = (string)clsMisc.DBout(КлиентDR["ПД Серия"]);
+            TextBoxПДНомер.Text = (string)clsMisc.DBout(КлиентDR["ПД Номер"]);
+            TextBoxПДКодПодразделения.Text = (string)clsMisc.DBout(КлиентDR["ПД Код подразделения"]);
             TextBoxПДДатаВыдачи.Value = (DateTime)clsMisc.DBout(КлиентDR["ПД Дата выдачи"]);
             dateEditДатаРождения.Value = (DateTime)clsMisc.DBout(КлиентDR["ПД Дата рождения"]);
             memoExEditПол.SelectedValue = Convert.ToInt16(clsMisc.DBout(КлиентDR["IdПола"]));
-            textBoxПДКемВыдан.Text = clsMisc.DBout((string)КлиентDR["ПД Кем выдан"]);
+            textBoxПДКемВыдан.Text = (string)clsMisc.DBout(КлиентDR["ПД Кем выдан"]);
         }
     }
 

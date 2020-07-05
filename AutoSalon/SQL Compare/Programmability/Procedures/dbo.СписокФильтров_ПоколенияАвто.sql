@@ -13,9 +13,11 @@ BEGIN
     UNION ALL 
     SELECT TOP 100 PERCENT 
         ап.UIDПоколения AS UID, 
-        ап.Наименование AS Name, 
+        ап.Наименование + ' (' + атк.Наименование + ' - ' + CAST(ап.НачалоПроизводства AS VARCHAR(4)) + ' г.)' AS Name, 
         ROW_NUMBER() OVER (ORDER BY ап.Наименование) AS Sort
     FROM АвтоПоколение ап
+    INNER JOIN АвтоТипКузова атк
+        ON ап.IdТипКузова = атк.IdТипКузова
     WHERE (ап.UIDМарки = @UIDМарки)
        AND (ап.UIDМодели = @UIDМодели)
     ORDER BY Sort

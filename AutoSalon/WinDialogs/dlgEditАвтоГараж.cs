@@ -24,8 +24,7 @@ public partial class dlgEditАвтоГараж : Form
 
         comboBoxМарка.ASНастроитьВыпадалку_SP("СписокФильтров_МаркиАвто", "UID", "Name", 0, "@Все", 0);
         comboBoxТипТоплива.ASНастроитьВыпадалку_SP("СписокФильтров_ТипТоплива", "Id", "Name", 0, "@Все", 0);
-        comboBoxТипПривода.ASНастроитьВыпадалку_SP("СписокФильтров_ТипПривода", "Id", "Name", 0, "@Все", 0);
-        comboBoxТипКузова.ASНастроитьВыпадалку_SP("СписокФильтров_ТипКузова", "Id", "Name", 0, "@Все", 0);
+        comboBoxТипПривода.ASНастроитьВыпадалку_SP("СписокФильтров_ТипПривода", "Id", "Name", 0, "@Все", 0); 
         comboBoxТипРуля.ASНастроитьВыпадалку_SP("СписокФильтров_ТипРуля", "Id", "Name", 0, "@Все", 0);
         comboBoxТипКПП.ASНастроитьВыпадалку_SP("СписокФильтров_ТипКПП", "Id", "Name", 0, "@Все", 0);
         comboBoxСтатусАвто.ASНастроитьВыпадалку_SP("СписокФильтров_СтатусАвто", "Id", "Name", 1, "@Все", 0);
@@ -72,10 +71,9 @@ public partial class dlgEditАвтоГараж : Form
             textEditНомерКузова.Text = clsMisc.DBout((string)dr["НомерКузова"]);
             labelColor.BackColor = Color.FromArgb(Convert.ToInt32(dr["ЦветRGB"]));
             comboBoxСтатусАвто.SelectedValue = clsMisc.DBout(dr["IdСтатусАвто"]);
-            textEditСтоимость.Text = clsMisc.DBout(dr["Стоимость"].ToString());
+            textEditСтоимость.Text = $"{clsMisc.DBout(dr["Стоимость"].ToString()):C2}";
             comboBoxТипТоплива.SelectedValue = clsMisc.DBout(dr["IdТипТоплива"]);
-            comboBoxТипПривода.SelectedValue = clsMisc.DBout(dr["IdТипПривода"]);
-            comboBoxТипКузова.SelectedValue = clsMisc.DBout(dr["IdТипКузова"]);
+            comboBoxТипПривода.SelectedValue = clsMisc.DBout(dr["IdТипПривода"]); 
             comboBoxТипРуля.SelectedValue = clsMisc.DBout(dr["IdТипРуля"]);
             comboBoxТипКПП.SelectedValue = clsMisc.DBout(dr["IdТипКПП"]);
             textEditГодВыпуска.Text = clsMisc.DBout((string)dr["ГодВыпуска"]);
@@ -152,8 +150,7 @@ public partial class dlgEditАвтоГараж : Form
             comboBoxПоколение,
             comboBoxСтатусАвто, 
             comboBoxТипТоплива,
-            comboBoxТипПривода,
-            comboBoxТипКузова,
+            comboBoxТипПривода, 
             comboBoxТипРуля,
             comboBoxТипКПП,
             textEditГодВыпуска,
@@ -161,7 +158,8 @@ public partial class dlgEditАвтоГараж : Form
             textEditVIN,
             comboBoxОбъемДвигателя,
             comboBoxМощностьДвигателя,
-            textEditНомерКузова
+            textEditНомерКузова,
+            textEditСтоимость
         }))
 
         {
@@ -177,8 +175,7 @@ public partial class dlgEditАвтоГараж : Form
             "@Стоимость", clsMisc.DBin(textEditСтоимость.Text),
             "@IdСтатусАвто", clsMisc.DBin(comboBoxСтатусАвто.ASSelectedRow()["Id"]),
             "@IdТипТоплива", clsMisc.DBin(comboBoxТипТоплива.ASSelectedRow()["Id"]),
-            "@IdТипПривода", clsMisc.DBin(comboBoxТипПривода.ASSelectedRow()["Id"]),
-            "@IdТипКузова", clsMisc.DBin(comboBoxТипКузова.ASSelectedRow()["Id"]),
+            "@IdТипПривода", clsMisc.DBin(comboBoxТипПривода.ASSelectedRow()["Id"]), 
             "@IdТипРуля", clsMisc.DBin(comboBoxТипРуля.ASSelectedRow()["Id"]),
             "@IdТипКПП", clsMisc.DBin(comboBoxТипКПП.ASSelectedRow()["Id"]),
             "@ГодВыпуска", clsMisc.DBin(textEditГодВыпуска.Text),

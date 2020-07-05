@@ -176,6 +176,12 @@
     <Compile Include="WinForms\frГаражАвто.Designer.cs">
       <DependentUpon>frГаражАвто.cs</DependentUpon>
     </Compile>
+    <Compile Include="WinForms\frЗаказы.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="WinForms\frЗаказы.Designer.cs">
+      <DependentUpon>frЗаказы.cs</DependentUpon>
+    </Compile>
     <Compile Include="WinForms\frКлиенты.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -203,6 +209,8 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+    <None Include="Отчеты\АвтоНаПродаже.frx" />
+    <None Include="Отчеты\СписокЗаказов.frx" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Interfaces\" />
@@ -266,6 +274,9 @@
     <EmbeddedResource Include="WinForms\frГаражАвто.resx">
       <DependentUpon>frГаражАвто.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="WinForms\frЗаказы.resx">
+      <DependentUpon>frЗаказы.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="WinForms\frКлиенты.resx">
       <DependentUpon>frКлиенты.cs</DependentUpon>
     </EmbeddedResource>
@@ -314,8 +325,13 @@
     <None Include="Resources\Action_Cancel.png" />
   </ItemGroup>
   <ItemGroup>
-    <Reference Include="MdiTabControl">
-      <HintPath>.\MdiTabControl.dll</HintPath>
+    <Reference Include="FastReport, Version=2020.1.17.0, Culture=neutral, PublicKeyToken=db7e5ce63278458c, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>Dll\FastReport.dll</HintPath>
+    </Reference>
+    <Reference Include="MdiTabControl, Version=1.0.3742.19745, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>Dll\MdiTabControl.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.CSharp">
       <EmbedInteropTypes>False</EmbedInteropTypes>
@@ -357,6 +373,7 @@
       <EmbedInteropTypes>False</EmbedInteropTypes>
       <Private>True</Private>
     </Reference>
+    <Reference Include="System.Windows.Forms.DataVisualization" />
     <Reference Include="System.Xml">
       <EmbedInteropTypes>False</EmbedInteropTypes>
       <Private>True</Private>
@@ -367,7 +384,88 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="MdiTabControl.dll" />
+    <Content Include="Dll\FastReport.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Dll\MdiTabControl.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SQL Compare\AutoSalon.sql" />
+    <Content Include="SQL Compare\config.xml" />
+    <Content Include="SQL Compare\Programmability\Functions\dbo.DtТекущаяДата.sql" />
+    <Content Include="SQL Compare\Programmability\Functions\dbo.DtТекущаяДатаВремя.sql" />
+    <Content Include="SQL Compare\Programmability\Functions\dbo.strTrim.sql" />
+    <Content Include="SQL Compare\Programmability\Functions\dbo.ГаражПолучитьЦенуАвто.sql" />
+    <Content Include="SQL Compare\Programmability\Functions\dbo.ГаражПолучитьЦенуАвтоUID.sql" />
+    <Content Include="SQL Compare\Programmability\Functions\dbo.КлиентПолучитьФИО.sql" />
+    <Content Include="SQL Compare\Programmability\Functions\dbo.КлиентПолучитьФИОкратко.sql" />
+    <Content Include="SQL Compare\Programmability\Functions\dbo.ШтатПолучитьUIDСотрудника.sql" />
+    <Content Include="SQL Compare\Programmability\Functions\dbo.ШтатПолучитьФИО.sql" />
+    <Content Include="SQL Compare\Programmability\Functions\dbo.ШтатПолучитьФИОкратко.sql" />
+    <Content Include="SQL Compare\Programmability\Functions\dbo.ЯдроПолучитьКонстанту.sql" />
+    <Content Include="SQL Compare\Programmability\Procedures\dbo.АвтоМарки_SIUD.sql" />
+    <Content Include="SQL Compare\Programmability\Procedures\dbo.АвтоМодели_SIUD.sql" />
+    <Content Include="SQL Compare\Programmability\Procedures\dbo.АвтоПоколения_SIUD.sql" />
+    <Content Include="SQL Compare\Programmability\Procedures\dbo.АвтоТипКПП_SIUD.sql" />
+    <Content Include="SQL Compare\Programmability\Procedures\dbo.АвтоТипКузова_SIUD.sql" />
+    <Content Include="SQL Compare\Programmability\Procedures\dbo.АвтоТипПривода_SIUD.sql" />
+    <Content Include="SQL Compare\Programmability\Procedures\dbo.АвтоТипТоплива_SIUD.sql" />
+    <Content Include="SQL Compare\Programmability\Procedures\dbo.ГаражАвто_SIUD.sql" />
+    <Content Include="SQL Compare\Programmability\Procedures\dbo.ГаражСтоимостьАвтоИстория.sql" />
+    <Content Include="SQL Compare\Programmability\Procedures\dbo.Должности_SIUD.sql" />
+    <Content Include="SQL Compare\Programmability\Procedures\dbo.КлиентаПоискПоФИО.sql" />
+    <Content Include="SQL Compare\Programmability\Procedures\dbo.Клиенты_SIUD.sql" />
+    <Content Include="SQL Compare\Programmability\Procedures\dbo.СписокФильтров_МаркиАвто.sql" />
+    <Content Include="SQL Compare\Programmability\Procedures\dbo.СписокФильтров_МоделиАвто.sql" />
+    <Content Include="SQL Compare\Programmability\Procedures\dbo.СписокФильтров_ПоколенияАвто.sql" />
+    <Content Include="SQL Compare\Programmability\Procedures\dbo.СписокФильтров_СтатусАвто.sql" />
+    <Content Include="SQL Compare\Programmability\Procedures\dbo.СписокФильтров_СтатусыЗаказа.sql" />
+    <Content Include="SQL Compare\Programmability\Procedures\dbo.СписокФильтров_ТипКПП.sql" />
+    <Content Include="SQL Compare\Programmability\Procedures\dbo.СписокФильтров_ТипКузова.sql" />
+    <Content Include="SQL Compare\Programmability\Procedures\dbo.СписокФильтров_ТипПривода.sql" />
+    <Content Include="SQL Compare\Programmability\Procedures\dbo.СписокФильтров_ТипРуля.sql" />
+    <Content Include="SQL Compare\Programmability\Procedures\dbo.СписокФильтров_ТипТоплива.sql" />
+    <Content Include="SQL Compare\Programmability\Procedures\dbo.Страны_SIUD.sql" />
+    <Content Include="SQL Compare\Programmability\Procedures\dbo.ТипыСтатусовЗаказа_SIUD.sql" />
+    <Content Include="SQL Compare\Programmability\Procedures\dbo.ТипыСтатусовТовара_SIUD.sql" />
+    <Content Include="SQL Compare\Programmability\Procedures\dbo.ШтатСотрудники_SIUD.sql" />
+    <Content Include="SQL Compare\Programmability\Procedures\dbo.ЯдроНастройкаБазыДанных.sql" />
+    <Content Include="SQL Compare\Security\Roles\db_accessadmin.sql" />
+    <Content Include="SQL Compare\Security\Roles\db_backupoperator.sql" />
+    <Content Include="SQL Compare\Security\Roles\db_datareader.sql" />
+    <Content Include="SQL Compare\Security\Roles\db_datawriter.sql" />
+    <Content Include="SQL Compare\Security\Roles\db_ddladmin.sql" />
+    <Content Include="SQL Compare\Security\Roles\db_denydatareader.sql" />
+    <Content Include="SQL Compare\Security\Roles\db_denydatawriter.sql" />
+    <Content Include="SQL Compare\Security\Roles\db_owner.sql" />
+    <Content Include="SQL Compare\Security\Roles\db_securityadmin.sql" />
+    <Content Include="SQL Compare\Security\Roles\public.sql" />
+    <Content Include="SQL Compare\Security\Roles\SalonWorker.sql" />
+    <Content Include="SQL Compare\Security\Users\dbo.sql" />
+    <Content Include="SQL Compare\Tables\dbo.АвтоМарки.sql" />
+    <Content Include="SQL Compare\Tables\dbo.АвтоМодели.sql" />
+    <Content Include="SQL Compare\Tables\dbo.АвтоПоколение.sql" />
+    <Content Include="SQL Compare\Tables\dbo.АвтоТипКПП.sql" />
+    <Content Include="SQL Compare\Tables\dbo.АвтоТипКузова.sql" />
+    <Content Include="SQL Compare\Tables\dbo.АвтоТипПривода.sql" />
+    <Content Include="SQL Compare\Tables\dbo.АвтоТипРуля.sql" />
+    <Content Include="SQL Compare\Tables\dbo.АвтоТипТоплива.sql" />
+    <Content Include="SQL Compare\Tables\dbo.ГаражАвто.sql" />
+    <Content Include="SQL Compare\Tables\dbo.ГаражСтатусАвто.sql" />
+    <Content Include="SQL Compare\Tables\dbo.ГаражСтоимостьАвто.sql" />
+    <Content Include="SQL Compare\Tables\dbo.Заказы.sql" />
+    <Content Include="SQL Compare\Tables\dbo.ЗаказыСтатусы.sql" />
+    <Content Include="SQL Compare\Tables\dbo.КлиентыДанные.sql" />
+    <Content Include="SQL Compare\Tables\dbo.КлиентыПол.sql" />
+    <Content Include="SQL Compare\Tables\dbo.Страны.sql" />
+    <Content Include="SQL Compare\Tables\dbo.ШтатДолжности.sql" />
+    <Content Include="SQL Compare\Tables\dbo.ШтатСотрудники.sql" />
+    <Content Include="SQL Compare\Tables\dbo.ЯдроКонстанты.sql" />
+    <Content Include="SQL Compare\Views\dbo.vАвтоМарки.sql" />
+    <Content Include="SQL Compare\Views\dbo.vАвтоМодели.sql" />
+    <Content Include="SQL Compare\Views\dbo.vАвтоПоколения.sql" />
+    <Content Include="SQL Compare\Views\dbo.vКлиентыПол.sql" />
+    <Content Include="SQL Compare\Views\dbo.vШтатСотрудники.sql" />
     <None Include="Resources\Contact_16x16.png" />
     <None Include="ImagesIcons\LoginScreen.png" />
     <Content Include="LoginScreen.ico" />

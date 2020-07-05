@@ -149,5 +149,25 @@ namespace AutoSalon.Properties {
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Byte[].
+        /// </summary>
+        internal static byte[] АвтоНаПродаже {
+            get {
+                object obj = ResourceManager.GetObject("АвтоНаПродаже", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Byte[].
+        /// </summary>
+        internal static byte[] СписокЗаказов {
+            get {
+                object obj = ResourceManager.GetObject("СписокЗаказов", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
     }
 }

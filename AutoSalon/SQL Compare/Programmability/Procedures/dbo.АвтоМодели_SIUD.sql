@@ -22,20 +22,23 @@ BEGIN
                ам.[Окончание производства] 
         FROM vАвтоМодели ам
         WHERE (@UIDМарки IS NULL OR ам.UIDМарки = @UIDМарки)
-        ORDER BY ам.Марка, ам.Модель
+        ORDER BY ам.Модель
     END
         
     -- select
     IF @Function = 1 
     BEGIN  
         SELECT ам.UIDМарки, 
-               ам.UIDМодели, 
-               ам.Марка, 
-               ам.Модель, 
-               ам.[Начало производства], 
-               ам.[Окончание производства]
-        FROM vАвтоМодели ам
-        WHERE (@UIDМодели IS NULL OR ам.UIDМодели = @UIDМодели)
+               ам1.UIDМодели, 
+               ам.Наименование AS Марка, 
+               ам1.Наименование AS Модель , 
+               ам1.НачалоПроизводства AS [Начало производства], 
+               ам1.ОкончаниеПроизводства AS [Окончание производства]
+        FROM АвтоМарки ам
+        LEFT JOIN АвтоМодели ам1
+            ON ам.UIDМарки = ам1.UIDМарки
+        WHERE (@UIDМодели IS NULL OR ам1.UIDМодели = @UIDМодели)
+            AND (@UIDМарки IS NULL OR ам.UIDМарки = @UIDМарки)
     END       
           
     -- insert
@@ -44,8 +47,9 @@ BEGIN
           
         BEGIN TRANSACTION 
     
-        INSERT АвтоМодели (UIDМарки, Наименование, НачалоПроизводства, ОкончаниеПроизводства)
-        VALUES (@UIDМарки, @Модель, @НачалоПроизводства, @ОкончаниеПроизводства) 
+        SET @UIDМодели = NEWID()
+        INSERT АвтоМодели ( UIDМодели, UIDМарки, Наименование, НачалоПроизводства, ОкончаниеПроизводства)
+        VALUES ( @UIDМодели, @UIDМарки, @Модель, @НачалоПроизводства, @ОкончаниеПроизводства) 
 
         IF (@@ERROR != 0 OR @@TRANCOUNT = 0) 
         BEGIN 
@@ -90,6 +94,6 @@ BEGIN
         IF @@TRANCOUNT != 0 BEGIN COMMIT TRANSACTION END   	
     END	
 
-    IF @Function IN (2, 3) BEGIN SELECT SCOPE_IDENTITY() END 
+    IF @Function IN (2, 3) BEGIN SELECT @UIDМодели END 
 END
 GO

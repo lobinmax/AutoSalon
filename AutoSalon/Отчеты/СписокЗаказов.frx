@@ -1,0 +1,70 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Report ScriptLanguage="CSharp" ReportInfo.Created="07/04/2020 02:03:01" ReportInfo.Modified="07/04/2020 23:39:29" ReportInfo.CreatorVersion="2020.1.17.0">
+  <ScriptText>using System;
+using System.Collections;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Windows.Forms;
+using System.Drawing;
+using System.Data;
+using FastReport;
+using FastReport.Data;
+using FastReport.Dialog;
+using FastReport.Barcode;
+using FastReport.Table;
+using FastReport.Utils;
+
+namespace FastReport
+{
+  public class ReportScript
+  {
+  }    
+}
+</ScriptText>
+  <Dictionary>
+    <MsSqlDataConnection Name="Connection" ConnectionString="rijcmlqM7gJFg/iaLrqMhRfGy5lGqPyDdd833TNkzl3w9M8DJ+R9NaKyhrY/Tlbjwi8A3Z4of4IVwZAMS2XBeCwKJP1AGa28lgDzrAOBUAPU4xKPjBhZyIz3oZCVt6UkmXpaOQdFODpW9uIDT3743w/IgMV7mWklQODVwBmLmehMU4Szynj4jx6s3ZTPzvj8lHxC6/3gcivXzSaLgb1wFK89tvpJw==" ConnectionStringExpression="ConnectionString">
+      <TableDataSource Name="Table" Alias="ЗаказыРодитель" DataType="System.Int32" Enabled="true" SelectCommand="EXEC dbo.Отчет_РеестрЗаказов @Родитель = 1">
+        <Column Name="Информация об авто" DataType="System.String"/>
+      </TableDataSource>
+      <TableDataSource Name="Table1" Alias="ЗаказыДочерний" DataType="System.Int32" Enabled="true" SelectCommand="EXEC dbo.Отчет_РеестрЗаказов @Родитель=@Param">
+        <Column Name="Информация об авто" DataType="System.String"/>
+        <Column Name="Номер заказа" DataType="System.String" PropName="Column"/>
+        <Column Name="ФИО клиента" DataType="System.String" PropName="Column"/>
+        <Column Name="Цена авто" DataType="System.Decimal" PropName="Column"/>
+        <Column Name="Сумма оплаты" DataType="System.Decimal" PropName="Column"/>
+        <Column Name="Доля оплаты" DataType="System.String" PropName="Column"/>
+        <Column Name="Статус заказа" DataType="System.String" PropName="Column"/>
+        <CommandParameter Name="Param" DataType="2" Expression="0" DefaultValue="0"/>
+      </TableDataSource>
+    </MsSqlDataConnection>
+    <Relation Name="Table_Table1" ParentDataSource="Table" ChildDataSource="Table1" ParentColumns="Информация об авто" ChildColumns="Информация об авто" Enabled="true"/>
+    <Parameter Name="ConnectionString" DataType="System.String" Expression="ConnectionString"/>
+  </Dictionary>
+  <ReportPage Name="Page1" Landscape="true" PaperWidth="297" PaperHeight="210" RawPaperSize="9" Watermark.Font="Arial, 60pt">
+    <ReportTitleBand Name="ReportTitle1" Width="1047.06" Height="28.35">
+      <TextObject Name="Text15" Width="1048.95" Height="28.35" Fill="LinearGradient" Fill.StartColor="" Fill.EndColor="" Fill.Angle="90" Fill.Focus="0.52" Fill.Contrast="1" Text="Реестр заказов" HorzAlign="Center" VertAlign="Center" Font="Arial, 11pt, style=Bold"/>
+    </ReportTitleBand>
+    <DataBand Name="Data1" Top="32.35" Width="1047.06" Height="18.9" DataSource="Table">
+      <TextObject Name="Text1" Width="567" Height="18.9" Fill="LinearGradient" Fill.StartColor="" Fill.EndColor="" Fill.Angle="90" Fill.Focus="0.52" Fill.Contrast="1" Text="[ЗаказыРодитель.Информация об авто]" Font="Arial, 10pt, style=Bold, Italic, Underline"/>
+      <DataBand Name="Data2" Top="78.15" Width="1047.06" Height="28.35" DataSource="Table1">
+        <TextObject Name="Text2" Width="217.35" Height="18.9" Border.Lines="All" Text="[ЗаказыДочерний.Номер заказа]" Font="Arial, 10pt"/>
+        <TextObject Name="Text4" Left="217.35" Width="349.65" Height="18.9" Border.Lines="All" Text="[ЗаказыДочерний.ФИО клиента]" Font="Arial, 10pt"/>
+        <TextObject Name="Text6" Left="567" Width="122.85" Height="18.9" Border.Lines="All" Text="[ЗаказыДочерний.Цена авто]" Format="Currency" Format.UseLocale="true" Format.DecimalDigits="2" HorzAlign="Right" WordWrap="false" Font="Arial, 10pt" Trimming="EllipsisCharacter"/>
+        <TextObject Name="Text8" Left="689.85" Width="113.4" Height="18.9" Border.Lines="All" Text="[ЗаказыДочерний.Сумма оплаты]" Format="Currency" Format.UseLocale="true" Format.DecimalDigits="2" HorzAlign="Right" WordWrap="false" Font="Arial, 10pt" Trimming="EllipsisCharacter"/>
+        <TextObject Name="Text11" Left="803.25" Width="94.5" Height="18.9" Border.Lines="All" Text="[ЗаказыДочерний.Доля оплаты]" HorzAlign="Right" Font="Arial, 10pt"/>
+        <TextObject Name="Text13" Left="897.75" Width="151.2" Height="18.9" Border.Lines="All" Text="[ЗаказыДочерний.Статус заказа]" Font="Arial, 10pt"/>
+        <DataHeaderBand Name="DataHeader1" Top="55.25" Width="1047.06" Height="18.9">
+          <TextObject Name="Text3" Width="217.35" Height="18.9" Border.Lines="All" Fill="LinearGradient" Fill.StartColor="Silver" Fill.EndColor="White" Fill.Angle="90" Fill.Focus="0.52" Fill.Contrast="1" Text="Номер заказа" HorzAlign="Center" Font="Arial, 10pt, style=Bold"/>
+          <TextObject Name="Text5" Left="217.35" Width="349.65" Height="18.9" Border.Lines="All" Fill="LinearGradient" Fill.StartColor="Silver" Fill.EndColor="White" Fill.Angle="90" Fill.Focus="0.52" Fill.Contrast="1" Text="ФИО клиента" HorzAlign="Center" Font="Arial, 10pt, style=Bold"/>
+          <TextObject Name="Text7" Left="567" Width="122.85" Height="18.9" Border.Lines="All" Fill="LinearGradient" Fill.StartColor="Silver" Fill.EndColor="White" Fill.Angle="90" Fill.Focus="0.52" Fill.Contrast="1" Text="Цена авто" HorzAlign="Center" Font="Arial, 10pt, style=Bold"/>
+          <TextObject Name="Text10" Left="689.85" Width="113.4" Height="18.9" Border.Lines="All" Fill="LinearGradient" Fill.StartColor="Silver" Fill.EndColor="White" Fill.Angle="90" Fill.Focus="0.52" Fill.Contrast="1" Text="Сумма оплаты" HorzAlign="Center" Font="Arial, 10pt, style=Bold"/>
+          <TextObject Name="Text12" Left="803.25" Width="94.5" Height="18.9" Border.Lines="All" Fill="LinearGradient" Fill.StartColor="Silver" Fill.EndColor="White" Fill.Angle="90" Fill.Focus="0.52" Fill.Contrast="1" Text="Доля оплаты" HorzAlign="Center" Font="Arial, 10pt, style=Bold"/>
+          <TextObject Name="Text14" Left="897.75" Width="151.2" Height="18.9" Border.Lines="All" Fill="LinearGradient" Fill.StartColor="Silver" Fill.EndColor="White" Fill.Angle="90" Fill.Focus="0.52" Fill.Contrast="1" Text="Статус заказа" HorzAlign="Center" Font="Arial, 10pt, style=Bold"/>
+        </DataHeaderBand>
+      </DataBand>
+    </DataBand>
+    <PageFooterBand Name="PageFooter1" Top="110.5" Width="1047.06" Height="18.9">
+      <TextObject Name="Text9" Left="415.8" Width="226.8" Height="18.9" Fill.Color="" Text="Стр.[Page#] из [TotalPages#]" HorzAlign="Center" Font="Arial, 10pt"/>
+    </PageFooterBand>
+  </ReportPage>
+</Report>

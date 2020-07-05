@@ -61,7 +61,7 @@ public partial class frГаражАвто : Form
         gridViewГараж.ASОбновитьСохранитьВыделение(dt, "UIDТовара", value);
 
         gridViewГараж.ASНастроитьGridView(true, "UIDТовара", "UIDСтоимости");
-        gridViewГараж.Columns["ЦветRGB"].ValueType = typeof(Color);
+        gridViewГараж.Columns["Цвет авто"].ValueType = typeof(Color);
 
     }
 
@@ -104,7 +104,7 @@ public partial class frГаражАвто : Form
         var FocusDR = gridViewГараж.SelectedRows.Cast<DataGridViewRow>().SingleOrDefault();
         var menu = new ContextMenuStrip();
 
-        if (FocusDR != null)
+        if (FocusDR != null && e.Button == MouseButtons.Right)
         {
             menu.Items.Add("Оформить заказ", AutoSalon.Properties.Resources.Contact_16x16, ОформитьЗаказ);
             menu.Items.Add(new ToolStripSeparator());
@@ -159,7 +159,7 @@ public partial class frГаражАвто : Form
     void ОформитьЗаказ(object sender, EventArgs e)
     {
         var FocusDR = gridViewГараж.SelectedRows.Cast<DataGridViewRow>().SingleOrDefault();
-        using (var dlgEditЗаказ = new dlgEditОформитьЗаказ((Guid)FocusDR.Cells["UIDТовара"].Value, clsMisc.ASSqlFunction.Insert))
+        using (var dlgEditЗаказ = new dlgEditОформитьЗаказ((Guid)FocusDR.Cells["UIDТовара"].Value, null, clsMisc.ASSqlFunction.Insert))
         {
             if(dlgEditЗаказ.ShowDialog() == DialogResult.OK)
             {
@@ -175,6 +175,8 @@ public partial class frГаражАвто : Form
     private void ЗаполнитьФильтры()
     {
         comboBoxМарка.ASНастроитьВыпадалку_SP("СписокФильтров_МаркиАвто", "UID", "Name");
+        //comboBoxМарка.ASНастроитьВыпадалку_SP("СписокФильтров_МоделиАвто", "UID", "Name");
+        //comboBoxМарка.ASНастроитьВыпадалку_SP("СписокФильтров_ПоколенияАвто", "UID", "Name");
 
         textBoxЦенаОт.Text = "0";
         textBoxЦенаДо.Text = "10000000";
@@ -202,6 +204,7 @@ public partial class frГаражАвто : Form
     private void buttonОчиститьФильтры_Click(object sender, EventArgs e)
     {
         ЗаполнитьФильтры();
+        buttonПрименитьФильтр.PerformClick();
     }
 
     private void comboBoxМарка_SelectedValueChanged(object sender, EventArgs e)
@@ -246,7 +249,7 @@ public partial class frГаражАвто : Form
     {
         if (e.RowIndex == -1) return;
         var cell = (sender as DataGridView)[e.ColumnIndex, e.RowIndex];
-        var colNameЦвет = (sender as DataGridView).Columns["ЦветRGB"].Index;
+        var colNameЦвет = (sender as DataGridView).Columns["Цвет авто"].Index;
         var colNameЦена = (sender as DataGridView).Columns["Цена"].Index;
         if (e.ColumnIndex == colNameЦвет)
         {

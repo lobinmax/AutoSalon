@@ -665,6 +665,7 @@
             // 
             resources.ApplyResources(this.comboBoxПоколение, "comboBoxПоколение");
             this.comboBoxПоколение.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboBoxПоколение.DropDownWidth = 300;
             this.comboBoxПоколение.FormattingEnabled = true;
             this.comboBoxПоколение.Name = "comboBoxПоколение";
             // 

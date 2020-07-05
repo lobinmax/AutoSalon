@@ -31,6 +31,7 @@
             this.simpleButtonСохранить = new System.Windows.Forms.Button();
             this.textBoxСтрокаПоиска = new System.Windows.Forms.TextBox();
             this.buttonПоискКлиента = new System.Windows.Forms.Button();
+            this.checkBox1 = new System.Windows.Forms.CheckBox();
             ((System.ComponentModel.ISupportInitialize)(this.gridViewНайденныеКлиенты)).BeginInit();
             this.SuspendLayout();
             // 
@@ -96,13 +97,25 @@
             this.buttonПоискКлиента.UseVisualStyleBackColor = true;
             this.buttonПоискКлиента.Click += new System.EventHandler(this.buttonПоискКлиента_Click);
             // 
+            // checkBox1
+            // 
+            this.checkBox1.AutoSize = true;
+            this.checkBox1.Location = new System.Drawing.Point(459, 8);
+            this.checkBox1.Name = "checkBox1";
+            this.checkBox1.Size = new System.Drawing.Size(101, 17);
+            this.checkBox1.TabIndex = 38;
+            this.checkBox1.Text = "Показать всех";
+            this.checkBox1.UseVisualStyleBackColor = true;
+            this.checkBox1.CheckedChanged += new System.EventHandler(this.checkBox1_CheckedChanged);
+            // 
             // dlgEditНайденныеКлиенты
             // 
-            this.AcceptButton = this.simpleButtonСохранить;
+            this.AcceptButton = this.buttonПоискКлиента;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.CancelButton = this.simpleButtonОтменить;
             this.ClientSize = new System.Drawing.Size(575, 324);
+            this.Controls.Add(this.checkBox1);
             this.Controls.Add(this.buttonПоискКлиента);
             this.Controls.Add(this.textBoxСтрокаПоиска);
             this.Controls.Add(this.simpleButtonОтменить);
@@ -124,4 +137,5 @@
     private System.Windows.Forms.Button simpleButtonСохранить;
     private System.Windows.Forms.TextBox textBoxСтрокаПоиска;
     private System.Windows.Forms.Button buttonПоискКлиента;
+    private System.Windows.Forms.CheckBox checkBox1;
 }

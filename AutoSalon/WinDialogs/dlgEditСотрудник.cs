@@ -18,6 +18,7 @@ public partial class dlgEditСотрудник : System.Windows.Forms.Form
         InitializeComponent();
 
         textBoxДомен.Text = Environment.UserDomainName;
+        var dtbl = clsSql.ExecuteQuery("SELECT SYSTEM_USER").dataTable;
 
         gridLookUpEditДолжности.DataSource = clsSql.ExecuteSP("dbo.Должности_SIUD").dataTable;
         gridLookUpEditДолжности.ValueMember = "Id";
@@ -38,9 +39,10 @@ public partial class dlgEditСотрудник : System.Windows.Forms.Form
             this.Text = "Редактировать сотрудника";
             this.ForeigenKey = UIDСотрудника;
             var dt = clsSql.ExecuteSP("dbo.ШтатСотрудники_SIUD", clsMisc.ASSqlFunction.Select, "@UIDСотрудника", clsMisc.DBin(UIDСотрудника)).dataTable;
-            textEditLogin.Enabled = false;
+            textEditLogin.ReadOnly = true;
+            textBoxДомен.ReadOnly = true;
 
-            if(dt.Rows.Count != 0)
+            if (dt.Rows.Count != 0)
             {
                 var dr = dt.Rows[0];
                 textEditLogin.Text = (string) clsMisc.DBout(dr["Логин"]);

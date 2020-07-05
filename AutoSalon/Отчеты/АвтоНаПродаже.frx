@@ -1,0 +1,82 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Report ScriptLanguage="CSharp" ReportInfo.Created="07/04/2020 02:03:01" ReportInfo.Modified="07/05/2020 22:30:56" ReportInfo.CreatorVersion="2020.1.17.0">
+  <ScriptText>using System;
+using System.Collections;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Windows.Forms;
+using System.Drawing;
+using System.Data;
+using FastReport;
+using FastReport.Data;
+using FastReport.Dialog;
+using FastReport.Barcode;
+using FastReport.Table;
+using FastReport.Utils;
+
+namespace FastReport
+{
+  public class ReportScript
+  {
+
+    private void Text7_BeforePrint(object sender, EventArgs e)
+    {
+       Text14.FillColor = Color.FromArgb(Convert.ToInt32(Report.GetColumnValue(&quot;Гараж.Цвет авто&quot;)));
+    }
+  }    
+}
+</ScriptText>
+  <Dictionary>
+    <MsSqlDataConnection Name="Connection" ConnectionString="rijcmlqM7gJFg/iaLrqMhRfGy5lGqPyDdd833TNkzl3w9M8DJ+R9NaKyhrY/Tlbjwi8A3Z4of4IVwZAMS2XBeCwKJP1AGa28lgDzrAOBUAPU4xKPjBhZyIz3oZCVt6UkmXpaOQdFODpW9uIDT3743w/IgMV7mWklQODVwBmLmehMU4Szynj4jx6s3ZTPzvj8lHxC6/3gbwwuuiSfky4QD3Dc+wD+Q==">
+      <TableDataSource Name="Table" Alias="Гараж" DataType="System.Int32" Enabled="true" SelectCommand="EXEC dbo.Отчет_АвтоНаПродаже">
+        <Column Name="Марка" DataType="System.String"/>
+        <Column Name="Модель" DataType="System.String"/>
+        <Column Name="Поколение" DataType="System.String"/>
+        <Column Name="Год" DataType="System.String"/>
+        <Column Name="Пробег" DataType="System.Int32"/>
+        <Column Name="Цена" DataType="System.Decimal"/>
+        <Column Name="Цвет авто" DataType="System.String"/>
+        <Column Name="ОбъемДвигателя" DataType="System.Decimal"/>
+        <Column Name="Мощность" DataType="System.Int32"/>
+        <Column Name="Тип кузова" DataType="System.String"/>
+        <Column Name="КПП" DataType="System.String"/>
+      </TableDataSource>
+    </MsSqlDataConnection>
+    <Parameter Name="ConnectionString" DataType="System.String" Expression="ConnectionString"/>
+  </Dictionary>
+  <ReportPage Name="Page1" Landscape="true" PaperWidth="297" PaperHeight="210" RawPaperSize="9" Watermark.Font="Arial, 60pt">
+    <ReportTitleBand Name="ReportTitle1" Width="1047.06" Height="47.25">
+      <TextObject Name="Text25" Top="9.45" Width="1048.95" Height="18.9" Text="Список автомобилей подлежащих реализации" HorzAlign="Center" Font="Arial, 14pt"/>
+    </ReportTitleBand>
+    <PageHeaderBand Name="PageHeader1" Top="51.25" Width="1047.06" Height="18.9">
+      <TextObject Name="Text2" Width="94.5" Height="18.9" Border.Lines="All" Fill="LinearGradient" Fill.StartColor="255, 128, 0" Fill.EndColor="255, 192, 128" Fill.Angle="90" Fill.Focus="0.47" Fill.Contrast="1" Text="Марка" HorzAlign="Center" Font="Arial, 10pt, style=Bold"/>
+      <TextObject Name="Text4" Left="113.4" Width="122.85" Height="18.9" Border.Lines="All" Fill="LinearGradient" Fill.StartColor="255, 128, 0" Fill.EndColor="255, 192, 128" Fill.Angle="90" Fill.Focus="0.47" Fill.Contrast="1" Text="Модель" HorzAlign="Center" Font="Arial, 10pt, style=Bold"/>
+      <TextObject Name="Text6" Left="236.25" Width="151.2" Height="18.9" Border.Lines="All" Fill="LinearGradient" Fill.StartColor="255, 128, 0" Fill.EndColor="255, 192, 128" Fill.Angle="90" Fill.Focus="0.47" Fill.Contrast="1" Text="Поколение" HorzAlign="Center" Font="Arial, 10pt, style=Bold"/>
+      <TextObject Name="Text13" Left="387.45" Width="122.85" Height="18.9" Border.Lines="All" Fill="LinearGradient" Fill.StartColor="255, 128, 0" Fill.EndColor="255, 192, 128" Fill.Angle="90" Fill.Focus="0.47" Fill.Contrast="1" Text="Цена" HorzAlign="Center" Font="Arial, 10pt, style=Bold"/>
+      <TextObject Name="Text15" Left="567" Width="56.7" Height="18.9" Border.Lines="All" Fill="LinearGradient" Fill.StartColor="255, 128, 0" Fill.EndColor="255, 192, 128" Fill.Angle="90" Fill.Focus="0.47" Fill.Contrast="1" Text="Цвет" HorzAlign="Center" Font="Arial, 10pt, style=Bold"/>
+      <TextObject Name="Text17" Left="699.3" Width="66.15" Height="18.9" Border.Lines="All" Fill="LinearGradient" Fill.StartColor="255, 128, 0" Fill.EndColor="255, 192, 128" Fill.Angle="90" Fill.Focus="0.47" Fill.Contrast="1" Text="Объем" HorzAlign="Center" Font="Arial, 10pt, style=Bold"/>
+      <TextObject Name="Text19" Left="765.45" Width="75.6" Height="18.9" Border.Lines="All" Fill="LinearGradient" Fill.StartColor="255, 128, 0" Fill.EndColor="255, 192, 128" Fill.Angle="90" Fill.Focus="0.47" Fill.Contrast="1" Text="Мощ-сть" HorzAlign="Center" Font="Arial, 10pt, style=Bold"/>
+      <TextObject Name="Text21" Left="841.05" Width="132.3" Height="18.9" Border.Lines="All" Fill="LinearGradient" Fill.StartColor="255, 128, 0" Fill.EndColor="255, 192, 128" Fill.Angle="90" Fill.Focus="0.47" Fill.Contrast="1" Text="Тип кузова" HorzAlign="Center" Font="Arial, 10pt, style=Bold"/>
+      <TextObject Name="Text23" Left="973.35" Width="75.6" Height="18.9" Border.Lines="All" Fill="LinearGradient" Fill.StartColor="255, 128, 0" Fill.EndColor="255, 192, 128" Fill.Angle="90" Fill.Focus="0.47" Fill.Contrast="1" Text="КПП" HorzAlign="Center" Font="Arial, 10pt, style=Bold"/>
+      <TextObject Name="Text24" Width="113.4" Height="18.9" Border.Lines="All" Fill="LinearGradient" Fill.StartColor="255, 128, 0" Fill.EndColor="255, 192, 128" Fill.Angle="90" Fill.Focus="0.47" Fill.Contrast="1" Text="Марка" HorzAlign="Center" Font="Arial, 10pt, style=Bold"/>
+      <TextObject Name="Text8" Left="510.3" Width="56.7" Height="18.9" Border.Lines="All" Fill="LinearGradient" Fill.StartColor="255, 128, 0" Fill.EndColor="255, 192, 128" Fill.Angle="90" Fill.Focus="0.47" Fill.Contrast="1" Text="Год" HorzAlign="Center" Font="Arial, 10pt, style=Bold"/>
+      <TextObject Name="Text11" Left="623.7" Width="75.6" Height="18.9" Border.Lines="All" Fill="LinearGradient" Fill.StartColor="255, 128, 0" Fill.EndColor="255, 192, 128" Fill.Angle="90" Fill.Focus="0.47" Fill.Contrast="1" Text="Пробег" HorzAlign="Center" Font="Arial, 10pt, style=Bold"/>
+    </PageHeaderBand>
+    <DataBand Name="Data1" Top="74.15" Width="1047.06" Height="18.9" DataSource="Table">
+      <TextObject Name="Text1" Width="113.4" Height="18.9" Border.Lines="All" Text="[Гараж.Марка]" Font="Arial, 10pt"/>
+      <TextObject Name="Text5" Left="236.25" Width="151.2" Height="18.9" Border.Lines="All" Text="[Гараж.Поколение]" Font="Arial, 10pt"/>
+      <TextObject Name="Text12" Left="387.45" Width="122.85" Height="18.9" Border.Lines="All" Text="[Гараж.Цена]" Format="Currency" Format.UseLocale="true" Format.DecimalDigits="2" HorzAlign="Right" WordWrap="false" Font="Arial, 10pt" Trimming="EllipsisCharacter"/>
+      <TextObject Name="Text14" Left="567" Width="56.7" Height="18.9" Border.Lines="All" HorzAlign="Center" Font="Arial, 10pt"/>
+      <TextObject Name="Text16" Left="699.3" Width="66.15" Height="18.9" Border.Lines="All" Text="[Гараж.ОбъемДвигателя] л." Format="Number" Format.UseLocale="true" Format.DecimalDigits="1" HorzAlign="Right" WordWrap="false" Font="Arial, 10pt" Trimming="EllipsisCharacter"/>
+      <TextObject Name="Text18" Left="765.45" Width="75.6" Height="18.9" Border.Lines="All" Text="[Гараж.Мощность] л.с." HorzAlign="Center" Font="Arial, 10pt"/>
+      <TextObject Name="Text20" Left="841.05" Width="132.3" Height="18.9" Border.Lines="All" Text="[Гараж.Тип кузова]" Font="Arial, 10pt"/>
+      <TextObject Name="Text22" Left="973.35" Width="75.6" Height="18.9" Border.Lines="All" Text="[Гараж.КПП]" HorzAlign="Center" Font="Arial, 10pt"/>
+      <TextObject Name="Text3" Left="113.4" Width="122.85" Height="18.9" Border.Lines="All" Text="[Гараж.Модель]" Font="Arial, 10pt"/>
+      <TextObject Name="Text7" Left="510.3" Width="56.7" Height="18.9" Border.Lines="All" Fill.Color="" BeforePrintEvent="Text7_BeforePrint" Text="[Гараж.Год] г." Font="Arial, 10pt"/>
+      <TextObject Name="Text10" Left="623.7" Width="75.6" Height="18.9" Border.Lines="All" Text="[Гараж.Пробег]" HorzAlign="Center" Font="Arial, 10pt"/>
+    </DataBand>
+    <PageFooterBand Name="PageFooter1" Top="97.05" Width="1047.06" Height="18.9">
+      <TextObject Name="Text9" Left="415.8" Width="226.8" Height="18.9" Fill.Color="" Text="Стр.[Page#] из [TotalPages#]" HorzAlign="Center" Font="Arial, 10pt"/>
+    </PageFooterBand>
+  </ReportPage>
+</Report>

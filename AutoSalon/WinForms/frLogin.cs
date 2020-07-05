@@ -13,7 +13,8 @@ public partial class frLogin : System.Windows.Forms.Form
                         TextEdit_server.Text.ToString(),
                         TextEdit_db.Text.ToString(),
                         TextEdit_Login.Text.ToString(),
-                        TextEdit_Pass.Text.ToString()))
+                        TextEdit_Pass.Text.ToString(), 
+                        checkBoxWinAuten.Checked))
         {
             // проверяем регистрацию в базе
             var dt = clsSql.ExecuteSP("dbo.ШтатСотрудники_SIUD", "@Логин", TextEdit_Login.Text.ToString()).dataTable;
@@ -55,5 +56,10 @@ public partial class frLogin : System.Windows.Forms.Form
     private void checkEdit1_CheckedChanged(object sender, EventArgs e)
     {
         TextEdit_Pass.PasswordChar = !checkEdit1.Checked ? (char)'•' : Char.MinValue;
+    }
+
+    private void checkBox1_CheckedChanged(object sender, EventArgs e)
+    {
+        panel1.Enabled = !checkBoxWinAuten.Checked;
     }
 }

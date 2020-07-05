@@ -65,6 +65,7 @@
             this.LookUpEditСтраны.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.LookUpEditСтраны.DisplayMember = "Наименование";
+            this.LookUpEditСтраны.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.LookUpEditСтраны.Location = new System.Drawing.Point(12, 76);
             this.LookUpEditСтраны.Name = "LookUpEditСтраны";
             this.LookUpEditСтраны.Size = new System.Drawing.Size(372, 21);

@@ -3,11 +3,10 @@
   [UIDМарки] [uniqueidentifier] NOT NULL,
   [UIDМодели] [uniqueidentifier] NOT NULL,
   [UIDПоколения] [uniqueidentifier] NOT NULL,
-  [UIDСтоимсти] [uniqueidentifier] NOT NULL,
+  [UIDСтоимости] [uniqueidentifier] NOT NULL,
   [IdСтатусАвто] [tinyint] NOT NULL,
   [IdТипТоплива] [tinyint] NOT NULL,
   [IdТипПривода] [tinyint] NOT NULL,
-  [IdТипКузова] [tinyint] NOT NULL,
   [IdТипРуля] [tinyint] NOT NULL,
   [IdТипКПП] [tinyint] NOT NULL,
   [UIDАвтора] [uniqueidentifier] NOT NULL DEFAULT ([dbo].[ШтатПолучитьUIDСотрудника]()),
@@ -24,6 +23,11 @@
   CONSTRAINT [PK_ГаражАвто_UIDТовара] PRIMARY KEY CLUSTERED ([UIDТовара])
 )
 ON [PRIMARY]
+GO
+
+CREATE INDEX [IDX_ГаражАвто_VIN]
+  ON [dbo].[ГаражАвто] ([VIN])
+  ON [PRIMARY]
 GO
 
 ALTER TABLE [dbo].[ГаражАвто]
@@ -47,10 +51,6 @@ ALTER TABLE [dbo].[ГаражАвто]
 GO
 
 ALTER TABLE [dbo].[ГаражАвто]
-  ADD CONSTRAINT [FK_ГаражАвто_АвтоТипКузова_IdТипКузова] FOREIGN KEY ([IdТипКузова]) REFERENCES [dbo].[АвтоТипКузова] ([IdТипКузова])
-GO
-
-ALTER TABLE [dbo].[ГаражАвто]
   ADD CONSTRAINT [FK_ГаражАвто_АвтоТипПривода_IdТипПривода] FOREIGN KEY ([IdТипПривода]) REFERENCES [dbo].[АвтоТипПривода] ([IdТипПривода])
 GO
 
@@ -64,10 +64,6 @@ GO
 
 ALTER TABLE [dbo].[ГаражАвто]
   ADD CONSTRAINT [FK_ГаражАвто_ГаражСтатусАвто_IdСтатусАвто] FOREIGN KEY ([IdСтатусАвто]) REFERENCES [dbo].[ГаражСтатусАвто] ([IdСтатусАвто])
-GO
-
-ALTER TABLE [dbo].[ГаражАвто]
-  ADD CONSTRAINT [FK_ГаражАвто_ГаражСтоимостьАвто_UIDСтоимостиАвто] FOREIGN KEY ([UIDСтоимсти]) REFERENCES [dbo].[ГаражСтоимостьАвто] ([UIDСтоимостиАвто])
 GO
 
 ALTER TABLE [dbo].[ГаражАвто]
