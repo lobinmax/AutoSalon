@@ -34,7 +34,7 @@ BEGIN
         INNER JOIN АвтоТипКузова атк
             ON po.IdТипКузова = атк.IdТипКузова
         WHERE (@UIDМодели IS NULL OR mo.UIDМодели = @UIDМодели)
-            ORDER BY ma.Наименование, mo.Наименование, po.Наименование  
+            ORDER BY [Начало производства]
     END
         
     -- select
@@ -50,7 +50,8 @@ BEGIN
                ап.[Начало производства], 
                ап.[Окончание производства]
         FROM vАвтоПоколения ап
-        WHERE (@UIDМодели IS NULL OR ап.UIDМодели = @UIDМодели)
+        WHERE (@UIDПоколения IS NULL OR ап.UIDПоколения = @UIDПоколения)
+            AND (@UIDМодели IS NULL OR ап.UIDМодели = @UIDМодели)
         ORDER BY ап.Марка, ап.Модель, ап.Поколение
     END       
           
@@ -60,8 +61,9 @@ BEGIN
           
         BEGIN TRANSACTION 
     
-        INSERT АвтоПоколение (UIDМодели, UIDМарки, Наименование, IdТипКузова, НачалоПроизводства, ОкончаниеПроизводства)
-        VALUES (@UIDМодели, @UIDМарки, @Поколение, @IdТипКузова, @НачалоПроизводства, @ОкончаниеПроизводства) 
+        SET @UIDПоколения = NEWID()
+        INSERT АвтоПоколение (UIDПоколения, UIDМодели, UIDМарки, Наименование, IdТипКузова, НачалоПроизводства, ОкончаниеПроизводства)
+        VALUES (@UIDПоколения, @UIDМодели, @UIDМарки, @Поколение, @IdТипКузова, @НачалоПроизводства, @ОкончаниеПроизводства) 
 
         IF (@@ERROR != 0 OR @@TRANCOUNT = 0) 
         BEGIN 
@@ -107,6 +109,6 @@ BEGIN
         IF @@TRANCOUNT != 0 BEGIN COMMIT TRANSACTION END   	
     END	
 
-    IF @Function IN (2, 3) BEGIN SELECT SCOPE_IDENTITY() END 
+    IF @Function IN (2, 3) BEGIN SELECT @UIDПоколения END 
 END
 GO

@@ -139,6 +139,8 @@
             // 
             // checkBoxWinAuten
             // 
+            this.checkBoxWinAuten.Checked = true;
+            this.checkBoxWinAuten.CheckState = System.Windows.Forms.CheckState.Checked;
             this.checkBoxWinAuten.Location = new System.Drawing.Point(319, 156);
             this.checkBoxWinAuten.Name = "checkBoxWinAuten";
             this.checkBoxWinAuten.Size = new System.Drawing.Size(231, 19);
@@ -153,6 +155,7 @@
             this.panel1.Controls.Add(this.checkEdit1);
             this.panel1.Controls.Add(this.labelControl3);
             this.panel1.Controls.Add(this.TextEdit_Pass);
+            this.panel1.Enabled = false;
             this.panel1.Location = new System.Drawing.Point(317, 12);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(248, 126);

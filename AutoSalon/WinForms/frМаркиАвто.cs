@@ -198,7 +198,7 @@ public partial class frМаркиАвто : Form
             var result = dlgEditАвтоПоколения.ShowDialog();
             if (result == System.Windows.Forms.DialogResult.OK)
             {
-                ОбновитьМодели(dlgEditАвтоПоколения.NewRecord);
+                ОбновитьПоколения(dlgEditАвтоПоколения.NewRecord);
             }
         }
     }
@@ -215,7 +215,7 @@ public partial class frМаркиАвто : Form
             var result = dlgEditАвтоПоколения.ShowDialog();
             if (result == System.Windows.Forms.DialogResult.OK)
             {
-                ОбновитьМодели(dlgEditАвтоПоколения.NewRecord);
+                ОбновитьПоколения(dlgEditАвтоПоколения.NewRecord);
             }
         }
     }

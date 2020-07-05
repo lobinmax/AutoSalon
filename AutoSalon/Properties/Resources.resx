@@ -145,10 +145,10 @@
   <data name="Contact_16x16" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Contact_16x16.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="АвтоНаПродаже" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\отчеты\автонапродаже.frx;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
   <data name="СписокЗаказов" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\отчеты\списокзаказов.frx;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="АвтоНаПродаже" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\отчеты\автонапродаже.frx;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
 </root>

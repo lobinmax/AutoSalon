@@ -20,7 +20,10 @@ public partial class dlgEditАвтоМодели : Form
     private void dlgEditАвтоМодели_Load(object sender, EventArgs e)
     {
         this.Text = "Добавить запись";
-        var dt = clsSql.ExecuteSP("dbo.АвтоМодели_SIUD", clsMisc.ASSqlFunction.Select, "@UIDМодели", ForeigenKey).dataTable;
+        var dt = clsSql.ExecuteSP(
+            "dbo.АвтоМодели_SIUD", clsMisc.ASSqlFunction.Select, 
+            "@UIDМодели", ForeigenKey, 
+            "@UIDМарки", UIDМарки).dataTable;
         var dr = dt.RowsDR().FirstOrDefault();
         textEditМарка.Text = (string)clsMisc.DBout(dr["Марка"]);
 

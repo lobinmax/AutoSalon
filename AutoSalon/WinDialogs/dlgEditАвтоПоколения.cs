@@ -23,7 +23,12 @@ public partial class dlgEditАвтоПоколения : Form
     {
         this.Text = "Добавить запись";
         comboBoxТипКузова.ASНастроитьВыпадалку_SP("СписокФильтров_ТипКузова", "Id", "Name", 0, "@Все", 0);
-        var dt = clsSql.ExecuteSP("dbo.АвтоПоколения_SIUD", clsMisc.ASSqlFunction.Select, "@UIDМодели", UIDМодели).dataTable;
+        var dt = clsSql.ExecuteSP(
+            "dbo.АвтоПоколения_SIUD", clsMisc.ASSqlFunction.Select, 
+            "@UIDПоколения", ForeigenKey, 
+            "@UIDМодели", UIDМодели, 
+            "@UIDМарки", UIDМарки).dataTable;
+
         var dr = dt.RowsDR().FirstOrDefault();
         textEditМарка.Text = (string)clsMisc.DBout(dr["Марка"]);
         textEditМодель.Text = (string)clsMisc.DBout(dr["Модель"]);

@@ -88,7 +88,7 @@ public partial class frКлиенты : Form
         {
             clsSql.ExecuteSPNonQuery("dbo.Клиенты_SIUD",
                                       clsMisc.ASSqlFunction.Delete, 
-                                      "@UIDКлиента", clsMisc.DBin(focusDR.Cells["UIDКлиента"]));
+                                      "@UIDКлиента", clsMisc.DBin(focusDR.Cells["UIDКлиента"].Value));
             Обновить();
         }
     }

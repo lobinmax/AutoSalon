@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Data;
 using System.Linq;
 using System.Windows.Forms;
 
@@ -13,12 +14,14 @@ public partial class dlgEditНайденныеКлиенты : Form
 
     private void buttonПоискКлиента_Click(object sender, EventArgs e)
     {
-        if (!string.IsNullOrWhiteSpace(textBoxСтрокаПоиска.Text))
+        if (string.IsNullOrWhiteSpace(textBoxСтрокаПоиска.Text) && !checkBox1.Checked)
         {
-            var КлиентыDT = clsSql.ExecuteSP("КлиентаПоискПоФИО", "@ФИОПоиска", textBoxСтрокаПоиска.Text).dataTable;
+            ((DataTable)gridViewНайденныеКлиенты.DataSource).Rows.Clear();
+            return;
+        }
+            var КлиентыDT = clsSql.ExecuteSP("КлиентаПоискПоФИО", "@ФИОПоиска", clsMisc.DBin(textBoxСтрокаПоиска.Text)).dataTable;
             gridViewНайденныеКлиенты.DataSource = КлиентыDT;
             gridViewНайденныеКлиенты.ASНастроитьGridView(true, "UIDКлиента");
-        }
     }
 
     private void simpleButtonСохранить_Click(object sender, EventArgs e)
@@ -35,5 +38,10 @@ public partial class dlgEditНайденныеКлиенты : Form
     private void simpleButtonОтменить_Click(object sender, EventArgs e)
     {
         DialogResult = DialogResult.Cancel;
+    }
+
+    private void checkBox1_CheckedChanged(object sender, EventArgs e)
+    {
+        textBoxСтрокаПоиска.Enabled = !checkBox1.Checked;
     }
 }

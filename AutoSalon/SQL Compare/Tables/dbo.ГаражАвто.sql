@@ -25,6 +25,11 @@
 ON [PRIMARY]
 GO
 
+CREATE INDEX [IDX_ГаражАвто_VIN]
+  ON [dbo].[ГаражАвто] ([VIN])
+  ON [PRIMARY]
+GO
+
 ALTER TABLE [dbo].[ГаражАвто]
   ADD CONSTRAINT [FK_ГаражАвто_UIDИзменяющего] FOREIGN KEY ([UIDИзменяющего]) REFERENCES [dbo].[ШтатСотрудники] ([UIDСотрудника])
 GO
