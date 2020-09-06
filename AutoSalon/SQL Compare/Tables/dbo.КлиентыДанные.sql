@@ -22,6 +22,11 @@
 ON [PRIMARY]
 GO
 
+CREATE UNIQUE INDEX [IDX_КлиентыДанные]
+  ON [dbo].[КлиентыДанные] ([Фамилия], [Имя], [Отчество], [ПД Дата рождения])
+  ON [PRIMARY]
+GO
+
 ALTER TABLE [dbo].[КлиентыДанные]
   ADD CONSTRAINT [FK_КлиентыДанные_IdПола] FOREIGN KEY ([IdПола]) REFERENCES [dbo].[КлиентыПол] ([IdПола])
 GO

@@ -14,9 +14,10 @@ public partial class dlgEditНайденныеКлиенты : Form
 
     private void buttonПоискКлиента_Click(object sender, EventArgs e)
     {
-        if (string.IsNullOrWhiteSpace(textBoxСтрокаПоиска.Text) && !checkBox1.Checked)
+        if (string.IsNullOrEmpty(textBoxСтрокаПоиска.Text) && !checkBox1.Checked)
         {
-            ((DataTable)gridViewНайденныеКлиенты.DataSource).Rows.Clear();
+
+            ((DataTable)gridViewНайденныеКлиенты.DataSource)?.Rows.Clear();
             return;
         }
             var КлиентыDT = clsSql.ExecuteSP("КлиентаПоискПоФИО", "@ФИОПоиска", clsMisc.DBin(textBoxСтрокаПоиска.Text)).dataTable;

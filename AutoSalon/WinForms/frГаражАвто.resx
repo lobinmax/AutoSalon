@@ -184,7 +184,7 @@
     <value>Microsoft Sans Serif, 9.75pt, style=Bold, Italic</value>
   </data>
   <data name="label12.Location" type="System.Drawing.Point, System.Drawing">
-    <value>536, 15</value>
+    <value>528, 15</value>
   </data>
   <data name="label12.Size" type="System.Drawing.Size, System.Drawing">
     <value>180, 16</value>
@@ -373,7 +373,7 @@
     <value>NoControl</value>
   </data>
   <data name="label13.Location" type="System.Drawing.Point, System.Drawing">
-    <value>479, 9</value>
+    <value>471, 9</value>
   </data>
   <data name="label13.Size" type="System.Drawing.Size, System.Drawing">
     <value>237, 16</value>

@@ -92,6 +92,24 @@
     <Compile Include="WinDialogs\dlgEditАвтоПоколения.Designer.cs">
       <DependentUpon>dlgEditАвтоПоколения.cs</DependentUpon>
     </Compile>
+    <Compile Include="WinDialogs\dlgEditВидыРемонта.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="WinDialogs\dlgEditВидыРемонта.Designer.cs">
+      <DependentUpon>dlgEditВидыРемонта.cs</DependentUpon>
+    </Compile>
+    <Compile Include="WinDialogs\dlgEditГрафикТО.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="WinDialogs\dlgEditГрафикТО.Designer.cs">
+      <DependentUpon>dlgEditГрафикТО.cs</DependentUpon>
+    </Compile>
+    <Compile Include="WinDialogs\dlgEditЗапчасти.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="WinDialogs\dlgEditЗапчасти.Designer.cs">
+      <DependentUpon>dlgEditЗапчасти.cs</DependentUpon>
+    </Compile>
     <Compile Include="WinDialogs\dlgEditКлиенты.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -176,6 +194,12 @@
     <Compile Include="WinForms\frГаражАвто.Designer.cs">
       <DependentUpon>frГаражАвто.cs</DependentUpon>
     </Compile>
+    <Compile Include="WinForms\frГрафикТО.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="WinForms\frГрафикТО.Designer.cs">
+      <DependentUpon>frГрафикТО.cs</DependentUpon>
+    </Compile>
     <Compile Include="WinForms\frЗаказы.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -232,6 +256,15 @@
     <EmbeddedResource Include="WinDialogs\dlgEditАвтоПоколения.resx">
       <DependentUpon>dlgEditАвтоПоколения.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="WinDialogs\dlgEditВидыРемонта.resx">
+      <DependentUpon>dlgEditВидыРемонта.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="WinDialogs\dlgEditГрафикТО.resx">
+      <DependentUpon>dlgEditГрафикТО.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="WinDialogs\dlgEditЗапчасти.resx">
+      <DependentUpon>dlgEditЗапчасти.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="WinDialogs\dlgEditКлиенты.resx">
       <DependentUpon>dlgEditКлиенты.cs</DependentUpon>
     </EmbeddedResource>
@@ -273,6 +306,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="WinForms\frГаражАвто.resx">
       <DependentUpon>frГаражАвто.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="WinForms\frГрафикТО.resx">
+      <DependentUpon>frГрафикТО.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="WinForms\frЗаказы.resx">
       <DependentUpon>frЗаказы.cs</DependentUpon>

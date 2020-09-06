@@ -106,7 +106,18 @@ public partial class frГаражАвто : Form
 
         if (FocusDR != null && e.Button == MouseButtons.Right)
         {
-            menu.Items.Add("Оформить заказ", AutoSalon.Properties.Resources.Contact_16x16, ОформитьЗаказ);
+            var ОформитьЗаказItem = new ToolStripMenuItem("Оформить заказ", AutoSalon.Properties.Resources.Contact_16x16, ОформитьЗаказ)
+            {
+                Enabled = ((string)FocusDR.Cells["Статус"].Value != "Продано")
+            };
+            menu.Items.Add(ОформитьЗаказItem);
+
+            var ОткрытьТОItem = new ToolStripMenuItem("Открыть график ТО", AutoSalon.Properties.Resources.Contact_16x16, ОткрытьГрафикТО)
+            {
+                Enabled = ((string)FocusDR.Cells["Статус"].Value != "Продано")
+            };
+            menu.Items.Add(ОткрытьТОItem);
+
             menu.Items.Add(new ToolStripSeparator());
         } 
         
@@ -156,7 +167,7 @@ public partial class frГаражАвто : Form
     }
     private void simpleButtonУдалить_Click(object sender, EventArgs e) { УдалитьТовар(sender, e); }
 
-    void ОформитьЗаказ(object sender, EventArgs e)
+    private void ОформитьЗаказ(object sender, EventArgs e)
     {
         var FocusDR = gridViewГараж.SelectedRows.Cast<DataGridViewRow>().SingleOrDefault();
         using (var dlgEditЗаказ = new dlgEditОформитьЗаказ((Guid)FocusDR.Cells["UIDТовара"].Value, null, clsMisc.ASSqlFunction.Insert))
@@ -166,6 +177,27 @@ public partial class frГаражАвто : Form
                 ОбновитьГараж();
             }
         }
+    }
+
+    private void ОткрытьГрафикТО(object sender, EventArgs e)
+    {
+        var FocusDR = gridViewГараж.SelectedRows.Cast<DataGridViewRow>().SingleOrDefault();
+
+        var frГрафикТО = new frГрафикТО((Guid)FocusDR.Cells["UIDТовара"].Value);
+
+        foreach (MdiTabControl.TabPage tp in frMainForm.tabControl.TabPages)
+        {
+            var _form = (Form)tp.Form;
+            if (_form.Name == frГрафикТО.Name)
+            {
+                tp.Show();
+                tp.Select();
+                _form.Refresh();
+                _form.Update();
+                return;
+            }
+        }
+        frMainForm.tabControl.TabPages.Add(frГрафикТО);
     }
 
     #endregion
@@ -370,5 +402,5 @@ public partial class frГаражАвто : Form
     }
 
     #endregion
-
+     
 }

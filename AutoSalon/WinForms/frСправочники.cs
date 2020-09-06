@@ -7,7 +7,7 @@ public partial class frСправочники : Form
     {
         InitializeComponent();
     }
-
+    
     private void frСправочники_Load(object sender, EventArgs e)
     {
         tabControl1_SelectedIndexChanged(sender, e);
@@ -107,6 +107,45 @@ public partial class frСправочники : Form
                         "UIDСтраны",
                         "dbo.Страны_SIUD",
                         "dlgEditСтраны", () => gridViewСтраны.ASНастроитьGridView(true, "UIDСтраны")
+                    ))
+                    break;
+            case "tabPageТО_ВидыРемонта":
+                using (var Страны = new clsDlgEditSimple
+                    (
+                        ButtonОбновить,
+                        ButtonДобавить,
+                        ButtonИзменить,
+                        ButtonУдалить,
+                        gridViewВидыРемонта,
+                        "IdВидаРемонта",
+                        "dbo.ТО_ВидыРемонта_SIUD",
+                        "dlgEditВидыРемонта", () => gridViewВидыРемонта.ASНастроитьGridView(true, "IdВидаРемонта")
+                    ))
+                    break;
+            case "tabPageГрафикТО":
+                using (var Страны = new clsDlgEditSimple
+                    (
+                        ButtonОбновить,
+                        ButtonДобавить,
+                        ButtonИзменить,
+                        ButtonУдалить,
+                        gridViewГрафикТО,
+                        "IdТО",
+                        "dbo.ТО_График_SIUD",
+                        "dlgEditГрафикТО", () => gridViewГрафикТО.ASНастроитьGridView(true, "IdТО")
+                    ))
+                    break;
+            case "tabPageЗапчати":
+                using (var Страны = new clsDlgEditSimple
+                    (
+                        ButtonОбновить,
+                        ButtonДобавить,
+                        ButtonИзменить,
+                        ButtonУдалить,
+                        dataGridЗапчасти,
+                        "IdЗапчасти",
+                        "dbo.ТО_Запчасти_SIUD",
+                        "dlgEditЗапчасти", () => dataGridЗапчасти.ASНастроитьGridView(true, "IdЗапчасти")
                     ))
                     break;
 

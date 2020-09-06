@@ -3,34 +3,34 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
-using System.Text;
 using System.Linq;
+using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-public partial class dlgEditТипКПП : Form
+public partial class dlgEditЗапчасти : Form
 {
-    private string ForeigenKey;
+    private string IdЗапчасти;
     private clsMisc.ASSqlFunction sqlFunction;
 
-    public dlgEditТипКПП()
+    public dlgEditЗапчасти()
     {
         InitializeComponent();
     }
 
-    private void dlgEditТипКПП_Load(object sender, EventArgs e)
+    private void dlgEditЗапчасти_Load(object sender, EventArgs e)
     {
         var dicTag = (Dictionary<string, clsMisc.ASSqlFunction>)this.Tag;
         var keyValue = dicTag.SingleOrDefault();
-        ForeigenKey = keyValue.Key;
+        IdЗапчасти = keyValue.Key;
         sqlFunction = keyValue.Value;
         this.Text = "Добавить запись";
 
         if (sqlFunction == clsMisc.ASSqlFunction.Update)
         {
-            var dr = clsSql.ExecuteSP("dbo.АвтоТипКПП_SIUD", clsMisc.ASSqlFunction.ViewForm, "@IdТипКПП", ForeigenKey).dataTable.RowsDR().SingleOrDefault();
-            textEditНаименование.Text = (string) clsMisc.DBout(dr["Наименование"]);
-            textEditНаименованиеСокр.Text = (string) clsMisc.DBout(dr["Наименование сокр."]);
+            var dr = clsSql.ExecuteSP("dbo.ТО_Запчасти_SIUD", clsMisc.ASSqlFunction.ViewForm, "@IdЗапчасти", IdЗапчасти).dataTable.RowsDR().SingleOrDefault();
+            textEditНаименование.Text = (string)clsMisc.DBout(dr["Наименование"]);
+            numericСтоимость.Value = (decimal)clsMisc.DBout(dr["Стоимость"]);
             this.Text = "Изменить запись";
         }
     }
@@ -39,16 +39,16 @@ public partial class dlgEditТипКПП : Form
 
     private void simpleButtonСохранить_Click(object sender, EventArgs e)
     {
-        if (!clsMisc.CheckFields(textEditНаименование.Text, 
-                                 textEditНаименованиеСокр.Text))
+        if (!clsMisc.CheckFields(textEditНаименование.Text,
+                                    numericСтоимость.Value))
         {
             return;
         }
 
-        var response = clsSql.ExecuteSP("АвтоТипКПП_SIUD", this.sqlFunction,
-            "@IdТипКПП", this.ForeigenKey,
+        var response = clsSql.ExecuteSP("ТО_Запчасти_SIUD", this.sqlFunction,
+            "@IdЗапчасти", this.IdЗапчасти,
             "@Наименование", clsMisc.DBin(textEditНаименование.Text),
-            "@НаименованиеСокр", clsMisc.DBin(textEditНаименованиеСокр.Text));
+            "@Стоимость", clsMisc.DBin(numericСтоимость.Value.ToString()));
 
         if ((bool)response.success)
         {

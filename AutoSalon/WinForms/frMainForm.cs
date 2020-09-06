@@ -4,6 +4,13 @@ using System.Windows.Forms;
 
 public partial class frMainForm : Form
 {
+    public static MdiTabControl.TabControl tabControl
+    {
+        get
+        {
+            return tabControlMDI;
+        }
+    }
 
     public frMainForm()
     {
@@ -126,6 +133,24 @@ public partial class frMainForm : Form
         tabControlMDI.TabPages.Add(frЗаказы);
     }
 
+    //public static void ОткрытьВкладку(Form form)
+    //{
+    //    var frЗаказы = new frЗаказы();
+    //    foreach (MdiTabControl.TabPage tp in tabControlMDI.TabPages)
+    //    {
+    //        var _form = (Form)tp.Form;
+    //        if (_form.Name == form.Name)
+    //        {
+    //            tp.Show();
+    //            tp.Select();
+    //            _form.Refresh();
+    //            _form.Update();
+    //            return;
+    //        }
+    //    }
+    //    tabControlMDI.TabPages.Add(form);
+    //}
+
     private void автомобилеНаПродажеToolStripMenuItem_Click(object sender, EventArgs e)
     {
         var fReport = new FastReport.Report();
@@ -148,5 +173,10 @@ public partial class frMainForm : Form
             fReport.Show(true, this);
             fReport.Dispose();
         }
+    }
+
+    private void frMainForm_FormClosed(object sender, FormClosedEventArgs e)
+    {
+        Application.Exit();
     }
 }

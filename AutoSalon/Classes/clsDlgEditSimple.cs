@@ -67,8 +67,8 @@ class clsDlgEditSimple: IDisposable
     private void ДобавитьClick(object sender, EventArgs e)
     {
         // форма из переменной 
-        Type myForm = Type.GetType(this.dlgEditForm);
-        ConstructorInfo constructor = myForm.GetConstructor(new Type[] { });
+        Type myDlgForm = Type.GetType(this.dlgEditForm);
+        ConstructorInfo constructor = myDlgForm.GetConstructor(new Type[] { });
         Form form = (Form)constructor.Invoke(new object[] { });
 
         // параметры запроса передаем через Тэг формы
@@ -77,7 +77,7 @@ class clsDlgEditSimple: IDisposable
         form.Tag = QueryParameters;
 
         var result = form.ShowDialog();
-        if (result == System.Windows.Forms.DialogResult.OK)
+        if (result == DialogResult.OK)
         {
             Обновить(clsMisc.DBout(form.Tag));
         }
@@ -95,7 +95,7 @@ class clsDlgEditSimple: IDisposable
         form.Tag = QueryParameters;
 
         var result = form.ShowDialog();
-        if (result == System.Windows.Forms.DialogResult.OK)
+        if (result == DialogResult.OK)
         {
             Обновить(clsMisc.DBout(form.Tag));
         }

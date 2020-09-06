@@ -113,6 +113,9 @@ BEGIN
         DELETE FROM Заказы
         WHERE UIDЗаказа = @UIDЗаказа
 
+        DELETE ТО_Факт
+        WHERE UIDТовара = @UIDТовара
+
         IF (@@ERROR != 0 OR @@TRANCOUNT = 0) 
         BEGIN 
             IF @@TRANCOUNT > 0 ROLLBACK TRANSACTION   
@@ -120,6 +123,18 @@ BEGIN
         IF @@TRANCOUNT != 0 BEGIN COMMIT TRANSACTION END   	
         END 
 
-    IF @Function IN (2, 3) BEGIN SELECT @UIDЗаказа AS id END 
+    IF @Function IN (2, 3) 
+    BEGIN 
+        UPDATE ГаражАвто 
+        SET IdСтатусАвто = (
+                                SELECT TOP (1) гса.IdСтатусАвто 
+                                FROM ГаражСтатусАвто гса 
+                                WHERE гса.Наименование = 'Продано'
+                           ) 
+        WHERE UIDТовара = @UIDТовара
+        EXEC ТО_СоставитьГрафик @UIDТовара
+
+        SELECT @UIDЗаказа AS id 
+    END 
 END
 GO

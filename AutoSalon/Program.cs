@@ -18,6 +18,5 @@ static class Program
         Application.SetCompatibleTextRenderingDefault(false);
         ProductName = Application.ProductName;
         Application.Run(new frLogin());
-
     }
 }
