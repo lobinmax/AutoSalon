@@ -1,5 +1,5 @@
 ﻿CREATE TABLE [dbo].[ТО_ВидыРемонта] (
-  [IdВидаРемонта] [tinyint] IDENTITY (0, 1),
+  [IdВидаРемонта] [int] IDENTITY (0, 1),
   [Наименование] [varchar](200) NOT NULL,
   [Стоимость] [money] NOT NULL,
   CONSTRAINT [PK_ТО_ВидыРемонта_IdВидаРемонта] PRIMARY KEY CLUSTERED ([IdВидаРемонта])

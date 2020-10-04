@@ -176,6 +176,18 @@
     <Compile Include="WinDialogs\dlgEditТипыСтатусовЗаказа.Designer.cs">
       <DependentUpon>dlgEditТипыСтатусовЗаказа.cs</DependentUpon>
     </Compile>
+    <Compile Include="WinDialogs\dlgEditТО_Запчасти.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="WinDialogs\dlgEditТО_Запчасти.Designer.cs">
+      <DependentUpon>dlgEditТО_Запчасти.cs</DependentUpon>
+    </Compile>
+    <Compile Include="WinDialogs\dlgEditТО_ВидРаботы.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="WinDialogs\dlgEditТО_ВидРаботы.Designer.cs">
+      <DependentUpon>dlgEditТО_ВидРаботы.cs</DependentUpon>
+    </Compile>
     <Compile Include="WinForms\frMainForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -297,6 +309,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="WinDialogs\dlgEditТипыСтатусовЗаказа.resx">
       <DependentUpon>dlgEditТипыСтатусовЗаказа.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="WinDialogs\dlgEditТО_Запчасти.resx">
+      <DependentUpon>dlgEditТО_Запчасти.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="WinDialogs\dlgEditТО_ВидРаботы.resx">
+      <DependentUpon>dlgEditТО_ВидРаботы.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="WinForms\frMainForm.resx">
       <DependentUpon>frMainForm.cs</DependentUpon>

@@ -19,7 +19,7 @@ public partial class frСправочники : Form
         switch (page.Name)
         {
             case "tabPageТипыКПП":
-                using (var КПП = new clsDlgEditSimple
+                using (var f = new clsDlgEditSimple
                     (
                         ButtonОбновить,
                         ButtonДобавить,
@@ -32,7 +32,7 @@ public partial class frСправочники : Form
                     ))
                 break;
             case "tabPageТипыКузова":
-                using (var ТипКузова = new clsDlgEditSimple
+                using (var f = new clsDlgEditSimple
                     (
                         ButtonОбновить,
                         ButtonДобавить,
@@ -45,7 +45,7 @@ public partial class frСправочники : Form
                     ))
                 break;
             case "tabPageТипыПривода":
-                using (var ТипПривода = new clsDlgEditSimple
+                using (var f = new clsDlgEditSimple
                     (
                         ButtonОбновить,
                         ButtonДобавить,
@@ -58,7 +58,7 @@ public partial class frСправочники : Form
                     ))
                 break;
             case "tabPageТипыТоплива":
-                using (var ТипТоплива = new clsDlgEditSimple
+                using (var f = new clsDlgEditSimple
                     (
                         ButtonОбновить,
                         ButtonДобавить,
@@ -71,7 +71,7 @@ public partial class frСправочники : Form
                     ))
                     break;
             case "tabPageЗаказыСтатусы":
-                using (var СтатусЗаказа = new clsDlgEditSimple
+                using (var f = new clsDlgEditSimple
                     (
                         ButtonОбновить,
                         ButtonДобавить,
@@ -84,7 +84,7 @@ public partial class frСправочники : Form
                     ))
                     break;
             case "tabPageСтатусыТовара":
-                using (var СтатусЗаказа = new clsDlgEditSimple
+                using (var f = new clsDlgEditSimple
                     (
                         ButtonОбновить,
                         ButtonДобавить,
@@ -97,7 +97,7 @@ public partial class frСправочники : Form
                     ))
                     break;
             case "tabPageСтраны":
-                using (var Страны = new clsDlgEditSimple
+                using (var f = new clsDlgEditSimple
                     (
                         ButtonОбновить,
                         ButtonДобавить,
@@ -110,7 +110,7 @@ public partial class frСправочники : Form
                     ))
                     break;
             case "tabPageТО_ВидыРемонта":
-                using (var Страны = new clsDlgEditSimple
+                using (var f = new clsDlgEditSimple
                     (
                         ButtonОбновить,
                         ButtonДобавить,
@@ -123,7 +123,7 @@ public partial class frСправочники : Form
                     ))
                     break;
             case "tabPageГрафикТО":
-                using (var Страны = new clsDlgEditSimple
+                using (var f = new clsDlgEditSimple
                     (
                         ButtonОбновить,
                         ButtonДобавить,
@@ -136,7 +136,7 @@ public partial class frСправочники : Form
                     ))
                     break;
             case "tabPageЗапчати":
-                using (var Страны = new clsDlgEditSimple
+                using (var f = new clsDlgEditSimple
                     (
                         ButtonОбновить,
                         ButtonДобавить,

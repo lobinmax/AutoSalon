@@ -13,10 +13,10 @@ public partial class frСотрудники : Form
     private void frСотрудники_Load(object sender, EventArgs e)
     {
         Обновить();
-        gridViewСотрудники.ASНастроитьGridView(gridColumnVisible: "UIDСотрудника");
+        gridViewСотрудники.ASНастроитьGridView(true, gridColumnVisible: "UIDСотрудника");
         ASTimer timer = new ASTimer(gridViewСотрудники, 
                                     new List<Button> { buttonИзменить, buttonУдалить }
-                                    ) { Enabled = true };
+                                    );
     }
 
     void Обновить(object value = null)

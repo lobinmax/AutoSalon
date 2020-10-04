@@ -16,7 +16,7 @@ public partial class frКлиенты : Form
             (
                 gridViewКлиента,
                 new List<Button> { this.buttonИзменитьКлиента, this.buttonУдалитьКлиента }
-            ) { Enabled = true };
+            );
 
         Обновить();
     }

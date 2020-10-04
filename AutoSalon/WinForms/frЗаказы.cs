@@ -21,8 +21,7 @@ public partial class frЗаказы : Form
         (
             gridViewЗаказы,
             new List<Button> { this.buttonИзменитьЗаказ, this.buttonУдалитьЗаказ }
-        )
-        { Enabled = true };
+        );
 
         Обновить();
     }

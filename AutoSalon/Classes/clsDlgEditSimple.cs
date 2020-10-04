@@ -61,7 +61,7 @@ class clsDlgEditSimple: IDisposable
 
         ASTimer timer = new ASTimer(gridView,
                                     new List<Button> { this.btnИзменить, this.btnУдалить }
-                                    ) { Enabled = true };
+                                    );
     }
 
     private void ДобавитьClick(object sender, EventArgs e)

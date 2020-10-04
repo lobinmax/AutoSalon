@@ -7,6 +7,7 @@ CREATE PROCEDURE [dbo].[Заказы_SIUD]
     @UIDКлиента AS UNIQUEIDENTIFIER = NULL,
     @IdСтатусаЗаказа AS TINYINT = NULL,
     @СуммаОплаты AS MONEY = NULL,
+    @СформироватьГрафикТО AS BIT = 0,
     @Function AS INT = 0
 AS 
 BEGIN
@@ -27,6 +28,7 @@ BEGIN
               ,dbo.ШтатПолучитьФИОкратко(з.UIDАвтора) AS [Автор записи]
               ,з.ДатаИзменения AS [Дата изменения]
               ,dbo.ШтатПолучитьФИОкратко(з.UIDИзменяющего) AS [Автор изменений]
+              ,CASE WHEN NOT EXISTS(SELECT * FROM ТО_Факт тф WHERE тф.UIDТовара = з.UIDТовара) THEN 'НЕ сформирован' ELSE 'Сформирован' END AS [График ТО]
         FROM Заказы з
         INNER JOIN ЗаказыСтатусы зс 
             ON з.IdСтатусаЗаказа = зс.IdСтатусЗаказа
@@ -44,6 +46,7 @@ BEGIN
               ,з.ДатаЗаказа
               ,з.IdСтатусаЗаказа
               ,з.СуммаОплаты
+              ,CASE WHEN NOT EXISTS(SELECT * FROM ТО_Факт тф WHERE тф.UIDТовара = з.UIDТовара) THEN 0 ELSE 1 END AS [СформированГрафикТО]
         FROM Заказы з
         WHERE з.UIDЗаказа = @UIDЗаказа 
     END 
@@ -132,7 +135,11 @@ BEGIN
                                 WHERE гса.Наименование = 'Продано'
                            ) 
         WHERE UIDТовара = @UIDТовара
-        EXEC ТО_СоставитьГрафик @UIDТовара
+        
+        IF (@СформироватьГрафикТО = 1 AND NOT EXISTS(SELECT * FROM ТО_Факт тф WHERE тф.UIDТовара = @UIDТовара))
+        BEGIN
+        	EXEC ТО_СоставитьГрафик @UIDТовара
+        END
 
         SELECT @UIDЗаказа AS id 
     END 

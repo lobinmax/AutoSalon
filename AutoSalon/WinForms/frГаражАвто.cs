@@ -22,7 +22,7 @@ public partial class frГаражАвто : Form
     {
         ASTimer timer = new ASTimer(gridViewГараж,
                                     new List<Button> { this.buttonИзменитьАвто, this.buttonУдалитьАвто }
-                                    ) { Enabled = true };
+                                    );
     }
 
     void ОбновитьГараж(object value = null)
@@ -101,28 +101,27 @@ public partial class frГаражАвто : Form
 
     private void gridViewГараж_MouseClick(object sender, MouseEventArgs e)
     {
-        var FocusDR = gridViewГараж.SelectedRows.Cast<DataGridViewRow>().SingleOrDefault();
+        var FocusDR = gridViewГараж.CurrentRow;
         var menu = new ContextMenuStrip();
 
         if (FocusDR != null && e.Button == MouseButtons.Right)
         {
             var ОформитьЗаказItem = new ToolStripMenuItem("Оформить заказ", AutoSalon.Properties.Resources.Contact_16x16, ОформитьЗаказ)
             {
-                Enabled = ((string)FocusDR.Cells["Статус"].Value != "Продано")
+                Enabled = !((string)FocusDR.Cells["Статус"].Value).Equals("Продано")
             };
             menu.Items.Add(ОформитьЗаказItem);
 
             var ОткрытьТОItem = new ToolStripMenuItem("Открыть график ТО", AutoSalon.Properties.Resources.Contact_16x16, ОткрытьГрафикТО)
             {
-                Enabled = ((string)FocusDR.Cells["Статус"].Value != "Продано")
+                Enabled = ((string)FocusDR.Cells["Статус"].Value).Equals("Продано")
             };
             menu.Items.Add(ОткрытьТОItem);
 
             menu.Items.Add(new ToolStripSeparator());
-        } 
-        
-        e.МенюДляAddEditDelete(menu, (DataGridView)sender, ДобавитьТовар, РедактироватьТовар, УдалитьТовар);
+        }
 
+        e.МенюДляAddEditDelete(menu, (DataGridView)sender, ДобавитьТовар, РедактироватьТовар, УдалитьТовар);
     }
     
     void ДобавитьТовар(object sender, EventArgs e)
@@ -188,7 +187,7 @@ public partial class frГаражАвто : Form
         foreach (MdiTabControl.TabPage tp in frMainForm.tabControl.TabPages)
         {
             var _form = (Form)tp.Form;
-            if (_form.Name == frГрафикТО.Name)
+            if (_form.Text == frГрафикТО.Text)
             {
                 tp.Show();
                 tp.Select();
@@ -402,5 +401,5 @@ public partial class frГаражАвто : Form
     }
 
     #endregion
-     
+    
 }

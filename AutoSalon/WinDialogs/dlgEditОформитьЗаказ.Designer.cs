@@ -98,6 +98,7 @@
             this.simpleButtonСохранить = new System.Windows.Forms.Button();
             this.simpleButtonОтменить = new System.Windows.Forms.Button();
             this.labelНомерЗаказа = new System.Windows.Forms.Label();
+            this.checkBoxСформироватьГрафикТО = new System.Windows.Forms.CheckBox();
             this.tabControl1.SuspendLayout();
             this.tabPageТовар.SuspendLayout();
             this.groupBox1.SuspendLayout();
@@ -121,6 +122,7 @@
             // 
             // tabPageТовар
             // 
+            this.tabPageТовар.Controls.Add(this.checkBoxСформироватьГрафикТО);
             this.tabPageТовар.Controls.Add(this.groupBox1);
             this.tabPageТовар.Controls.Add(this.textBoxОплачено);
             this.tabPageТовар.Controls.Add(this.label4);
@@ -857,6 +859,15 @@
             this.labelНомерЗаказа.Size = new System.Drawing.Size(0, 16);
             this.labelНомерЗаказа.TabIndex = 71;
             // 
+            // checkBoxСформироватьГрафикТО
+            // 
+            this.checkBoxСформироватьГрафикТО.Location = new System.Drawing.Point(427, 260);
+            this.checkBoxСформироватьГрафикТО.Name = "checkBoxСформироватьГрафикТО";
+            this.checkBoxСформироватьГрафикТО.Size = new System.Drawing.Size(334, 24);
+            this.checkBoxСформироватьГрафикТО.TabIndex = 71;
+            this.checkBoxСформироватьГрафикТО.Text = "Сформировать график технического обслуживания";
+            this.checkBoxСформироватьГрафикТО.UseVisualStyleBackColor = true;
+            // 
             // dlgEditОформитьЗаказ
             // 
             this.AcceptButton = this.simpleButtonСохранить;
@@ -964,4 +975,5 @@
     private System.Windows.Forms.Button buttonСоздатьКлиента;
     private System.Windows.Forms.Button buttonНайтиКлиента;
     private System.Windows.Forms.Label labelНомерЗаказа;
+    private System.Windows.Forms.CheckBox checkBoxСформироватьГрафикТО;
 }

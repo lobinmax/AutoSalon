@@ -112,6 +112,8 @@ public class ASTimer : Timer
         _gridView = gridView;
         _simpleButton = simpleButton;
         this.Tick += timer_Tick;
+        this.Enabled = true;
+        this.Start();
     }
 
     private void timer_Tick(object sender, EventArgs e)

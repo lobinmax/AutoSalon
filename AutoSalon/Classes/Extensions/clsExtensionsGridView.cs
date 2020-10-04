@@ -11,7 +11,7 @@ public static partial class clsExtensions
     /// <param name="IsHide">True - скрыть указанные, False - указанные оставить видимыми</param>
     /// <param name="gridColumnVisible"></param>
     static public void ASНастроитьGridView(this System.Windows.Forms.DataGridView gridView,
-                                           bool IsHide = true,
+                                           bool IsHide,
                                            params string[] gridColumnVisible)
     {
         if (gridColumnVisible.Length == 0) { return; }

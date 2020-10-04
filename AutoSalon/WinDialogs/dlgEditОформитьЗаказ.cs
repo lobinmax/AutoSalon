@@ -117,14 +117,17 @@ public partial class dlgEditОформитьЗаказ : Form
             var ЗаказDR = clsSql.ExecuteSP(
                 "dbo.Заказы_SIUD",
                 clsMisc.ASSqlFunction.Select,
-                "@UIDЗаказа", UIDЗаказа).dataTable.RowsDR().SingleOrDefault();
+                "@UIDЗаказа", UIDЗаказа,
+                "@UIDТовара", UIDТовара).dataTable.RowsDR().SingleOrDefault();
 
             ЗаполнитьДанныеКлиента((Guid)ЗаказDR["UIDКлиента"]);
 
             comboBoxСтатусЗаказа.SelectedValue = clsMisc.DBout(ЗаказDR["IdСтатусаЗаказа"]);
             labelНомерЗаказа.Text = clsMisc.DBout(ЗаказDR["НомерЗаказа"].ToString());
             textBoxОплачено.Text = clsMisc.DBout(ЗаказDR["СуммаОплаты"].ToString());
-            textEditСтоимость.Text = clsMisc.DBout(ЗаказDR["Стоимость"].ToString()); // перзаписываем стоимость из заказа
+            textEditСтоимость.Text = clsMisc.DBout(ЗаказDR["Стоимость"].ToString()); // перезаписываем стоимость из заказа
+            checkBoxСформироватьГрафикТО.Checked = Convert.ToBoolean(ЗаказDR["СформированГрафикТО"]);
+            checkBoxСформироватьГрафикТО.Enabled = !Convert.ToBoolean(ЗаказDR["СформированГрафикТО"]);
         }
     }
 
@@ -220,7 +223,8 @@ public partial class dlgEditОформитьЗаказ : Form
             "@СтоимостьАвто", СтоимостьАвто,
             "@UIDКлиента", UIDКлиента,
             "@IdСтатусаЗаказа", comboBoxСтатусЗаказа.SelectedValue,
-            "@СуммаОплаты", textBoxОплачено.Text);
+            "@СуммаОплаты", textBoxОплачено.Text,
+            "@СформироватьГрафикТО", Convert.ToInt32(checkBoxСформироватьГрафикТО.Checked));
 
         if ((bool)response.success)
         {
