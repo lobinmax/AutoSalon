@@ -43,8 +43,8 @@ public partial class frГрафикТО : Form
         var focusDR = gridViewТОфакт.SelectedRows.Cast<DataGridViewRow>().SingleOrDefault();
         if (focusDR != null)
         {
-            dataGridЗапчасти.DataSource = clsSql.ExecuteSP
-                ("dbo.ТО_ФактЗапчасти_SIUD", 
+            dataGridПереченьРабот.DataSource = clsSql.ExecuteSP
+                ("dbo.ТО_ФактРаботы_SIUD", 
                 clsMisc.ASSqlFunction.ViewForm, 
                 "@UIDТО", clsMisc.DBin(focusDR.Cells["UIDТО"].Value)).dataTable;
             dataGridПереченьРабот.ASНастроитьGridView(true, "UIDТО", "UIDРаботы");
@@ -138,14 +138,14 @@ public partial class frГрафикТО : Form
     
     private void dataGridПереченьРабот_SelectionChanged(object sender, EventArgs e)
     {
-        var focusDR = gridViewТОфакт.SelectedRows.Cast<DataGridViewRow>().SingleOrDefault();
+        var focusDR = dataGridПереченьРабот.SelectedRows.Cast<DataGridViewRow>().SingleOrDefault();
         if (focusDR != null)
         {
-            dataGridПереченьРабот.DataSource = clsSql.ExecuteSP
-                ("dbo.ТО_ФактРаботы_SIUD",
+            dataGridЗапчасти.DataSource = clsSql.ExecuteSP
+                ("dbo.ТО_ФактЗапчасти_SIUD",
                 clsMisc.ASSqlFunction.ViewForm,
-                "@UIDТО", clsMisc.DBin(focusDR.Cells["UIDТО"].Value)).dataTable;
-            dataGridПереченьРабот.ASНастроитьGridView(true, "UIDТО", "UIDРаботы");
+                "@UIDРаботы", clsMisc.DBin(focusDR.Cells["UIDРаботы"].Value)).dataTable;
+            dataGridЗапчасти.ASНастроитьGridView(true, "UIDЗапчасти", "UIDРаботы", "UIDТО");
         }
     }
     #endregion
