@@ -24,7 +24,7 @@ public partial class dlgEditТО_ВидРаботы : Form
 
         if (sqlFunction == clsMisc.ASSqlFunction.Update)
         {
-            var dr = clsSql.ExecuteSP("dbo.ТО_ФактРаботы_SIUD", clsMisc.ASSqlFunction.Select, "@UIDТО", UIDТО).dataTable.RowsDR().SingleOrDefault();
+            var dr = clsSql.ExecuteSP("dbo.ТО_ФактРаботы_SIUD", clsMisc.ASSqlFunction.Select, "@UIDРаботы", UIDРаботы).dataTable.RowsDR().SingleOrDefault();
             comboBoxНаименование.SelectedValue = clsMisc.DBout(dr["IdВидаРемонта"]);
             numericUpDownСтоимость.Value = (decimal)clsMisc.DBout(dr["Стоимость"]);
             this.Text = "Изменить запись";
@@ -57,6 +57,11 @@ public partial class dlgEditТО_ВидРаботы : Form
 
     private void comboBoxНаименование_SelectedIndexChanged(object sender, EventArgs e)
     {
+        if (comboBoxНаименование.SelectedIndex == 0)
+        {
+            numericUpDownСтоимость.Value = 0;
+            return;
+        }
         numericUpDownСтоимость.Value = 
             (decimal)clsSql.ExecuteScalarFunction
             (

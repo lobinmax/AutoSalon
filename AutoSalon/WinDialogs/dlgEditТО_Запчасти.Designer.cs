@@ -101,7 +101,6 @@
             0,
             0});
             this.numericUpDownСтоимость.Name = "numericUpDownСтоимость";
-            this.numericUpDownСтоимость.ReadOnly = true;
             this.numericUpDownСтоимость.Size = new System.Drawing.Size(120, 20);
             this.numericUpDownСтоимость.TabIndex = 25;
             // 
@@ -123,7 +122,6 @@
             0,
             0});
             this.numericUpDownКоличество.Name = "numericUpDownКоличество";
-            this.numericUpDownКоличество.ReadOnly = true;
             this.numericUpDownКоличество.Size = new System.Drawing.Size(85, 20);
             this.numericUpDownКоличество.TabIndex = 27;
             // 

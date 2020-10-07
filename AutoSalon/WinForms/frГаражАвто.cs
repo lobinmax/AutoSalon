@@ -101,7 +101,7 @@ public partial class frГаражАвто : Form
 
     private void gridViewГараж_MouseClick(object sender, MouseEventArgs e)
     {
-        var FocusDR = gridViewГараж.CurrentRow;
+        var FocusDR = gridViewГараж.SelectedRows.Cast<DataGridViewRow>().SingleOrDefault();
         var menu = new ContextMenuStrip();
 
         if (FocusDR != null && e.Button == MouseButtons.Right)

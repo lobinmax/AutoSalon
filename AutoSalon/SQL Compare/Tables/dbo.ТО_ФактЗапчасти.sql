@@ -5,8 +5,8 @@
   [IdЗапчасти] [int] NOT NULL,
   [Количество] [int] NOT NULL,
   [Стоимость] [money] NOT NULL,
-  [ДатаСоздания] [datetime] NOT NULL,
-  [UIDАвтора] [uniqueidentifier] NOT NULL,
+  [ДатаСоздания] [datetime] NOT NULL DEFAULT ([dbo].[DtТекущаяДатаВремя]()),
+  [UIDАвтора] [uniqueidentifier] NOT NULL DEFAULT ([dbo].[ШтатПолучитьUIDСотрудника]()),
   CONSTRAINT [PK_ТО_ФактЗапчасти_UIDЗапчасти] PRIMARY KEY CLUSTERED ([UIDЗапчасти])
 )
 ON [PRIMARY]

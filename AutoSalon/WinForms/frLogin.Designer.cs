@@ -126,7 +126,7 @@
             this.TextEdit_Pass.PasswordChar = '•';
             this.TextEdit_Pass.Size = new System.Drawing.Size(231, 20);
             this.TextEdit_Pass.TabIndex = 8;
-            this.TextEdit_Pass.Text = "123";
+            this.TextEdit_Pass.Text = "lobin_123";
             // 
             // checkEdit1
             // 

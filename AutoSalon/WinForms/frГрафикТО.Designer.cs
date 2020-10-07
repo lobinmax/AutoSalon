@@ -44,12 +44,12 @@
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.dataGridПереченьРабот = new System.Windows.Forms.DataGridView();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.dataGridЗапчасти = new System.Windows.Forms.DataGridView();
-            this.panel2 = new System.Windows.Forms.Panel();
             this.buttonУдалитьРаботу = new System.Windows.Forms.Button();
             this.buttonИзменитьРаботу = new System.Windows.Forms.Button();
             this.buttonДобавитьРаботу = new System.Windows.Forms.Button();
+            this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.dataGridЗапчасти = new System.Windows.Forms.DataGridView();
+            this.panel2 = new System.Windows.Forms.Panel();
             this.buttonУдалитьЗапчасть = new System.Windows.Forms.Button();
             this.buttonИзменитьЗапчасть = new System.Windows.Forms.Button();
             this.buttonДобавитьЗапчасть = new System.Windows.Forms.Button();
@@ -178,8 +178,8 @@
             this.gridViewТОфакт.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.gridViewТОфакт.Size = new System.Drawing.Size(1276, 122);
             this.gridViewТОфакт.TabIndex = 8;
-            this.gridViewТОфакт.DataSourceChanged += new System.EventHandler(this.gridViewТОфакт_SelectionChanged);
-            this.gridViewТОфакт.SelectionChanged += new System.EventHandler(this.gridViewТОфакт_SelectionChanged);
+            this.gridViewТОфакт.DataSourceChanged += new System.EventHandler(this.gridViewТОфакт_SelectionDataSourseChanged);
+            this.gridViewТОфакт.SelectionChanged += new System.EventHandler(this.gridViewТОфакт_SelectionDataSourseChanged);
             // 
             // splitContainer2
             // 
@@ -258,8 +258,8 @@
             this.dataGridПереченьРабот.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dataGridПереченьРабот.Size = new System.Drawing.Size(742, 304);
             this.dataGridПереченьРабот.TabIndex = 11;
-            this.dataGridПереченьРабот.DataSourceChanged += new System.EventHandler(this.dataGridПереченьРабот_SelectionChanged);
-            this.dataGridПереченьРабот.SelectionChanged += new System.EventHandler(this.dataGridПереченьРабот_SelectionChanged);
+            this.dataGridПереченьРабот.DataSourceChanged += new System.EventHandler(this.dataGridПереченьРабот_SelectionDataSourseChanged);
+            this.dataGridПереченьРабот.SelectionChanged += new System.EventHandler(this.dataGridПереченьРабот_SelectionDataSourseChanged);
             // 
             // panel1
             // 
@@ -272,6 +272,39 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(742, 32);
             this.panel1.TabIndex = 10;
+            // 
+            // buttonУдалитьРаботу
+            // 
+            this.buttonУдалитьРаботу.Image = global::AutoSalon.Properties.Resources.Delete_16x16;
+            this.buttonУдалитьРаботу.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.buttonУдалитьРаботу.Location = new System.Drawing.Point(73, 3);
+            this.buttonУдалитьРаботу.Name = "buttonУдалитьРаботу";
+            this.buttonУдалитьРаботу.Size = new System.Drawing.Size(28, 23);
+            this.buttonУдалитьРаботу.TabIndex = 7;
+            this.buttonУдалитьРаботу.UseVisualStyleBackColor = true;
+            this.buttonУдалитьРаботу.Click += new System.EventHandler(this.buttonУдалитьРаботу_Click);
+            // 
+            // buttonИзменитьРаботу
+            // 
+            this.buttonИзменитьРаботу.Image = global::AutoSalon.Properties.Resources.Edit_16x16;
+            this.buttonИзменитьРаботу.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.buttonИзменитьРаботу.Location = new System.Drawing.Point(39, 3);
+            this.buttonИзменитьРаботу.Name = "buttonИзменитьРаботу";
+            this.buttonИзменитьРаботу.Size = new System.Drawing.Size(28, 23);
+            this.buttonИзменитьРаботу.TabIndex = 6;
+            this.buttonИзменитьРаботу.UseVisualStyleBackColor = true;
+            this.buttonИзменитьРаботу.Click += new System.EventHandler(this.buttonИзменитьРаботу_Click);
+            // 
+            // buttonДобавитьРаботу
+            // 
+            this.buttonДобавитьРаботу.Image = global::AutoSalon.Properties.Resources.Add_16x16;
+            this.buttonДобавитьРаботу.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.buttonДобавитьРаботу.Location = new System.Drawing.Point(5, 3);
+            this.buttonДобавитьРаботу.Name = "buttonДобавитьРаботу";
+            this.buttonДобавитьРаботу.Size = new System.Drawing.Size(28, 23);
+            this.buttonДобавитьРаботу.TabIndex = 5;
+            this.buttonДобавитьРаботу.UseVisualStyleBackColor = true;
+            this.buttonДобавитьРаботу.Click += new System.EventHandler(this.buttonДобавитьРаботу_Click);
             // 
             // groupBox2
             // 
@@ -345,39 +378,6 @@
             this.panel2.Size = new System.Drawing.Size(524, 32);
             this.panel2.TabIndex = 11;
             // 
-            // buttonУдалитьРаботу
-            // 
-            this.buttonУдалитьРаботу.Image = global::AutoSalon.Properties.Resources.Delete_16x16;
-            this.buttonУдалитьРаботу.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.buttonУдалитьРаботу.Location = new System.Drawing.Point(73, 3);
-            this.buttonУдалитьРаботу.Name = "buttonУдалитьРаботу";
-            this.buttonУдалитьРаботу.Size = new System.Drawing.Size(28, 23);
-            this.buttonУдалитьРаботу.TabIndex = 7;
-            this.buttonУдалитьРаботу.UseVisualStyleBackColor = true;
-            this.buttonУдалитьРаботу.Click += new System.EventHandler(this.buttonУдалитьРаботу_Click);
-            // 
-            // buttonИзменитьРаботу
-            // 
-            this.buttonИзменитьРаботу.Image = global::AutoSalon.Properties.Resources.Edit_16x16;
-            this.buttonИзменитьРаботу.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.buttonИзменитьРаботу.Location = new System.Drawing.Point(39, 3);
-            this.buttonИзменитьРаботу.Name = "buttonИзменитьРаботу";
-            this.buttonИзменитьРаботу.Size = new System.Drawing.Size(28, 23);
-            this.buttonИзменитьРаботу.TabIndex = 6;
-            this.buttonИзменитьРаботу.UseVisualStyleBackColor = true;
-            this.buttonИзменитьРаботу.Click += new System.EventHandler(this.buttonИзменитьРаботу_Click);
-            // 
-            // buttonДобавитьРаботу
-            // 
-            this.buttonДобавитьРаботу.Image = global::AutoSalon.Properties.Resources.Add_16x16;
-            this.buttonДобавитьРаботу.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.buttonДобавитьРаботу.Location = new System.Drawing.Point(5, 3);
-            this.buttonДобавитьРаботу.Name = "buttonДобавитьРаботу";
-            this.buttonДобавитьРаботу.Size = new System.Drawing.Size(28, 23);
-            this.buttonДобавитьРаботу.TabIndex = 5;
-            this.buttonДобавитьРаботу.UseVisualStyleBackColor = true;
-            this.buttonДобавитьРаботу.Click += new System.EventHandler(this.buttonДобавитьРаботу_Click);
-            // 
             // buttonУдалитьЗапчасть
             // 
             this.buttonУдалитьЗапчасть.Image = global::AutoSalon.Properties.Resources.Delete_16x16;
@@ -387,6 +387,7 @@
             this.buttonУдалитьЗапчасть.Size = new System.Drawing.Size(28, 23);
             this.buttonУдалитьЗапчасть.TabIndex = 7;
             this.buttonУдалитьЗапчасть.UseVisualStyleBackColor = true;
+            this.buttonУдалитьЗапчасть.Click += new System.EventHandler(this.buttonУдалитьЗапчасть_Click);
             // 
             // buttonИзменитьЗапчасть
             // 
@@ -397,6 +398,7 @@
             this.buttonИзменитьЗапчасть.Size = new System.Drawing.Size(28, 23);
             this.buttonИзменитьЗапчасть.TabIndex = 6;
             this.buttonИзменитьЗапчасть.UseVisualStyleBackColor = true;
+            this.buttonИзменитьЗапчасть.Click += new System.EventHandler(this.buttonИзменитьЗапчасть_Click);
             // 
             // buttonДобавитьЗапчасть
             // 
@@ -407,6 +409,7 @@
             this.buttonДобавитьЗапчасть.Size = new System.Drawing.Size(28, 23);
             this.buttonДобавитьЗапчасть.TabIndex = 5;
             this.buttonДобавитьЗапчасть.UseVisualStyleBackColor = true;
+            this.buttonДобавитьЗапчасть.Click += new System.EventHandler(this.buttonДобавитьЗапчасть_Click);
             // 
             // frГрафикТО
             // 
