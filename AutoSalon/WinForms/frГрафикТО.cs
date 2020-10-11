@@ -20,18 +20,6 @@ public partial class frГрафикТО : Form
 
         gridViewТОфакт.DataSource = clsSql.ExecuteSP("ТО_ФактГрафикПоТовару", "@UIDТОвара", UIDТовара).dataTable;
         gridViewТОфакт.ASНастроитьGridView(true, "UIDТО", "UIDТовара");
-
-           var timerПереченьРабот = new ASTimer
-            (
-                dataGridПереченьРабот,
-                new List<Button> { this.buttonИзменитьРаботу, this.buttonУдалитьРаботу }
-            );
-        Application.DoEvents();
-        var timerЗапчасти = new ASTimer
-            (
-                dataGridЗапчасти,
-                new List<Button> { this.buttonИзменитьЗапчасть, this.buttonУдалитьЗапчасть }
-            );
     } 
 
     private void buttonОбновить_Click(object sender, EventArgs e)

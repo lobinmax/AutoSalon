@@ -27,7 +27,7 @@ public partial class dlgEditТО_Запчасти : Form
 
         if (sqlFunction == clsMisc.ASSqlFunction.Update)
         {
-            var dr = clsSql.ExecuteSP("dbo.ТО_ФактЗапчасти_SIUD", clsMisc.ASSqlFunction.Select, "@UIDРаботы", UIDРаботы).dataTable.RowsDR().SingleOrDefault();
+            var dr = clsSql.ExecuteSP("dbo.ТО_ФактЗапчасти_SIUD", clsMisc.ASSqlFunction.Select, "@UIDЗапчасти", UIDЗапчасти).dataTable.RowsDR().SingleOrDefault();
             comboBoxНаименование.SelectedValue = clsMisc.DBout(dr["IdЗапчасти"]);
             numericUpDownСтоимость.Value = (decimal)clsMisc.DBout(dr["Стоимость"]);
             numericUpDownКоличество.Value = (int)clsMisc.DBout(dr["Количество"]);
